@@ -44,6 +44,9 @@ func TestPicksCheapestVenue(t *testing.T) {
 	if d.Total != 100*usd("0.51") {
 		t.Errorf("total = %s", d.Total)
 	}
+	if !d.mentions("why b/b-m: lowest all-in cost including fees: 0.51 vs 0.52") {
+		t.Errorf("the decision must say why b won: %v", d.Explanation)
+	}
 }
 
 func TestFeesCanFlipTheDecision(t *testing.T) {
@@ -90,6 +93,9 @@ func TestPrefersFullFillThenSplits(t *testing.T) {
 
 	single := Route(order, quotes, policy, now)
 	assertRouted(t, single, Filled, "b") // a is cheaper but can only fill 100 of 300
+	if !single.mentions("fills 300 contracts, 200 more than the next best") {
+		t.Errorf("explanation: %v", single.Explanation)
+	}
 
 	p := policy
 	p.Split = true
@@ -148,6 +154,9 @@ func TestTieBreakIsByVenueID(t *testing.T) {
 	d := Route(Order{Side: market.Yes, Qty: 10},
 		[]Quote{quote("zeta", market.FeeCurve{}, lv("0.5", 100)), quote("alpha", market.FeeCurve{}, lv("0.5", 100))}, policy, now)
 	assertRouted(t, d, Filled, "alpha")
+	if !d.mentions("tie broken by venue id") {
+		t.Errorf("a tie-break must be named as the reason: %v", d.Explanation)
+	}
 }
 
 func TestRejectsInvalidOrdersAndNoVenues(t *testing.T) {
@@ -160,6 +169,32 @@ func TestRejectsInvalidOrdersAndNoVenues(t *testing.T) {
 	if d := Route(Order{Side: market.Yes, Qty: 1}, nil, policy, now); d.Status != Rejected || !d.mentions("no eligible venue") {
 		t.Errorf("no quotes: %+v", d)
 	}
+}
+
+// Review findings: data that would make a decision depend on luck is refused, not guessed at.
+func TestFutureBooksBadPolicyAndConflictingQuotes(t *testing.T) {
+	future := quote("future", market.FeeCurve{}, lv("0.40", 500))
+	future.Book.AsOf = now.Add(time.Hour)
+	ok := quote("ok", market.FeeCurve{}, lv("0.60", 500))
+	d := Route(Order{Side: market.Yes, Qty: 10}, []Quote{future, ok}, policy, now)
+	assertRouted(t, d, Filled, "ok")
+	if !strings.Contains(d.Evaluations[0].Excluded, "in the future") {
+		t.Errorf("future book: %q", d.Evaluations[0].Excluded)
+	}
+
+	if d := Route(Order{Side: market.Yes, Qty: 10}, []Quote{ok}, Policy{}, now); d.Status != Rejected {
+		t.Errorf("max book age 0 must not disable the staleness check: %s", d.Status)
+	}
+
+	fresh := quote("a", market.FeeCurve{}, lv("0.50", 100))
+	stale := quote("a", market.FeeCurve{}, lv("0.40", 100))
+	stale.Book.AsOf = now.Add(-time.Hour)
+	d1 := Route(Order{Side: market.Yes, Qty: 10}, []Quote{fresh, stale, ok}, policy, now)
+	d2 := Route(Order{Side: market.Yes, Qty: 10}, []Quote{stale, ok, fresh}, policy, now)
+	if mustJSON(t, d1) != mustJSON(t, d2) {
+		t.Fatal("duplicate quotes made the decision depend on input order")
+	}
+	assertRouted(t, d1, Filled, "ok")
 }
 
 // Determinism: input order and repetition must not change a single byte of the decision.

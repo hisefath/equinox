@@ -16,12 +16,12 @@ It is an infrastructure prototype, not a trading product: it places no orders an
 
 | | |
 |---|---|
-| Live data | 56,776 Kalshi + 3,000 Polymarket markets (→ 3,396 binary propositions) per refresh |
-| Matching | **323** proposed pairs from 97,658 scored candidates, in about 7 s |
+| Live data | 56,776 Kalshi + 3,000 Polymarket markets (→ 3,390 binary propositions) per refresh |
+| Matching | **374** proposed pairs: about 1.22M candidate pairs scored, 90,726 vetted, in about 7 s |
 | Precision on 55 hand-labelled live pairs | **1.000** (0 of 23 hard negatives accepted); recall **0.844** |
-| Precision on live matches, independently audited **out of sample** | **0.872** (95% CI 0.79–0.93); the `review` tier is 0.167, so it is not routed |
-| Routing | Deterministic (byte-identical decisions, input-order independent); fee-inclusive; explains every venue it chose or excluded |
-| Tests | 38 tests pass with the race detector; 75.5% coverage (match 98%, route 97%) |
+| Precision on live matches, independently audited **out of sample** | **0.879** (124/141; 95% CI 0.82–0.92). The `review` tier is far lower, so it is not routed |
+| Routing | Deterministic (byte-identical decisions, input-order independent); fee-inclusive; names the rule that chose the venue and why every other venue was excluded |
+| Tests | 46 tests pass with the race detector; 79.9% coverage (match 98%, route 98%) |
 
 **Finding:** normalization and routing are very achievable. Equivalence is the hard part. A
 deterministic matcher reaches high precision on templated markets (elections, Fed decisions, sports
@@ -36,7 +36,7 @@ Requires Go 1.27+. No network or keys needed: the repo includes a live recording
 ```bash
 go build -o bin/equinox ./cmd/equinox
 ./bin/equinox scan  -replay testdata/snapshot -near-misses 8
-./bin/equinox route -replay testdata/snapshot -pair 27 -side yes -qty 2000 -split
+./bin/equinox route -replay testdata/snapshot -pair 26 -side yes -qty 2000 -split
 go test ./...
 ```
 
@@ -50,15 +50,16 @@ Live, against the real venues (about 20 s per refresh):
 Example output, a real decision on recorded live books:
 
 ```
-Pair kalshi:SENATEIA-26-R~polymarket:630734 (equivalent, score 0.99, reviewed by llm-audit ...)
+Pair kalshi:SENATEIA-26-R~polymarket:630734 (equivalent, score 1.00, reviewed by llm-audit ...)
   evidence: office agrees: senate · outcomes agree: ashley, hinson · predicate agrees: win
   caveat:   venues expect resolution 60 days apart (settlement timing / capital lock-up differs)
 
-Decision e90dca203225521a: FILLED
+Decision 5c7e7694477187a2: FILLED
   - kalshi/SENATEIA-26-R: eligible; alone fills 2000 at all-in 0.58716/contract (fees 34.32)
   - polymarket/630734: eligible; alone fills 2000 at all-in 0.589744/contract (fees 19.488)
   - split considered; no improvement over best single venue, keeping one child order
   - route 2000 to kalshi/SENATEIA-26-R: notional 1140.00 + fees 34.32 = 1174.32 (all-in 0.58716/contract)
+  - why kalshi/SENATEIA-26-R: lowest all-in cost including fees: 0.58716 vs 0.589744 per contract, saving 5.168 on 2000 contracts
 ```
 
 ## How it works
@@ -73,13 +74,14 @@ venues (Kalshi, Polymarket)
 - **Canonical model** (`internal/market`): one binary proposition per market. Money is in integer
   micro-dollars, and fees are a curve (`q × rate × p^a(1−p)^b`) that fits both venues' published
   schedules.
-- **Matching** (`internal/match`): TF-IDF candidates over normalized text, then 20 kinds of hard veto
-  (thresholds, comparator shape, dates, oracles, teams, offices, predicates, ranks, modifiers…) and
-  one-to-one assignment. Every pair carries evidence; every high-scoring rejection is reported as a
-  near miss.
+- **Matching** (`internal/match`): TF-IDF candidates over normalized text, then 18 veto rules (thresholds,
+  comparator shape, dates, oracles, teams, ranks, modifiers, and 9 groups of mutually exclusive scopes
+  such as office and predicate) and one-to-one assignment. Every pair carries evidence; the
+  highest-scoring rejections are reported as near misses.
 - **Routing** (`internal/route`): eligibility (health, tradability, valid and fresh book, limit, minimum
   size), a fill simulation per venue, best single venue by all-in cost, and optional consolidated-book
-  splitting. It imports only `internal/market`, and a test enforces that.
+  splitting. Every decision states the rule that won it. It imports only `internal/market`, and a test
+  enforces that.
 - **Ingestion** (`internal/ingest`, `internal/fetch`): venues run concurrently with deadlines, bounded
   retries, rate limiting and last-known-good data. Routing reads a snapshot and never waits on a venue.
 
@@ -105,7 +107,7 @@ venues (Kalshi, Polymarket)
 |---|---|
 | Source code | `cmd/`, `internal/` (Go, standard library only) |
 | Technical documentation | `docs/` |
-| Demo video | Script: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md). Recording: *link to be added* |
+| Demo video | [`docs/demo/equinox-demo.mp4`](docs/demo/equinox-demo.mp4): a terminal recording of the offline demo, about 3 min, no narration. Script for a narrated version: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md) |
 | Test results | [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md), raw output in [`test-results/`](test-results/) |
 | AI usage log | [`AI_USAGE_LOG.md`](AI_USAGE_LOG.md) |
 | Deployment guide | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) |
@@ -121,7 +123,7 @@ internal/venues/kalshi/ Kalshi adapter
 internal/venues/polymarket/  Polymarket adapter
 internal/match/         equivalence detection, evaluation fixtures, reviewed mapping table
 internal/route/         deterministic routing simulation
-reviews/pairs.json      reviewed mapping table (247 audited verdicts)
+reviews/pairs.json      reviewed mapping table (297 audited verdicts)
 testdata/snapshot/      gzipped live API recording for offline runs and tests
 research/               research reports, labelled pairs, audit labels
 ```

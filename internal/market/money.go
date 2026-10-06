@@ -2,6 +2,7 @@ package market
 
 import (
 	"fmt"
+	"math"
 	"math/big"
 	"strconv"
 	"strings"
@@ -36,6 +37,9 @@ func ParseAmount(s string) (Amount, error) {
 	if whole == "" && frac == "" {
 		return 0, fmt.Errorf("amount %q: empty", s)
 	}
+	if !digits(whole) || !digits(frac) {
+		return 0, fmt.Errorf("amount %q: not a decimal number", s)
+	}
 	if len(frac) > decimals {
 		if strings.TrimRight(frac[decimals:], "0") != "" {
 			return 0, fmt.Errorf("amount %q: more than %d decimal places", s, decimals)
@@ -54,11 +58,23 @@ func ParseAmount(s string) (Amount, error) {
 	if err != nil {
 		return 0, fmt.Errorf("amount %q: %w", s, err)
 	}
+	if w > (math.MaxInt64-f)/int64(Dollar) {
+		return 0, fmt.Errorf("amount %q: out of range", s)
+	}
 	a := Amount(w)*Dollar + Amount(f)
 	if neg {
 		a = -a
 	}
 	return a, nil
+}
+
+func digits(s string) bool {
+	for _, c := range s {
+		if c < '0' || c > '9' {
+			return false
+		}
+	}
+	return true
 }
 
 // String renders dollars with as many decimals as needed (at least 2): "0.52", "0.0175", "1.716".
@@ -87,9 +103,12 @@ func (a *Amount) UnmarshalText(b []byte) error {
 // ParseQty parses a contract/share size such as "595.01" and floors it to whole contracts.
 // Flooring is deliberately conservative: the router must never count on liquidity that isn't there.
 func ParseQty(s string) (int64, error) {
-	whole, _, _ := strings.Cut(strings.TrimSpace(s), ".")
+	whole, frac, _ := strings.Cut(strings.TrimSpace(s), ".")
 	if whole == "" {
 		whole = "0"
+	}
+	if !digits(frac) {
+		return 0, fmt.Errorf("qty %q: not a decimal number", s)
 	}
 	n, err := strconv.ParseInt(whole, 10, 64)
 	if err != nil {

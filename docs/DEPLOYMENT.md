@@ -28,13 +28,13 @@ go test -race ./...            # about 3 minutes with -race; `go test -short ./.
 
 ## 3. Run offline (replay)
 
-`testdata/snapshot/` is a live recording from 2026-10-06 04:46 UTC: 56,776 Kalshi markets, 3,000
+`testdata/snapshot/` is a live recording from 2026-10-06 05:33 UTC: 56,776 Kalshi markets, 3,000
 Polymarket markets, and the order books of every matched market. Replay sets the clock to the recording
 time, so books are "fresh" and decisions are reproducible.
 
 ```bash
 ./bin/equinox scan  -replay testdata/snapshot                    # venues, matched pairs, near misses
-./bin/equinox route -replay testdata/snapshot -pair 27 -side yes -qty 2000 -split
+./bin/equinox route -replay testdata/snapshot -pair 26 -side yes -qty 2000 -split
 ./bin/equinox serve -replay testdata/snapshot -addr :8080        # same data over HTTP
 ```
 
@@ -76,7 +76,7 @@ which pairs matched.
 | `GET /healthz` | `ready`, pair count, per-venue health (ok, last success, kept/seen/skipped, book errors) |
 | `GET /pairs?tier=equivalent` | matched pairs with evidence, caveats, review status |
 | `GET /near-misses` | similar-looking pairs that a veto rejected, with the veto |
-| `GET /route?pair=N&side=yes&qty=100&limit=0.55&split=true&max_age=30s` | `{pair, decision}`. The decision is also appended to the log. `503` while warming up, `409` if the pair isn't routable |
+| `GET /route?pair=N&side=yes&qty=100&limit=0.55&split=true&max_age=30s` | `{pair, decision}`. The decision is also appended to the log. `400` for an invalid side, quantity (1..1,000,000), limit (must be above 0) or max age (must be positive); `404` for an unknown pair; `409` if the pair isn't routable (rejected by review, or unconfirmed with `-require-review`); `503` while warming up. Invalid requests are not logged |
 
 ## 5. Docker
 
@@ -118,6 +118,8 @@ Why these flags:
   about 20 s for a full ingest (it gets `503 warming up`).
 - **`--max-instances 1`**. Each instance holds its own snapshot. Two instances could return different
   decisions for the same request. Horizontal scale needs a shared snapshot store first (§7).
+- **SIGTERM** is handled. When Cloud Run scales an instance down, in-flight requests finish and the
+  background loops stop.
 - **`--no-allow-unauthenticated`**. There's no reason to expose a routing simulator publicly. Call it with
   `gcloud run services proxy equinox --region $REGION` or an identity token.
 - **Memory 1 GiB.** A full scan peaks at about 670 MB resident (measured: 60k markets plus features plus TF-IDF vectors). 1 GiB leaves headroom; 512 MiB would not.

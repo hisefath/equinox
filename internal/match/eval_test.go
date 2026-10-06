@@ -5,8 +5,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"maps"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"sync"
 	"testing"
@@ -126,22 +128,31 @@ func TestLabelledPairs(t *testing.T) {
 	corpus := NewCorpus(corpusOf(pairs, snapshotMarkets(t)))
 	var tp, fp, fn, tn int
 	var report strings.Builder
+	byTopic := map[string]*[4]int{} // tp, fp, fn, tn
 	for _, lp := range pairs {
 		v := corpus.Explain(lp.k, lp.p, Options{})
 		got := v.Tier == Equivalent
 		want := lp.Label == "equivalent"
 		mark := "ok  "
+		if byTopic[lp.Topic] == nil {
+			byTopic[lp.Topic] = &[4]int{}
+		}
+		k := byTopic[lp.Topic]
 		switch {
 		case got && want:
 			tp++
+			k[0]++
 		case got && !want:
 			fp++
+			k[1]++
 			mark = "FP  "
 		case !got && want:
 			fn++
+			k[2]++
 			mark = "miss"
 		default:
 			tn++
+			k[3]++
 		}
 		why := v.Veto
 		if why == "" {
@@ -152,6 +163,11 @@ func TestLabelledPairs(t *testing.T) {
 	}
 	precision := float64(tp) / float64(max(tp+fp, 1))
 	recall := float64(tp) / float64(max(tp+fn, 1))
+	fmt.Fprintf(&report, "\nby topic (tp fp fn tn):\n")
+	for _, topic := range slices.Sorted(maps.Keys(byTopic)) {
+		k := byTopic[topic]
+		fmt.Fprintf(&report, "  %-13s %2d %2d %2d %2d   precision %s  recall %s\n", topic, k[0], k[1], k[2], k[3], ratio(k[0], k[0]+k[1]), ratio(k[0], k[0]+k[2]))
+	}
 	t.Logf("labelled pairs: %d (tp=%d fp=%d fn=%d tn=%d) precision=%.3f recall=%.3f\n%s",
 		len(pairs), tp, fp, fn, tn, precision, recall, report.String())
 	if fp > 0 {
@@ -188,4 +204,11 @@ func TestLabelledPairsInContext(t *testing.T) {
 		}
 	}
 	t.Logf("in context (%d markets): %d pairs proposed, labelled tp=%d fp=%d fn=%d, vetoes %v", res.Markets["kalshi"]+res.Markets["polymarket"], len(res.Pairs), tp, fp, fn, res.Vetoed)
+}
+
+func ratio(a, b int) string {
+	if b == 0 {
+		return "  -  "
+	}
+	return fmt.Sprintf("%.3f", float64(a)/float64(b))
 }

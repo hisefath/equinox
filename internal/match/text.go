@@ -2,6 +2,7 @@ package match
 
 import (
 	"cmp"
+	"fmt"
 	"regexp"
 	"slices"
 	"strconv"
@@ -349,6 +350,8 @@ var (
 	numberRe  = regexp.MustCompile(`(?:^|[^a-z0-9.])[#$]?(\d[\d,]*(?:\.\d+)?)(?:\s*(k|m|b|million|billion|thousand)\b)?`)
 	rangeRe   = regexp.MustCompile(`\d(?:\.\d+)?%?\s*(?:-|to)\s*\$?\d|\bbetween \$?\d[\d,.]*%? (?:and|-) \$?\d`)
 	plusRe    = regexp.MustCompile(`\d\+`)
+	thousands = regexp.MustCompile(`(\d),(\d{3})\b`)
+	season    = regexp.MustCompile(`\b(20\d\d)-(\d\d)\b`)
 	digitWord = regexp.MustCompile(`(\d)([a-z])`)
 	bareNumRe = regexp.MustCompile(`^[$#]?\d[\d,]*(?:\.\d+)?\s*(%|k|m|million|billion)?$`)
 )
@@ -374,7 +377,23 @@ func normalize(s string) string {
 		}
 		b.WriteByte(c)
 	}
-	s = digitWord.ReplaceAllString(b.String(), "$1 $2") // "25bps" -> "25 bps", "84k" -> "84 k"
+	s = b.String()
+	for thousands.MatchString(s) { // "1,000,000" -> "1000000" before commas become separators
+		s = thousands.ReplaceAllString(s, "$1$2")
+	}
+	// ISO dates become "oct 6 2026" so the one date parser reads them, and before the season rule
+	// below can mistake "2026-10" for a season.
+	s = isoDateRe.ReplaceAllStringFunc(s, func(d string) string {
+		m := isoDateRe.FindStringSubmatch(d)
+		mo, _ := strconv.Atoi(m[2])
+		day, _ := strconv.Atoi(m[3])
+		if mo < 1 || mo > 12 {
+			return d
+		}
+		return fmt.Sprintf(" %s %d %s ", monthNames[mo], day, m[1])
+	})
+	s = season.ReplaceAllString(s, "$1 20$2")  // "2026-27" season -> both years, not a range
+	s = digitWord.ReplaceAllString(s, "$1 $2") // "25bps" -> "25 bps", "84k" -> "84 k"
 	s = nonWord.ReplaceAllString(s, " ")
 	s = strings.ReplaceAll(" "+strings.Join(strings.Fields(s), " ")+" ", " white house ", " whitehouse ")
 	return s
@@ -395,14 +414,6 @@ func extract(m market.Market) features {
 
 	// Dates first: their day numbers and years must not be mistaken for thresholds.
 	rest := qo
-	for _, d := range isoDateRe.FindAllStringSubmatch(qo, -1) {
-		mo, _ := strconv.Atoi(d[2])
-		day, _ := strconv.Atoi(d[3])
-		if mo >= 1 && mo <= 12 && day >= 1 && day <= 31 {
-			f.dates = append(f.dates, dayOfYear(mo, day))
-		}
-		rest = strings.Replace(rest, d[0], " ", 1)
-	}
 	for _, d := range dateRe.FindAllStringSubmatch(qo, -1) {
 		day, _ := strconv.Atoi(d[2])
 		if day >= 1 && day <= 31 {
@@ -422,7 +433,8 @@ func extract(m market.Market) features {
 	for _, n := range numberRe.FindAllStringSubmatch(rest, -1) {
 		f.nums = append(f.nums, canonicalNumber(n[1], n[2]))
 	}
-	f.shape = shapeOf(qo, out)
+	// Shape is read with dates taken out: "2026-10-06" must not look like a "6-1" range.
+	f.shape = shapeOf(dateRe.ReplaceAllString(qo, " $1 "), out)
 
 	eq := normalize(m.Event + " " + m.Question)
 	for group, vals := range scopeGroups {

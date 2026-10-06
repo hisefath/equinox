@@ -5,3 +5,5 @@ DECISION_JOURNAL.md
 *.out
 coverage.html
 .DS_Store
+core
+core.*

@@ -15,9 +15,11 @@ import (
 	"flag"
 	"fmt"
 	"log/slog"
+	"maps"
 	"net/http"
 	"os"
 	"path/filepath"
+	"slices"
 	"strconv"
 	"strings"
 	"text/tabwriter"
@@ -127,7 +129,7 @@ func (c *config) pipeline(ctx context.Context, store *ingest.Store, venues []ing
 	} else {
 		res.Pairs = match.ApplyReviews(res.Pairs, reviews)
 	}
-	slog.Info("matched", "markets", res.Markets, "candidates", res.Compared, "pairs", len(res.Pairs),
+	slog.Info("matched", "markets", res.Markets, "scored", res.Scored, "vetted", res.Compared, "pairs", len(res.Pairs),
 		"vetoed", res.Vetoed, "took", time.Since(start).Round(time.Millisecond))
 	var ms []market.Market
 	for _, p := range res.Pairs {
@@ -153,7 +155,7 @@ func scanCmd(args []string) error {
 	printHealth(store.Snapshot())
 	printPairs(res, store.Snapshot())
 	if *showMisses > 0 && len(res.NearMisses) > 0 {
-		fmt.Printf("\nNear misses: similar text, rejected by a veto (top %d of %d)\n", min(*showMisses, len(res.NearMisses)), len(res.NearMisses))
+		fmt.Printf("\nNear misses: similar text, rejected by a veto (top %d of %d)\n", min(*showMisses, len(res.NearMisses)), res.NearMissed)
 		w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
 		for _, r := range res.NearMisses[:min(*showMisses, len(res.NearMisses))] {
 			fmt.Fprintf(w, "  %.2f\t%s\t%s\tveto: %s\n", r.Score, clip(r.AText, 55), clip(r.BText, 55), r.Veto)
@@ -182,8 +184,8 @@ func routeCmd(args []string) error {
 	order := route.Order{Side: market.Side(strings.ToLower(*side)), Qty: *qty}
 	if *limit != "" {
 		l, err := market.ParseAmount(*limit)
-		if err != nil {
-			return fmt.Errorf("-limit: %w", err)
+		if err != nil || l <= 0 {
+			return fmt.Errorf("-limit must be a price above 0, got %q", *limit)
 		}
 		order.Limit = l
 	}
@@ -281,7 +283,7 @@ func logDecision(path string, p match.Pair, d route.Decision) error {
 
 func printHealth(snap *ingest.Snapshot) {
 	fmt.Println("Venues")
-	for _, v := range []string{"kalshi", "polymarket"} {
+	for _, v := range slices.Sorted(maps.Keys(snap.Health)) {
 		h := snap.Health[v]
 		status := "ok"
 		if !h.OK {
@@ -292,7 +294,8 @@ func printHealth(snap *ingest.Snapshot) {
 }
 
 func printPairs(res match.Result, snap *ingest.Snapshot) {
-	fmt.Printf("\nMatched pairs: %d (markets compared: %v, candidates scored: %d)\n", len(res.Pairs), res.Markets, res.Compared)
+	fmt.Printf("\nMatched pairs: %d (markets: %v; candidates scored: %d, above the similarity floor and vetted: %d)\n",
+		len(res.Pairs), res.Markets, res.Scored, res.Compared)
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
 	fmt.Fprintln(w, "  #\ttier\tscore\tA\tB\tA ask\tB ask")
 	for i, p := range res.Pairs {

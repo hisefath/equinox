@@ -1,0 +1,218 @@
+[
+ {
+  "n": 2,
+  "pair_id": "kalshi:KXNBAROY-27-YLEN~polymarket:2668806",
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBAROY-27-YLEN",
+   "event": "Pro Basketball Rookie of the Year Winner",
+   "question": "Will Yaxel Lendeborg win Rookie of the Year?",
+   "outcome": "Yaxel Lendeborg",
+   "close": "2027-07-08T14:00:00Z",
+   "resolves": "2027-07-01T14:00:00Z",
+   "rules": "If Yaxel Lendeborg wins the Pro Basketball Rookie of the Year award in the 2026-27 season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2668806",
+   "event": "NBA: 2026-27 Rookie of the Year",
+   "question": "Will Yaxel Lendeborg win the 2026-27 NBA Rookie of the Year?",
+   "outcome": "Yaxel Lendeborg",
+   "close": "2027-05-01T03:59:00Z",
+   "resolves": "2027-05-01T03:59:00Z",
+   "rules": "This market will resolve to the player who wins the Rookie of the Year award for the 2026-27 NBA regular season.\n\nIn the event of a tie, this market will resolve according to the official winner as determined by NBA rules. If multiple winners are announced then this market will resolve to the player whose listed last name comes first alphabetically.\n\nIf the 2026-27 NBA regular season is cancelled, postponed after April 30, 2027, 11:59 PM ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe resolution source for this market will be official information from NBA; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 8,
+  "pair_id": "kalshi:KXUEFANL-27-GRE~polymarket:4409286",
+  "a": {
+   "venue": "kalshi",
+   "id": "KXUEFANL-27-GRE",
+   "event": "UEFA Nations League Champion",
+   "question": "Will Greece win the UEFA Nations League?",
+   "outcome": "Greece",
+   "close": "2027-06-28T14:00:00Z",
+   "resolves": "2027-06-14T14:00:00Z",
+   "rules": "If Greece is the 2026-27 UEFA Nations League champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4409286",
+   "event": "UEFA Nations League Winner 2026-27",
+   "question": "Will Greece win the 2026-27 UEFA Nations League?",
+   "outcome": "Greece",
+   "close": "2027-06-14T03:59:00Z",
+   "resolves": "2027-06-14T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 UEFA Nations League.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 UEFA Nations League per the rules of UEFA (e.g., they are eliminated), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 UEFA Nations League is cancelled, postponed after June 13, 2027, 11:59 PM ET, or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from UEFA; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 14,
+  "pair_id": "kalshi:KXUEFANL-27-ESP~polymarket:4409287",
+  "a": {
+   "venue": "kalshi",
+   "id": "KXUEFANL-27-ESP",
+   "event": "UEFA Nations League Champion",
+   "question": "Will Spain win the UEFA Nations League?",
+   "outcome": "Spain",
+   "close": "2027-06-28T14:00:00Z",
+   "resolves": "2027-06-14T14:00:00Z",
+   "rules": "If Spain is the 2026-27 UEFA Nations League champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4409287",
+   "event": "UEFA Nations League Winner 2026-27",
+   "question": "Will Spain win the 2026-27 UEFA Nations League?",
+   "outcome": "Spain",
+   "close": "2027-06-14T03:59:00Z",
+   "resolves": "2027-06-14T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 UEFA Nations League.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 UEFA Nations League per the rules of UEFA (e.g., they are eliminated), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 UEFA Nations League is cancelled, postponed after June 13, 2027, 11:59 PM ET, or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from UEFA; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 20,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-AVL~polymarket:2771325",
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPREMIERLEAGUE-27-AVL",
+   "event": "English Premier League Champion",
+   "question": "Will Aston Villa win the English Premier League?",
+   "outcome": "Aston Villa",
+   "close": "2027-06-13T21:00:00Z",
+   "resolves": "2027-05-30T21:00:00Z",
+   "rules": "If Aston Villa is the 2026-27 English Premier League champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771325",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Aston Villa win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Aston Villa",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 26,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-NEW~polymarket:2771337",
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPREMIERLEAGUE-27-NEW",
+   "event": "English Premier League Champion",
+   "question": "Will Newcastle United win the English Premier League?",
+   "outcome": "Newcastle United",
+   "close": "2027-06-13T21:00:00Z",
+   "resolves": "2027-05-30T21:00:00Z",
+   "rules": "If Newcastle United is the 2026-27 English Premier League champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771337",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Newcastle United win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Newcastle United",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 32,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-MCI~polymarket:2771335",
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPREMIERLEAGUE-27-MCI",
+   "event": "English Premier League Champion",
+   "question": "Will Manchester City win the English Premier League?",
+   "outcome": "Manchester City",
+   "close": "2027-06-13T21:00:00Z",
+   "resolves": "2027-05-30T21:00:00Z",
+   "rules": "If Manchester City is the 2026-27 English Premier League champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771335",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Manchester City win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Manchester City",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 38,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-TOT~polymarket:2771339",
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPREMIERLEAGUE-27-TOT",
+   "event": "English Premier League Champion",
+   "question": "Will Tottenham win the English Premier League?",
+   "outcome": "Tottenham",
+   "close": "2027-06-13T21:00:00Z",
+   "resolves": "2027-05-30T21:00:00Z",
+   "rules": "If Tottenham is the 2026-27 English Premier League champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771339",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Tottenham win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Tottenham",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 44,
+  "pair_id": "kalshi:KXUCL-27-SHA~polymarket:2772194",
+  "a": {
+   "venue": "kalshi",
+   "id": "KXUCL-27-SHA",
+   "event": "Champions League Winner",
+   "question": "Will Shakhtar win the Champions League?",
+   "outcome": "Shakhtar",
+   "close": "2027-06-19T21:00:00Z",
+   "resolves": "2027-06-05T21:00:00Z",
+   "rules": "If Shakhtar is the 2026-27 Champions League winner, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2772194",
+   "event": "UEFA Champions League: 2027 Champion",
+   "question": "Will Shakhtar Donetsk win the 2026-27 UEFA Champions League Championship?",
+   "outcome": "Shakhtar Donetsk",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 UEFA Champions League Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 UEFA Champions League Championship per the rules of UEFA Champions League (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 UEFA Champions League season is cancelled, postponed after June 19, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from UEFA Champions League; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 50,
+  "pair_id": "kalshi:KXELECTUKRAINE-30JAN01-27JAN01~polymarket:694027",
+  "a": {
+   "venue": "kalshi",
+   "id": "KXELECTUKRAINE-30JAN01-27JAN01",
+   "event": "When will Ukraine hold a presidential election?",
+   "question": "Will Ukraine hold a presidential election before Jan 1, 2027?",
+   "outcome": "Before 2027",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Ukraine holds a presidential election before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "694027",
+   "event": "Russia x Ukraine Peace Combo",
+   "question": "Russia x Ukraine Peace Combo",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if all of the following conditions are met by December 31, 2026, 11:59 PM ET:\n\n- Russia x Ukraine ceasefire\n- Ukraine agrees not to join NATO\n- Ukraine signs peace deal with Russia\n\nOtherwise, this market will resolve to “No”.\n\nThis market will remain open until it is confirmed that at least one of the above conditions has not been met, or until all of the above conditions have been met within the specified timeframe.\n\nThe full rules for this market can be found here:\nhttps://polymarket-upload.s3.us-east-2.amazonaws.com/Russia+x+Ukraine+2026+Peace+Parlay.pdf"
+  }
+ }
+]

@@ -86,9 +86,11 @@ type Rejection struct {
 type Result struct {
 	Pairs      []Pair         `json:"pairs"`
 	NearMisses []Rejection    `json:"near_misses"`
-	Markets    map[string]int `json:"markets"`  // per venue
-	Compared   int            `json:"compared"` // candidate pairs fully scored
-	Vetoed     map[string]int `json:"vetoed"`   // veto kind -> count
+	Markets    map[string]int `json:"markets"`     // per venue
+	Scored     int            `json:"scored"`      // candidate pairs whose full cosine was computed
+	Compared   int            `json:"compared"`    // of those, pairs at or above MinScore that went to the vetoes
+	Vetoed     map[string]int `json:"vetoed"`      // veto kind -> count
+	NearMissed int            `json:"near_missed"` // high-scoring vetoed pairs; NearMisses keeps the top 200
 }
 
 type doc struct {
@@ -198,6 +200,7 @@ func Match(ms []market.Market, o Options) Result {
 	slices.SortFunc(res.NearMisses, func(a, b Rejection) int {
 		return cmp.Or(cmp.Compare(b.Score, a.Score), cmp.Compare(a.A, b.A), cmp.Compare(a.B, b.B))
 	})
+	res.NearMissed = len(res.NearMisses)
 	res.NearMisses = res.NearMisses[:min(len(res.NearMisses), 200)]
 	return res
 }
@@ -234,6 +237,7 @@ func matchVenues(as, bs []*doc, df map[string]int, n float64, o Options, res *Re
 		for _, j := range top[:min(len(top), o.Candidates)] {
 			b := bs[j]
 			score := cosine(a.vec, b.vec)
+			res.Scored++
 			if score < o.MinScore {
 				continue
 			}

@@ -2,6 +2,7 @@ package kalshi
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -126,5 +127,37 @@ func TestBooksDeriveYesAsksFromNoBids(t *testing.T) {
 	}
 	if !b.AsOf.Equal(at) || b.Validate() != nil {
 		t.Errorf("as_of=%v validate=%v", b.AsOf, b.Validate())
+	}
+}
+
+func TestRepeatedCursorStopsTheCrawl(t *testing.T) {
+	loop := `{"cursor":"same","events":[]}`
+	a := server(t, map[string]string{"/series": seriesJSON, "/events": loop, "/events?cursor=same": loop})
+	if _, _, err := a.Markets(context.Background()); err == nil || !strings.Contains(err.Error(), "did not advance") {
+		t.Fatalf("want a cursor error, got %v", err)
+	}
+}
+
+func TestBooksKeepsGoodChunksWhenOneFails(t *testing.T) {
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		tickers := r.URL.Query()["tickers"]
+		if tickers[0] == "T0" { // the first chunk of 100 fails
+			http.Error(w, "boom", http.StatusBadGateway)
+			return
+		}
+		w.Write([]byte(`{"orderbooks":[{"ticker":"` + tickers[0] + `","orderbook_fp":{"yes_dollars":[["0.40","1"]],"no_dollars":[["0.55","1"]]}}]}`))
+	}))
+	defer srv.Close()
+	c := fetch.New(nil, 0)
+	c.Retries = 0
+	a := New(c, 0)
+	a.Base = srv.URL
+	var ms []market.Market
+	for i := range 150 {
+		ms = append(ms, market.Market{Venue: "kalshi", ID: fmt.Sprintf("T%d", i), BookRef: fmt.Sprintf("T%d", i)})
+	}
+	books, err := a.Books(context.Background(), ms)
+	if err == nil || len(books) != 1 || books["kalshi:T100"].AsOf.IsZero() {
+		t.Fatalf("want the second chunk's book plus an error, got %d books, err %v", len(books), err)
 	}
 }

@@ -44,13 +44,14 @@ var ErrMalformed = errors.New("malformed JSON")
 
 // StatusError is a non-2xx response that was not worth (or no longer worth) retrying.
 type StatusError struct {
-	URL  string
-	Code int
-	Body string
+	Method string
+	URL    string
+	Code   int
+	Body   string
 }
 
 func (e *StatusError) Error() string {
-	return fmt.Sprintf("GET %s: HTTP %d: %s", e.URL, e.Code, e.Body)
+	return fmt.Sprintf("%s %s: HTTP %d: %s", e.Method, e.URL, e.Code, e.Body)
 }
 
 // GetJSON GETs url and decodes the JSON body into v.
@@ -116,7 +117,7 @@ func (c *Client) once(ctx context.Context, method, url string, payload []byte, v
 	}
 	if resp.StatusCode/100 != 2 {
 		ra, _ := strconv.Atoi(resp.Header.Get("Retry-After"))
-		return time.Duration(ra) * time.Second, &StatusError{URL: url, Code: resp.StatusCode, Body: truncate(string(b), 200)}
+		return time.Duration(ra) * time.Second, &StatusError{Method: method, URL: url, Code: resp.StatusCode, Body: truncate(string(b), 200)}
 	}
 	if err := json.Unmarshal(b, v); err != nil {
 		return 0, fmt.Errorf("%s %s: %w: %v", method, url, ErrMalformed, err)

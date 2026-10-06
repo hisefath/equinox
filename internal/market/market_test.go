@@ -1,6 +1,7 @@
 package market
 
 import (
+	"math"
 	"testing"
 	"time"
 )
@@ -23,7 +24,7 @@ func TestParseAmount(t *testing.T) {
 			t.Errorf("ParseAmount(%q) = %v, %v; want %v", in, int64(got), err, int64(want))
 		}
 	}
-	for _, bad := range []string{"", "abc", "0.1234567", "1.2.3"} {
+	for _, bad := range []string{"", "abc", "0.1234567", "1.2.3", "1.-5", "--5", "0.+5", "9223372036855", "18446744073709.551616"} {
 		if _, err := ParseAmount(bad); err == nil {
 			t.Errorf("ParseAmount(%q) should fail", bad)
 		}
@@ -100,6 +101,10 @@ func TestBookNormalizeAndAsksFor(t *testing.T) {
 	// Buying NO lifts complemented YES bids: best YES bid 0.45 -> NO ask 0.55.
 	if no := b.AsksFor(No); no[0] != l("0.55", 10) || no[1] != l("0.60", 10) {
 		t.Fatalf("no asks = %v", no)
+	}
+	huge := Book{Asks: []Level{{usd("0.50"), math.MaxInt64}, {usd("0.50"), math.MaxInt64}}}.Normalize()
+	if huge.Asks[0].Qty != math.MaxInt64 {
+		t.Errorf("merged size must saturate, got %d", huge.Asks[0].Qty)
 	}
 	crossed := Book{Bids: []Level{l("0.60", 1)}, Asks: []Level{l("0.50", 1)}, AsOf: time.Unix(1, 0)}
 	if crossed.Validate() == nil {

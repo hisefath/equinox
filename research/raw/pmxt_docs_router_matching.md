@@ -1,0 +1,224 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://pmxt.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Find Similar Markets
+
+> Discover cross-venue market clusters with relation types, confidence scores, and source markets.
+
+Use market clusters when you want the same tradeable question across
+venues. A cluster contains every matched market PMXT currently knows
+about for that question, plus the pairwise relations used to connect the
+cluster.
+
+You can anchor the lookup to a market you already have, or omit the
+anchor fields to browse clusters across the catalog.
+
+## fetchMatchedMarketClusters
+
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    import pmxt
+
+    router = pmxt.Router(pmxt_api_key="pmxt_live_...")
+
+    clusters = router.fetch_matched_market_clusters(
+        slug="will-satoshi-move-any-bitcoin-in-2026",
+        relation="identity",
+        min_confidence=0.8,
+        venues=["polymarket", "kalshi", "probable"],
+        include_raw_matches=True,
+        limit=5,
+    )
+
+    for cluster in clusters:
+        print(cluster.cluster_id, cluster.confidence, cluster.canonical_title)
+
+        for market in cluster.markets:
+            print(f"  {market.source_exchange}: {market.title}")
+            print(f"    market_id={market.market_id}")
+
+        for edge in cluster.raw_matches or []:
+            print(f"  edge: {edge['relation']} confidence={edge['confidence']}")
+    ```
+  </Tab>
+
+  <Tab title="TypeScript">
+    ```typescript theme={null}
+    import pmxt from "pmxtjs";
+
+    const router = new pmxt.Router({ pmxtApiKey: "pmxt_live_..." });
+
+    const clusters = await router.fetchMatchedMarketClusters({
+      slug: "will-satoshi-move-any-bitcoin-in-2026",
+      relation: "identity",
+      minConfidence: 0.8,
+      venues: ["polymarket", "kalshi", "probable"],
+      includeRawMatches: true,
+      limit: 5,
+    });
+
+    for (const cluster of clusters) {
+      console.log(cluster.clusterId, cluster.confidence, cluster.canonicalTitle);
+
+      for (const market of cluster.markets) {
+        console.log(`  ${market.sourceExchange}: ${market.title}`);
+        console.log(`    marketId=${market.marketId}`);
+      }
+
+      for (const edge of cluster.rawMatches ?? []) {
+        console.log(`  edge: ${edge.relation} confidence=${edge.confidence}`);
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="curl">
+    ```bash theme={null}
+    curl -G "https://api.pmxt.dev/v0/matched-market-clusters" \
+      -H "Authorization: Bearer pmxt_live_..." \
+      --data-urlencode "slug=will-satoshi-move-any-bitcoin-in-2026" \
+      --data-urlencode "relation=identity" \
+      --data-urlencode "minConfidence=0.8" \
+      --data-urlencode "venues=polymarket,kalshi,probable" \
+      --data-urlencode "includeRawMatches=true" \
+      --data-urlencode "limit=5"
+    ```
+  </Tab>
+</Tabs>
+
+### Passing an existing market
+
+If the market came from `fetchMarkets`, pass it directly.
+
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    markets = router.fetch_markets(query="Satoshi Bitcoin 2026", limit=1)
+    clusters = router.fetch_matched_market_clusters(markets[0])
+    ```
+  </Tab>
+
+  <Tab title="TypeScript">
+    ```typescript theme={null}
+    const markets = await router.fetchMarkets({
+      query: "Satoshi Bitcoin 2026",
+      limit: 1,
+    });
+
+    const clusters = await router.fetchMatchedMarketClusters(markets[0]);
+    ```
+  </Tab>
+</Tabs>
+
+### Browsing clusters
+
+Omit `marketId`, `slug`, and `url` to browse the highest-volume matched
+clusters.
+
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    clusters = router.fetch_matched_market_clusters(
+        sort="volume",
+        min_venues=2,
+        limit=25,
+    )
+    ```
+  </Tab>
+
+  <Tab title="TypeScript">
+    ```typescript theme={null}
+    const clusters = await router.fetchMatchedMarketClusters({
+      sort: "volume",
+      minVenues: 2,
+      limit: 25,
+    });
+    ```
+  </Tab>
+</Tabs>
+
+### Parameters
+
+| Parameter | Type | Default | Notes |
+| - | - | - | - |
+| `marketId` | `string` | - | Anchor to a PMXT market ID. |
+| `slug` | `string` | - | Anchor to a market slug. |
+| `url` | `string` | - | Anchor to a venue market URL. |
+| `relation` | `string` | - | Filter to one relation type. |
+| `relations` | `string` or `string[]` | - | Filter to multiple relation types. |
+| `minConfidence` / `min_confidence` | `number` | `0` | Minimum cluster edge confidence, from `0` to `1`. |
+| `venues` | `string` or `string[]` | - | Only include clusters touching these venues. |
+| `excludeVenues` / `exclude_venues` | `string` or `string[]` | - | Exclude clusters touching these venues. |
+| `minVenues` / `min_venues` | `integer` | - | Require at least this many venues in a cluster. |
+| `withOrderbook` / `with_orderbook` | `boolean` | `false` | Require live orderbook coverage on matched edges. |
+| `includeRawMatches` / `include_raw_matches` | `boolean` | `false` | Include pairwise edges used to build the cluster. |
+| `updatedSince` / `updated_since` | `datetime` | - | Only include matches updated after this time. |
+| `sort` | `"volume"` or `"confidence"` | `"volume"` | Cluster sort order. |
+| `limit` | `integer` | `50` | Maximum clusters to return. |
+| `offset` | `integer` | `0` | Pagination offset. |
+| `edgeLimit` / `edge_limit` | `integer` | - | Maximum pairwise edges to scan before clustering. |
+
+### Response shape
+
+```json theme={null}
+{
+  "clusterId": "mcl_706533a07496a4eb",
+  "canonicalTitle": "Will Satoshi move any Bitcoin in 2026?",
+  "category": "Crypto",
+  "relations": ["identity"],
+  "confidence": 1,
+  "volume24h": 42310.15,
+  "markets": [
+    {
+      "marketId": "pm_...",
+      "sourceExchange": "polymarket",
+      "title": "Will Satoshi move any Bitcoin in 2026?",
+      "slug": "will-satoshi-move-any-bitcoin-in-2026",
+      "outcomes": [
+        { "outcomeId": "pm_yes", "label": "Yes", "price": 0.24 },
+        { "outcomeId": "pm_no", "label": "No", "price": 0.76 }
+      ]
+    },
+    {
+      "marketId": "kalshi_...",
+      "sourceExchange": "kalshi",
+      "title": "Will Satoshi move Bitcoin in 2026?",
+      "outcomes": [
+        { "outcomeId": "KXSATOSHI-26", "label": "Yes", "price": 0.25 },
+        { "outcomeId": "KXSATOSHI-26-NO", "label": "No", "price": 0.75 }
+      ]
+    }
+  ],
+  "rawMatches": [
+    {
+      "marketAId": "pm_...",
+      "marketBId": "kalshi_...",
+      "relation": "identity",
+      "confidence": 1
+    }
+  ]
+}
+```
+
+## Relation Types
+
+Every edge in a cluster is classified into one of five set-theoretic
+relations describing how two markets' resolution conditions relate.
+
+| Relation | Meaning | Example |
+| - | - | - |
+| `identity` | Same resolution condition. | "BTC > \$100k by Dec 31" on Polymarket and Kalshi. |
+| `subset` | A resolving YES implies the other resolves YES, not vice versa. | "Democrats win presidency" is narrower than "Democrats win popular vote". |
+| `superset` | The reverse of `subset`. | "Democrats win popular vote" is broader than "Democrats win presidency". |
+| `overlap` | Related, but neither condition implies the other. | "Fed cuts in June" and "Fed cuts twice in 2026". |
+| `disjoint` | Cannot both resolve YES. | Two mutually exclusive candidates winning the same office. |
+
+<Info>
+  To match an entire event and see the corresponding child markets, use
+  [Find Similar Events](/docs/router/event-matching).
+</Info>
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

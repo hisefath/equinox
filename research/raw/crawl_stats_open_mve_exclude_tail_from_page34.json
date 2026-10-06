@@ -1,0 +1,146 @@
+{
+ "r429": [],
+ "pages": 22,
+ "markets": 22000,
+ "events": 2591,
+ "elapsed_s": 15.15,
+ "mean_page_s": 0.165,
+ "max_page_s": 0.186,
+ "mean_page_MB": 2.11,
+ "finished": false,
+ "last_cursor": "CgwIufiL1QYQgOTawAISKEtYVk9URUdFTkVSQUwtS1hIT1VTRVJBQ0UtSUwwNC0yNkxDQVMtMzA",
+ "status": {
+  "active": 22000
+ },
+ "price_level_structure": {
+  "linear_cent": 21458,
+  "center_half_edge_half_cent": 60,
+  "tapered_deci_cent": 482
+ },
+ "strike_type": {
+  "greater": 4612,
+  "structured": 5192,
+  "custom": 4498,
+  "greater_or_equal": 6477,
+  "between": 184,
+  "less": 239,
+  "None": 798
+ },
+ "market_type": {
+  "binary": 22000
+ },
+ "mve_seen": 0,
+ "quoted_any_side": 21326,
+ "two_sided": 14768,
+ "empty_quote_sentinels": {
+  "no_yes_bid: yes_bid=0.0000 no_ask=1.0000": 6570,
+  "no_yes_ask: yes_ask=1.0000 no_bid=0.0000": 1295,
+  "no_yes_ask: yes_ask=0.0000 no_bid=1.0000": 41
+ },
+ "fee_waiver_markets": 0,
+ "fractional_top_size": 3226,
+ "subpenny_top_quote": 368,
+ "distinct_series": 951,
+ "top_series": [
+  [
+   "KXVOTEGENERAL",
+   5478
+  ],
+  [
+   "KXNFLWEEKHIGHSCORE",
+   448
+  ],
+  [
+   "KXNBAMATCHUP",
+   435
+  ],
+  [
+   "KXVOTECOUNTY",
+   422
+  ],
+  [
+   "KXNCAAF1H",
+   324
+  ],
+  [
+   "KXGRAMMY",
+   319
+  ],
+  [
+   "KXMLBLEADERPLAYOFF",
+   261
+  ],
+  [
+   "KXTEAMSINSC",
+   256
+  ],
+  [
+   "KXMARMADROUND",
+   251
+  ],
+  [
+   "KXWMARMADROUND",
+   250
+  ],
+  [
+   "KXGGNOM",
+   233
+  ],
+  [
+   "KXNCAAFTOPAPRANK",
+   225
+  ],
+  [
+   "KXNCAAFGAME",
+   216
+  ],
+  [
+   "KXTITLEDTUESTOP",
+   213
+  ],
+  [
+   "KXNBASEED",
+   210
+  ],
+  [
+   "KXFED",
+   171
+  ],
+  [
+   "KXALBUMSTREAMS",
+   164
+  ],
+  [
+   "KXNCAAFAWARDFIN",
+   164
+  ],
+  [
+   "KXART",
+   135
+  ],
+  [
+   "KXFEATURE",
+   130
+  ],
+  [
+   "KXLGRAM",
+   123
+  ],
+  [
+   "KXNFLFFLEADERTOP",
+   120
+  ],
+  [
+   "KXALBUMEQUIV",
+   117
+  ],
+  [
+   "KXYTVIEWSW",
+   116
+  ],
+  [
+   "KXJOINCLUB",
+   114
+  ]
+ ]
+}

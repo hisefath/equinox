@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
+	"fmt"
 	"log/slog"
 	"net/http"
 	"os"
@@ -12,6 +13,7 @@ import (
 	"strconv"
 	"strings"
 	"sync/atomic"
+	"syscall"
 	"time"
 
 	"github.com/hisefath/equinox/internal/ingest"
@@ -35,7 +37,7 @@ func serveCmd(args []string) error {
 	if err != nil {
 		return err
 	}
-	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM) // Cloud Run sends SIGTERM
 	defer stop()
 
 	store := ingest.NewStore()
@@ -58,6 +60,23 @@ func serveCmd(args []string) error {
 		}
 	}()
 
+	srv := &http.Server{Addr: *addr, Handler: c.handler(store, &current, *logPath), ReadHeaderTimeout: 5 * time.Second}
+	go func() {
+		<-ctx.Done()
+		shutdown, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+		srv.Shutdown(shutdown)
+	}()
+	slog.Info("serving", "addr", *addr)
+	if err := srv.ListenAndServe(); err != http.ErrServerClosed {
+		return err
+	}
+	return nil
+}
+
+// handler serves the API from the store's snapshot and the latest match result. Nothing in it waits
+// on a venue: ingestion happens elsewhere and only ever swaps in new snapshots.
+func (c *config) handler(store *ingest.Store, current *atomic.Pointer[match.Result], logPath string) http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /healthz", func(w http.ResponseWriter, r *http.Request) {
 		snap := store.Snapshot()
@@ -106,38 +125,34 @@ func serveCmd(args []string) error {
 			return
 		}
 		order := route.Order{Side: market.Side(strings.ToLower(cmp.Or(q.Get("side"), "yes")))}
-		order.Qty, _ = strconv.ParseInt(cmp.Or(q.Get("qty"), "100"), 10, 64)
+		order.Qty, err = strconv.ParseInt(cmp.Or(q.Get("qty"), "100"), 10, 64)
+		if err != nil || order.Qty < 1 || order.Qty > route.MaxOrderQty || (order.Side != market.Yes && order.Side != market.No) {
+			reply(w, http.StatusBadRequest, map[string]string{"error": fmt.Sprintf("need side=yes|no and qty in 1..%d", route.MaxOrderQty)})
+			return
+		}
 		if l := q.Get("limit"); l != "" {
-			if order.Limit, err = market.ParseAmount(l); err != nil {
-				reply(w, http.StatusBadRequest, map[string]string{"error": "limit: " + err.Error()})
+			if order.Limit, err = market.ParseAmount(l); err != nil || order.Limit <= 0 {
+				reply(w, http.StatusBadRequest, map[string]string{"error": "limit must be a price above 0"})
 				return
 			}
 		}
 		maxAge, err := time.ParseDuration(cmp.Or(q.Get("max_age"), "30s"))
+		if err == nil && maxAge <= 0 {
+			err = fmt.Errorf("must be positive")
+		}
 		if err != nil {
 			reply(w, http.StatusBadRequest, map[string]string{"error": "max_age: " + err.Error()})
 			return
 		}
 		policy := route.Policy{MaxBookAge: maxAge, Split: q.Get("split") == "true"}
 		d := route.Route(order, quotesFor(pair, store.Snapshot()), policy, c.clock())
-		if err := logDecision(*logPath, pair, d); err != nil {
+		if err := logDecision(logPath, pair, d); err != nil {
 			slog.Error("decision log", "err", err)
 		}
 		reply(w, http.StatusOK, map[string]any{"pair": pair, "decision": d})
 	})
 
-	srv := &http.Server{Addr: *addr, Handler: mux, ReadHeaderTimeout: 5 * time.Second}
-	go func() {
-		<-ctx.Done()
-		shutdown, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-		defer cancel()
-		srv.Shutdown(shutdown)
-	}()
-	slog.Info("serving", "addr", *addr)
-	if err := srv.ListenAndServe(); err != http.ErrServerClosed {
-		return err
-	}
-	return nil
+	return mux
 }
 
 func reply(w http.ResponseWriter, code int, v any) {

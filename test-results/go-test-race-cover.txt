@@ -1,10 +1,10 @@
 go version go1.27.1 darwin/arm64
-run at 2026-10-06T04:55:00Z
-ok  	github.com/hisefath/equinox/cmd/equinox	91.440s	coverage: 13.4% of statements
-ok  	github.com/hisefath/equinox/internal/fetch	1.464s	coverage: 78.1% of statements
-ok  	github.com/hisefath/equinox/internal/ingest	1.904s	coverage: 85.9% of statements
-ok  	github.com/hisefath/equinox/internal/market	1.494s	coverage: 85.4% of statements
-ok  	github.com/hisefath/equinox/internal/match	169.225s	coverage: 98.2% of statements
-ok  	github.com/hisefath/equinox/internal/route	2.654s	coverage: 96.9% of statements
-ok  	github.com/hisefath/equinox/internal/venues/kalshi	2.419s	coverage: 86.1% of statements
-ok  	github.com/hisefath/equinox/internal/venues/polymarket	2.913s	coverage: 84.6% of statements
+run at 2026-10-06T05:54:04Z
+ok  	github.com/hisefath/equinox/cmd/equinox	100.969s	coverage: 32.2% of statements
+ok  	github.com/hisefath/equinox/internal/fetch	1.594s	coverage: 78.1% of statements
+ok  	github.com/hisefath/equinox/internal/ingest	2.308s	coverage: 88.9% of statements
+ok  	github.com/hisefath/equinox/internal/market	1.603s	coverage: 84.0% of statements
+ok  	github.com/hisefath/equinox/internal/match	182.872s	coverage: 98.0% of statements
+ok  	github.com/hisefath/equinox/internal/route	2.489s	coverage: 97.8% of statements
+ok  	github.com/hisefath/equinox/internal/venues/kalshi	2.988s	coverage: 87.4% of statements
+ok  	github.com/hisefath/equinox/internal/venues/polymarket	2.712s	coverage: 85.4% of statements

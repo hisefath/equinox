@@ -150,16 +150,13 @@ func (s *Store) RefreshBooks(ctx context.Context, venues []Venue, ms []market.Ma
 			start := time.Now()
 			got, err := v.Books(vctx, want)
 			r := result{books: map[string]market.Book{}}
-			if err != nil {
-				r.bad = len(want)
-				slog.Warn("books fetch failed", "venue", v.Name(), "markets", len(want), "err", err)
+			if err != nil { // possibly partial: whatever did arrive is still used below
+				slog.Warn("books fetch failed", "venue", v.Name(), "markets", len(want), "received", len(got), "err", err)
 			}
 			for _, m := range want {
 				b, ok := got[m.Key()]
 				if !ok {
-					if err == nil {
-						r.bad++
-					}
+					r.bad++
 					continue
 				}
 				b = b.Normalize()

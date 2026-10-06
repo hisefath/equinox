@@ -12,6 +12,8 @@ flowchart BT
   match["internal/match"] --> market
   route["internal/route"] --> market
   cmd["cmd/equinox"] --> kalshi
+  cmd --> fetch
+  cmd --> market
   cmd --> poly
   cmd --> ingest
   cmd --> match

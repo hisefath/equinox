@@ -8,6 +8,7 @@ import (
 	"cmp"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"math"
 	"net/url"
@@ -30,9 +31,13 @@ type Adapter struct {
 	MaxPages int              // /events pages of 200 events each; 0 = no cap
 	Now      func() time.Time // stamps books, which Kalshi doesn't timestamp; injectable for replay
 
-	mu     sync.Mutex
-	series map[string]series // cached: fee schedules change rarely and the list is ~19 MB
+	mu       sync.Mutex
+	series   map[string]series // fee schedules change rarely and the list is ~19 MB: cache it
+	seriesAt time.Time         // and refresh it after SeriesTTL
 }
+
+// SeriesTTL bounds how long cached series metadata (category, fee schedule) is trusted.
+const SeriesTTL = time.Hour
 
 // New returns an adapter with Kalshi's documented Basic-tier pacing (~20 req/s; we stay at 10).
 func New(c *fetch.Client, maxPages int) *Adapter {
@@ -111,6 +116,9 @@ func (a *Adapter) Markets(ctx context.Context) ([]market.Market, ingest.Stats, e
 		if resp.Cursor == nil || *resp.Cursor == "" {
 			break
 		}
+		if *resp.Cursor == cursor {
+			return nil, st, fmt.Errorf("kalshi events page %d: cursor did not advance", page)
+		}
 		cursor = *resp.Cursor
 	}
 	return out, st, nil
@@ -119,7 +127,7 @@ func (a *Adapter) Markets(ctx context.Context) ([]market.Market, ingest.Stats, e
 func (a *Adapter) seriesIndex(ctx context.Context) (map[string]series, error) {
 	a.mu.Lock()
 	defer a.mu.Unlock()
-	if a.series != nil {
+	if a.series != nil && a.Now().Sub(a.seriesAt) < SeriesTTL {
 		return a.series, nil
 	}
 	var resp struct {
@@ -128,7 +136,7 @@ func (a *Adapter) seriesIndex(ctx context.Context) (map[string]series, error) {
 	if err := a.HTTP.GetJSON(ctx, a.Base+"/series", &resp); err != nil {
 		return nil, err
 	}
-	a.series = make(map[string]series, len(resp.Series))
+	a.series, a.seriesAt = make(map[string]series, len(resp.Series)), a.Now()
 	for _, s := range resp.Series {
 		a.series[s.Ticker] = s
 	}
@@ -241,6 +249,7 @@ func quote(price, size string) market.Amount {
 // that are YES asks in disguise (a NO bid at q is an offer to sell YES at 1−q).
 func (a *Adapter) Books(ctx context.Context, ms []market.Market) (map[string]market.Book, error) {
 	out := map[string]market.Book{}
+	var errs []error
 	for start := 0; start < len(ms); start += 100 {
 		chunk := ms[start:min(start+100, len(ms))]
 		q := url.Values{}
@@ -257,7 +266,8 @@ func (a *Adapter) Books(ctx context.Context, ms []market.Market) (map[string]mar
 			} `json:"orderbooks"`
 		}
 		if err := a.HTTP.GetJSON(ctx, a.Base+"/markets/orderbooks?"+q.Encode(), &resp); err != nil {
-			return out, fmt.Errorf("kalshi orderbooks: %w", err)
+			errs = append(errs, fmt.Errorf("kalshi orderbooks %d-%d: %w", start, start+len(chunk), err))
+			continue // one failed chunk must not cost the others
 		}
 		at := a.Now() // Kalshi books carry no timestamp; time of receipt is the honest bound
 		for _, b := range resp.Books {
@@ -267,7 +277,7 @@ func (a *Adapter) Books(ctx context.Context, ms []market.Market) (map[string]mar
 			out[book.MarketKey] = book
 		}
 	}
-	return out, nil
+	return out, errors.Join(errs...)
 }
 
 // levels parses [price, size] pairs, skipping malformed ones; complement turns NO bids into YES asks.

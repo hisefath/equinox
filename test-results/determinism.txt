@@ -1,7 +1,7 @@
-Determinism check: three independent replays of testdata/snapshot (recorded 2026-10-06T04:46:45Z)
-run 1: pairs=323 sha256(pairs)=f73127d27c626506
-run 2: pairs=323 sha256(pairs)=f73127d27c626506
-run 3: pairs=323 sha256(pairs)=f73127d27c626506
-Decision e90dca203225521a: FILLED
-Decision e90dca203225521a: FILLED
-Decision e90dca203225521a: FILLED
+Determinism check: three independent replays of testdata/snapshot (recorded 2026-10-06T05:33:57.921163153Z)
+run 1: pairs=374 sha256(pairs)=29191859569da05e
+run 2: pairs=374 sha256(pairs)=29191859569da05e
+run 3: pairs=374 sha256(pairs)=29191859569da05e
+Decision 5c7e7694477187a2: FILLED
+Decision 5c7e7694477187a2: FILLED
+Decision 5c7e7694477187a2: FILLED

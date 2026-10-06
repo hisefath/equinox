@@ -110,7 +110,7 @@ func TestBooksKeyedByAssetAndNormalized(t *testing.T) {
 	if b.Bids[0] != (market.Level{Price: 800_000, Qty: 50}) || b.Asks[0] != (market.Level{Price: 810_000, Qty: 20600}) {
 		t.Errorf("fed book = %+v", b)
 	}
-	if want := time.UnixMilli(1791259305517).UTC(); !b.AsOf.Equal(want) {
+	if !b.AsOf.Equal(now) { // receipt time, not the venue's last-change timestamp
 		t.Errorf("as_of = %v", b.AsOf)
 	}
 	if f := got["polymarket:4024681:1"].Normalize(); f.Asks[0].Price != 460_000 {
@@ -126,5 +126,17 @@ func TestStringListAcceptsBothEncodings(t *testing.T) {
 	}
 	if got := stringList(json.RawMessage(`null`)); got != nil {
 		t.Errorf("null = %v", got)
+	}
+}
+
+func TestRepeatedCursorStopsTheCrawl(t *testing.T) {
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte(`{"markets":[{"id":"1","question":"q","outcomes":"[\"Yes\",\"No\"]","clobTokenIds":"[\"1\",\"2\"]","active":true,"enableOrderBook":true}],"next_cursor":"same"}`))
+	}))
+	defer srv.Close()
+	a := New(fetch.New(nil, 0), 0)
+	a.Gamma, a.Now = srv.URL, func() time.Time { return now }
+	if _, _, err := a.Markets(context.Background()); err == nil {
+		t.Fatal("a cursor that never advances must stop the crawl with an error")
 	}
 }

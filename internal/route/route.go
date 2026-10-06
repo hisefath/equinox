@@ -21,6 +21,9 @@ import (
 // MaxOrderQty bounds a simulated order. It keeps every intermediate product comfortably inside int64.
 const MaxOrderQty = 1_000_000
 
+// clockSkew is how far in the future a book's timestamp may be before it is distrusted.
+const clockSkew = 5 * time.Second
+
 // Order is a hypothetical taker BUY of Qty contracts of Side.
 type Order struct {
 	Side  market.Side   `json:"side"`
@@ -90,27 +93,31 @@ type Decision struct {
 
 // Route decides where to send o. It never fails: an unroutable order yields a Rejected decision that says why.
 func Route(o Order, quotes []Quote, p Policy, now time.Time) Decision {
-	quotes = slices.Clone(quotes)
-	slices.SortFunc(quotes, func(a, b Quote) int {
-		return cmp.Or(cmp.Compare(a.Market.Venue, b.Market.Venue), cmp.Compare(a.Market.ID, b.Market.ID))
-	})
+	quotes = canonical(quotes)
 	d := Decision{ID: decisionID(o, quotes, p, now), At: now, Order: o, Policy: p, Allocations: []Fill{}}
 	d.say("order: BUY %d %s%s, split %s, max book age %s", o.Qty, o.Side, limitText(o.Limit), onOff(p.Split), p.MaxBookAge)
 
 	if err := o.validate(); err != nil {
 		return d.reject("invalid order: %v", err)
 	}
+	if p.MaxBookAge <= 0 {
+		return d.reject("invalid policy: max book age must be positive, got %s", p.MaxBookAge)
+	}
+	dup := map[string]int{}
+	for _, q := range quotes {
+		dup[q.Market.Key()]++
+	}
 
 	var eligible []Quote
-	for i, q := range quotes {
+	for _, q := range quotes {
 		ev := Evaluation{Venue: q.Market.Venue, MarketID: q.Market.ID}
 		asks := q.Book.AsksFor(o.Side)
 		if len(asks) > 0 {
 			ev.BestAsk = asks[0].Price
 		}
 		ev.Excluded = exclusion(q, asks, o, p, now)
-		if i > 0 && quotes[i-1].Market.Key() == q.Market.Key() {
-			ev.Excluded = "duplicate quote for the same market"
+		if dup[q.Market.Key()] > 1 { // which copy to trust can't depend on input order, so trust neither
+			ev.Excluded = "conflicting quotes for the same market"
 		}
 		if ev.Excluded == "" {
 			if f := fill(q, asks, o.Qty, o.Limit); f.Qty < q.Market.MinQty {
@@ -161,6 +168,9 @@ func Route(o Order, quotes []Quote, p Policy, now time.Time) Decision {
 	if len(plan) == 1 {
 		if rb := runnerUp(d.Evaluations, plan[0]); rb != nil {
 			d.say("next best: %s/%s at all-in %s/contract for %d", rb.Venue, rb.MarketID, rb.Alone.AllIn, rb.Alone.Qty)
+			d.say("why %s/%s: %s", plan[0].Venue, plan[0].MarketID, why(plan[0], *rb.Alone))
+		} else {
+			d.say("why %s/%s: the only eligible venue", plan[0].Venue, plan[0].MarketID)
 		}
 	}
 	d.say("result: %s %d/%d contracts, total %s, all-in %s/contract", d.Status, d.Filled, o.Qty, d.Total, d.AllIn)
@@ -190,8 +200,11 @@ func exclusion(q Quote, asks []market.Level, o Order, p Policy, now time.Time) s
 	if err := q.Book.Validate(); err != nil {
 		return "untrusted book: " + err.Error()
 	}
-	if age := now.Sub(q.Book.AsOf); p.MaxBookAge > 0 && age > p.MaxBookAge {
+	switch age := now.Sub(q.Book.AsOf); {
+	case age > p.MaxBookAge:
 		return fmt.Sprintf("stale book: age %s exceeds %s", age.Round(time.Second), p.MaxBookAge)
+	case age < -clockSkew:
+		return fmt.Sprintf("book timestamp %s in the future", (-age).Round(time.Second))
 	}
 	switch {
 	case len(asks) == 0:
@@ -248,6 +261,18 @@ func runnerUp(evals []Evaluation, chosen Fill) *Evaluation {
 		}
 	}
 	return rb
+}
+
+// why names the rule in cheaper() that separated the chosen fill from the runner-up.
+func why(chosen, next Fill) string {
+	switch {
+	case chosen.Qty != next.Qty:
+		return fmt.Sprintf("fills %d contracts, %d more than the next best (full fills come first)", chosen.Qty, chosen.Qty-next.Qty)
+	case int64(chosen.Total)*next.Qty != int64(next.Total)*chosen.Qty:
+		return fmt.Sprintf("lowest all-in cost including fees: %s vs %s per contract, saving %s on %d contracts",
+			chosen.AllIn, next.AllIn, next.Total-chosen.Total, chosen.Qty)
+	}
+	return "same quantity and all-in cost as the next best; tie broken by venue id, then market id"
 }
 
 // cheaper orders fills: more contracts first, then lower cost per contract compared exactly by
@@ -356,6 +381,28 @@ func perContract(total market.Amount, qty int64) market.Amount {
 		return 0
 	}
 	return (total + market.Amount(qty) - 1) / market.Amount(qty)
+}
+
+// canonical sorts quotes into a total order: by venue and market, then by content, so that even two
+// quotes for the same market (bad input, but possible) can't make the result depend on input order.
+func canonical(quotes []Quote) []Quote {
+	type keyed struct {
+		q   Quote
+		raw string
+	}
+	ks := make([]keyed, len(quotes))
+	for i, q := range quotes {
+		b, _ := json.Marshal(q)
+		ks[i] = keyed{q, string(b)}
+	}
+	slices.SortFunc(ks, func(a, b keyed) int {
+		return cmp.Or(cmp.Compare(a.q.Market.Venue, b.q.Market.Venue), cmp.Compare(a.q.Market.ID, b.q.Market.ID), cmp.Compare(a.raw, b.raw))
+	})
+	out := make([]Quote, len(ks))
+	for i, k := range ks {
+		out[i] = k.q
+	}
+	return out
 }
 
 // decisionID hashes the canonical (already sorted) inputs, so a reviewer can prove two decisions saw

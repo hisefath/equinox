@@ -61,7 +61,7 @@ implementation, production UI, and execution-quality optimisation beyond a reaso
 
 | ID | Requirement | Source | Acceptance criterion |
 |---|---|---|---|
-| FR1 | Fetch live market data from two venues | PRD | `equinox scan --live` pulls open markets **and** order books from Kalshi and Polymarket public APIs |
+| FR1 | Fetch live market data from two venues | PRD | `equinox scan` (live by default; `-replay DIR` runs offline) pulls open markets **and** order books from Kalshi and Polymarket public APIs |
 | FR2 | Define an internal market representation | PRD | `internal/market` types; no venue schema crosses the adapter boundary |
 | FR3 | Identify potentially equivalent markets | PRD | `internal/match` emits pairs with tier, score, evidence and conflicts; precision and recall measured on a hand-labelled set |
 | FR4 | Simulate a routing decision between venues | PRD | `internal/route` returns a decision (venue/allocation, all-in cost) for a hypothetical order |
@@ -88,10 +88,15 @@ implementation, production UI, and execution-quality optimisation beyond a reaso
 1. **Feasibility shown on live data:** the prototype finds real equivalent markets listed on both venues today.
 2. **Precision over recall:** on the hand-labelled pair set, auto-routable matches have **precision ≥ 0.95**.
    A false match routes money into a different bet; a missed match only loses an opportunity.
+   *Result:* met on the labelled set (1.000). On audited live matches the out-of-sample figure is 0.879, so
+   production routing runs on the reviewed mapping table (`-require-review`). See
+   [`EQUIVALENCE.md`](EQUIVALENCE.md) §3.
 3. **Determinism:** identical inputs give byte-identical decision records, whatever the input order.
 4. **Resilience:** with one venue down, slow or returning garbage, the system still matches and routes on the
    other data and says why the venue was excluded.
-5. **Extensibility:** adding a venue touches only `internal/venues/<new>` and one registration line.
+5. **Extensibility:** adding a venue means one adapter package (`internal/venues/<new>`) plus registering it
+   in `setup()`. Matching compares every pair of venues with no changes. Routing works per matched pair;
+   routing across three or more venues at once would also need pairs clustered into groups (not built).
 
 ## 7. Deliverables (hard requirements)
 
@@ -99,7 +104,7 @@ implementation, production UI, and execution-quality optimisation beyond a reaso
 |---|---|
 | Source code | this repository |
 | Technical documentation | `README.md`, `docs/` (PRD, system design, architecture, equivalence, routing) |
-| Demo video | link in `README.md`; the script is in [`docs/DEMO_SCRIPT.md`](DEMO_SCRIPT.md) |
+| Demo video | [`docs/demo/equinox-demo.mp4`](demo/equinox-demo.mp4) (terminal recording); script for a narrated version: [`docs/DEMO_SCRIPT.md`](DEMO_SCRIPT.md) |
 | Test results | [`docs/TEST_RESULTS.md`](TEST_RESULTS.md) and raw output in `test-results/` |
 | AI usage log | [`AI_USAGE_LOG.md`](../AI_USAGE_LOG.md) |
 | Deployment guide | [`docs/DEPLOYMENT.md`](DEPLOYMENT.md) |
@@ -112,4 +117,4 @@ implementation, production UI, and execution-quality optimisation beyond a reaso
 | Venue APIs change shape (both have during 2025–26, e.g. Kalshi moved to `*_dollars` / `*_fp` fields) | Adapters isolate the schemas; fixture tests break loudly; unknown fields ignored |
 | Rate limits during full crawls | Per-venue rate limiter, books fetched only for matched markets |
 | Fee schedules change | Fees are read from venue data (Kalshi series `fee_type`/`fee_multiplier`, Polymarket `feeSchedule`) where available |
-| Text matching does not generalise across categories | Measured precision/recall per category; the LLM/human adjudication path is documented as the next step |
+| Text matching does not generalise across categories | Precision and recall measured per topic on the labelled set (TEST_RESULTS §3) and audited on live data. The LLM/human adjudication path is documented as the next step |

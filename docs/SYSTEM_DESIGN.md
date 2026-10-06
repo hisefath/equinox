@@ -25,6 +25,8 @@ flowchart LR
     PA["venues/polymarket<br/>outcome tokens → binary markets<br/>feeSchedule fee curve"]
     A2["A2 public REST is good enough:<br/>books polled, listings ≤ 15 s stale"]:::assume
     A5["A5 fees are knowable from venue data;<br/>an unknown schedule makes a market untradable"]:::assume
+    A8["A8 books are stamped with receipt time<br/>(Kalshi has no timestamp; Polymarket's is last change)"]:::assume
+    A9["A9 ingestion is scoped: 30 Kalshi pages,<br/>the 3,000 most-traded Polymarket markets"]:::assume
   end
 
   subgraph CORE["Venue-agnostic core"]
@@ -37,6 +39,8 @@ flowchart LR
     A3["A3 equivalence is inferred, never certain:<br/>precision over recall; review tier is not routed"]:::assume
     A4["A4 taker BUY only; displayed depth fills;<br/>no queue position or latency model"]:::assume
     A6["A6 a stale or failed venue is excluded, not guessed at"]:::assume
+    A7["A7 every rounding is conservative:<br/>sizes floored, fees rounded up"]:::assume
+    A10["A10 settlement-timing differences are caveats,<br/>not a different YES condition"]:::assume
   end
 
   subgraph OUT["Interfaces"]
@@ -68,6 +72,11 @@ flowchart LR
   A3 -.- MA
   A4 -.- RT
   A6 -.- ST
+  A7 -.- RT
+  A8 -.- KA
+  A8 -.- PA
+  A9 -.- F
+  A10 -.- MA
 ```
 
 The system has four layers. Data flows left to right and dependencies point inward:
@@ -89,7 +98,7 @@ The system has four layers. Data flows left to right and dependencies point inwa
 | Internal market representation | `market.Market` is *one binary proposition*. Multi-outcome events and named-outcome markets (`["Rays","Yankees"]`) are decomposed into one Market per outcome. | Both venues build everything from binary contracts underneath. Making binary the canonical shape means matching is always YES-to-YES and routing never deals with polarity. |
 | Identify equivalent markets | A deterministic, explainable matcher: text similarity finds candidates, structured vetoes decide | Research showed that open-source bots using fuzzy text matching produce false matches, and LLM pipelines are non-deterministic and costly. A wrong match routes money into a different bet, so the matcher is built for precision first. See [`EQUIVALENCE.md`](EQUIVALENCE.md). |
 | Simulate a routing decision | `route.Route(order, quotes, policy, now) → Decision` | A pure function is deterministic by construction, trivially testable, and cannot block on I/O. |
-| Log reasoning | Every decision carries per-venue evaluations and plain-English explanation lines, and is appended to `decisions.jsonl` together with the match evidence it relied on | An auditor can reconstruct why money would have gone where it did. The decision ID is a hash of the inputs, so a replay can be checked against the log. |
+| Log reasoning | Every decision carries per-venue evaluations, the rule that picked the venue, and plain-English explanation lines. It is appended to `decisions.jsonl` together with the match evidence it relied on | An auditor can reconstruct why money would have gone where it did. The decision ID is a hash of the inputs, so a re-run on the same recorded snapshot can be checked against the log. |
 | Deterministic routing | Integer money, sorted inputs, total-order tie-breaks, no clock or randomness inside `Route` | The Go spec allows fused multiply-add on arm64, so float arithmetic can differ between a Mac and an x86 Cloud Run host. Integers can't. |
 | Never block on external calls during routing | Ingestion writes immutable snapshots. The router reads one with a single atomic load. | Copy-on-write snapshots give readers lock-free, consistent views. A slow venue delays only its own refresh. |
 | Graceful API failure and inconsistent data | Per-venue deadlines, bounded retries, last-known-good data, health flags, per-record validation, book sanity checks, staleness exclusion | Failure is the normal case with two independent public APIs. Each failure mode has a defined behaviour (§6). |
@@ -108,8 +117,8 @@ Every assumption is written down with the reason for it and what breaks if it tu
 | **A5** | Fees are computable from venue data: Kalshi series `fee_type`/`fee_multiplier` (with event overrides), Polymarket `feeSchedule {rate, exponent}`. | Both are documented and verified live, with worked examples reproduced in tests. | An unknown fee type (Kalshi `flat`) makes the market untradable rather than mis-priced. | `kalshi.feeCurve`, `polymarket.feeCurve`, `market.FeeCurve` |
 | **A6** | A venue whose last refresh failed, or a book older than `MaxBookAge`, is excluded from routing rather than estimated. | Routing on stale data is worse than not routing. | Lower fill availability during outages, by design. | `ingest.Snapshot.Unhealthy`, `route.exclusion` |
 | **A7** | Book sizes are floored to whole contracts; Kalshi fees are rounded up to the cent per order; Polymarket fees to $0.00001. Every rounding is conservative. | Both venues document these roundings (Polymarket doesn't give a direction, so we round up). An estimate should never flatter a venue. | Over-estimates cost by under 1¢ per order. | `market.ParseQty`, `FeeCurve.Round` |
-| **A8** | Kalshi books carry no timestamp, so receipt time stands in for book time. Polymarket books are stamped by the venue. | That is the only honest bound available. | Kalshi staleness may be under-estimated by the network latency (~100 ms). | `kalshi.Books` |
-| **A9** | Ingestion is scoped: Kalshi's first 30 `/events` pages (≈57k markets) and Polymarket's 3,000 most-traded markets by 24-hour volume. | Polymarket has about 257k open order-book markets (verified). The liquid ones are where routing matters. | Illiquid overlaps are not found. The page counts are flags. | `-kalshi-pages`, `-poly-pages` |
+| **A8** | Books from both venues are stamped with **receipt time**. Kalshi books carry no timestamp, and Polymarket's `timestamp` is when the book last *changed*, not when we read it, so a quiet but valid book can be minutes old. | Staleness is about our copy of the book. | Staleness may be under-estimated by the network latency (~100 ms). | `kalshi.Books`, `polymarket.Books` |
+| **A9** | Ingestion is scoped: Kalshi's first 30 `/events` pages (≈57k markets) and Polymarket's 3,000 most-traded markets by 24-hour volume. | Polymarket lists a very large number of open order-book markets (research estimated 70–85k; a verification crawl about 257k). The liquid ones are where routing matters. | Illiquid overlaps are not found. The page counts are flags. | `-kalshi-pages`, `-poly-pages` |
 | **A10** | Different settlement timing doesn't break equivalence of the YES condition (e.g. Kalshi pays when the winner is sworn in, Polymarket when the race is called). It is reported as a caveat because it changes how long capital is locked up. | The YES-region is the same. Timing is a cost, not an outcome. | A reviewer can reject the pair through the reviewed mapping table. | `match.makePair` caveats |
 
 ## 4. Runtime flow
@@ -207,7 +216,11 @@ flowchart TD
 | Crossed or empty book | `Book.Validate` at ingest and again in the router | The book is rejected and the previous one kept. It ages out, and the router excludes it with a reason | `TestRefreshBooksDropsInvalidAndKeepsPrevious`, `TestExclusions` |
 | Stale book | `now − AsOf > MaxBookAge` | Excluded, with its age stated | `TestExclusions` |
 | Market closed / awaiting resolution / unknown fee schedule | `Market.Untradable` reason | Still matched, never routed | adapter tests, `TestExclusions` |
-| Duplicate quotes, invalid orders | router validation | A rejected decision with a reason. `Route` never panics or returns an error | `TestRejectsInvalidOrdersAndNoVenues` |
+| Invalid order or policy (side, quantity, limit ≤ 0, max book age ≤ 0) | API/CLI validation, then the router | The API returns 400 and the CLI an error. The router itself returns a rejected decision with a reason; it never panics or returns an error | `TestRejectsInvalidOrdersAndNoVenues`, `TestRouteEndpoint` |
+| Two quotes for the same market; a book stamped in the future | router | Both copies excluded as conflicting, so the result can't depend on which arrived first; a future-stamped book is excluded | `TestFutureBooksBadPolicyAndConflictingQuotes` |
+| Pagination cursor that never advances | adapters | The refresh fails with an error instead of looping until the deadline | `TestRepeatedCursorStopsTheCrawl` (both venues) |
+| One batch of book requests fails | adapters + ingest | Other batches are still fetched and used; the failure is logged and counted | `TestBooksKeepsGoodChunksWhenOneFails`, `TestRefreshBooksUsesPartialResults` |
+| Process asked to stop (SIGTERM on Cloud Run, Ctrl-C locally) | `signal.NotifyContext` | Background loops stop and the HTTP server shuts down gracefully | |
 
 ## 7. Package boundaries
 
@@ -227,6 +240,8 @@ flowchart BT
   match["internal/match"] --> market
   route["internal/route"] --> market
   cmd["cmd/equinox"] --> kalshi
+  cmd --> fetch
+  cmd --> market
   cmd --> poly
   cmd --> ingest
   cmd --> match
@@ -234,15 +249,19 @@ flowchart BT
 ```
 
 `match` and `route` never see an adapter. Adding a third venue means writing
-`internal/venues/<name>`, implementing `ingest.Venue`, and adding one line in `cmd/equinox` (`setup`).
+`internal/venues/<name>`, implementing the three-method `ingest.Venue` port, and registering it in
+`setup()` in `cmd/equinox`: construct it with its own rate-limited client and inject the clock. Matching
+already compares every pair of venues. Routing works per matched pair; routing across three or more venues
+at once would also need pairs clustered into groups, which is not built.
 
-## 8. Measured scale (live run, 2026-10-06 04:46 UTC)
+## 8. Measured scale (live run, 2026-10-06 05:33 UTC)
 
 | | |
 |---|---|
-| Markets ingested | Kalshi 56,776 (30 pages, 7.1 s); Polymarket 3,000 → 3,396 canonical binary markets (30 pages, 7.8 s); both venues in parallel |
-| Candidate pairs fully scored | 97,658 |
-| Pairs proposed | 323 (287 `equivalent`, 36 `review`) |
-| Matching time | about 7 s on 10 cores (replay), about 13 s in a 4-CPU container |
-| Order books | 2 batched calls per venue for 323 pairs: Kalshi 0.36 s (320/323 valid), Polymarket 0.50 s (323/323 valid) |
+| Markets ingested | Kalshi 56,776 (30 pages, 4.3 s); Polymarket 3,000 → 3,390 canonical binary markets (30 pages, 8.2 s); both venues in parallel |
+| Candidate pairs | about 1.22M scored by cosine; 90,726 cleared the 0.30 floor and went through the vetoes |
+| Pairs proposed | 374 (341 `equivalent`, 33 `review`; with the reviewed table applied: 330 equivalent, 40 rejected, 4 review) |
+| Matching time | about 7 s on 10 cores (replay), about 11 s in a 4-CPU container |
+| Order books | 5 batched calls for 374 pairs: 4 Kalshi GETs of 100 tickers (0.37 s, 372/374 valid) and 1 Polymarket POST (2.3 s, 374/374 valid) |
+| Peak memory | about 670 MB resident during a full scan |
 | Routing | microseconds per decision, with no I/O |

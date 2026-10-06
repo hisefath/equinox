@@ -16,9 +16,11 @@
 --- PASS: TestTieBreakIsByVenueID (0.00s)
 === RUN   TestRejectsInvalidOrdersAndNoVenues
 --- PASS: TestRejectsInvalidOrdersAndNoVenues (0.00s)
+=== RUN   TestFutureBooksBadPolicyAndConflictingQuotes
+--- PASS: TestFutureBooksBadPolicyAndConflictingQuotes (0.00s)
 === RUN   TestDeterministic
 --- PASS: TestDeterministic (0.00s)
 === RUN   TestRouteIsVenueAgnostic
 --- PASS: TestRouteIsVenueAgnostic (0.00s)
 PASS
-ok  	github.com/hisefath/equinox/internal/route	0.222s
+ok  	github.com/hisefath/equinox/internal/route	0.217s

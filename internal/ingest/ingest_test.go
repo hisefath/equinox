@@ -112,3 +112,14 @@ func TestRefreshBooksDropsInvalidAndKeepsPrevious(t *testing.T) {
 		t.Errorf("want previous book kept and 1 book error, got %+v / %+v", snap.Books[m.Key()], snap.Health["v"])
 	}
 }
+
+func TestRefreshBooksUsesPartialResults(t *testing.T) {
+	now := time.Now()
+	good := market.Book{Asks: []market.Level{{Price: 510_000, Qty: 10}}, AsOf: now}
+	v := &fakeVenue{name: "v", book: good, bookErr: errors.New("chunk 2 failed")}
+	s := NewStore()
+	s.RefreshBooks(context.Background(), []Venue{v}, []market.Market{mk("v", "1")}, time.Second)
+	if _, ok := s.Snapshot().Books["v:1"]; !ok || s.Snapshot().Health["v"].BookErrors != 0 {
+		t.Fatalf("books that arrived must be stored despite an error elsewhere: %+v", s.Snapshot().Health["v"])
+	}
+}

@@ -7,6 +7,7 @@ package market
 import (
 	"cmp"
 	"fmt"
+	"math"
 	"slices"
 	"time"
 )
@@ -102,7 +103,7 @@ func clean(levels []Level, cmp func(x, y Level) int) []Level {
 	merged := out[:0]
 	for _, l := range out {
 		if n := len(merged); n > 0 && merged[n-1].Price == l.Price {
-			merged[n-1].Qty += l.Qty
+			merged[n-1].Qty = min(merged[n-1].Qty, math.MaxInt64-l.Qty) + l.Qty // saturate, never wrap
 			continue
 		}
 		merged = append(merged, l)

@@ -2,1483 +2,1783 @@
  {
   "pair": "kalshi:CONTROLS-2026-D~polymarket:562793",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Democrats win control of the Senate in the 2026 midterms. Caveat: Polymarket spells out a 50-50 tie broken by the Vice President, and Kalshi's excerpt does not define control, though the usual reading matches."
  },
  {
   "pair": "kalshi:CONTROLS-2026-R~polymarket:562794",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve YES if Republicans win control of the U.S. Senate in the 2026 election. The only caveat is that Polymarket spells out majority/VP/President Pro Tempore tiebreaks that the Kalshi excerpt leaves implicit, and each venue settles at a different time."
  },
  {
   "pair": "kalshi:GOVPARTYFL-26-R~polymarket:629325",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both are party-level contracts on a Republican winning the 2026 Florida governor race (named candidates are only a convenience on Polymarket); caveat: Kalshi pays on inauguration and Polymarket on the election result, and Polymarket explicitly excludes independents."
  },
  {
   "pair": "kalshi:GOVPARTYIA-26-D~polymarket:629397",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether the Democratic nominee wins the 2026 Iowa governor race. Caveat: Kalshi settles on the inauguration, Polymarket on the election winner."
  },
  {
   "pair": "kalshi:GOVPARTYIA-26-R~polymarket:629398",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if the Republican nominee wins the 2026 Iowa governor race. Caveat: Kalshi uses the inauguration and Polymarket the election winner."
  },
  {
   "pair": "kalshi:GOVPARTYNV-26-D~polymarket:629505",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if the Democrat wins the 2026 Nevada governor race. Inauguration versus election-call settlement is a timing caveat."
  },
  {
   "pair": "kalshi:GOVPARTYNV-26-R~polymarket:629506",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if the Republican nominee wins the 2026 Nevada governorship. Caveat: Kalshi pays on inauguration and Polymarket on the election winner, which only differs in rare cases like a death before inauguration."
  },
  {
   "pair": "kalshi:GOVPARTYOH-26-D~polymarket:629557",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on the Democrat winning the 2026 Ohio governor race; Kalshi pays on the inauguration and Polymarket on the election winner (the party nominee), a timing and edge-case caveat."
  },
  {
   "pair": "kalshi:GOVPARTYTX-26-D~polymarket:629690",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether the Democratic nominee wins the 2026 Texas governor race. Caveat: Kalshi pays on inauguration, Polymarket on the election winner."
  },
  {
   "pair": "kalshi:GOVPARTYVT-26-D~polymarket:629707",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on whether the Democratic Party wins the 2026 Vermont governorship. Caveat: Kalshi pays on inauguration, while Polymarket pays on the election winner, so they settle at different times and could diverge only in an edge case such as death before inauguration."
  },
  {
   "pair": "kalshi:GOVPARTYWI-26-R~polymarket:629721",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if the Republican wins the 2026 Wisconsin governor race. Kalshi pays on inauguration and Polymarket on the nominee's election win, which is a timing caveat."
  },
  {
   "pair": "kalshi:HOUSECA27-26-D~polymarket:703690",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether the Democratic Party wins CA-27 in the 2026 House race. Caveat: Kalshi uses the party of the member sworn in, Polymarket the party of the called winner."
  },
  {
   "pair": "kalshi:HOUSECO3-26-D~polymarket:942304",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if a Democrat wins CO-03 in 2026. Sworn-in versus race-call settlement is only a timing caveat."
  },
  {
   "pair": "kalshi:HOUSEMI7-26-R~polymarket:942721",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if a Republican wins the 2026 MI-07 House seat. Caveat: Kalshi pays on the member sworn in in 2027, and Polymarket on the election call; they could split only if the winner dies or switches party first."
  },
  {
   "pair": "kalshi:HOUSEMT1-26-D~polymarket:942843",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if the Democrat wins MT-01 in the 2026 House election. Caveat: Kalshi resolves on swearing-in, Polymarket on the race call."
  },
  {
   "pair": "kalshi:HOUSEMT1-26-R~polymarket:942841",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both ask whether a Republican takes MT-01 in the 2026 election; Kalshi pays on who is sworn in and Polymarket on the election winner, a timing and edge-case caveat only."
  },
  {
   "pair": "kalshi:HOUSENY4-26-D~polymarket:943433",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether the Democratic Party wins NY-04 in the 2026 House race. Caveat: Kalshi uses the party of the member sworn in, Polymarket the party of the called winner."
  },
  {
   "pair": "kalshi:HOUSENY4-26-R~polymarket:943432",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if a Republican wins NY-04 in 2026. Kalshi pays on the member sworn in for 2027 and Polymarket on the winner's party when the race is called; only edge cases like a party switch or death before swearing-in could differ, so those are caveats."
  },
  {
   "pair": "kalshi:HOUSEOH1-26-D~polymarket:943559",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if a Democrat wins OH-01 in 2026. Kalshi pays on the member sworn in and Polymarket on the winner's party at the race call, which is a timing caveat."
  },
  {
   "pair": "kalshi:HOUSEOH1-26-R~polymarket:943558",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on a Republican winning the 2026 OH-01 House seat. Caveat: Kalshi settles on the swearing-in, Polymarket on the race call."
  },
  {
   "pair": "kalshi:HOUSEPA1-26-R~polymarket:943748",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether a Republican wins the 2026 PA-01 seat. Caveat: Kalshi settles on who is sworn in for the 2027 term, while Polymarket settles on the race call and the winner's party affiliation."
  },
  {
   "pair": "kalshi:KXANTHROPICMILLENNIUM-27-OCT01~polymarket:4412322",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Anthropic announces a Millennium Prize solution before Oct 1, 2026. Polymarket asks whether any eligible AI lab solves exactly one qualifying problem (Navier-Stokes excluded) by Dec 31, 2026."
  },
  {
   "pair": "kalshi:KXAOCSENATE-28~polymarket:3708351",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays YES if AOC runs for Senate before Apr 1, 2028. Polymarket's \"Neither\" outcome pays YES if she announces no Senate or presidential run by Dec 31, 2027. The YES conditions point in opposite directions and the deadlines differ."
  },
  {
   "pair": "kalshi:KXARGENTINAPRES-27-JMIL~polymarket:2127309",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether Javier Milei wins the next (2027) Argentine presidential election, including any runoff. Caveat: Polymarket resolves 'Other' if the result is not known by Oct 31, 2028."
  },
  {
   "pair": "kalshi:KXARGENTINAPRES1R-27OCT24-JSCH~polymarket:2127314",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks who wins the first round, while Polymarket asks who wins the presidency and explicitly includes any runoff, so a candidate who leads round one and loses the runoff splits them."
  },
  {
   "pair": "kalshi:KXARRESTNETANYAHU-28JAN01-27JAN01~polymarket:567688",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Netanyahu is arrested before 2027, while Polymarket asks whether he stops being PM by the end of 2026; each can happen without the other."
  },
  {
   "pair": "kalshi:KXBALANCEPOWERCOMBO-27FEB-DR~polymarket:562829",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi's combo is a Democratic House with a Republican Senate. Polymarket's is the reverse, a Democratic Senate with a Republican House, so the two can never both resolve YES."
  },
  {
   "pair": "kalshi:KXBALANCEPOWERCOMBO-27FEB-RD~polymarket:562830",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi's YES is Republican House plus Democratic Senate. Polymarket's YES is Republican Senate plus Democratic House, the opposite split, so the two YES outcomes are mutually exclusive."
  },
  {
   "pair": "kalshi:KXBUNDESLIGA-27-BMU~polymarket:2849009",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Same team (Bayern Munich), same predicate (2026-27 Bundesliga champion)."
  },
  {
   "pair": "kalshi:KXBUNDESLIGA-27-FCA~polymarket:2849020",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on FC Augsburg being the 2026-27 Bundesliga champion. Caveat: Polymarket resolves to Other if the season is postponed past June 14, 2027."
  },
  {
   "pair": "kalshi:KXBUNDESLIGA-27-PAD~polymarket:2849025",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Same team (Paderborn = SC Paderborn), same predicate (2026-27 Bundesliga champion) and same season; caveat: Polymarket's dates are a placeholder and it pays 'Other' on cancellation."
+ },
+ {
+  "pair": "kalshi:KXBUNDESLIGA-27-SCH~polymarket:2849024",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both pay YES only if Schalke (Schalke 04) is the 2026-27 Bundesliga champion. 'Schalke' and 'Schalke 04' are just the two venues' names for the same club."
  },
  {
   "pair": "kalshi:KXBUNDESLIGA-27-SGE~polymarket:2849013",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Same team (Frankfurt = Eintracht Frankfurt), same predicate (2026-27 Bundesliga champion) and same season; caveat: Polymarket's close/resolve dates are a placeholder (0001-01-01) and it pays 'Other' on cancellation."
  },
  {
   "pair": "kalshi:KXBUNDESLIGA-27-SVE~polymarket:2849026",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether SV Elversberg is the 2026-27 Bundesliga champion. Caveat: the Polymarket close and resolve times are placeholders (0001-01-01), which looks like a data gap, although the rules text names the correct season."
  },
  {
   "pair": "kalshi:KXBUNDESLIGA-27-SVW~polymarket:2849022",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether Werder Bremen ('Bremen' on Kalshi) is the 2026-27 Bundesliga champion. Caveat: Polymarket resolves 'Other' if the season is postponed past June 14, 2027."
  },
  {
   "pair": "kalshi:KXBUNDESLIGA-27-VFB~polymarket:2849014",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on VfB Stuttgart being the 2026-27 Bundesliga champion. Caveat: Polymarket has an Other fallback for cancellation."
  },
  {
   "pair": "kalshi:KXCANCUTS-26DEC31-E0~polymarket:616902",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi counts Bank of Canada rate cuts in 2026, while Polymarket counts US Federal Reserve cuts. These are different central banks."
  },
  {
   "pair": "kalshi:KXCANCUTS-26DEC31-E4~polymarket:616906",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi counts Bank of Canada rate cuts. Polymarket counts Federal Reserve rate cuts."
  },
  {
   "pair": "kalshi:KXCLAUDE-MYTH-26DEC01~polymarket:4319439",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether Anthropic releases a model called Mythos. Polymarket asks whether Anthropic goes public (IPO). The predicates are different."
  },
  {
   "pair": "kalshi:KXCLAUDE-MYTH-26NOV01~polymarket:2421094",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether Anthropic releases a model called Mythos; Polymarket asks whether Anthropic completes an IPO. These are unrelated events."
  },
  {
   "pair": "kalshi:KXDEMORAESOUT-26SEP-27JAN01~polymarket:1544795",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "The deadlines match (before Jan 1, 2027 vs by Dec 31, 2026), but Polymarket also resolves YES as soon as a resignation or removal is announced before the deadline, even if it takes effect later; Kalshi needs him to actually leave, so a December announcement effective in 2027 splits them."
  },
  {
   "pair": "kalshi:KXDST-27JAN01~polymarket:943525",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether permanent Daylight Saving Time becomes law, while Polymarket asks whether the company Daylight launches a governance token. They are unrelated events."
  },
  {
   "pair": "kalshi:KXDTICKET-28NOV07-GNEWPBUT~polymarket:561264",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Newsom and Buttigieg are the 2028 Democratic ticket, while Polymarket asks whether Pete Hegseth wins the 2028 presidential election."
  },
  {
   "pair": "kalshi:KXEARNINGSMENTIONC-26OCT13-INFL~polymarket:5144378",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether the word 'Inflation' is said on Citigroup's earnings call; Polymarket asks whether GAAP EPS beats $2.72."
  },
  {
   "pair": "kalshi:KXECONSTATCPICORE-27JAN13-E0.1~polymarket:5194675",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks about Core CPI MoM for Dec 2026 (BLS), while Polymarket asks about Core PCE MoM for Sep 2026 (BEA), so both the indicator and the month differ."
  },
  {
   "pair": "kalshi:KXELECTIRAN-27JAN01~polymarket:665374",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether Iran holds a presidential election, while Polymarket asks whether the US invades Iran. These are unrelated events."
  },
  {
   "pair": "kalshi:KXELECTUKRAINE-30JAN01-27JAN01~polymarket:2264328",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Ukraine holds a presidential election before 2027, while Polymarket asks about a Russia-Ukraine ceasefire by Dec 31, 2026; these are different events."
  },
  {
   "pair": "kalshi:KXELECTUKRAINE-30JAN01-27JAN01~polymarket:665224",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether Ukraine holds a presidential election, while Polymarket asks whether Ukraine signs a peace deal with Russia. These are different events."
+ },
+ {
+  "pair": "kalshi:KXELECTUKRAINE-30JAN01-27JAN01~polymarket:694027",
+  "verdict": "not_equivalent",
+  "source": "llm-audit: judge and skeptic agree (research/audit3)",
+  "note": "Kalshi asks whether Ukraine holds a presidential election before 2027. Polymarket is a parlay that needs a ceasefire, a Ukrainian no-NATO pledge and a signed peace deal, so these are entirely different predicates."
  },
  {
   "pair": "kalshi:KXEPLRELEGATION-27-MCI~polymarket:3848389",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Manchester City is relegated from the Premier League for the 2026-27 season. Caveat: Polymarket explicitly counts relegation by any official league decision (relevant to the 115-charges case), and the Kalshi excerpt only says 'relegated', which most likely covers that too."
  },
  {
   "pair": "kalshi:KXEPLTOP-27TOPHALF-ARS~polymarket:2771324",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Arsenal finishes in the top half of the 2026-27 EPL, while Polymarket asks whether Arsenal wins the title. A 2nd-10th place finish is YES on Kalshi and NO on Polymarket."
  },
  {
   "pair": "kalshi:KXEPLTOP-27TOPHALF-AVL~polymarket:2771325",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Aston Villa finishes in the top half of the 2026-27 EPL, while Polymarket asks whether they win the title."
  },
  {
   "pair": "kalshi:KXEPLTOP-27TOPHALF-CRY~polymarket:2771330",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Crystal Palace finishes in the top half of the 2026-27 EPL, while Polymarket asks whether they win the title."
  },
  {
   "pair": "kalshi:KXEPLTOP-27TOPHALF-EVE~polymarket:2771331",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Everton finishes in the top half of the 2026-27 EPL, while Polymarket asks whether Everton wins the title. Any 2nd-10th place finish splits the outcomes."
  },
  {
   "pair": "kalshi:KXEPLTOP-27TOPHALF-FUL~polymarket:2771332",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Fulham finishes in the top half of the table, while Polymarket asks whether Fulham wins the 2026-27 EPL title. These are different predicates."
  },
  {
   "pair": "kalshi:KXEPLTOP-27TOPHALF-IPS~polymarket:2771342",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays YES if Ipswich finishes in the top half of the EPL table, while Polymarket pays YES only if Ipswich wins the title."
  },
  {
   "pair": "kalshi:KXEPLTOP-27TOPHALF-LEE~polymarket:2771333",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Leeds finishes in the EPL top half. Polymarket asks whether Leeds wins the EPL title."
  },
  {
   "pair": "kalshi:KXEPLTOP-27TOPHALF-LFC~polymarket:2771334",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays YES if Liverpool finishes in the top half of the 2026-27 EPL table, while Polymarket pays YES only if Liverpool wins the title."
  },
  {
   "pair": "kalshi:KXEPLTOP-27TOPHALF-MUN~polymarket:2771336",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Man United finishes in the top half of the 2026-27 EPL, while Polymarket asks whether they win the title, so a top-half finish without the title would be YES on Kalshi and NO on Polymarket."
  },
  {
   "pair": "kalshi:KXF1NEXTTEAM-27VER-MER~polymarket:898660",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Verstappen's next team is Mercedes, while Polymarket asks whether Mercedes wins the 2026 Constructors' Championship; these are unrelated events."
  },
  {
   "pair": "kalshi:KXFDARETATRUTIDE-RET-27JAN01~polymarket:1162139",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve YES on FDA approval of retatrutide before Jan 1, 2027 (Polymarket: by Dec 31, 2026 11:59 PM ET). Caveat: Kalshi says 'approval for marketing' while Polymarket says 'full or conditional approval for any use'."
  },
  {
   "pair": "kalshi:KXFEDCHGCOUNT-27JAN01-E0~polymarket:616902",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi counts every rate change, hikes included, while Polymarket counts only cuts in 2026, so a year with a hike and no cuts makes Kalshi NO and Polymarket YES; the counting windows also differ."
  },
  {
   "pair": "kalshi:KXFEDCUT-31DEC28-31DEC26~polymarket:1439555",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi counts a cut from market issuance through Dec 31, 2026, while Polymarket counts Dec 16, 2025 through the end of the Dec 8-9, 2026 meeting. An emergency cut on Dec 10-31 splits them, and the start dates may differ too."
  },
  {
   "pair": "kalshi:KXFEDDECISION-27JAN-H0~polymarket:3215012",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Kalshi's 'hike of 0bps / maintains rate' at the January 27, 2027 meeting and Polymarket's 'no change' in the upper bound after the January 2027 FOMC meeting are the same outcome."
  },
  {
   "pair": "kalshi:KXFEDEND-27-JAN01~polymarket:666861",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether the Federal Reserve System is ended, while Polymarket asks whether Trump stops being President. These are unrelated events."
  },
  {
   "pair": "kalshi:KXFEDERALCHARGE-27JAN01-JSMI~polymarket:5166375",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Jack Smith is federally charged. Polymarket asks whether any of the Cornell 7 is charged with a felony sex crime."
  },
  {
   "pair": "kalshi:KXFEDERALCHARGE-27JAN01-MKEL~polymarket:5166375",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether Mark Kelly is federally charged before 2027. Polymarket asks whether any of the 'Cornell 7' defendants is charged with a felony sex crime. Different subjects and predicates."
  },
  {
   "pair": "kalshi:KXFEDHIKE-2-26DEC31~polymarket:4620900",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi's window runs to Dec 31, 2026, while Polymarket's ends when the Dec 8-9 FOMC meeting finishes and starts Sept 17. An emergency hike on Dec 10-31 is YES on Kalshi only, and the Kalshi window start (market issuance) is not stated."
  },
  {
   "pair": "kalshi:KXFRENCHPRES-27-CLAG~polymarket:679060",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether Christine Lagarde wins the next French presidential election, including any runoff. Caveat: Polymarket has a Dec 31, 2027 fallback if no result is known by then."
  },
  {
   "pair": "kalshi:KXFRENCHPRES-27-DLIS~polymarket:679022",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve YES if David Lisnard wins the next French presidential election, including any runoff. Caveat: Polymarket has a fallback if results are not known by Dec 31, 2027."
  },
  {
   "pair": "kalshi:KXFRENCHPRES-27-DVIL~polymarket:679034",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if Dominique de Villepin wins the next French presidential election, whenever it is held, including the runoff."
  },
  {
   "pair": "kalshi:KXFRENCHPRES-27-EPHI~polymarket:679021",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Édouard Philippe wins the next French presidential election, second round included. Caveat: Polymarket has an 'Other' fallback if no result is known by end of 2027."
  },
  {
   "pair": "kalshi:KXFRENCHPRES-27-FRUF~polymarket:679025",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on whether François Ruffin wins the next French presidential election, including any runoff."
  },
  {
   "pair": "kalshi:KXFRENCHPRES-27-JMEL~polymarket:679030",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Mélenchon wins the next French presidential election, second round included. Caveat: Polymarket has an 'Other' fallback if no result is known by Dec 31, 2027."
  },
  {
   "pair": "kalshi:KXFRENCHPRES-27-SLEC~polymarket:679054",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if Sébastien Lecornu wins the next French presidential election, including any runoff. Polymarket's fallback if results are unknown by end-2027 is a caveat."
  },
  {
   "pair": "kalshi:KXGEMINI-GEM4-26NOV01~polymarket:3584362",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "'Before Nov 1, 2026' and 'by Oct 31, 2026' are the same deadline for Google releasing Gemini 4. Caveat: Polymarket explicitly requires public availability (open beta counts, closed beta does not) and the Kalshi excerpt does not define 'release'; the two cutoffs also differ by about an hour around the DST change."
  },
  {
   "pair": "kalshi:KXGEMINI-GEM4-26OCT16~polymarket:5084763",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "'Before Oct 16, 2026' is the same deadline as 'by October 15, 2026', and both ask whether Google releases Gemini 4 (4.0). Caveat: Polymarket spells out that a closed beta or private access does not count; Kalshi's excerpt does not define 'release'."
  },
  {
   "pair": "kalshi:KXGEMINI-NEXTPRO-26NOV01~polymarket:3667937",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if the next Gemini Pro model is released before Nov 1, 2026, the same date as Polymarket's 'by Oct 31'. Caveat: Polymarket counts preview and GA-promotion releases, and the Kalshi excerpt does not define what qualifies."
  },
  {
   "pair": "kalshi:KXGPT-ASTRA61-26OCT09~polymarket:4882052",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi requires Astra 6.1 to be released BEFORE Oct 9 (it closes Oct 8 11:59 PM ET), while Polymarket counts any Astra model 6.1 or higher made public BY Oct 9, so a release on Oct 9, or a jump straight to Astra 7, resolves YES on Polymarket and NO on Kalshi."
  },
  {
   "pair": "kalshi:KXGPT-ASTRA61-26OCT16~polymarket:4882150",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi requires Astra 6.1 to be released BEFORE Oct 16, while Polymarket counts any Astra model 6.1 or higher made public BY Oct 16, so a release on Oct 16, or a skip straight to 6.2 or 7, splits the outcomes."
  },
  {
   "pair": "kalshi:KXGPT-ASTRA61-26OCT23~polymarket:4882040",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi needs Astra 6.1 released before Oct 23 (that is, by Oct 22), while Polymarket counts any Astra model 6.1 or higher (e.g. Astra 7) released by Oct 23 ET, so both the threshold and the deadline differ."
  },
  {
   "pair": "kalshi:KXGRAMAOTY-69-LUX~polymarket:3377041",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both ask whether Rosalía's 'Lux' wins Album of the Year at the 69th Grammys; caveat: Polymarket breaks a tie alphabetically and pays 'Other' if there is no winner by Jun 30, 2027."
  },
  {
   "pair": "kalshi:KXGREENIND-27~polymarket:1302038",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Different subjects: Kalshi is a Greenland independence vote and Polymarket is an Alberta independence referendum."
  },
  {
   "pair": "kalshi:KXGREENIND-27~polymarket:4712085",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Greenland voting for independence in a referendum and Trump visiting Greenland by Oct 31 are unrelated events."
  },
  {
   "pair": "kalshi:KXGREENLANDSNAP-28-27JAN01~polymarket:1507879",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi covers a Greenland snap election. Polymarket covers a Spain snap election."
  },
  {
   "pair": "kalshi:KXGROK-GROK5-26DEC01~polymarket:1371094",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether xAI releases Grok 5 before Dec 1, 2026. Polymarket asks whether Grok AI beats T1 at League of Legends in 2026. These are unrelated events."
  },
  {
   "pair": "kalshi:KXGTEMP-26-P0~polymarket:678686",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Kalshi's test (GISS 2026 above the 2025 value and above 1.28C, the current record) works out to Polymarket's rank #1 in the GISS Land-Ocean index. Caveat: if 2026 exactly ties 1.28, Kalshi says NO and Polymarket says YES, and a revision to the 2024 value would make Kalshi's fixed threshold wrong."
  },
  {
   "pair": "kalshi:KXGTEMP-27-P0~polymarket:678690",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether 2026 is the hottest year on record (above the 2025 value and 1.28C), while Polymarket asks whether 2026 ranks exactly fifth-hottest. These outcomes are close to mutually exclusive."
  },
  {
   "pair": "kalshi:KXHOLBORNVOTE-26DEC31GRN-15~polymarket:4571627",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether the Green Party gets at least 15% of the vote. Polymarket asks whether Labour wins by a margin of 15 points or more. Different subject and different predicate."
  },
  {
   "pair": "kalshi:KXHOUSERACE-AL02-26-D~polymarket:1280801",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether a Democrat wins the 2026 AL-02 seat. Caveat: Kalshi settles on the swearing-in, Polymarket on the race call."
  },
  {
   "pair": "kalshi:KXHOUSERACE-AR02-26-D~polymarket:1280857",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if the Democrat wins AR-02 in the 2026 House election. Caveat: Kalshi resolves on who is sworn in, Polymarket on the race call, so they split only in edge cases like death or a party switch."
  },
  {
   "pair": "kalshi:KXHOUSERACE-CA30-26-R~polymarket:1281132",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on whether the Republican Party wins the CA-30 seat in the 2026 election. Caveat: Kalshi keys on the party of the member sworn in for the 2027 term, Polymarket on the winner's party when the race is called; they differ only if the winner dies or switches party before taking office."
  },
  {
   "pair": "kalshi:KXHOUSERACE-CO05-26-R~polymarket:1282888",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on whether the Republican Party wins the CO-05 seat in the 2026 election. Caveat: Kalshi keys on the party of the member sworn in, Polymarket on the winner's party when the race is called."
  },
  {
   "pair": "kalshi:KXHOUSERACE-FL06-26-D~polymarket:1282993",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on whether the Democrat wins the 2026 FL-06 House seat. Caveat: Kalshi uses the party of the member sworn in for 2027 and Polymarket the winner's party when the race is called."
  },
  {
   "pair": "kalshi:KXHOUSERACE-FL19-26-D~polymarket:1283089",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if a Democrat wins the 2026 FL-19 House seat. Caveat: Kalshi uses the 2027 swearing-in and Polymarket the election call."
  },
  {
   "pair": "kalshi:KXHOUSERACE-FL26-26-R~polymarket:1283136",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if a Republican wins FL-26 in 2026. Sworn-in versus race-call settlement is only a timing caveat."
  },
  {
   "pair": "kalshi:KXHOUSERACE-GA10-26-D~polymarket:1283233",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if a Democrat wins the 2026 GA-10 House seat. Caveat: Kalshi uses the 2027 swearing-in and Polymarket the election call."
  },
  {
   "pair": "kalshi:KXHOUSERACE-MN06-26-D~polymarket:1283881",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether a Democrat wins the 2026 MN-06 seat. Caveat: Kalshi settles on the swearing-in, Polymarket on the race call."
  },
  {
   "pair": "kalshi:KXHOUSERACE-OH05-26-R~polymarket:1284403",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether a Republican wins the 2026 OH-05 seat. Caveat: Kalshi settles on the swearing-in, Polymarket on the race call."
  },
  {
   "pair": "kalshi:KXHOUSERACE-OH06-26-D~polymarket:1284412",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on a Democrat winning the 2026 OH-06 House seat. Caveat: Kalshi settles on the swearing-in for the 2027 term and Polymarket on the race call by ballot party."
  },
  {
   "pair": "kalshi:KXHOUSERACE-SC07-26-D~polymarket:1284720",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if the Democrat takes SC-07 in the 2026 House election (Kalshi's 'term beginning 2027' is the same seat). Caveat: Kalshi resolves on who is sworn in, while Polymarket resolves on the race call and the party at the time of the call, so they only split in edge cases like death or a party switch before January 2027."
  },
  {
   "pair": "kalshi:KXHOUSERACE-SDAL-26-D~polymarket:1284728",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Same SD-AL seat, same party (Democratic) and same 2026 election; the gap between Kalshi's sworn-in member and Polymarket's election winner is a caveat."
  },
  {
   "pair": "kalshi:KXHOUSERACE-TX25-26-R~polymarket:1284975",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Same TX-25 seat, same party (Republican) and same 2026 election; the gap between Kalshi's sworn-in member and Polymarket's election winner is a caveat."
  },
  {
   "pair": "kalshi:KXHOUSERACE-VA05-26-R~polymarket:1285079",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if a Republican wins the 2026 VA-05 House seat. Caveat: Kalshi keys on who is sworn in for the 2027 term and Polymarket on the election winner's party, which only differs in rare cases."
  },
  {
   "pair": "kalshi:KXHOUSEUT02-26-R~polymarket:944265",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether the Republican Party wins UT-02 in the 2026 House race (the outcome label is just the candidate's name). Caveat: Kalshi goes by the party of the member sworn in for the 2027 term, Polymarket by the party of the called winner, so they could differ only if the winner died or switched party."
  },
  {
   "pair": "kalshi:KXHOUSEUT03-26-R~polymarket:944273",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether a Republican wins the 2026 UT-03 seat. Caveat: Kalshi settles on the swearing-in, Polymarket on the race call."
  },
  {
   "pair": "kalshi:KXHOUSEWINSTATE-MID-B5~polymarket:3930556",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi counts Democratic US House seats in Michigan. Polymarket counts CAQ seats in Quebec's National Assembly. Only the \"fewer than 5\" bucket is shared."
  },
  {
   "pair": "kalshi:KXHUNTCONF-26SEP14-MAR01~polymarket:665218",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Unrelated contracts: Kalshi is Wesley Hunt being confirmed as ambassador to Saudi Arabia and Polymarket is Israel and Saudi Arabia normalizing relations."
  },
  {
   "pair": "kalshi:KXIPO-26-ANTHROPIC~polymarket:2413330",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays if Anthropic confirms or announces an IPO before 2027. Polymarket needs shares actually listed and trading by Dec 31, 2026."
  },
  {
   "pair": "kalshi:KXIPOANTHROPIC-DATE-26DEC01~polymarket:4319439",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi resolves on Anthropic officially announcing or confirming an IPO before Dec 1, while Polymarket needs the shares to be listed and trading by Nov 30, so an announcement without a listing splits them."
  },
  {
   "pair": "kalshi:KXIPOANTHROPIC-DATE-26NOV01~polymarket:2421094",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays YES if Anthropic officially announces or confirms an IPO before Nov 1, 2026. Polymarket needs the shares actually listed and trading by Oct 31, 2026."
  },
  {
   "pair": "kalshi:KXIPOOPENAI-27JAN01~polymarket:608368",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi's YES is OpenAI confirming an IPO before Jan 1, 2027, while Polymarket's outcome is 'No IPO by December 31, 2026', so the YES conditions are opposites (Kalshi's 'confirms' also differs from an actual first trading day)."
  },
  {
   "pair": "kalshi:KXISRDEFMIN-30-OWIN~polymarket:5151756",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Ofer Winter becomes Minister of Defense, while Polymarket asks whether he becomes Minister of National Security, which is a different cabinet post."
  },
  {
   "pair": "kalshi:KXLAKEAMERICA-26AUGUNDO-JAN01~polymarket:4339019",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether Trump reverses the Lake Ontario-to-Lake America renaming, while Polymarket asks whether Trump renames New Mexico, which are different subjects and actions."
  },
  {
   "pair": "kalshi:KXLARGECUT-26~polymarket:3215006",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays on a Fed cut of more than 25 bps at any point in 2026. Polymarket pays on a cut of exactly 25 bps at the December 2026 meeting. The threshold, comparator and window all differ."
  },
  {
   "pair": "kalshi:KXLEADERSOUT-27JAN01-BNETISR~polymarket:682705",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi resolves YES if Netanyahu announces his departure or leaves office before Jan 1, 2027, while Polymarket resolves YES if he is the PM sworn in after the 2026 election, so the two YES conditions are nearly opposite."
  },
  {
   "pair": "kalshi:KXLEADERSOUT-27JAN01-PSANPM~polymarket:802374",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both pay if Sánchez leaves office or announces his departure before Jan 1, 2027. Caveat: Kalshi's \"announced intention to leave\" might be read more broadly than Polymarket's \"announcement of resignation/removal\", for example if he says he will not run again."
  },
  {
   "pair": "kalshi:KXLEADERSOUT-27JAN01-TRUEPDRC~polymarket:921660",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both pay YES if Sassou Nguesso leaves office, or announces he is leaving, before Jan 1, 2027. Caveat: Kalshi's 'announced intention to leave' may be broader than Polymarket's 'announcement of resignation/removal', and Kalshi does not state when its window starts."
  },
  {
   "pair": "kalshi:KXLEAVEOPEC-27~polymarket:1194695",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether any member leaves OPEC in 2026, while Polymarket asks whether Russia invades a country other than Ukraine. They are unrelated events."
  },
  {
   "pair": "kalshi:KXLEAVEWALZ-27JAN01-TWAL-27JAN01~polymarket:1046969",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Walz leaves the governorship before 2027. Polymarket asks whether he is criminally charged by Dec 31, 2026."
  },
  {
   "pair": "kalshi:KXLIGUE1-27-OM~polymarket:2771649",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Same team (Marseille), same predicate (2026-27 Ligue 1 champion), same season."
  },
  {
   "pair": "kalshi:KXLIMAMAYOR-26OCT04-FALL~polymarket:3081919",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Francis (James) Allison (Oyague) wins the Oct 2026 Lima mayoral election. Caveat: Polymarket has an 'Other' fallback if the result is not known by June 30, 2027."
  },
  {
   "pair": "kalshi:KXLIMAMAYOR-26OCT04-RALI~polymarket:3081922",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if López Aliaga wins the Oct 4, 2026 Lima mayoral election; Polymarket's wording 'becomes the next Mayor as a result of this election' and its June 30, 2027 'Other' fallback are only caveats."
  },
  {
   "pair": "kalshi:KXLJUBLJANAMAYOR-26NOV15-AROP~polymarket:4038220",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi covers Anton Rop in the Ljubljana mayoral race. Polymarket covers Anton Danko in the Poprad mayoral race."
  },
  {
   "pair": "kalshi:KXLOCALLAW-MEDATA-28JAN01~polymarket:5126782",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi covers Maine enacting any data-center restriction law. Polymarket covers Oklahoma enacting a statewide data-center moratorium."
  },
  {
   "pair": "kalshi:KXMAMDANIWHVISIT-26SEP28-NOV01~polymarket:1386144",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks about Zohran Mamdani visiting the White House before Nov 1, while Polymarket asks about the Seattle Seahawks visiting in 2026. The subjects and deadlines both differ."
  },
  {
   "pair": "kalshi:KXMEETINGS-27JAN01-TAKXI~polymarket:2062640",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES on an in-person Takaichi-Xi meeting from market creation through Dec 31, 2026. Caveat: Polymarket explicitly counts a handshake, which matters for a possible APEC greeting, while Kalshi only says 'meet in person'."
  },
  {
   "pair": "kalshi:KXMIDTERMMOV-NMSEND-P21~polymarket:5231830",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Unrelated contracts: Kalshi is the New Mexico Senate margin of victory and Polymarket is the Mexico City high temperature on Oct 5."
  },
  {
   "pair": "kalshi:KXMLBTEAMSALE-27JANLAD-Y~polymarket:1235572",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether the Dodgers franchise is sold. Polymarket asks whether the Dodgers win the 2026 World Series."
  },
  {
   "pair": "kalshi:KXNBA-27-BKN~polymarket:2243298",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on Brooklyn winning the 2026-27 NBA championship. Caveat: Polymarket has tie-alphabetical and cancellation (Other) clauses."
  },
  {
   "pair": "kalshi:KXNBA-27-BOS~polymarket:2243297",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on whether Boston wins the 2027 NBA championship. Venue naming is the only difference."
  },
  {
   "pair": "kalshi:KXNBA-27-CHI~polymarket:2243300",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both ask whether Chicago (the Bulls) wins the 2026-27 NBA championship (the 2027 Finals); caveat: Polymarket pays 'Other' if the Finals are postponed past Jun 30, 2027 and breaks a tie alphabetically."
  },
  {
   "pair": "kalshi:KXNBA-27-CLE~polymarket:2243301",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if the Cleveland Cavaliers win the 2026-27 NBA championship. Polymarket resolves to 'Other' if the Finals are postponed past June 30, 2027, which is a caveat."
  },
  {
   "pair": "kalshi:KXNBA-27-DEN~polymarket:2243312",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES only if the Denver Nuggets win the 2026-27 NBA championship (the 2027 Finals). Caveat: Polymarket resolves 'Other' if the season is postponed past June 30, 2027, while Kalshi's expected resolution is July 31."
  },
  {
   "pair": "kalshi:KXNBA-27-DET~polymarket:2243302",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both ask whether Detroit (the Pistons) wins the 2026-27 NBA championship; caveat: Polymarket pays 'Other' on postponement past Jun 30, 2027 and breaks a tie alphabetically."
  },
  {
   "pair": "kalshi:KXNBA-27-LAC~polymarket:2243315",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on the LA Clippers winning the 2027 NBA Finals (the 2026-27 season). The edge cases are only caveats: Polymarket has a June 30, 2027 postponement cutoff and an alphabetical tiebreak."
  },
  {
   "pair": "kalshi:KXNBA-27-MEM~polymarket:2243317",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether Memphis (the Grizzlies) wins the 2026-27 NBA championship. Caveat: Polymarket resolves 'Other' if the Finals are postponed past June 30, 2027; Kalshi has no such cutoff."
  },
  {
   "pair": "kalshi:KXNBA-27-MIA~polymarket:2243304",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Same team (Miami Heat), same predicate (2026-27 NBA champion, the 2027 Finals)."
  },
  {
   "pair": "kalshi:KXNBA-27-MIN~polymarket:2243318",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on Minnesota winning the 2026-27 NBA championship. Caveat: Polymarket has tie and cancellation (Other) clauses."
  },
  {
   "pair": "kalshi:KXNBA-27-NYK~polymarket:2243306",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES only if the New York Knicks win the 2026-27 NBA championship. Caveat: Polymarket resolves 'Other' if the season is postponed past June 30, 2027."
  },
  {
   "pair": "kalshi:KXNBA-27-OKC~polymarket:2243320",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Kalshi's 2027 'Pro Basketball Finals' win by Oklahoma City and Polymarket's Thunder as 2026-27 NBA champion are the same event. Caveat: Polymarket resolves 'Other' if the season is postponed past June 30, 2027."
  },
  {
   "pair": "kalshi:KXNBA-27-ORL~polymarket:2243307",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on whether Orlando wins the 2027 NBA championship (Kalshi calls it \"Pro Basketball\"). Caveat: Polymarket resolves to \"Other\" if the season runs past June 30, 2027."
  },
  {
   "pair": "kalshi:KXNBA-27-PHI~polymarket:2243308",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if the Philadelphia 76ers win the 2026-27 NBA championship. Polymarket's postponement-to-Other rule is a caveat."
  },
  {
   "pair": "kalshi:KXNBA-27-SAC~polymarket:2243323",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES only if the Sacramento Kings win the 2026-27 NBA championship. Caveat: Polymarket resolves 'Other' if the season is postponed past June 30, 2027."
  },
  {
   "pair": "kalshi:KXNBA-27-SAS~polymarket:2243324",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if the San Antonio Spurs win the 2026-27 NBA championship. Caveat: Polymarket has an 'Other' fallback if the season is postponed past June 30, 2027."
+ },
+ {
+  "pair": "kalshi:KXNBACUP-26-PHI~polymarket:2685353",
+  "verdict": "not_equivalent",
+  "source": "llm-audit: judge and skeptic agree (research/audit3)",
+  "note": "Kalshi asks whether Philadelphia wins the in-season NBA (Emirates) Cup. Polymarket asks whether the 76ers win the 2027 Eastern Conference Finals, which is a different competition."
+ },
+ {
+  "pair": "kalshi:KXNBACUP-26-PHX~polymarket:2668737",
+  "verdict": "not_equivalent",
+  "source": "llm-audit: judge and skeptic agree (research/audit3)",
+  "note": "Kalshi is about Phoenix winning the 2026 NBA Cup (the in-season tournament), but Polymarket is about the Suns winning the 2027 Western Conference Finals. These are different competitions."
  },
  {
   "pair": "kalshi:KXNBANEXTTEAM-27I1LJAMES23-IND~polymarket:741099",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether LeBron's next team is Indiana before Feb 12, 2027, while Polymarket asks whether LeBron retires before the 2026-27 season. These are different predicates."
  },
  {
   "pair": "kalshi:KXNBANEXTTEAM-27I1LJAMES23-NONE~polymarket:741099",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays YES if LeBron retires or is unsigned before Feb 12, 2027. Polymarket needs a retirement before the 2026-27 season starts, so being unsigned without retiring, or a mid-season retirement, splits them."
  },
  {
   "pair": "kalshi:KXNBAPLAYOFF-27-BOS~polymarket:2850871",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if the Celtics qualify for the 2026-27 NBA Playoffs. Caveat: Polymarket says reaching the play-in alone does not count, and Kalshi's excerpt is silent; the play-in is not formally part of the Playoffs, so the standard reading matches."
  },
  {
   "pair": "kalshi:KXNBAPLAYOFF-27-MIA~polymarket:2850885",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both ask whether Miami qualifies for the 2026-27 NBA Playoffs; caveat: Polymarket says explicitly that a play-in spot alone does not count, and Kalshi's short excerpt does not address the play-in but 'qualifies for the Playoffs' reads the same way."
+ },
+ {
+  "pair": "kalshi:KXNBAROOKIE1STTEAM-27-CCARR43~polymarket:2668819",
+  "verdict": "not_equivalent",
+  "source": "llm-audit: judge and skeptic agree (research/audit3)",
+  "note": "Kalshi asks whether Cameron Carr makes the All-Rookie First Team, but Polymarket asks whether he wins Rookie of the Year. He can make the First Team without winning the award."
+ },
+ {
+  "pair": "kalshi:KXNBAROY-27-DACU~polymarket:2668802",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both pay YES only if Darius Acuff Jr. wins the 2026-27 NBA Rookie of the Year. Caveat: Polymarket's April 30 'no winner declared within that timeframe' clause could send it to 'Other' if the NBA announces the award in May."
+ },
+ {
+  "pair": "kalshi:KXNBAROY-27-YLEN~polymarket:2668806",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Yaxel Lendeborg wins the 2026-27 NBA Rookie of the Year award. Caveat: Polymarket sends the market to 'Other' if no winner is declared by its April 30, 2027 timeframe, and the NBA has sometimes announced this award in May."
  },
  {
   "pair": "kalshi:KXNCAAF-27-ALA~polymarket:1919746",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether Alabama wins the 2026-27 College Football Playoff national championship (the January 2027 game). Caveat: the Kalshi excerpt does not name the season; the ticker and dates imply it."
  },
  {
   "pair": "kalshi:KXNCAAMBMW-27-UNM~polymarket:3249918",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi covers the 2027 Mountain West men's basketball tournament. Polymarket covers the 2026 Mountain West football championship game. They are different competitions."
  },
  {
   "pair": "kalshi:KXNFLAFCCHAMP-27-HOU~polymarket:1361088",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on Houston winning the AFC Championship game played in early 2027 (the 2026 season), going by Kalshi's Feb 2027 resolution and Polymarket's Mar 31, 2027 cutoff."
  },
  {
   "pair": "kalshi:KXNFLAFCWEST-27-KC~polymarket:1447946",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on Kansas City winning the AFC West for the 2026 NFL season. Caveat: Polymarket resolves to Other if the season is cancelled or runs past Jan 17, 2027."
+ },
+ {
+  "pair": "kalshi:KXNFLDROTY-27-AREE~polymarket:3074517",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve on whether Arvell Reese wins the AP NFL Defensive Rookie of the Year award for the 2026-27 season. Caveats: Polymarket breaks a co-winner tie alphabetically, and it resolves to 'Other' if the award slips past Feb 28, 2027."
+ },
+ {
+  "pair": "kalshi:KXNFLH2HWINS-27ATLNYG-ATL~polymarket:5221104:1",
+  "verdict": "not_equivalent",
+  "source": "llm-audit: judge and skeptic agree (research/audit3)",
+  "note": "Kalshi asks whether the NFL's Atlanta Falcons record more 2026-27 regular-season wins than the NY Giants. Polymarket is a single WNBA game, Atlanta Dream vs NY Liberty, on Oct 7, 2026."
+ },
+ {
+  "pair": "kalshi:KXNFLH2HWINS-27ATLNYG-NYG~polymarket:5221104:0",
+  "verdict": "not_equivalent",
+  "source": "llm-audit: judge and skeptic agree (research/audit3)",
+  "note": "Kalshi asks whether the NFL Giants finish the 2026-27 regular season with more wins than the Falcons, while Polymarket asks who wins a single WNBA game between the Liberty and the Dream."
  },
  {
   "pair": "kalshi:KXNFLMVP-27-DPRE~polymarket:1747722",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if Dak Prescott wins the 2026-27 NFL MVP (the AP award). Caveat: Polymarket breaks ties alphabetically and has an 'Other' cutoff."
  },
  {
   "pair": "kalshi:KXNFLMVP-27-JCHA~polymarket:2046990",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Ja'Marr Chase winning the NFL MVP and A'ja Wilson winning the WNBA MVP are unrelated events."
  },
  {
   "pair": "kalshi:KXNFLMVP-27-LJAC~polymarket:1747718",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if Lamar Jackson wins the 2026-27 NFL MVP (the AP award). Caveat: Polymarket breaks ties alphabetically and has an 'Other' cutoff."
  },
  {
   "pair": "kalshi:KXNFLMVP-27-SBAR~polymarket:1747726",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if Saquon Barkley wins the NFL MVP for the 2026-27 season; the AP award is the official NFL MVP. Caveat: Polymarket breaks ties alphabetically and resolves 'Other' if no winner is named by Feb 28, 2027."
  },
  {
   "pair": "kalshi:KXNFLNFCEAST-27-DAL~polymarket:1447964",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on Dallas winning the NFC East for the 2026 NFL season. The season comes from Kalshi's ticker and Jan 2027 dates. Caveat: Polymarket resolves to Other if the season is postponed past Jan 17, 2027."
+ },
+ {
+  "pair": "kalshi:KXNFLSEASONRECYDS-27C1000-MWILSON14~polymarket:3959759",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both count the same player, Michael Wilson, in the same 2026-27 NFL regular season with the same 1000+ yards threshold (Polymarket's 'equals or exceeds 1,000' is the same as '1000+'), and playoff games are excluded on both."
+ },
+ {
+  "pair": "kalshi:KXNFLSTAGEOFELIM-27SEA-FW~polymarket:1386144",
+  "verdict": "not_equivalent",
+  "source": "llm-audit: judge and skeptic agree (research/audit3)",
+  "note": "Kalshi asks whether Seattle wins the 2026-27 NFL championship (decided Feb 2027). Polymarket asks whether the Seahawks visit the White House by Dec 31, 2026, as winners of the 2026 championship."
  },
  {
   "pair": "kalshi:KXNFLTEAMPTS-MOST27-CHI~polymarket:2784920",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether the Chicago NFL team is the season's highest-scoring team; Polymarket asks for an exact 2-2 score in a single MLS match between Chicago Fire and Vancouver."
  },
  {
   "pair": "kalshi:KXNHL-27-BUF~polymarket:2520283",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if the Buffalo Sabres win the 2026-27 Stanley Cup. Caveat: Polymarket resolves 'Other' if the Cup is not decided by June 30, 2027."
+ },
+ {
+  "pair": "kalshi:KXNHL-27-LA~polymarket:2243323",
+  "verdict": "not_equivalent",
+  "source": "llm-audit: judge and skeptic agree (research/audit3)",
+  "note": "Kalshi asks whether the Los Angeles Kings win the NHL Stanley Cup, while Polymarket asks whether the Sacramento Kings win the NBA Finals. These are different teams in different leagues."
  },
  {
   "pair": "kalshi:KXNHL-27-OTT~polymarket:2520300",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on whether the Ottawa Senators win the 2026-27 Stanley Cup. The only differences are in edge-case handling, such as cancellation going to \"Other\" and a tie-break rule."
  },
  {
   "pair": "kalshi:KXNHLPLAYOFF-27-MIN~polymarket:5084156",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether the Minnesota Wild qualify for the 2026-27 NHL playoffs. Polymarket explicitly counts wild-card berths."
  },
  {
   "pair": "kalshi:KXOPENAIANOTHERMILLENNIUM-28-27JAN01~polymarket:4412200",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both cover an OpenAI announcement of a full solution to one of the same five Millennium Prize problems (Navier-Stokes excluded) by the end of 2026. Caveat: Polymarket's window starts at market creation."
  },
  {
   "pair": "kalshi:KXPERFORMSUPERBOWL-27B-EAG~polymarket:1357396",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether the band Eagles performs at the Super Bowl halftime show, while Polymarket asks whether the Philadelphia Eagles win the NFL championship."
  },
  {
   "pair": "kalshi:KXPRAGUEMAYOR-26OCT10-PHLA~polymarket:4038304",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on Petr Hlaváček being the first mayor elected by the Prague council after the October 2026 municipal elections; caveat: Polymarket pays 'Other' if the result is unknown by Jun 30, 2027 while Kalshi runs to Oct 2027, and Kalshi says 'wins the vote' where Polymarket says 'assumes the role'."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-ARS~polymarket:2771324",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Same team (Arsenal), same predicate (2026-27 EPL champion), same season. Only settlement timing and the cancellation rules differ."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-AVL~polymarket:2771325",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Aston Villa is the 2026-27 English Premier League champion. Polymarket's boilerplate about 'eliminated in the playoffs' and its postponement cutoff are caveats only."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-BOU~polymarket:2771326",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Same team (Bournemouth), same predicate (2026-27 EPL champion), same season. Only settlement timing and the cancellation rules differ."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-COV~polymarket:2771341",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if and only if Coventry City is the 2026-27 EPL champion, with the same team, competition and season; only the postponement caveat differs."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-CRY~polymarket:2771330",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Crystal Palace is the 2026-27 EPL champion. The postponement/'Other' clause is only a caveat."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-EVE~polymarket:2771331",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Everton is the 2026-27 English Premier League champion. Caveat: Polymarket resolves to 'Other' if the season is postponed past June 14, 2027."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-FUL~polymarket:2771332",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if and only if Fulham is the 2026-27 EPL champion, with the same team, competition and season; only the postponement caveat differs."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-HUL~polymarket:2771343",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Same team (Hull City), same predicate (2026-27 EPL champion), same season. Both resolve NO if Hull is not promoted or does not win the title."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-IPS~polymarket:2771342",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if and only if Ipswich Town is the 2026-27 EPL champion. Caveat: Polymarket resolves to 'Other' if the season is postponed past June 14, 2027."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-LEE~polymarket:2771333",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both pay YES only if Leeds United is the 2026-27 Premier League champion. Same club, season and competition."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-LFC~polymarket:2771334",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if and only if Liverpool is the 2026-27 EPL champion, with the same team, competition and season; only the postponement caveat differs."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-MCI~polymarket:2771335",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Manchester City is the 2026-27 EPL champion. The only differences are in edge-case wording."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-MUN~polymarket:2771336",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both pay YES only if Manchester United is the 2026-27 Premier League champion. Same club, season and competition."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-NEW~polymarket:2771337",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Newcastle United is the 2026-27 EPL champion. The only differences are in edge-case wording."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-NFO~polymarket:2771338",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Same team (Nottingham Forest), same predicate (2026-27 EPL champion), same season. Only settlement timing and the cancellation rules differ."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-SUN~polymarket:2771340",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Sunderland is the 2026-27 EPL champion. The close-date metadata differs, but the rules give the same YES condition."
+ },
+ {
+  "pair": "kalshi:KXPREMIERLEAGUE-27-TOT~polymarket:2771339",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Tottenham is the 2026-27 EPL champion. The only differences are in edge-case wording."
  },
  {
   "pair": "kalshi:KXPRESNOMD-28-AB~polymarket:559660",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Andy Beshear wins and accepts the 2028 Democratic presidential nomination. Caveat: Polymarket explicitly ignores a later replacement of the nominee; the Kalshi excerpt does not say."
  },
  {
   "pair": "kalshi:KXPRESNOMD-28-AOC~polymarket:559653",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if AOC wins and accepts the 2028 Democratic presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMD-28-GN~polymarket:559652",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Gavin Newsom wins and accepts the 2028 Democratic presidential nomination. Caveat: Polymarket says a later replacement does not change the result, and Kalshi says nothing on that."
  },
  {
   "pair": "kalshi:KXPRESNOMD-28-JOSS~polymarket:559661",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both require Jon Ossoff to win and accept the 2028 Democratic presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMD-28-JS~polymarket:559655",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether Josh Shapiro wins and accepts the 2028 Democratic presidential nomination. The wording is effectively identical."
  },
  {
   "pair": "kalshi:KXPRESNOMD-28-LC~polymarket:559678",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on whether Liz Cheney wins and accepts the 2028 Democratic presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMD-28-PB~polymarket:559654",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both require Pete Buttigieg to win and accept the 2028 Democratic presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMD-28-RW~polymarket:559664",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both require Raphael Warnock to win and accept the 2028 Democratic presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMR-28-DJTJR~polymarket:561978",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Donald Trump Jr. wins and accepts the 2028 Republican presidential nomination. Caveat: Polymarket says replacing the nominee before election day does not change resolution; the Kalshi excerpt does not say."
  },
  {
   "pair": "kalshi:KXPRESNOMR-28-ITRU~polymarket:561998",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve YES if Ivanka Trump wins and accepts the 2028 Republican presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMR-28-MR~polymarket:561975",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Marco Rubio wins and accepts the 2028 Republican presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMR-28-SHS~polymarket:561982",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if Sarah Huckabee Sanders wins and accepts the 2028 Republican presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMR-28-TCAR~polymarket:561996",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether Tucker Carlson wins and accepts the 2028 Republican presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMR-28-TCOT~polymarket:562013",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Tom Cotton wins and accepts the 2028 Republican presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMR-28-TC~polymarket:561989",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if Ted Cruz wins and accepts the 2028 Republican presidential nomination."
  },
  {
   "pair": "kalshi:KXPRESNOMR-28-TMAS~polymarket:562005",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Thomas Massie wins and accepts the 2028 Republican presidential nomination, and both ignore any later replacement."
  },
  {
   "pair": "kalshi:KXPRESPERSON-28-AOCA~polymarket:561231",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Same person and same 2028 presidency. Caveat: Kalshi pays on inauguration for the 2029 term and Polymarket on the AP/Fox/NBC race call, with inauguration as its fallback, so they differ only if the president-elect is not inaugurated."
  },
  {
   "pair": "kalshi:KXPRESPERSON-28-DTRUJR~polymarket:561244",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether Donald Trump Jr. wins the 2028 presidential election. Caveat: Kalshi uses the inauguration and Polymarket uses the AP/Fox/NBC call, falling back to the inauguration; they differ only if the winner died before taking office."
  },
  {
   "pair": "kalshi:KXPRESPERSON-28-DTRU~polymarket:561255",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Different people: Kalshi is Donald J. Trump and Polymarket is Ivanka Trump."
  },
  {
   "pair": "kalshi:KXPRESPERSON-28-GNEWS~polymarket:561230",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on Newsom winning the 2028 presidential election; Kalshi pays on the inauguration and Polymarket on the AP/Fox/NBC call (falling back to inauguration), a timing and edge-case caveat."
  },
  {
   "pair": "kalshi:KXPRESPERSON-28-KHAR~polymarket:561239",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if Kamala Harris wins the 2028 presidency. Caveat: Kalshi resolves on who is inaugurated in 2029, Polymarket on the AP/Fox/NBC call (falling back to the inauguration), so they split only if the winner-elect is not inaugurated."
  },
  {
   "pair": "kalshi:KXPRESPERSON-28-MKEL~polymarket:561279",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether Mark Kelly becomes President through the 2028 election. Caveat: Kalshi settles on the 2029 inauguration, while Polymarket settles on an AP/Fox/NBC race call and falls back to the inauguration."
  },
  {
   "pair": "kalshi:KXPRESPERSON-28-PBUT~polymarket:561232",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Pete Buttigieg becomes the 2028-election president; caveat: Kalshi keys on inauguration and Polymarket on the network race call (falling back to inauguration)."
  },
  {
   "pair": "kalshi:KXPRESPERSON-28-REMA~polymarket:561282",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Rahm Emanuel becomes the 2028-election president; caveat: Kalshi keys on inauguration while Polymarket keys on the AP/Fox/NBC call (falling back to inauguration), which diverge only if the president-elect is not inaugurated."
  },
  {
   "pair": "kalshi:KXPRESPERSON-28-RKHA~polymarket:561259",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if Ro Khanna wins the 2028 presidential election. Kalshi pays on the 2029 inauguration and Polymarket on the AP/Fox/NBC call, falling back to inauguration, which is only a timing caveat."
  },
  {
   "pair": "kalshi:KXPUTINZELMEET-29JAN01-27JAN01~polymarket:1301527",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi requires an in-person meeting, while Polymarket also counts a phone or video call, so a call alone would resolve Polymarket YES and Kalshi NO."
  },
  {
   "pair": "kalshi:KXQUEBECPREMIER-27JAN01-CFRE~polymarket:2133897",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether Christine Fréchette becomes the first Premier formally installed after the 2026 Quebec election, and interim premiers do not count. Caveat: the long-stops differ (Kalshi before Jan 1, 2027; Polymarket by June 30, 2027), but a Quebec government is normally formed within weeks of the election."
  },
  {
   "pair": "kalshi:KXQUEBECPREMIER-27JAN01-PSPP~polymarket:2133900",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if St-Pierre Plamondon is the first premier formally appointed after the 2026 Quebec election. Caveat: the cutoffs differ (before Jan 1, 2027 on Kalshi, June 30, 2027 on Polymarket), but that matters only if forming the government took more than about three months, which is not realistic in Quebec."
  },
  {
   "pair": "kalshi:KXRANKLISTFFRB-27-JLOVE4~polymarket:4159940",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi requires Love to be the #1 PPR running back, while Polymarket requires only a top-5 finish, so finishing 2nd through 5th resolves Polymarket YES and Kalshi NO."
  },
  {
   "pair": "kalshi:KXRATECUT-26DEC31~polymarket:616903",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays on at least one Fed cut in 2026. Polymarket pays only on exactly one 25 bps cut, so two or more cuts would split them."
  },
  {
   "pair": "kalshi:KXRATEHIKE-2026-1~polymarket:2657589",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi counts FOMC hikes as events ('exactly 1'). Polymarket counts 25bp increments, so a single 50bp hike is 1 on Kalshi (YES) and 2 on Polymarket (NO). A 50bp move is a standard, realistic Fed action."
  },
  {
   "pair": "kalshi:KXRECOGROC-29-27~polymarket:567621",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether the US formally recognizes the ROC. Polymarket asks whether China launches an invasion of Taiwan. These are unrelated predicates."
  },
  {
   "pair": "kalshi:KXSB-27-ATL~polymarket:1357372",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether Atlanta wins the Super Bowl played in Feb 2027 (Kalshi expects to resolve 2027-02-14; Polymarket has a March 31, 2027 deadline). Caveat: Polymarket resolves 'Other' if the game is cancelled or postponed past that date."
  },
  {
   "pair": "kalshi:KXSB-27-BAL~polymarket:1357373",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both ask whether Baltimore wins the 2027 NFL championship, the Super Bowl in Feb 2027 (Kalshi expects to resolve 2027-02-14; Polymarket's postponement cutoff is Mar 31, 2027); caveat: Polymarket resolves 'Other' if the game is postponed past Mar 31, 2027."
  },
  {
   "pair": "kalshi:KXSB-27-BUF~polymarket:1357374",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Kalshi's '2027 Pro Football Championship' and Polymarket's '2027 NFL league championship' are the same Feb 2027 Super Bowl, with the same team (Buffalo Bills); Polymarket's March 31 cancellation/'Other' clause is a caveat."
  },
  {
   "pair": "kalshi:KXSB-27-CHI~polymarket:1357376",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both are the Chicago Bears winning the same Feb 2027 Super Bowl; Chicago has only one NFL team."
  },
  {
   "pair": "kalshi:KXSB-27-CLE~polymarket:1357378",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Kalshi's 2027 Pro Football Championship (expected Feb 14, 2027) and Polymarket's 2027 NFL league championship (deadline Mar 31, 2027) are the same Super Bowl, and both ask whether Cleveland wins it."
  },
  {
   "pair": "kalshi:KXSB-27-DEN~polymarket:1357380",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both are the Denver Broncos winning the same Feb 2027 Super Bowl (Kalshi's Pro Football Championship, Polymarket's NFL league championship)."
  },
  {
   "pair": "kalshi:KXSB-27-DET~polymarket:1357381",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are the same Super Bowl (the Feb 2027 championship game), and both ask whether Detroit wins it."
  },
  {
   "pair": "kalshi:KXSB-27-JAC~polymarket:1357385",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both ask whether Jacksonville wins the Feb 2027 Super Bowl (the 2027 NFL championship); caveat: Polymarket resolves 'Other' on postponement past Mar 31, 2027."
  },
  {
   "pair": "kalshi:KXSB-27-KC~polymarket:1357386",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether Kansas City wins the Super Bowl played in Feb 2027. Caveat: Polymarket resolves 'Other' if the game is postponed past March 31, 2027."
  },
  {
   "pair": "kalshi:KXSB-27-MIN~polymarket:1357391",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if the Minnesota Vikings win the 2027 NFL championship game (the Super Bowl, Feb 2027). Caveat: Polymarket resolves 'Other' if the game is postponed past March 31, 2027."
  },
  {
   "pair": "kalshi:KXSB-27-NE~polymarket:1357392",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are the same Super Bowl (the Feb 2027 championship game), and both ask whether New England wins it."
  },
  {
   "pair": "kalshi:KXSB-27-NO~polymarket:1357393",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both cover the Saints winning the NFL championship game in early 2027 (Super Bowl LXI). Kalshi's 'Pro Football Championship' is the same contest as Polymarket's 'NFL league championship'."
  },
  {
   "pair": "kalshi:KXSB-27-SEA~polymarket:1357399",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are the same Super Bowl (the Feb 2027 championship game), and both ask whether Seattle wins it."
  },
  {
   "pair": "kalshi:KXSERIEA-27-MON~polymarket:2771212",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle on whether Monza is the 2026-27 Serie A champion. Caveat: Polymarket resolves 'Other' if the season is postponed past May 28, 2027."
  },
  {
   "pair": "kalshi:KXSNAPELECTIONTUR-27JAN01~polymarket:665484",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Turkey announces a snap election, while Polymarket asks whether Israel and Turkey clash militarily. They are unrelated events."
  },
  {
   "pair": "kalshi:KXSPANISHPM-27AUG22-AFEI~polymarket:2695686",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi's deadline is Aug 22, 2028 and requires the government to be formed after the next general election. Polymarket's deadline is Mar 31, 2028 and counts any next PM, for example one installed by a censure motion. A Feijóo investiture in April-August 2028 would split them."
  },
  {
   "pair": "kalshi:KXSPANISHPM-27AUG22-PSAN~polymarket:2695678",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "The deadlines differ: Kalshi allows until Aug 22, 2028, Polymarket only until Mar 31, 2028, and Spanish government formation has taken many months before. Polymarket's 'next PM' could also be installed by a no-confidence motion before the election, which Kalshi's post-election test would not count."
  },
  {
   "pair": "kalshi:KXSPANISHPM-27AUG22-SABA~polymarket:2695687",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi allows Abascal to become PM after the next general election up to Aug 22, 2028, while Polymarket requires him to be the next PM sworn in by Mar 31, 2028. If government formation is drawn out and he takes office in Apr-Aug 2028, Kalshi resolves YES and Polymarket does not."
  },
  {
   "pair": "kalshi:KXSTARSHIPFL-26JUN-27JAN01~polymarket:5091438",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether any Starship launches from Florida before 2027, while Polymarket asks whether Flight Test 15 launches from any pad by Nov 30, 2026. The predicate and the deadline both differ."
  },
  {
   "pair": "kalshi:KXTAIPEIMAYOR-26NOV28-CWAN~polymarket:3580932",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on Chiang Wan-an winning the Nov 28, 2026 Taipei mayoral election. Caveat: Polymarket resolves to Other if no result is known by Jun 30, 2027."
  },
  {
   "pair": "kalshi:KXTAIWANLOCAL-26NOV28-KMT~polymarket:814612",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on whether the KMT wins the most mayor and magistrate races in Taiwan's 2026 local elections. Caveat: Polymarket counts only officially nominated candidates and excludes independents, which Kalshi's excerpt does not spell out."
  },
  {
   "pair": "kalshi:KXTIME-26-ZOH~polymarket:2363844",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Zohran Mamdani is TIME's 2026 Person of the Year; Polymarket's extra rule counting a person 'directly associated' with a named group or concept is an edge-case caveat."
  },
  {
   "pair": "kalshi:KXTLAXGOV-27JUN06-FMHH~polymarket:3357693",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Same 2027 Tlaxcala governor election, but the Kalshi contract is on Floria María Hernández Hernández and the Polymarket contract is on Adriana Dávila Fernández."
  },
  {
   "pair": "kalshi:KXTOPAI-27-JAN01-BAID~polymarket:2431425",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays YES if Baidu holds a #1-ranked model at any point before Jan 1, 2027. Polymarket checks only whether Baidu is top of the LMArena leaderboard at noon ET on Dec 31, 2026."
  },
  {
   "pair": "kalshi:KXTOPAI-27-JAN01-MOON~polymarket:2431419",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays if Moonshot holds a #1-ranked model at any time before 2027. Polymarket checks only a single snapshot of the LMArena leaderboard on Dec 31, 2026."
  },
  {
   "pair": "kalshi:KXTRADEDEALCUBA-27-B260801~polymarket:1107878",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks about a US-Cuba trade deal before Aug 1, 2026. Polymarket asks about a US military invasion of Cuba in 2026."
  },
  {
   "pair": "kalshi:KXTRILATERAL-29JAN20-27JAN01~polymarket:2364958",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks about a Trump-Zelenskyy-Putin trilateral meeting, while Polymarket asks whether the next Trump-Putin meeting takes place in the United States. The participants and the predicate (location) differ."
  },
  {
   "pair": "kalshi:KXTRUMPADMINLEAVE-26DEC31-SBES~polymarket:666661",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether Bessent leaves the Treasury Secretary role. Polymarket asks whether he leaves the administration entirely and counts an announcement before year-end, so a move to another administration post or a December announcement taking effect in 2027 would resolve the two differently."
  },
  {
   "pair": "kalshi:KXTRUMPCHINA-26SEP25-DEC01~polymarket:567621",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks whether Trump visits China before Dec 1, 2026, while Polymarket asks whether China invades Taiwan by end-2026, which are unrelated events."
  },
  {
   "pair": "kalshi:KXTRUMPMEETING-27JAN01-NVPUT~polymarket:666608",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES on an in-person Trump-Putin meeting that ends by Dec 31, 2026. Caveat: Kalshi counts from its issuance date while Polymarket counts from Jan 1, 2026, and Polymarket requires direct interaction."
  },
  {
   "pair": "kalshi:KXTRUMPPARDON-27JAN01-EHOL~polymarket:687688",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both pay on a Trump pardon, commutation or reprieve for Elizabeth Holmes through Dec 31, 2026. Caveat: Kalshi's window starts at the beginning of Trump's second term and Polymarket's starts Nov 17, 2025, but that earlier stretch is already in the past and both markets are still open."
  },
  {
   "pair": "kalshi:KXTRUMPPARDON-27JAN01-SBF~polymarket:687670",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Trump grants SBF a pardon, commutation or reprieve by Dec 31, 2026. Caveat: Kalshi's window starts at the beginning of the second term and Polymarket's on Nov 17, 2025, but no SBF clemency happened in that early gap (both markets are still open), so the future YES condition is the same."
+ },
+ {
+  "pair": "kalshi:KXUCL-27-ATM~polymarket:2772179",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Kalshi's 'Atletico' (ticker ATM) is Atlético Madrid, so both resolve YES if Atlético Madrid wins the 2026-27 UEFA Champions League."
+ },
+ {
+  "pair": "kalshi:KXUCL-27-BAR~polymarket:2772176",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Barcelona wins the 2026-27 UEFA Champions League. Same subject, competition and season."
+ },
+ {
+  "pair": "kalshi:KXUCL-27-BVB~polymarket:2772182",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if and only if Borussia Dortmund wins the 2026-27 UEFA Champions League. Caveat: Polymarket's listed close is May 30, which is before the expected final, but its rules allow resolution through a June 19, 2027 postponement cutoff, so the YES condition is the same."
+ },
+ {
+  "pair": "kalshi:KXUCL-27-COM~polymarket:2772175",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Como wins the 2026-27 UEFA Champions League. Only the settlement timing differs."
+ },
+ {
+  "pair": "kalshi:KXUCL-27-MUN~polymarket:2772170",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Manchester United wins the 2026-27 UEFA Champions League. Polymarket's listed close of May 30 is metadata, and its rules allow until June 19, so it is only a timing caveat."
+ },
+ {
+  "pair": "kalshi:KXUCL-27-PSV~polymarket:2772187",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if PSV Eindhoven wins the 2026-27 UEFA Champions League. The close times and postponement handling differ slightly, which is only a caveat."
+ },
+ {
+  "pair": "kalshi:KXUCL-27-RMA~polymarket:2772177",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Real Madrid wins the 2026-27 UEFA Champions League. The close times and postponement handling differ slightly, which is only a caveat."
+ },
+ {
+  "pair": "kalshi:KXUCL-27-SHA~polymarket:2772194",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Shakhtar Donetsk wins the 2026-27 UEFA Champions League. 'Shakhtar' and 'Shakhtar Donetsk' are the same team. Polymarket's June 19, 2027 postponement cutoff is a caveat."
  },
  {
   "pair": "kalshi:KXUCLROUND-27QUAR-RMA~polymarket:4175601",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve YES if Real Madrid qualifies for, or reaches, the 2026-27 (2027) Champions League quarterfinals; Polymarket's April 30 cancellation-to-No clause is a caveat."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-BEL~polymarket:4409281",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if and only if Belgium wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027, while Kalshi's close date is later."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-DEN~polymarket:4409292",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if and only if Denmark wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the final is postponed past June 13, 2027."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-ENG~polymarket:4409289",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if and only if England wins the 2026-27 UEFA Nations League. The only difference is Polymarket's postponement cutoff (June 13, 2027), which is a caveat."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-ESP~polymarket:4409287",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Same subject (Spain), same predicate (win the 2026-27 UEFA Nations League) and a compatible source. The only differences are edge-case postponement and timing caveats."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-FRA~polymarket:4409279",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if and only if France wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the final is postponed past June 13, 2027."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-GER~polymarket:4409283",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Germany wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-GRE~polymarket:4409286",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Same subject (Greece), same predicate (win the 2026-27 UEFA Nations League) and a compatible UEFA source. The only differences are Polymarket's June 13 cutoff for postponement and its early-NO-on-elimination clause, which are caveats."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-ITA~polymarket:4409280",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Italy wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-NED~polymarket:4409284",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both pay YES only if the Netherlands wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-NOR~polymarket:4409293",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Norway wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-POR~polymarket:4409291",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both pay YES only if Portugal wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027."
+ },
+ {
+  "pair": "kalshi:KXUEFANL-27-TUR~polymarket:4409282",
+  "verdict": "equivalent",
+  "source": "llm-audit: one judge (research/audit3)",
+  "note": "Both resolve YES if Türkiye wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027."
  },
  {
   "pair": "kalshi:KXUEL-27-TOR~polymarket:4566922",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks whether Torreense wins the Europa League. Polymarket asks whether they finish 9th-24th in the league phase."
  },
  {
   "pair": "kalshi:KXUSAIRANAGREEMENT-27-26DEC~polymarket:3491438",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays if the US has 'agreed to, signed, or accepted' any new nuclear deal. Polymarket needs a qualifying 'final deal' instrument signed or formally adopted by both sides, so a US agreement in principle before mutual signing splits them. The June 14 framework already announced shows that scenario is realistic."
  },
  {
   "pair": "kalshi:KXUSAIRANAGREEMENT-27-26OCT~polymarket:2668006",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays for any new US-Iran nuclear deal before Oct 1, 2026. Polymarket needs a signed deal that includes uranium downblending, with a Dec 31, 2026 deadline."
  },
  {
   "pair": "kalshi:KXUSAIRANAGREEMENT-27-26SEP~polymarket:2668005",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi asks about any new US-Iran nuclear deal before Sep 1, 2026, while Polymarket needs a deal with Iran reconstruction funding by Dec 31, 2026, so the predicate and the date both differ."
  },
  {
   "pair": "kalshi:KXUSAIRANAGREEMENT-27~polymarket:2696747",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: judge and skeptic agree (research/audit)",
   "note": "Kalshi pays YES if the US has 'agreed to, signed, or accepted' a new nuclear deal, while Polymarket needs a 'final deal' written instrument mutually signed or adopted by both sides, so an agreement in principle (or the June 14, 2026 framework) could resolve Kalshi YES and Polymarket NO."
  },
  {
   "pair": "kalshi:KXUSCANADATARIFFDOWN-26SEP21-NOV01~polymarket:3900266",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi resolves YES on any unilateral presidential action that lowers Canada tariffs, while Polymarket requires a diplomatic agreement with Canada. A unilateral cut would make Kalshi YES and Polymarket NO."
  },
  {
   "pair": "kalshi:KXUSIRANMEETING-27-26NOV01~polymarket:4867451",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both ask for a senior-level US-Iran diplomatic meeting by the same deadline (before Nov 1 is the same as by Oct 31, 11:59 PM ET). Caveat: Polymarket explicitly counts indirect meetings, Kalshi's excerpt is silent on that, and the two count from different start points (Issuance vs market creation)."
  },
  {
   "pair": "kalshi:KXWINNIPEGMAYOR-26OCT28-BGRO~polymarket:1812608",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "These are different candidates (Brad Gross vs Brad Bradford) in different cities' mayoral races (Winnipeg vs Toronto)."
  },
  {
   "pair": "kalshi:SENATEFLS-26-D~polymarket:631044",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether the Democrat wins the 2026 Florida Senate special election (Kalshi's ticker is FLS). Caveat: Kalshi's template text says 'term beginning in 2027', but a special-election winner fills the remaining term and would likely be sworn in during late 2026. Taken literally, the rule is sloppy, though the intent is the same race."
  },
  {
   "pair": "kalshi:SENATEFLS-26-R~polymarket:631045",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit)",
+  "source": "llm-audit: one judge (research/audit)",
   "note": "Both resolve on whether a Republican wins Florida's 2026 US Senate special election. Caveat: Kalshi pays on swearing-in, and its wording \"term beginning in 2027\" is loose for a special election, but the YES condition is the same in practice."
  },
  {
   "pair": "kalshi:SENATEIA-26-R~polymarket:630734",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on whether the Republican wins the 2026 Iowa U.S. Senate seat. Caveat: Kalshi settles on the swearing-in and Polymarket on the election result."
  },
  {
   "pair": "kalshi:SENATEKS-26-R~polymarket:630747",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both ask whether the Republican wins the 2026 Kansas Senate race, a regular election for the term beginning in 2027. Caveat: Kalshi settles on the swearing-in, Polymarket on the election winner."
  },
  {
   "pair": "kalshi:SENATEMI-26-R~polymarket:630806",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on whether the Republican wins the 2026 Michigan U.S. Senate seat. Caveat: Kalshi settles on the swearing-in for the 2027 term and Polymarket on the election result."
  },
  {
   "pair": "kalshi:SENATENC-28-D~polymarket:5347191",
   "verdict": "not_equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: judge and skeptic agree (research/audit2)",
   "note": "Kalshi asks about the 2028 North Carolina Senate race (Democratic win). Polymarket asks whether North Carolina enacts a data-center moratorium. Unrelated."
  },
  {
   "pair": "kalshi:SENATEOHS-26-D~polymarket:631057",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on the Democrat winning the 2026 Ohio U.S. Senate special election. Caveat: Kalshi pays on swearing-in and its rules say the term begins in 2027 (odd wording for a special election), while Polymarket pays on the race call and excludes independents."
  },
  {
   "pair": "kalshi:SENATESC-26-D~polymarket:630924",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both resolve on a Democrat winning the 2026 South Carolina U.S. Senate race. Caveat: Kalshi pays on swearing-in for the 2027 term, Polymarket on the race call, and Polymarket excludes independents."
  },
  {
   "pair": "kalshi:SENATESC-26-R~polymarket:630925",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are party-level contracts on whether the Republican wins South Carolina's 2026 Senate seat; the candidate name is only a label. Caveat: Kalshi uses swearing-in, Polymarket uses the election winner."
  },
  {
   "pair": "kalshi:SENATESD-26-R~polymarket:630938",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both are YES if the Republican wins the 2026 South Dakota Senate seat. Caveat: Kalshi uses the swearing-in for the 2027 term and Polymarket uses the election winner (including run-offs), which differ only in edge cases like death before taking office."
  },
  {
   "pair": "kalshi:SENATETX-26-D~polymarket:630963",
   "verdict": "equivalent",
-  "source": "llm-audit: 2 independent judges (research/audit2)",
+  "source": "llm-audit: one judge (research/audit2)",
   "note": "Both settle YES if the Democrat wins the 2026 Texas U.S. Senate seat. Kalshi pays when the Democrat is sworn in for the 2027 term and Polymarket pays on the Democratic nominee's election win, which is only a timing caveat."
  }
 ]

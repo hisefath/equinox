@@ -114,7 +114,9 @@ snapshot reads while a venue refresh is stuck and asserts they finish in under 5
 | **Timeouts everywhere** | `context.WithTimeout` per venue refresh; `http.Client.Timeout` per request | A hung venue cannot hold up the system |
 | **Bounded retries with exponential backoff** | `fetch.Client` | Retries only network errors, 429 and 5xx. Honours `Retry-After` (Kalshi doesn't send one; Polymarket throttles rather than rejecting). Never retries malformed JSON or 4xx |
 | **Client-side rate limiting** | `fetch.Client.Interval` | Kalshi at 10 req/s (its anonymous budget behaves like the Basic tier of about 20 req/s). Gamma at 20 req/s (documented 300 per 10 s) |
-| **Bulkheads** | One goroutine and one deadline per venue | Kalshi failing cannot fail Polymarket |
+| **Bulkheads** | One goroutine and one deadline per venue; book batches fetched independently | Kalshi failing cannot fail Polymarket; one failed book batch keeps the rest |
+| **Bounded pagination** | Adapters stop if a cursor doesn't advance | A misbehaving API can't make a refresh loop until its deadline |
+| **Graceful shutdown** | `serve` handles SIGTERM (Cloud Run) and Ctrl-C | In-flight requests finish; background loops stop cleanly |
 | **Last-known-good + health** | `ingest.Store` | A failed refresh keeps old data and marks the venue unhealthy, so the router excludes it with the reason |
 | **Staleness bounds** | `route.Policy.MaxBookAge` | Old books are excluded rather than trusted |
 | **Validate at the boundary** | Adapters parse each record defensively (times as strings, list fields in either encoding); `Book.Normalize` / `Validate` | One malformed record costs that record, not the page |
@@ -122,11 +124,13 @@ snapshot reads while a venue refresh is stuck and asserts they finish in under 5
 ### 3.6 Batching and scoping
 
 - **Books are fetched in batches:** Kalshi `GET /markets/orderbooks` takes 100 tickers per call and
-  Polymarket `POST /books` takes 500 tokens. Books for all 646 matched markets take about 4 HTTP calls.
+  Polymarket `POST /books` takes 500 tokens. Books for 374 pairs (748 markets) take 5 calls: 4 Kalshi
+  GETs and 1 Polymarket POST. A failed batch doesn't stop the others.
 - **Books are fetched only for matched markets.** There is no reason to price a market that has no
   equivalent elsewhere.
-- **Ingestion is scoped.** Polymarket lists about 257k open order-book markets (verified), so Equinox
-  takes the 3,000 most-traded by 24-hour volume. Liquidity is where routing matters.
+- **Ingestion is scoped.** Polymarket lists a very large number of open order-book markets (a
+  verification crawl estimated about 257k), so Equinox takes the 3,000 most-traded by 24-hour volume.
+  Liquidity is where routing matters.
 
 ## 4. The matcher: record linkage under a precision constraint
 
@@ -136,9 +140,9 @@ classic pipeline:
 | Stage | Technique | Why |
 |---|---|---|
 | Normalize | Lowercase, fold accents, venue-specific phrasing → canonical tokens ("Pro Baseball Championship" → "mlb championship", "25bps" → "25 bp"), a light stemmer, team-alias resolution (Kalshi writes cities, Polymarket nicknames) | The two venues name the same thing differently by policy. Kalshi avoids league trademarks |
-| Block | Inverted index on *rare* tokens only (document frequency ≤ 5%) | Turns a 56,776 × 3,396 ≈ 193M comparison space into about 98k scored candidates |
+| Block | Inverted index on *rare* tokens only (document frequency ≤ 5%) | Turns a 56,776 × 3,390 ≈ 192M comparison space into about 1.2M scored candidates, of which about 91k clear the similarity floor and reach the vetoes |
 | Score | TF-IDF cosine, with outcome-label tokens weighted double | A standard, explainable similarity; it outperforms edit distance on names (Cohen et al. 2003) |
-| **Veto** | 20 kinds of structural contradiction: thresholds, comparator shape, dates, oracles, teams, scopes, ranks, modifiers… | Text similarity is blind to "above 2.4%" vs "exactly 2.4%". This is where precision comes from |
+| **Veto** | 18 rules for structural contradictions: thresholds, comparator shape, dates, oracles, teams, ranks, modifiers, and 9 scope groups… | Text similarity is blind to "above 2.4%" vs "exactly 2.4%". This is where precision comes from |
 | Assign | Greedy one-to-one per venue pair with total-order tie-breaks | Stops one Polymarket bucket matching three Kalshi strikes |
 | Tier | `equivalent` (routable) vs `review` (not) | A confidence boundary the router respects |
 | Review | Reviewed mapping table (`reviews/pairs.json`) | Humans (or an offline LLM audit) confirm or block pairs. With `-require-review`, only confirmed pairs route |
@@ -154,7 +158,8 @@ runtime path (see [`AI_USAGE_LOG.md`](../AI_USAGE_LOG.md)).
 
 **The measured tradeoff.**
 - On the hand-labelled set the matcher scores precision 1.000 and recall 0.844.
-- On live data, independent audits measured **0.87 precision out of sample** for the `equivalent` tier.
+- On live data, independent audits measured **0.88 precision out of sample** (124/141) for the
+  `equivalent` tier.
   The remaining errors are mostly differences that live in the rules prose (announce vs complete,
   first round vs runoff, different deadline windows).
 
@@ -204,6 +209,8 @@ All of these are listed in the assumptions register.
 - No market impact, queue position or latency model.
 - Per-order fee rounding is applied after allocation, so split mode can over-estimate fees by under 1¢
   per venue.
+- Each decision names the rule that picked the venue: more contracts filled, lower all-in cost (with the
+  saving), or a tie broken by venue id. A tie therefore can't hide a systematic preference.
 - Kalshi's structured strike fields (`strike_type`, `floor_strike`) are not used by the matcher, which
   reads `yes_sub_title` text instead. That keeps the matcher venue-agnostic, at the cost of re-deriving
   comparators from text.
@@ -233,12 +240,18 @@ Production would add metrics (OpenTelemetry/Prometheus) and alerts on venue heal
 | End to end | Full pipeline on the committed live recording: ingest → match → books → route, with determinism checked on real books |
 | Live audits | Two independent audits of live matches (stratified samples, two judges per disputed pair), in-sample and out-of-sample. See [`TEST_RESULTS.md`](TEST_RESULTS.md) |
 
-Two real defects were caught this way and are worth knowing about:
+Real defects caught this way, worth knowing about:
 1. **Non-deterministic matching.** TF-IDF norms were summed in Go's randomized map order, and near-tied
    scores flipped between runs. Fixed by summing in sorted key order; three consecutive runs are now
    byte-identical.
 2. **A regex that swallowed adjacent numbers.** `"1 (25 bps)"` parsed as `{1}` instead of `{1, 25}`.
    It was found while investigating an audited false positive.
+3. **Thousands separators and season labels** (found in the final review). `"$1,000"` and
+   `"$1,000,000"` both reduced to `{0, 1}`, and `"2026-27"` read as a numeric range. Each is now parsed
+   correctly and has a test.
+4. **Polymarket book timestamps** (final review). The venue's `timestamp` is the book's last *change*, so
+   quiet books looked stale and routing was biased toward Kalshi. Books are now stamped with receipt
+   time.
 
 ## 8. Deployment model
 
@@ -246,6 +259,7 @@ There is one static binary in a distroless image. `serve` runs ingestion loops i
 answers from memory. On **Cloud Run**:
 - **CPU must be always allocated** (`--no-cpu-throttling`). Otherwise background goroutines starve
   between requests and books go stale.
+- SIGTERM is handled, so scale-down drains in-flight requests.
 - **`--min-instances=1`**, so state survives without traffic.
 - **`--max-instances=1`**, because each instance holds its own snapshot and decisions could otherwise
   differ between instances.
@@ -267,5 +281,5 @@ The full journal, with pros and cons for every decision, is kept locally in `DEC
 | Review tier + reviewed mapping table | Trust the matcher | Measured precision is 0.87, not 1.0 | A human or offline process in the loop |
 | Router as a pure function | Router with access to clients/state | Deterministic and testable; cannot block | The caller must assemble quotes |
 | Fees as a curve (data) | Fee interface per venue; venue switch | No venue knowledge in the router | Only fee shapes that fit the formula |
-| Batch book fetch for matched markets only | Per-market GETs; all markets | 4 calls instead of about 650; rate-limit friendly | Replay recordings depend on the batch composition |
+| Batch book fetch for matched markets only | Per-market GETs; all markets | 5 calls instead of about 750; rate-limit friendly | Replay recordings depend on the batch composition |
 | Record/replay transport | Mocks; live-only tests | Real data, offline, deterministic tests and demo | About 11 MB of gzipped fixtures in the repo |

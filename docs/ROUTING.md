@@ -36,10 +36,15 @@ build enforces the last point (`TestRouteIsVenueAgnostic`).
    - market not tradable: closed, awaiting resolution, or an unknown fee schedule;
    - untrusted book: empty, crossed, or no timestamp;
    - stale book: `now − AsOf > MaxBookAge`;
+   - book timestamp more than 5 s in the future;
    - no offers on the side being bought;
    - best ask above the limit;
    - fillable size below the venue's minimum order (Polymarket: 5 shares);
-   - duplicate quote for the same market.
+   - conflicting quotes: two quotes for the same market. Both are excluded, so the decision can't depend
+     on which arrived first.
+
+   A policy whose `MaxBookAge` is not positive rejects the whole decision, so staleness checking can't be
+   switched off by accident.
 4. **Simulate each eligible venue on its own.** Walk the asks best-first up to the quantity and the
    limit. For each price level, `notional += price × qty` and `fee += FeeCurve.Fee(price, qty)`
    (exact to the micro-dollar). The summed fee is then rounded once per order the way the venue
@@ -47,7 +52,10 @@ build enforces the last point (`TestRouteIsVenueAgnostic`).
    `all-in per contract = (notional + fee) / qty`, rounded up.
 5. **Pick the best single venue.** Rank by (a) most contracts filled, (b) lowest all-in cost per contract,
    compared exactly by cross-multiplication (`total_a × qty_b` vs `total_b × qty_a`, no division), then
-   (c) venue id and (d) market id.
+   (c) venue id and (d) market id. The decision states **which of these rules separated the winner from
+   the runner-up**: e.g. "lowest all-in cost including fees: 0.913276 vs 0.9148 per contract, saving
+   0.1524 on 100 contracts", or "fills 300 contracts, 200 more than the next best", or a tie broken by
+   venue id.
 6. **Split, if allowed and more than one venue is eligible.** Build a consolidated book from every
    eligible level of every venue, each level keyed by its fee-inclusive price for a 1M-contract reference
    size. Fill greedily. If a venue's share falls below its minimum order size, drop that venue and fill
@@ -89,33 +97,46 @@ Fee rebates (maker rebates, Polymarket's taker-rebate tiers) are paid after the 
 
 | Choice | Reason |
 |---|---|
-| Rank by **all-in cost**, not headline price | A cheaper price can lose to fees, as in `TestFeesCanFlipTheDecision` and in the live Iowa Senate example below. Best-execution rules call this "total consideration" |
+| Rank by **all-in cost**, not headline price | A cheaper price can lose to fees, as in `TestFeesCanFlipTheDecision` and the live Mississippi Senate example below (16 of the recorded pairs flip this way at 100 contracts). Best-execution rules call this "total consideration" |
 | Prefer a **full fill** over a cheaper partial | An order that leaves inventory unfilled is not the same trade |
 | **Split only when it strictly helps** | Every child order adds execution risk. "Same cost, more orders" is not an improvement |
 | **Exclude, don't guess** | Stale, crossed or unhealthy data is excluded with a reason, never repaired |
 | **Integer money, sorted inputs, total-order tie-breaks** | Byte-identical decisions on any machine. Verified by running permutations and repetitions (`TestDeterministic`), and on real recorded books in the end-to-end test |
-| **Decision id = hash of inputs** | An auditor can show two decisions saw identical inputs, or replay logged inputs |
+| **Decision id = hash of inputs** | Equal ids prove equal inputs. Re-running on the same recorded snapshot reproduces the id. The log stores the decision and match evidence, not the full books, so verifying an id needs the recording |
 
 ## 5. Explanations and the decision log
 
-Every decision explains itself in plain English. Here is a real decision on recorded live books
-(2026-10-06 04:46 UTC), routing a 2,000-contract YES order for "Republicans win the Iowa Senate race":
+Every decision explains itself in plain English. These are real decisions on recorded live books
+(2026-10-06 05:33 UTC).
+
+**Fees flip the decision.** Pair 23 is "Republicans win the Mississippi Senate race". Kalshi has the
+cheaper ask ($0.909 vs $0.91), but its fee is larger, so Polymarket wins on all-in cost:
 
 ```
-Decision e90dca203225521a: FILLED
-  - order: BUY 2000 yes at market, split allowed, max book age 30s
+Decision 7ddfd42300f82ba1: FILLED
+  - order: BUY 100 yes at market, split off, max book age 30s
+  - kalshi/SENATEMS-26-R: eligible; alone fills 100 at all-in 0.9148/contract (fees 0.58)
+  - polymarket/631018: eligible; alone fills 100 at all-in 0.913276/contract (fees 0.3276)
+  - route 100 to polymarket/631018: notional 91.00 + fees 0.3276 = 91.3276 (all-in 0.913276/contract, worst price 0.91)
+  - next best: kalshi/SENATEMS-26-R at all-in 0.9148/contract for 100
+  - why polymarket/631018: lowest all-in cost including fees: 0.913276 vs 0.9148 per contract, saving 0.1524 on 100 contracts
+  - result: filled 100/100 contracts, total 91.3276, all-in 0.913276/contract
+```
+
+**Price beats fees.** Pair 26 is "Republicans win the Iowa Senate race", 2,000 contracts with splitting
+allowed. Kalshi's fee is almost twice Polymarket's ($34.32 vs $19.49), but its price is a cent lower, so
+Kalshi still wins, by about 0.26¢ per contract:
+
+```
+Decision 5c7e7694477187a2: FILLED
   - kalshi/SENATEIA-26-R: eligible; alone fills 2000 at all-in 0.58716/contract (fees 34.32)
   - polymarket/630734: eligible; alone fills 2000 at all-in 0.589744/contract (fees 19.488)
   - split considered; no improvement over best single venue, keeping one child order
-  - route 2000 to kalshi/SENATEIA-26-R: notional 1140.00 + fees 34.32 = 1174.32 (all-in 0.58716/contract, worst price 0.57)
-  - next best: polymarket/630734 at all-in 0.589744/contract for 2000
-  - result: filled 2000/2000 contracts, total 1174.32, all-in 0.58716/contract
+  - why kalshi/SENATEIA-26-R: lowest all-in cost including fees: 0.58716 vs 0.589744 per contract, saving 5.168 on 2000 contracts
 ```
 
-Kalshi's fee is almost twice Polymarket's here ($34.32 vs $19.49), but its price is a cent lower, and the
-all-in comparison still favours Kalshi, by about 0.26¢ per contract. A second example on the same
-recording goes the other way. Buying NO on "Fed hikes 25 bp in January 2027" with a $0.70 limit routes
-to Polymarket at an all-in $0.65152, against Kalshi's $0.671867.
+Buying NO on "Fed hikes 25 bp in January 2027" (pair 4) with a $0.70 limit routes to Polymarket at an
+all-in $0.65152, against Kalshi's $0.671867.
 
 Each decision is appended to `decisions.jsonl` (CLI `-log`, default `data/decisions.jsonl`) as one JSON
 line containing:
@@ -144,6 +165,7 @@ Routing only makes sense between equivalent markets, so the caller (`cmd/equinox
   fill-probability model (cf. Cont & Kukanov's optimal order placement).
 - Per-order fee rounding is applied after allocation, so the split ranking uses unrounded marginal fees
   (the error is under 1¢ per venue).
-- No settlement or capital-lock-up penalty: Kalshi pays at certification, Polymarket on the race call.
+- No settlement or capital-lock-up penalty: Kalshi pays when the winner is sworn in, Polymarket on the race
+  call.
   This is surfaced as a match caveat; a desk could turn it into a per-venue bps cost in `Policy`.
 - No risk limits, position netting or venue credit limits.

@@ -1,0 +1,804 @@
+{
+ "snapshot_local": "2026-10-05 22:53-22:55 CDT",
+ "snapshot_utc": "2026-10-06T03:53Z..03:55Z",
+ "note": "Pages are byte-identical API responses, gzip -9. Kalshi: all 60 pages fetched. Polymarket: 60 pages fetched (6000 events, 102,968 nested markets, 405MB raw); only the 15 pages that contain a labelled pair are kept to stay under the ~25MB fixture budget.",
+ "kalshi": [
+  {
+   "file": "kalshi/kalshi_events_p000.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200",
+   "events": 200,
+   "markets": 1782
+  },
+  {
+   "file": "kalshi/kalshi_events_p001.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8NbyhgcSEEtYTkNBQUZURlVULTMwS1U",
+   "events": 200,
+   "markets": 967
+  },
+  {
+   "file": "kalshi/kalshi_events_p002.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8O_t9wYSEUtYU0lOTkVSRklOSVNILTI5",
+   "events": 200,
+   "markets": 1578
+  },
+  {
+   "file": "kalshi/kalshi_events_p003.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8NqI6QYSHEtYT1BFTkFJQU5PVEhFUk1JTExFTk5JVU0tMjg",
+   "events": 200,
+   "markets": 2133
+  },
+  {
+   "file": "kalshi/kalshi_events_p004.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8MLe6AYSEEtYQ0xBVURFLUNMQVVERTY",
+   "events": 200,
+   "markets": 1225
+  },
+  {
+   "file": "kalshi/kalshi_events_p005.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8NSs5gYSFktYTUlEVEVSTVZPVEVUVVJOLU5ZMjM",
+   "events": 200,
+   "markets": 1125
+  },
+  {
+   "file": "kalshi/kalshi_events_p006.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8NSs5gYSFktYTUlEVEVSTVZPVEVUVVJOLUdBMTE",
+   "events": 200,
+   "markets": 1254
+  },
+  {
+   "file": "kalshi/kalshi_events_p007.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8NSs5gYSEktYTUlEVEVSTU1PVi1UWDMzRA",
+   "events": 200,
+   "markets": 1501
+  },
+  {
+   "file": "kalshi/kalshi_events_p008.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8NSs5gYSEktYTUlEVEVSTU1PVi1ORTAxUg",
+   "events": 200,
+   "markets": 1555
+  },
+  {
+   "file": "kalshi/kalshi_events_p009.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8NSs5gYSEktYTUlEVEVSTU1PVi1GTDE2Ug",
+   "events": 200,
+   "markets": 1492
+  },
+  {
+   "file": "kalshi/kalshi_events_p010.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI4Lis5gYSE0tYTUlEVEVSTU1PVi1NSUdPVlI",
+   "events": 200,
+   "markets": 2101
+  },
+  {
+   "file": "kalshi/kalshi_events_p011.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI4Lu34gYSEEtYRi0yN0FQUlVTU0FMRVM",
+   "events": 200,
+   "markets": 3560
+  },
+  {
+   "file": "kalshi/kalshi_events_p012.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI0PTC4AYSCktYV1RBLTI3Rk8",
+   "events": 200,
+   "markets": 2884
+  },
+  {
+   "file": "kalshi/kalshi_events_p013.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI4L_83gYSD0tYTkJBV0lOUy0yN0JLTg",
+   "events": 200,
+   "markets": 3578
+  },
+  {
+   "file": "kalshi/kalshi_events_p014.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI4LC53QYSG0tYTkJBSEFMTE9GRkFNRS0yN0lORFVDVEVFUw",
+   "events": 200,
+   "markets": 3392
+  },
+  {
+   "file": "kalshi/kalshi_events_p015.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI0LHD3AYSE0tYQ1JXVi0yNk5PVkNFTlRFUlM",
+   "events": 200,
+   "markets": 1815
+  },
+  {
+   "file": "kalshi/kalshi_events_p016.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8KXM2wYSFktYTkZMTVZQU1BFQ0lBTFMtMjdESVY",
+   "events": 200,
+   "markets": 3038
+  },
+  {
+   "file": "kalshi/kalshi_events_p017.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8Jj92gYSEEtYTkZMU0VFRC0yN05GQzY",
+   "events": 200,
+   "markets": 4825
+  },
+  {
+   "file": "kalshi/kalshi_events_p018.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI0Li22gYSD0tYTkZMV0lOUy0yN1NFQQ",
+   "events": 200,
+   "markets": 2089
+  },
+  {
+   "file": "kalshi/kalshi_events_p019.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8LmO2gYSDktYQVRUWUdFTk9LLTI2",
+   "events": 200,
+   "markets": 1053
+  },
+  {
+   "file": "kalshi/kalshi_events_p020.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIkKDv2QYSE0tYSE9VU0VSQUNFLVdBMDctMjY",
+   "events": 200,
+   "markets": 402
+  },
+  {
+   "file": "kalshi/kalshi_events_p021.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIkKDv2QYSE0tYSE9VU0VSQUNFLUtZMDUtMjY",
+   "events": 200,
+   "markets": 489
+  },
+  {
+   "file": "kalshi/kalshi_events_p022.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8Ofu2QYSDktYSE9VU0VUWDM1LTI2",
+   "events": 200,
+   "markets": 1890
+  },
+  {
+   "file": "kalshi/kalshi_events_p023.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8MTp2QYSHUtYVk9URUdFTkVSQUwtU0VOQVRFREUtMjZDQ09P",
+   "events": 200,
+   "markets": 1700
+  },
+  {
+   "file": "kalshi/kalshi_events_p024.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8MTp2QYSJUtYVk9URUdFTkVSQUwtS1hIT1VTRVJBQ0UtU0MwMS0yNk1FTEw",
+   "events": 200,
+   "markets": 1740
+  },
+  {
+   "file": "kalshi/kalshi_events_p025.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8MTp2QYSJUtYVk9URUdFTkVSQUwtS1hIT1VTRVJBQ0UtTU8wMy0yNkJPTkQ",
+   "events": 200,
+   "markets": 1762
+  },
+  {
+   "file": "kalshi/kalshi_events_p026.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8MTp2QYSJUtYVk9URUdFTkVSQUwtS1hIT1VTRVJBQ0UtRkwxOC0yNlNGUkE",
+   "events": 200,
+   "markets": 1731
+  },
+  {
+   "file": "kalshi/kalshi_events_p027.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8MTp2QYSHktYVk9URUdFTkVSQUwtSE9VU0VQQTEwLTI2U1BFUg",
+   "events": 200,
+   "markets": 1778
+  },
+  {
+   "file": "kalshi/kalshi_events_p028.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8MTp2QYSD0tYQklHU0tZT1BFTi0yNw",
+   "events": 200,
+   "markets": 1378
+  },
+  {
+   "file": "kalshi/kalshi_events_p029.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8P7e2QYSDEtYT1BVUzQ4WS0yNw",
+   "events": 200,
+   "markets": 959
+  },
+  {
+   "file": "kalshi/kalshi_events_p030.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8P7e2QYSEUtYQ0FSUk9VVC0yN0pBTjAx",
+   "events": 200,
+   "markets": 1754
+  },
+  {
+   "file": "kalshi/kalshi_events_p031.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8NvZ2QYSEktYVE9UQUxBTEJFUVVJVi0yNg",
+   "events": 200,
+   "markets": 5362
+  },
+  {
+   "file": "kalshi/kalshi_events_p032.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8NvZ2QYSEUtYR0FNRUFXQVJEUy1CTVVM",
+   "events": 200,
+   "markets": 2483
+  },
+  {
+   "file": "kalshi/kalshi_events_p033.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8KuF2QYSFktYQ09MTElOQ09VTlRZSlVER0UtMjY",
+   "events": 200,
+   "markets": 3155
+  },
+  {
+   "file": "kalshi/kalshi_events_p034.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8MG72AYSD0tYSFVSQ0FULTI2Tk9MTw",
+   "events": 200,
+   "markets": 2688
+  },
+  {
+   "file": "kalshi/kalshi_events_p035.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI6KLl1wYSEEtYQ0FWQUZULTI2Tk9WMDg",
+   "events": 200,
+   "markets": 2237
+  },
+  {
+   "file": "kalshi/kalshi_events_p036.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8Pm81wYSFEtYQkNFTEVDVElPTi0yNk9DVDI0",
+   "events": 200,
+   "markets": 1639
+  },
+  {
+   "file": "kalshi/kalshi_events_p037.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8Mqi1wYSFktYWVRWSUVXU0hJR0gtQkFEMjZOT1Y",
+   "events": 200,
+   "markets": 2851
+  },
+  {
+   "file": "kalshi/kalshi_events_p038.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI0IqU1wYSFEtYQlJFTlRNT04tMjZPQ1QzMDE3",
+   "events": 200,
+   "markets": 3435
+  },
+  {
+   "file": "kalshi/kalshi_events_p039.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI4Ofd1gYSGUtYWVREQUlMWVRPUFZJREVPLTI2T0NUMDY",
+   "events": 200,
+   "markets": 1304
+  },
+  {
+   "file": "kalshi/kalshi_events_p040.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIkLTQ1gYSGktYTkNBQUZHQU1FLTI2T0NUMTdXRUJCVVRN",
+   "events": 200,
+   "markets": 612
+  },
+  {
+   "file": "kalshi/kalshi_events_p041.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIkO7F1gYSF0tYVUVMR0FNRS0yNk9DVDE1RlRDVklL",
+   "events": 200,
+   "markets": 1478
+  },
+  {
+   "file": "kalshi/kalshi_events_p042.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI2IO31gYSFktYVEVFTkNMT1RIQURTLTI2T0NUMDY",
+   "events": 200,
+   "markets": 1566
+  },
+  {
+   "file": "kalshi/kalshi_events_p043.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYImPCw1gYSIEtYTElHQVBPUlRVR0FMR0FNRS0yNk9DVDExQVJPRVNB",
+   "events": 200,
+   "markets": 1588
+  },
+  {
+   "file": "kalshi/kalshi_events_p044.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8Oes1gYSG0tYTElHQUVYUEdBTUUtMjZPQ1QxME1aQUNBTg",
+   "events": 200,
+   "markets": 1969
+  },
+  {
+   "file": "kalshi/kalshi_events_p045.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIsPer1gYSF0tYTkNBQUYxSC0yNk9DVDEwVU5EVU5J",
+   "events": 200,
+   "markets": 2362
+  },
+  {
+   "file": "kalshi/kalshi_events_p046.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIjLir1gYSGktYTElHVUUxR0FNRS0yNk9DVDEwUFNHTUFO",
+   "events": 200,
+   "markets": 1272
+  },
+  {
+   "file": "kalshi/kalshi_events_p047.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI4Oqq1gYSHEtYTkNBQUZTUFJFQUQtMjZPQ1QxMFVOQ1BJVFQ",
+   "events": 200,
+   "markets": 1008
+  },
+  {
+   "file": "kalshi/kalshi_events_p048.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIoPqp1gYSGktYVEhBSUwxR0FNRS0yNk9DVDEwVVRIUkFT",
+   "events": 200,
+   "markets": 2016
+  },
+  {
+   "file": "kalshi/kalshi_events_p049.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIgICm1gYSG0tYU0FVRElQTEdBTUUtMjZPQ1QwOUFMTkRJUg",
+   "events": 200,
+   "markets": 1291
+  },
+  {
+   "file": "kalshi/kalshi_events_p050.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI5Iyi1gYSFktYTkZMU0ZUWS0yNk9DVDA4VEJEQUw",
+   "events": 200,
+   "markets": 1238
+  },
+  {
+   "file": "kalshi/kalshi_events_p051.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIiIqf1gYSIktYQ1MyVE9UQUxNQVBTLTI2T0NUMDgwNjMwTU9VWk5SR0c",
+   "events": 200,
+   "markets": 1227
+  },
+  {
+   "file": "kalshi/kalshi_events_p052.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIqICc1gYSGktYV05CQTNRVE9UQUwtMjZPQ1QwN05ZQVRM",
+   "events": 200,
+   "markets": 955
+  },
+  {
+   "file": "kalshi/kalshi_events_p053.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI4IGb1gYSIEtYTE9MVE9UQUxNQVBTLTI2T0NUMDcxMjAwVVNFS0hL",
+   "events": 200,
+   "markets": 689
+  },
+  {
+   "file": "kalshi/kalshi_events_p054.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI8LyZ1gYSIUtYQ1MyVE9UQUxNQVBTLTI2T0NUMDcwNTAwU1RBSE9UVQ",
+   "events": 200,
+   "markets": 714
+  },
+  {
+   "file": "kalshi/kalshi_events_p055.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYI4L-X1gYSIEtYSU5UTEZSSUVORExZQlRUUy0yNk9DVDA2VVNBQ0FO",
+   "events": 200,
+   "markets": 960
+  },
+  {
+   "file": "kalshi/kalshi_events_p056.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIwIeX1gYSJEtYTUxCSU5OSU5HVE9UQUwtMjZPQ1QwNjE4MDBMQURBVEwtNw",
+   "events": 200,
+   "markets": 1717
+  },
+  {
+   "file": "kalshi/kalshi_events_p057.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIjKyW1gYSGktYVUVGQU5MRlRUUy0yNk9DVDA2TFVYQlVM",
+   "events": 200,
+   "markets": 2001
+  },
+  {
+   "file": "kalshi/kalshi_events_p058.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIsIqV1gYSIUtYSVRGV0RPVUJMRVMtMjZPQ1QwNkJST05PWkFHUklWQQ",
+   "events": 200,
+   "markets": 2000
+  },
+  {
+   "file": "kalshi/kalshi_events_p059.json.gz",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&with_nested_markets=true&limit=200&cursor=CgYIgLaU1gYSE0tYSU5YVS0yNk9DVDA2SDEyMDA",
+   "events": 200,
+   "markets": 1466
+  }
+ ],
+ "polymarket": [
+  {
+   "page": 0,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false",
+   "events": 100,
+   "markets": 3354,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p000.json.gz"
+  },
+  {
+   "page": 1,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=GI7HE8itEim8Mj0j_RbIpz3MuJ1Q63MdIj3Y3lcjlod7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo1NTMyNC41MTgxMzh9LHsidCI6InN0cmluZyIsInYiOiIxMTExMjQwIn1dfQ",
+   "events": 100,
+   "markets": 2118,
+   "kept": false
+  },
+  {
+   "page": 2,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=KR8hdRr9MnMKbIQjsSvLI0ZZuiVHJyAzv9xlAz8bNWd7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyMTAyOC4wMjg1NzN9LHsidCI6InN0cmluZyIsInYiOiI0Nzg0NzIifV19",
+   "events": 100,
+   "markets": 2154,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p002.json.gz"
+  },
+  {
+   "page": 3,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=-xGC4iVYDxcd0nbPKrlZXm0kSsq_3LkaQn327muix5p7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxMzIzNy42MjMyNTN9LHsidCI6InN0cmluZyIsInYiOiIxMTI4ODQ1In1dfQ",
+   "events": 100,
+   "markets": 2112,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p003.json.gz"
+  },
+  {
+   "page": 4,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=viZCT3q4PEhsVUTVArhIEBWGdtmhk6AdTqPOKdfh-IJ7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo4Nzc1LjIxMjM2NjAwMDAwMn0seyJ0Ijoic3RyaW5nIiwidiI6IjkyMDYyOSJ9XX0",
+   "events": 100,
+   "markets": 1867,
+   "kept": false
+  },
+  {
+   "page": 5,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=q_tv7ujLnG2ou_YhnK3bpK72dAR5XsKWUHpK_z9eOVB7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo1OTEzLjg5MzI2Mjk5OTk5OX0seyJ0Ijoic3RyaW5nIiwidiI6IjExMzUyMzcifV19",
+   "events": 100,
+   "markets": 2517,
+   "kept": false
+  },
+  {
+   "page": 6,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=N5X2j_bpl-GMALxJpY1bCioNDWSg2qLhxp6LfQjiNoB7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo0NDcxLjg2OTQ3fSx7InQiOiJzdHJpbmciLCJ2IjoiMTkxMzkxIn1dfQ",
+   "events": 100,
+   "markets": 1937,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p006.json.gz"
+  },
+  {
+   "page": 7,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=_AH49Op9hS1pQBr5HHTRwINfpKkloeOZss0V1WZa3cZ7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjozNDc4LjAyNDk5MDk5OTk5OTh9LHsidCI6InN0cmluZyIsInYiOiI4MTExMTYifV19",
+   "events": 100,
+   "markets": 1409,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p007.json.gz"
+  },
+  {
+   "page": 8,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=kQ4sHXRzyTakAG8dfi9tAhXKOigR_bM3JsX5bV7rYWR7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyODI0Ljc5MjkwM30seyJ0Ijoic3RyaW5nIiwidiI6IjExMDM5ODIifV19",
+   "events": 100,
+   "markets": 2093,
+   "kept": false
+  },
+  {
+   "page": 9,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=VvfPw-L-BgLGQj-TBQgQhejhdbw5NHB6evQQJeBlIlp7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyMjg5LjIyODg3OTAwMDAwMDJ9LHsidCI6InN0cmluZyIsInYiOiIxMTI4Njg5In1dfQ",
+   "events": 100,
+   "markets": 2279,
+   "kept": false
+  },
+  {
+   "page": 10,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=Cz411tI9F4VuaGNOZUf1suDkdaXIydz7AePOKiWEVcV7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxOTQzLjc1Mzc3M30seyJ0Ijoic3RyaW5nIiwidiI6IjExMzkyMTAifV19",
+   "events": 100,
+   "markets": 2523,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p010.json.gz"
+  },
+  {
+   "page": 11,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=pkZxcB9IMMR53IMxDB9Kk6p14qNDX4Hte5MOm7wCJYx7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxNjEwLjUzNTMxOX0seyJ0Ijoic3RyaW5nIiwidiI6IjQwNzI4NCJ9XX0",
+   "events": 100,
+   "markets": 2123,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p011.json.gz"
+  },
+  {
+   "page": 12,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=6KB15JKIBZCoBbmypsondE9deak7WdEZvIyGShqH-hN7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxMzQ3Ljg4MzU2Nn0seyJ0Ijoic3RyaW5nIiwidiI6IjExMTExOTEifV19",
+   "events": 100,
+   "markets": 1786,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p012.json.gz"
+  },
+  {
+   "page": 13,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=l_9g2KkwtkVAtB_91YwSIxwwQFps98JOIl5fBE3xpKt7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxMTI5LjY5MDM0Nn0seyJ0Ijoic3RyaW5nIiwidiI6IjIyODI1OSJ9XX0",
+   "events": 100,
+   "markets": 2419,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p013.json.gz"
+  },
+  {
+   "page": 14,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=ptrgqiIvKKGBTBgPmGPZELP3WHzMNmGgTtS3Z7PoCll7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo5NDMuOTZ9LHsidCI6InN0cmluZyIsInYiOiI4NjcxNjIifV19",
+   "events": 100,
+   "markets": 1711,
+   "kept": false
+  },
+  {
+   "page": 15,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=fhbFABtLAKlSmt1FZyDMFQ-ZkSC9sl7Dxt0SsyMu87t7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo4MTcuNjA0NTAwMDAwMDAwMX0seyJ0Ijoic3RyaW5nIiwidiI6Ijg0NTYwMCJ9XX0",
+   "events": 100,
+   "markets": 1533,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p015.json.gz"
+  },
+  {
+   "page": 16,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=o9z5BkjI2DVeyTfWnGkj3JpNdtfEkpYjX-7rTR32Ot17InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo3MDkuMjE4NzcyfSx7InQiOiJzdHJpbmciLCJ2IjoiMTEzNjYwOCJ9XX0",
+   "events": 100,
+   "markets": 1441,
+   "kept": false
+  },
+  {
+   "page": 17,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=y2cniV5qGMnZWfkEaEoLqpoTXtRmCpz7reZK0q4f_-t7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo2MTQuOTg3NTl9LHsidCI6InN0cmluZyIsInYiOiIxMDc4MDQ5In1dfQ",
+   "events": 100,
+   "markets": 2138,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p017.json.gz"
+  },
+  {
+   "page": 18,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=goR_gVAu-zDOStTwWBC-_8OQ-g6ynGx6QKIVPVRcZrF7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo1NTQuMjQxNzg0fSx7InQiOiJzdHJpbmciLCJ2IjoiMTEyMTQ5MiJ9XX0",
+   "events": 100,
+   "markets": 1890,
+   "kept": false
+  },
+  {
+   "page": 19,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=kcXcP_z827kWtSGOsP1KEqvEZlaWGTYDlxx6VtxbrEN7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo0ODQuNzk5MzM2fSx7InQiOiJzdHJpbmciLCJ2IjoiNTc2NjQifV19",
+   "events": 100,
+   "markets": 1779,
+   "kept": false
+  },
+  {
+   "page": 20,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=ijrskEvtPPc3Hl8sPmOo2cGtb7W2F0WGWBnjqNL1oT57InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo0MjUuNDAzODg5fSx7InQiOiJzdHJpbmciLCJ2IjoiMTExNjM5NSJ9XX0",
+   "events": 100,
+   "markets": 2030,
+   "kept": false
+  },
+  {
+   "page": 21,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=5NHlXfkKCjrRVavfg6kz-B96GmnZa4__MRBVxWjX0Z17InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjozODQuMzUwODd9LHsidCI6InN0cmluZyIsInYiOiI4MzQ2MjcifV19",
+   "events": 100,
+   "markets": 1477,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p021.json.gz"
+  },
+  {
+   "page": 22,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=9lc-pO1ZyCq_Cegp9yy9xpym0KJGH3Le8LAQ8c5mmlp7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjozNDUuOTQ1OTQ2fSx7InQiOiJzdHJpbmciLCJ2IjoiMTA5MDc5NyJ9XX0",
+   "events": 100,
+   "markets": 1599,
+   "kept": false
+  },
+  {
+   "page": 23,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=nemL6OPLupCHUqn6AFmlqWfiHpz8FDclRjY_FvGuyBR7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjozMTUuNDF9LHsidCI6InN0cmluZyIsInYiOiI4MzQ0NzUifV19",
+   "events": 100,
+   "markets": 1918,
+   "kept": false
+  },
+  {
+   "page": 24,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=Z7L8tedG7gPF7PSvL2jbfb34PDTf5nWlP-A3llH-7Tt7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyODAuODA4Mzg4fSx7InQiOiJzdHJpbmciLCJ2IjoiMTA2MjE2In1dfQ",
+   "events": 100,
+   "markets": 1510,
+   "kept": false
+  },
+  {
+   "page": 25,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=eO9RtPNRRWMq8-_zOVZaszeCbH36RvI1-l12jaFTu0V7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyNTAuOTU0Njg0fSx7InQiOiJzdHJpbmciLCJ2IjoiOTk5ODA0In1dfQ",
+   "events": 100,
+   "markets": 1682,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p025.json.gz"
+  },
+  {
+   "page": 26,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=_enVuitRPPmekDa3HbYLWEvwOsp7-aMpuBb4ELqvcAR7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyMjcuMTgzNjh9LHsidCI6InN0cmluZyIsInYiOiI3MDEyMzcifV19",
+   "events": 100,
+   "markets": 1665,
+   "kept": false
+  },
+  {
+   "page": 27,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=DU52yJrQGMGfqWpB9DjmEAmqEUTxgymzLso6uvzCoPF7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyMDMuMDM1MDIzfSx7InQiOiJzdHJpbmciLCJ2IjoiMTEzMDE2MyJ9XX0",
+   "events": 100,
+   "markets": 1860,
+   "kept": false
+  },
+  {
+   "page": 28,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=vBcJ3UfuaGjiLztePHY7KCNJ_5wrhE-UaSRrl8DLKsJ7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxODQuM30seyJ0Ijoic3RyaW5nIiwidiI6IjgzMDYyNiJ9XX0",
+   "events": 100,
+   "markets": 2088,
+   "kept": false
+  },
+  {
+   "page": 29,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=Xl6PLpTU-D0lLvnXhVqvWJXUqBi8la6f28rxbVdR8vR7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxNjUuOTI1NDY4fSx7InQiOiJzdHJpbmciLCJ2IjoiMTA5MTIwMSJ9XX0",
+   "events": 100,
+   "markets": 2573,
+   "kept": false
+  },
+  {
+   "page": 30,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=2pZdGnl245PRg_yUU-nO1WIGBQLW3zW0B1cDBas7HMN7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxNTIuNjc4OTYyfSx7InQiOiJzdHJpbmciLCJ2IjoiNzI2NTA5In1dfQ",
+   "events": 100,
+   "markets": 1946,
+   "kept": false
+  },
+  {
+   "page": 31,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=JQYuiyFP6pNs0gm-siY5QDyB16-qd8pVoZHVxmRod6N7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxMzkuNzZ9LHsidCI6InN0cmluZyIsInYiOiI4NTA2NTgifV19",
+   "events": 100,
+   "markets": 1300,
+   "kept": false
+  },
+  {
+   "page": 32,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=EscGNU6peHth5Ilj3Msn1Cj9Dolcl-4c5mVBLpi0ahF7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxMjYuMjl9LHsidCI6InN0cmluZyIsInYiOiI1NjIzNzUifV19",
+   "events": 100,
+   "markets": 1505,
+   "kept": false
+  },
+  {
+   "page": 33,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=X_uonaYqVky36DyjweCKH9DOInnh4vBccaCXe64139B7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxMTAuMjV9LHsidCI6InN0cmluZyIsInYiOiI5OTAwNjkifV19",
+   "events": 100,
+   "markets": 1792,
+   "kept": false
+  },
+  {
+   "page": 34,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=9483F9ZOe9XSV7ZWoNpEJav4IUUsIEo8tFpWut25KGh7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxMDB9LHsidCI6InN0cmluZyIsInYiOiIxMTAwNzA0In1dfQ",
+   "events": 100,
+   "markets": 1613,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p034.json.gz"
+  },
+  {
+   "page": 35,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=KQCZDbV75Wy_9GO9mgRXj3mhAb6DT57N6roAPPgQWxh7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo5MH0seyJ0Ijoic3RyaW5nIiwidiI6IjkyNzUzNyJ9XX0",
+   "events": 100,
+   "markets": 1243,
+   "kept": false
+  },
+  {
+   "page": 36,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=d332RkaYQ7qsNzPFt6cAjOQ9hkZIGcz6ThpCeNMDROh7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo4MH0seyJ0Ijoic3RyaW5nIiwidiI6IjEwNzgwNDcifV19",
+   "events": 100,
+   "markets": 1361,
+   "kept": false
+  },
+  {
+   "page": 37,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=UOcjQeIj28hGksfmRufoBQyLT_0bA1Tuu2AKN2z6I1J7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo2OS44OTAwOTJ9LHsidCI6InN0cmluZyIsInYiOiIxMTM0ODY3In1dfQ",
+   "events": 100,
+   "markets": 1603,
+   "kept": false
+  },
+  {
+   "page": 38,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=OQZLP65IcMCgfUlU52XNO1wUyaZ-aT915BHbJvzUsAN7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo2MH0seyJ0Ijoic3RyaW5nIiwidiI6IjEwOTg5ODAifV19",
+   "events": 100,
+   "markets": 1855,
+   "kept": false
+  },
+  {
+   "page": 39,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=N2Gu9aqmnoY-k_lMru6wrhbxJ0o9FLIXE_XN-irUfW97InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo1My41NX0seyJ0Ijoic3RyaW5nIiwidiI6IjgyNjMyNyJ9XX0",
+   "events": 100,
+   "markets": 1563,
+   "kept": true,
+   "file": "polymarket/polymarket_events_keyset_p039.json.gz"
+  },
+  {
+   "page": 40,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=pfZcar8GQyDlFL3rWypwLsQa0AIds7zM-n170A26V6R7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo0NS45MjEwMjZ9LHsidCI6InN0cmluZyIsInYiOiIxNjE4MyJ9XX0",
+   "events": 100,
+   "markets": 1470,
+   "kept": false
+  },
+  {
+   "page": 41,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=0OV4qvf71gqG4fRfEjKDIGQea1V6YEON35T63DolzIN7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo0MH0seyJ0Ijoic3RyaW5nIiwidiI6IjIwMDcxMyJ9XX0",
+   "events": 100,
+   "markets": 1187,
+   "kept": false
+  },
+  {
+   "page": 42,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=juHiBKFSKvd6nsgNqjOQOAnqUI9JSh3tBQgHmqRtk6l7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjozMn0seyJ0Ijoic3RyaW5nIiwidiI6IjEwMjMyOTgifV19",
+   "events": 100,
+   "markets": 2574,
+   "kept": false
+  },
+  {
+   "page": 43,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=KL6MeIEBtC2zAnWzIw7vBsF_OhKmEUkdR9j6ouR4RWd7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyOS45Njk0fSx7InQiOiJzdHJpbmciLCJ2IjoiMTEyODUxOCJ9XX0",
+   "events": 100,
+   "markets": 3700,
+   "kept": false
+  },
+  {
+   "page": 44,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=Ifa-r6N1cHDJRuYO1Y3kgp2M0FMu929Tj3MyvYhaWYF7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyOS45Njk0fSx7InQiOiJzdHJpbmciLCJ2IjoiMTEyMjY3NyJ9XX0",
+   "events": 100,
+   "markets": 2290,
+   "kept": false
+  },
+  {
+   "page": 45,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=WoXLZvbCvfhm5xhHjzia9ZtFa6fDvGIPTO3gzVKkwGJ7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyNX0seyJ0Ijoic3RyaW5nIiwidiI6IjgxNjE5In1dfQ",
+   "events": 100,
+   "markets": 1968,
+   "kept": false
+  },
+  {
+   "page": 46,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=Y05C52tnJGRBTYtce4aC_MpnLIvsmZGmSL7N6g3nELp7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoyMH0seyJ0Ijoic3RyaW5nIiwidiI6Ijk1NTM0NSJ9XX0",
+   "events": 100,
+   "markets": 1475,
+   "kept": false
+  },
+  {
+   "page": 47,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=3-hC0JQPBdxVm27Fh9bD0CfXxHM_g9qs_2U91wFU0qZ7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxOC4yNn0seyJ0Ijoic3RyaW5nIiwidiI6IjE0OTg5OSJ9XX0",
+   "events": 100,
+   "markets": 1640,
+   "kept": false
+  },
+  {
+   "page": 48,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=0e2nGUkvBDX-QZBI_5cxzAelLwdMcLgky7bSmlyqwkF7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxMy42Mjk5OTk5OTk5OTk5OTl9LHsidCI6InN0cmluZyIsInYiOiIyMDQ1OTYifV19",
+   "events": 100,
+   "markets": 1481,
+   "kept": false
+  },
+  {
+   "page": 49,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=V9EfgULXIpDh58OhgUwunnOMX3vuBFsa06yPLcI1qFh7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxMC4wNX0seyJ0Ijoic3RyaW5nIiwidiI6IjExNzUzMCJ9XX0",
+   "events": 100,
+   "markets": 2260,
+   "kept": false
+  },
+  {
+   "page": 50,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=BSohmJqapbSNxr5hS2qyWTFO6ShCqwL2CZQeebA-7jp7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo3Ljc1fSx7InQiOiJzdHJpbmciLCJ2IjoiMTAzMDE0NiJ9XX0",
+   "events": 100,
+   "markets": 1413,
+   "kept": false
+  },
+  {
+   "page": 51,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=PfJACa0ub5Qtt1o-3DjH2wqK6t1OVaOQOty2J-FZTah7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo1LjA0MTU2NH0seyJ0Ijoic3RyaW5nIiwidiI6IjExMTYyODAifV19",
+   "events": 100,
+   "markets": 1679,
+   "kept": false
+  },
+  {
+   "page": 52,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=xZXrJQ0kvz5-IUbF3rM0I0VxsZNrIXJAoY7hgJqLUix7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2Ijo0fSx7InQiOiJzdHJpbmciLCJ2IjoiMTEzNzQxMyJ9XX0",
+   "events": 100,
+   "markets": 1007,
+   "kept": false
+  },
+  {
+   "page": 53,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=8-sWcsnt39_xL6G93N4ptkyDFKDRvqxgh5OafFLbXd57InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoiZmxvYXQiLCJ2IjoxLjk2MDc4NX0seyJ0Ijoic3RyaW5nIiwidiI6IjExMzUwNTAifV19",
+   "events": 100,
+   "markets": 1127,
+   "kept": false
+  },
+  {
+   "page": 54,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=u3Zv72GJoqz-hfTTtcdCL4EmJl284qwJ7qJVTlW3rQt7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoibnVsbCIsInYiOm51bGx9LHsidCI6InN0cmluZyIsInYiOiIxMTQwODc4In1dfQ",
+   "events": 100,
+   "markets": 803,
+   "kept": false
+  },
+  {
+   "page": 55,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=IN2N69R96iPUjrTBBAFeexSKr1MfYe32-BfPA0CK4s57InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoibnVsbCIsInYiOm51bGx9LHsidCI6InN0cmluZyIsInYiOiIxMTQwNzU0In1dfQ",
+   "events": 100,
+   "markets": 333,
+   "kept": false
+  },
+  {
+   "page": 56,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=qGfkcTz80i5Srny4fwh8PTcwtrufjwRbW2IN4q8hLyR7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoibnVsbCIsInYiOm51bGx9LHsidCI6InN0cmluZyIsInYiOiIxMTQwNjQ2In1dfQ",
+   "events": 100,
+   "markets": 418,
+   "kept": false
+  },
+  {
+   "page": 57,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=YpuxfY2TbhWbfmnk06_R6qt5Gn48-XeK_i0SzNT-dCl7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoibnVsbCIsInYiOm51bGx9LHsidCI6InN0cmluZyIsInYiOiIxMTQwNTMyIn1dfQ",
+   "events": 100,
+   "markets": 511,
+   "kept": false
+  },
+  {
+   "page": 58,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=CQvJhhRlltWYYNe9Wbp2DPqcQmPBkuf1X4enz_WvhUx7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoibnVsbCIsInYiOm51bGx9LHsidCI6InN0cmluZyIsInYiOiIxMTQwNDI1In1dfQ",
+   "events": 100,
+   "markets": 120,
+   "kept": false
+  },
+  {
+   "page": 59,
+   "url": "https://gamma-api.polymarket.com/events/keyset?active=true&closed=false&limit=100&order=volume24hr&ascending=false&after_cursor=izUbvcYBpwOMIQYqIYVavXiWnR7dh4McBbFE_WUUQ_V7InYiOjEsImsiOiJldmVudHMiLCJvaCI6IjU2NzMxYTk3ZTVjNjVlOTY3ZGNmMmRlYTgzZGE5YjhmNTVkZGE1OTQ1MmY1MjkwNmVmY2I3YmY0NjY2NzUwMGMiLCJrZXlzIjpbeyJ0IjoibnVsbCIsInYiOm51bGx9LHsidCI6InN0cmluZyIsInYiOiIxMTQwMzExIn1dfQ",
+   "events": 100,
+   "markets": 146,
+   "kept": false
+  }
+ ]
+}

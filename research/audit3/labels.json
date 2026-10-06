@@ -1,0 +1,557 @@
+[
+ {
+  "n": 5,
+  "pair_id": "kalshi:KXUEFANL-27-NOR~polymarket:4409293",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Norway wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.977
+ },
+ {
+  "n": 11,
+  "pair_id": "kalshi:KXUEFANL-27-GER~polymarket:4409283",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Germany wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.973
+ },
+ {
+  "n": 17,
+  "pair_id": "kalshi:KXUCL-27-PSV~polymarket:2772187",
+  "label": "equivalent",
+  "reason": "Both resolve YES if PSV Eindhoven wins the 2026-27 UEFA Champions League. The close times and postponement handling differ slightly, which is only a caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.939
+ },
+ {
+  "n": 23,
+  "pair_id": "kalshi:KXUCL-27-RMA~polymarket:2772177",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Real Madrid wins the 2026-27 UEFA Champions League. The close times and postponement handling differ slightly, which is only a caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.905
+ },
+ {
+  "n": 29,
+  "pair_id": "kalshi:KXUCL-27-COM~polymarket:2772175",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Como wins the 2026-27 UEFA Champions League. Only the settlement timing differs.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.89
+ },
+ {
+  "n": 35,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-EVE~polymarket:2771331",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Everton is the 2026-27 English Premier League champion. Caveat: Polymarket resolves to 'Other' if the season is postponed past June 14, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.87
+ },
+ {
+  "n": 41,
+  "pair_id": "kalshi:KXNHL-27-LA~polymarket:2243323",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether the Los Angeles Kings win the NHL Stanley Cup, while Polymarket asks whether the Sacramento Kings win the NBA Finals. These are different teams in different leagues.",
+  "failure_pattern": "different entity and competition (name collision)",
+  "recheck": {
+   "n": 41,
+   "pair_id": "kalshi:KXNHL-27-LA~polymarket:2243323",
+   "label": "not_equivalent",
+   "failure_pattern": "different entity and competition (name collision)",
+   "reason": "Kalshi's market is about the Los Angeles Kings winning the NHL Stanley Cup and Polymarket's is about the Sacramento Kings winning the NBA Finals; these are different teams in different leagues, matched only because both are named Kings."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.741
+ },
+ {
+  "n": 47,
+  "pair_id": "kalshi:KXNFLH2HWINS-27ATLNYG-NYG~polymarket:5221104:0",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether the NFL Giants finish the 2026-27 regular season with more wins than the Falcons, while Polymarket asks who wins a single WNBA game between the Liberty and the Dream.",
+  "failure_pattern": "different sport/entity and predicate (city-name collision)",
+  "recheck": {
+   "n": 47,
+   "pair_id": "kalshi:KXNFLH2HWINS-27ATLNYG-NYG~polymarket:5221104:0",
+   "label": "not_equivalent",
+   "failure_pattern": "different sport/entity and predicate (city-name collision)",
+   "reason": "Kalshi asks whether the NFL Giants finish the 2026-27 regular season with more wins than the Falcons. Polymarket asks whether the WNBA Liberty beat the Dream in a single game on Oct 7, 2026. These are different teams, sports and events."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.409
+ },
+ {
+  "n": 4,
+  "pair_id": "kalshi:KXUEFANL-27-DEN~polymarket:4409292",
+  "label": "equivalent",
+  "reason": "Both resolve YES if and only if Denmark wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the final is postponed past June 13, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.977
+ },
+ {
+  "n": 10,
+  "pair_id": "kalshi:KXUEFANL-27-FRA~polymarket:4409279",
+  "label": "equivalent",
+  "reason": "Both resolve YES if and only if France wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the final is postponed past June 13, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.973
+ },
+ {
+  "n": 16,
+  "pair_id": "kalshi:KXNFLDROTY-27-AREE~polymarket:3074517",
+  "label": "equivalent",
+  "reason": "Both resolve on whether Arvell Reese wins the AP NFL Defensive Rookie of the Year award for the 2026-27 season. Caveats: Polymarket breaks a co-winner tie alphabetically, and it resolves to 'Other' if the award slips past Feb 28, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.957
+ },
+ {
+  "n": 22,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-NFO~polymarket:2771338",
+  "label": "equivalent",
+  "reason": "Same team (Nottingham Forest), same predicate (2026-27 EPL champion), same season. Only settlement timing and the cancellation rules differ.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.912
+ },
+ {
+  "n": 28,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-HUL~polymarket:2771343",
+  "label": "equivalent",
+  "reason": "Same team (Hull City), same predicate (2026-27 EPL champion), same season. Both resolve NO if Hull is not promoted or does not win the title.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.89
+ },
+ {
+  "n": 34,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-BOU~polymarket:2771326",
+  "label": "equivalent",
+  "reason": "Same team (Bournemouth), same predicate (2026-27 EPL champion), same season. Only settlement timing and the cancellation rules differ.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.871
+ },
+ {
+  "n": 40,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-ARS~polymarket:2771324",
+  "label": "equivalent",
+  "reason": "Same team (Arsenal), same predicate (2026-27 EPL champion), same season. Only settlement timing and the cancellation rules differ.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.853
+ },
+ {
+  "n": 46,
+  "pair_id": "kalshi:KXNFLH2HWINS-27ATLNYG-ATL~polymarket:5221104:1",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether the NFL's Atlanta Falcons record more 2026-27 regular-season wins than the NY Giants. Polymarket is a single WNBA game, Atlanta Dream vs NY Liberty, on Oct 7, 2026.",
+  "recheck": {
+   "n": 46,
+   "pair_id": "kalshi:KXNFLH2HWINS-27ATLNYG-ATL~polymarket:5221104:1",
+   "label": "not_equivalent",
+   "failure_pattern": "different sport/entity and predicate (city-name collision)",
+   "reason": "Kalshi compares the NFL Falcons' and Giants' 2026-27 regular-season win totals. Polymarket is a single WNBA game on Oct 7, 2026, Atlanta Dream vs NY Liberty. The match comes only from the shared city names."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.619
+ },
+ {
+  "n": 3,
+  "pair_id": "kalshi:KXUEFANL-27-BEL~polymarket:4409281",
+  "label": "equivalent",
+  "reason": "Both resolve YES if and only if Belgium wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027, while Kalshi's close date is later.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.977
+ },
+ {
+  "n": 9,
+  "pair_id": "kalshi:KXNFLSEASONRECYDS-27C1000-MWILSON14~polymarket:3959759",
+  "label": "equivalent",
+  "reason": "Both count the same player, Michael Wilson, in the same 2026-27 NFL regular season with the same 1000+ yards threshold (Polymarket's 'equals or exceeds 1,000' is the same as '1000+'), and playoff games are excluded on both.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.973
+ },
+ {
+  "n": 15,
+  "pair_id": "kalshi:KXUEFANL-27-ENG~polymarket:4409289",
+  "label": "equivalent",
+  "reason": "Both resolve YES if and only if England wins the 2026-27 UEFA Nations League. The only difference is Polymarket's postponement cutoff (June 13, 2027), which is a caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.968
+ },
+ {
+  "n": 21,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-IPS~polymarket:2771342",
+  "label": "equivalent",
+  "reason": "Both resolve YES if and only if Ipswich Town is the 2026-27 EPL champion. Caveat: Polymarket resolves to 'Other' if the season is postponed past June 14, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.913
+ },
+ {
+  "n": 27,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-COV~polymarket:2771341",
+  "label": "equivalent",
+  "reason": "Both resolve YES if and only if Coventry City is the 2026-27 EPL champion, with the same team, competition and season; only the postponement caveat differs.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.896
+ },
+ {
+  "n": 33,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-FUL~polymarket:2771332",
+  "label": "equivalent",
+  "reason": "Both resolve YES if and only if Fulham is the 2026-27 EPL champion, with the same team, competition and season; only the postponement caveat differs.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.872
+ },
+ {
+  "n": 39,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-LFC~polymarket:2771334",
+  "label": "equivalent",
+  "reason": "Both resolve YES if and only if Liverpool is the 2026-27 EPL champion, with the same team, competition and season; only the postponement caveat differs.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.856
+ },
+ {
+  "n": 45,
+  "pair_id": "kalshi:KXUCL-27-BVB~polymarket:2772182",
+  "label": "equivalent",
+  "reason": "Both resolve YES if and only if Borussia Dortmund wins the 2026-27 UEFA Champions League. Caveat: Polymarket's listed close is May 30, which is before the expected final, but its rules allow resolution through a June 19, 2027 postponement cutoff, so the YES condition is the same.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.673
+ },
+ {
+  "n": 6,
+  "pair_id": "kalshi:KXUEFANL-27-TUR~polymarket:4409282",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Türkiye wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.977
+ },
+ {
+  "n": 12,
+  "pair_id": "kalshi:KXUEFANL-27-ITA~polymarket:4409280",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Italy wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.973
+ },
+ {
+  "n": 18,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-CRY~polymarket:2771330",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Crystal Palace is the 2026-27 EPL champion. The postponement/'Other' clause is only a caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.918
+ },
+ {
+  "n": 24,
+  "pair_id": "kalshi:KXUCL-27-MUN~polymarket:2772170",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Manchester United wins the 2026-27 UEFA Champions League. Polymarket's listed close of May 30 is metadata, and its rules allow until June 19, so it is only a timing caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.899
+ },
+ {
+  "n": 30,
+  "pair_id": "kalshi:KXUCL-27-BAR~polymarket:2772176",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Barcelona wins the 2026-27 UEFA Champions League. Same subject, competition and season.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.881
+ },
+ {
+  "n": 36,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-SUN~polymarket:2771340",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Sunderland is the 2026-27 EPL champion. The close-date metadata differs, but the rules give the same YES condition.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.868
+ },
+ {
+  "n": 42,
+  "pair_id": "kalshi:KXUCL-27-ATM~polymarket:2772179",
+  "label": "equivalent",
+  "reason": "Kalshi's 'Atletico' (ticker ATM) is Atlético Madrid, so both resolve YES if Atlético Madrid wins the 2026-27 UEFA Champions League.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.735
+ },
+ {
+  "n": 48,
+  "pair_id": "kalshi:KXNBACUP-26-PHI~polymarket:2685353",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether Philadelphia wins the in-season NBA (Emirates) Cup. Polymarket asks whether the 76ers win the 2027 Eastern Conference Finals, which is a different competition.",
+  "failure_pattern": "different competition/stage",
+  "recheck": {
+   "n": 48,
+   "pair_id": "kalshi:KXNBACUP-26-PHI~polymarket:2685353",
+   "label": "not_equivalent",
+   "failure_pattern": "different competition/stage",
+   "reason": "Kalshi's market is about the in-season Emirates NBA Cup and Polymarket's is about the 2027 Eastern Conference Finals; these are separate competitions with independent outcomes, not a naming difference between venues."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.408
+ },
+ {
+  "n": 1,
+  "pair_id": "kalshi:KXNBAROY-27-DACU~polymarket:2668802",
+  "label": "equivalent",
+  "reason": "Both pay YES only if Darius Acuff Jr. wins the 2026-27 NBA Rookie of the Year. Caveat: Polymarket's April 30 'no winner declared within that timeframe' clause could send it to 'Other' if the NBA announces the award in May.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.987
+ },
+ {
+  "n": 7,
+  "pair_id": "kalshi:KXUEFANL-27-NED~polymarket:4409284",
+  "label": "equivalent",
+  "reason": "Both pay YES only if the Netherlands wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.976
+ },
+ {
+  "n": 13,
+  "pair_id": "kalshi:KXUEFANL-27-POR~polymarket:4409291",
+  "label": "equivalent",
+  "reason": "Both pay YES only if Portugal wins the 2026-27 UEFA Nations League. Caveat: Polymarket resolves to 'Other' if the competition is postponed past June 13, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.972
+ },
+ {
+  "n": 19,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-SCH~polymarket:2849024",
+  "label": "equivalent",
+  "reason": "Both pay YES only if Schalke (Schalke 04) is the 2026-27 Bundesliga champion. 'Schalke' and 'Schalke 04' are just the two venues' names for the same club.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.914
+ },
+ {
+  "n": 25,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-LEE~polymarket:2771333",
+  "label": "equivalent",
+  "reason": "Both pay YES only if Leeds United is the 2026-27 Premier League champion. Same club, season and competition.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.897
+ },
+ {
+  "n": 31,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-MUN~polymarket:2771336",
+  "label": "equivalent",
+  "reason": "Both pay YES only if Manchester United is the 2026-27 Premier League champion. Same club, season and competition.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.879
+ },
+ {
+  "n": 37,
+  "pair_id": "kalshi:KXNBAROOKIE1STTEAM-27-CCARR43~polymarket:2668819",
+  "label": "not_equivalent",
+  "failure_pattern": "different predicate (award vs team selection)",
+  "reason": "Kalshi asks whether Cameron Carr makes the All-Rookie First Team, but Polymarket asks whether he wins Rookie of the Year. He can make the First Team without winning the award.",
+  "recheck": {
+   "n": 37,
+   "pair_id": "kalshi:KXNBAROOKIE1STTEAM-27-CCARR43~polymarket:2668819",
+   "label": "not_equivalent",
+   "failure_pattern": "different predicate (team selection vs award)",
+   "reason": "Kalshi resolves YES if Carr is named to the All-Rookie First Team, which includes five players. Polymarket resolves YES only if he wins Rookie of the Year, so he could make the First Team without winning the award."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.863
+ },
+ {
+  "n": 43,
+  "pair_id": "kalshi:KXNBACUP-26-PHX~polymarket:2668737",
+  "label": "not_equivalent",
+  "failure_pattern": "different competition/stage",
+  "reason": "Kalshi is about Phoenix winning the 2026 NBA Cup (the in-season tournament), but Polymarket is about the Suns winning the 2027 Western Conference Finals. These are different competitions.",
+  "recheck": {
+   "n": 43,
+   "pair_id": "kalshi:KXNBACUP-26-PHX~polymarket:2668737",
+   "label": "not_equivalent",
+   "failure_pattern": "different competition/stage",
+   "reason": "Kalshi's market is about the in-season Emirates NBA Cup, which is decided around December 2026, while Polymarket's is about winning the 2027 Western Conference Finals in the playoffs, so Phoenix can win one without the other."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.71
+ },
+ {
+  "n": 49,
+  "pair_id": "kalshi:KXNFLSTAGEOFELIM-27SEA-FW~polymarket:1386144",
+  "label": "not_equivalent",
+  "failure_pattern": "different predicate and date",
+  "reason": "Kalshi asks whether Seattle wins the 2026-27 NFL championship (decided Feb 2027). Polymarket asks whether the Seahawks visit the White House by Dec 31, 2026, as winners of the 2026 championship.",
+  "recheck": {
+   "n": 49,
+   "pair_id": "kalshi:KXNFLSTAGEOFELIM-27SEA-FW~polymarket:1386144",
+   "label": "not_equivalent",
+   "failure_pattern": "different predicate and date",
+   "reason": "Kalshi asks whether Seattle wins the 2026-27 season title, decided in Feb 2027. Polymarket asks whether the Seahawks, as winners of the 2026 championship, physically visit the White House by Dec 31, 2026. The season and the predicate are both different."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.355
+ },
+ {
+  "n": 2,
+  "pair_id": "kalshi:KXNBAROY-27-YLEN~polymarket:2668806",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Yaxel Lendeborg wins the 2026-27 NBA Rookie of the Year award. Caveat: Polymarket sends the market to 'Other' if no winner is declared by its April 30, 2027 timeframe, and the NBA has sometimes announced this award in May.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.987
+ },
+ {
+  "n": 8,
+  "pair_id": "kalshi:KXUEFANL-27-GRE~polymarket:4409286",
+  "label": "equivalent",
+  "reason": "Same subject (Greece), same predicate (win the 2026-27 UEFA Nations League) and a compatible UEFA source. The only differences are Polymarket's June 13 cutoff for postponement and its early-NO-on-elimination clause, which are caveats.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.975
+ },
+ {
+  "n": 14,
+  "pair_id": "kalshi:KXUEFANL-27-ESP~polymarket:4409287",
+  "label": "equivalent",
+  "reason": "Same subject (Spain), same predicate (win the 2026-27 UEFA Nations League) and a compatible source. The only differences are edge-case postponement and timing caveats.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.971
+ },
+ {
+  "n": 20,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-AVL~polymarket:2771325",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Aston Villa is the 2026-27 English Premier League champion. Polymarket's boilerplate about 'eliminated in the playoffs' and its postponement cutoff are caveats only.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.913
+ },
+ {
+  "n": 26,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-NEW~polymarket:2771337",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Newcastle United is the 2026-27 EPL champion. The only differences are in edge-case wording.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.897
+ },
+ {
+  "n": 32,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-MCI~polymarket:2771335",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Manchester City is the 2026-27 EPL champion. The only differences are in edge-case wording.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.874
+ },
+ {
+  "n": 38,
+  "pair_id": "kalshi:KXPREMIERLEAGUE-27-TOT~polymarket:2771339",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Tottenham is the 2026-27 EPL champion. The only differences are in edge-case wording.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.858
+ },
+ {
+  "n": 44,
+  "pair_id": "kalshi:KXUCL-27-SHA~polymarket:2772194",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Shakhtar Donetsk wins the 2026-27 UEFA Champions League. 'Shakhtar' and 'Shakhtar Donetsk' are the same team. Polymarket's June 19, 2027 postponement cutoff is a caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.683
+ },
+ {
+  "n": 50,
+  "pair_id": "kalshi:KXELECTUKRAINE-30JAN01-27JAN01~polymarket:694027",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether Ukraine holds a presidential election before 2027. Polymarket is a parlay that needs a ceasefire, a Ukrainian no-NATO pledge and a signed peace deal, so these are entirely different predicates.",
+  "failure_pattern": "different predicate (unrelated event)",
+  "recheck": {
+   "n": 50,
+   "pair_id": "kalshi:KXELECTUKRAINE-30JAN01-27JAN01~polymarket:694027",
+   "label": "not_equivalent",
+   "failure_pattern": "different predicate (unrelated event)",
+   "reason": "Kalshi resolves YES if Ukraine holds a presidential election before 2027, while Polymarket needs a ceasefire, a pledge not to join NATO and a signed peace deal; neither condition implies the other, so they are different predicates even though the deadline matches."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.338
+ }
+]

@@ -8,6 +8,7 @@ package polymarket
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"math"
 	"net/url"
@@ -33,8 +34,9 @@ type Adapter struct {
 	Now         func() time.Time // injectable for tests; markets past their end date are not tradable
 }
 
-// New returns an adapter. Polymarket lists 70-85k open markets, so ingestion is scoped to the most
-// actively traded ones; liquid markets are where routing between venues matters.
+// New returns an adapter. Polymarket lists a very large number of open markets (research estimated
+// 70-85k; a verification crawl estimated ~257k), so ingestion is scoped to the most actively traded
+// ones: liquid markets are where routing between venues matters.
 func New(c *fetch.Client, maxPages int) *Adapter {
 	return &Adapter{Gamma: GammaBase, Clob: ClobBase, HTTP: c, MaxPages: maxPages, Now: time.Now}
 }
@@ -125,6 +127,9 @@ func (a *Adapter) Markets(ctx context.Context) ([]market.Market, ingest.Stats, e
 		}
 		if resp.NextCursor == "" || len(resp.Markets) == 0 {
 			break
+		}
+		if resp.NextCursor == cursor {
+			return nil, st, fmt.Errorf("polymarket markets page %d: cursor did not advance", page)
 		}
 		cursor = resp.NextCursor
 	}
@@ -245,9 +250,8 @@ func complement(p market.Amount) market.Amount {
 }
 
 type clobBook struct {
-	AssetID   string `json:"asset_id"`
-	Timestamp string `json:"timestamp"` // epoch milliseconds, as a string
-	Bids      []struct {
+	AssetID string `json:"asset_id"`
+	Bids    []struct {
 		Price string `json:"price"`
 		Size  string `json:"size"`
 	} `json:"bids"`
@@ -269,6 +273,7 @@ func (a *Adapter) Books(ctx context.Context, ms []market.Market) (map[string]mar
 		byToken[m.BookRef] = append(byToken[m.BookRef], m)
 	}
 	out := map[string]market.Book{}
+	var errs []error
 	for start := 0; start < len(tokens); start += 500 {
 		var req []map[string]string
 		for _, t := range tokens[start:min(start+500, len(tokens))] {
@@ -276,14 +281,18 @@ func (a *Adapter) Books(ctx context.Context, ms []market.Market) (map[string]mar
 		}
 		var resp []clobBook
 		if err := a.HTTP.PostJSON(ctx, a.Clob+"/books", req, &resp); err != nil {
-			return out, fmt.Errorf("polymarket books: %w", err)
+			errs = append(errs, fmt.Errorf("polymarket books %d-%d: %w", start, min(start+500, len(tokens)), err))
+			continue // one failed chunk must not cost the others
 		}
+		// The book's own timestamp is when it last changed, not when it was read: a quiet but valid
+		// book can be minutes old. Staleness is about our copy, so stamp it with receipt time.
+		at := a.Now()
 		for _, b := range resp {
 			ms, ok := byToken[b.AssetID]
 			if !ok {
 				continue
 			}
-			book := market.Book{AsOf: millis(b.Timestamp)}
+			book := market.Book{AsOf: at}
 			for _, l := range b.Bids {
 				book.Bids = appendLevel(book.Bids, l.Price, l.Size)
 			}
@@ -296,7 +305,7 @@ func (a *Adapter) Books(ctx context.Context, ms []market.Market) (map[string]mar
 			}
 		}
 	}
-	return out, nil
+	return out, errors.Join(errs...)
 }
 
 func appendLevel(ls []market.Level, price, size string) []market.Level {
@@ -306,12 +315,4 @@ func appendLevel(ls []market.Level, price, size string) []market.Level {
 		return ls
 	}
 	return append(ls, market.Level{Price: p, Qty: q})
-}
-
-func millis(s string) time.Time {
-	ms, err := strconv.ParseInt(s, 10, 64)
-	if err != nil || ms <= 0 {
-		return time.Time{} // Book.Validate rejects a book without a timestamp
-	}
-	return time.UnixMilli(ms).UTC()
 }

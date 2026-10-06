@@ -48,6 +48,29 @@ func TestExtractNumbersDatesYears(t *testing.T) {
 	}
 }
 
+// Review findings: thousands separators, season labels and ISO dates must not distort thresholds.
+func TestNumbersSeasonsAndISODates(t *testing.T) {
+	if f := extract(market.Market{Question: "Above $84,000?", Outcome: "$1,250,000"}); !slices.Equal(f.nums, []string{"1250000", "84000"}) {
+		t.Errorf("thousands separators: %v", f.nums)
+	}
+	small := market.Market{Question: "Will Bitcoin hit $1,000 in 2026?"}
+	huge := market.Market{Question: "Will Bitcoin hit $1,000,000 in 2026?"}
+	if v := NewCorpus([]market.Market{small, huge}).Explain(small, huge, Options{}); !strings.HasPrefix(v.Veto, "threshold") {
+		t.Errorf("$1,000 vs $1,000,000 must differ: %+v", v)
+	}
+	if a, b := extract(market.Market{Question: "Above 150,000?"}), extract(market.Market{Question: "Above 150k?"}); !slices.Equal(a.nums, b.nums) {
+		t.Errorf("150,000 vs 150k: %v vs %v", a.nums, b.nums)
+	}
+	season := extract(market.Market{Question: "Will Darius Acuff Jr. win the 2026-27 NBA Rookie of the Year?"})
+	if len(season.nums) != 0 || season.shape != "" || !slices.Equal(season.years, []int{2026, 2027}) {
+		t.Errorf("season label: nums=%v shape=%q years=%v", season.nums, season.shape, season.years)
+	}
+	iso := extract(market.Market{Question: "Will Belarus win on 2026-10-06?"})
+	if iso.shape != "" || len(iso.nums) != 0 || len(iso.dates) != 1 {
+		t.Errorf("ISO date: shape=%q nums=%v dates=%v", iso.shape, iso.nums, iso.dates)
+	}
+}
+
 func TestTeamsAndLeagues(t *testing.T) {
 	km := market.Market{Event: "BAL Ravens vs ATL Falcons", Question: "Baltimore wins", Outcome: "Baltimore"}
 	pm := market.Market{Event: "Ravens vs. Falcons", Question: "Ravens vs. Falcons", Outcome: "Falcons"}
@@ -105,7 +128,7 @@ func TestLiveFalsePositivesAreVetoed(t *testing.T) {
 		{market.Market{Event: "Top Fantasy D/ST", Question: "Will DAL Cowboys D/ST be the #1 ranked fantasy DST in the 2026 season?", Outcome: "DAL Cowboys D/ST"},
 			market.Market{Event: "Pro Football: 2027 Champion", Question: "Will the Dallas Cowboys win the 2027 NFL league championship?", Outcome: "Dallas Cowboys"}, "rank"},
 		{market.Market{Event: "NHL Playoff Qualifiers", Question: "Will the Nashville Predators qualify for the playoffs in the 2026-27 season?", Outcome: "Nashville Predators"},
-			market.Market{Event: "MLS: 2026 Eastern Conference Champion", Question: "Will Nashville SC win the 2026 MLS Eastern Conference?", Outcome: "Nashville SC"}, ""},
+			market.Market{Event: "MLS: 2026 Eastern Conference Champion", Question: "Will Nashville SC win the 2026 MLS Eastern Conference?", Outcome: "Nashville SC"}, "scope (competition)"},
 		{market.Market{Event: "Los Angeles mayoral election: total votes", Question: "Will the total vote count for all participants in the 2026 Los Angeles mayoral election be above 1.0M?", Outcome: "Above 1.0M"},
 			market.Market{Event: "Los Angeles Mayoral Election", Question: "Will Karen Bass win the 2026 Los Angeles mayoral election?", Outcome: "Karen Bass"}, "threshold"},
 		{market.Market{Event: "Data center moratorium", Question: "Will any state enact data center moratorium legislation before Jan 1, 2027?", Outcome: "Yes"},
@@ -113,7 +136,7 @@ func TestLiveFalsePositivesAreVetoed(t *testing.T) {
 		{market.Market{Event: "2027 French Presidential Election candidates", Question: "Will Nicolas Dupont-Aignan appear on the official candidate list?", Outcome: "Nicolas Dupont-Aignan"},
 			market.Market{Event: "Next French Presidential Election", Question: "Will Nicolas Dupont-Aignan win the 2027 French presidential election?", Outcome: "Nicolas Dupont-Aignan"}, "scope (predicate)"},
 		{market.Market{Event: "Australian Open Men's Singles Champion", Question: "Australian Open Men's Singles: Carlos Alcaraz wins", Outcome: "Carlos Alcaraz"},
-			market.Market{Event: "Japan Open Tennis Championships", Question: "Game Spread: Carlos Alcaraz (-3.5) vs Jiri Lehecka (+3.5)", Outcome: "Carlos Alcaraz"}, ""},
+			market.Market{Event: "Japan Open Tennis Championships", Question: "Game Spread: Carlos Alcaraz (-3.5) vs Jiri Lehecka (+3.5)", Outcome: "Carlos Alcaraz"}, "subject"},
 		{market.Market{Event: "Western Conference #2 Seed", Question: "Western Conference #2 Seed: Phoenix", Outcome: "Phoenix"},
 			market.Market{Event: "NBA: 2027 Western Conference Champion", Question: "Will the Phoenix Suns be the 2027 NBA Western Conference Champion?", Outcome: "Phoenix Suns"}, "rank"},
 		{market.Market{Event: "Which leaders will leave office before 2027?", Question: "Will Recep Tayyip Erdoğan leave President of Turkey before Jan 1, 2027?", Outcome: "Recep Tayyip Erdoğan"},

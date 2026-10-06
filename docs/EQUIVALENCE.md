@@ -68,7 +68,7 @@ Each canonical market contributes `event title + question + outcome label`. Norm
 |---|---|
 | TF-IDF tokens (outcome tokens weighted ×2) | `fed`, `hold`, `oct`, `meet` |
 | Context tokens: everything except the outcome label | Used to check that the *question* still matches once the shared name is removed |
-| Numbers, excluding years and date parts | "$84,000" → `84000`; "6-9M" → `6, 9000000`; "Gemini 4.0" → `4` |
+| Numbers, excluding years and date parts | "$84,000" → `84000`; "$1,250,000" → `1250000`; "6-9M" → `6, 9000000`; "Gemini 4.0" → `4`. Season labels ("2026-27") become years, and ISO dates become dates |
 | Comparator shape | `>` `≥` `<` `≤` `=` `range` `touch` |
 | Explicit dates, bare months, years | "before Nov 1, 2026" → day 305 |
 | Scopes | rate action, office, predicate, competition, stage, indicator, measure, direction, segment |
@@ -84,21 +84,24 @@ Each canonical market contributes `event title + question + outcome label`. Norm
   candidates.
 - For each market, the 25 best partial matches are fully scored by TF-IDF cosine. Pairs below 0.30 are
   dropped.
-- In the live run this scored **97,658** candidates out of a possible 193 million pairs.
+- In the live run this scored about **1.22M** candidates out of a possible 192 million pairs. **90,726**
+  cleared the 0.30 floor and went through the vetoes.
 
 ### 2.4 Vetoes: where precision comes from
 
-A single veto rejects a pair whatever its score. In evaluation order:
+A single veto rejects a pair whatever its score. There are 18 rules, one of which compares 9 scope groups.
+In evaluation order:
 
-| Veto | Rejects | Live example it caught |
+| Veto | Rejects | Example it targets |
 |---|---|---|
 | threshold | different numbers | Spread −2.5 vs −1.5; "#2" vs "#1 on the Hot 100" |
 | comparator | different shape | "Above 2.4%" vs "2.4%"; "$84,000 or above" (≥) vs "above $84,000" (>); "above $95k" vs "reach $95k" |
 | comparator, one-sided | one side states `>`/`≥`/range, the other doesn't (except spreads/totals) | "Astra 6.1+" vs "Astra 6.1"; "at least one cut" vs "one cut" |
+| threshold, one-sided | a numeric condition on one side, no number at all on the other | "total LA mayoral vote above 1.0M" vs "Karen Bass wins" |
 | date | explicit dates more than a day apart | Merz "before Nov 1" vs "before Nov 30" |
 | deadline | dates a day apart *and* trading cut-offs more than 12 h apart | "before Oct 23" vs "by Oct 23" |
 | month / year | bare months disjoint; years ≥ 2 apart | Fed October vs December; Senate 2028 vs 2026 |
-| resolution source | different known oracles | BRTI vs Binance |
+| resolution source | different known oracles | BRTI vs Binance. It didn't fire in the recorded run: the labelled BRTI/Binance pairs also differ in comparator or threshold, which are checked first |
 | league / team | different league or team | NFL Raiders playoffs vs WNBA Aces; Atlanta vs the "Ravens" outcome |
 | outcome | outcome labels share no entity | Andy Barr vs Julia Letlow |
 | rank | different or one-sided rank | "#2 seed" vs champion; "top half" vs champion |
@@ -108,8 +111,9 @@ A single veto rejects a pair whatever its score. In evaluation order:
 | subject | each side names something rare the other never mentions | Greenland vs Alberta independence |
 | context | under 0.30 similarity once the outcome label is removed | "Spain wins the Women's World Cup" vs "Spain participates in Eurovision" |
 
-Every rejected candidate with a high score is kept as a **near miss**, with its veto. These are the most
-instructive output of the system (`/near-misses`, or `equinox scan -near-misses N`).
+The 200 highest-scoring rejected candidates are kept as **near misses**, each with its veto. The scan
+reports the full count, about 12,200 in the live run. These are the most instructive output of the
+system (`/near-misses`, or `equinox scan -near-misses N`).
 
 ### 2.5 Assignment and tiers
 
@@ -128,9 +132,11 @@ instructive output of the system (`/near-misses`, or `equinox scan -near-misses 
 - A rejecting verdict blocks it (tier `rejected`).
 - With `-require-review`, **only confirmed pairs route**. This is the production setting.
 
-The committed table holds 247 verdicts from the two live audits (§3.3), marked
-`source: llm-audit: 2 independent judges`. A human reviewer should spot-check them before relying on
-them.
+The committed table holds 297 verdicts from the three live audits (§3.3):
+- 197 confirmations, each from a single LLM judge;
+- 100 rejections, where an LLM judge and a skeptic agreed.
+
+The `source` field says which. A human reviewer should spot-check them before relying on them.
 
 ## 3. Evaluation
 
@@ -146,7 +152,8 @@ There are 55 cross-venue pairs, hand-labelled from a live census
   different resolution source, inverse polarity, boundary inclusivity, related-but-different.
 
 Each pair goes through the **real adapters** from its raw API JSON and is judged against term statistics
-from the full **60,234-market** recorded corpus.
+from the full **60,223-market** recorded corpus. Precision is 1.000 in every topic; the misses are in
+sports, geopolitics and tech (per-topic table in [`TEST_RESULTS.md`](TEST_RESULTS.md) §3).
 
 | | Result |
 |---|---|
@@ -171,22 +178,26 @@ To measure that, live matches were audited.
 
 Method:
 - Take a stratified random sample of live pairs.
-- Each pair is judged against the definition above by an independent LLM judge reading both venues'
-  question, outcome and rules excerpt.
-- Every "not equivalent" or "uncertain" verdict is re-judged by a second, skeptical reviewer. Only
-  agreeing negatives count as false positives.
-- The judges never see the matcher's tier or score.
+- An LLM judge reads both venues' question, outcome, times and a rules excerpt, and judges each pair
+  against the definition above.
+- Every "not equivalent" or "uncertain" verdict is re-judged by one skeptic. A false positive counts only
+  if both agree.
+- **In audits 1 and 2 the judges' input included the matcher's tier and score**, with an instruction to
+  ignore them, which is an anchoring risk. **Audit 3 omitted them**, so its judges were blind.
 
 | Audit | Matcher version | Sample | `equivalent`-tier precision | `review`-tier precision |
 |---|---|---|---|---|
 | 1 (exploratory) | first version | 100 equivalent + 30 review | **0.626** (62 / 99) | 0.233 |
-| 1, re-scored after fixes | final | same pairs (**in-sample**, optimistic) | 0.945 (52 / 55) | — |
-| **2 (out of sample)** | **final** | 96 equivalent + 24 review, **none seen before** | **0.872** (82 / 94; 95% CI 0.79–0.93) | 0.167 |
+| 2 (out of sample) | after audit-1 fixes | 96 equivalent + 24 review, none seen before | 0.872 (82 / 94) | 0.167 |
+| 2, re-scored | final | the audit-2 pairs still tiered `equivalent` | 0.863 (82 / 95) | — |
+| 3 (blind) | final | all 50 pairs created by the final bug fixes | 0.913 (42 / 46) | 0 / 4 |
+| **Final, out of sample** | **final** | **audit 2 re-scored + audit 3** | **0.879 (124 / 141; 95% CI 0.82–0.93)** | |
 
 Reading these results:
-- **The tiers mean something.** `equivalent` is right about 87% of the time; `review` about 17%. Not
-  routing `review` is correct.
-- **Audit-driven vetoes worked.** Out-of-sample precision rose from 0.63 to 0.87.
+- **The tiers mean something.** `equivalent` is right about 88% of the time out of sample. `review` is
+  rarely right (4 of 24 in audit 2, 0 of 4 in audit 3), so not routing it is correct.
+- **Audit-driven vetoes worked.** Precision rose from 0.63 (first version) to 0.88 out of sample for the
+  final version.
 - **The remaining 13% is mostly rules-level**, which vocabulary cannot reach. Examples:
   - announce vs complete an IPO;
   - first round vs runoff;
@@ -204,6 +215,7 @@ Reading these results:
 | Announce vs complete; agreed vs signed; any-time vs snapshot | medium | **No**: needs a reading of the rules text |
 | Window boundaries (Dec 31 vs December FOMC; Aug 2028 vs Mar 2028) | medium | Partly: needs date parsing of the rules text |
 | Composition order (D-House/R-Senate vs D-Senate/R-House) | low | Yes, with a composition parser (not built) |
+| Cross-league nickname homonyms (LA Kings NHL vs Sacramento Kings NBA; Atlanta Falcons vs Atlanta Dream) | low | Yes: competition detection needs more league vocabulary ("NBA Finals" vs "Stanley Cup"). Seen in audit 3 |
 | Counting units (one 50 bp hike = 1 event on Kalshi, 2 steps on Polymarket) | low | Needs domain knowledge |
 
 ## 4. Known gaps (recall)
@@ -215,8 +227,11 @@ Reading these results:
   shipped code.
 - **Product vs company** ("Gemini" vs "Google"). Not aliased on purpose: the labelled set contains a
   look-alike pair with a different resolution source.
-- **Structural equivalence across market types.** "Wins the ALDS" = "advances to the ALCS". A stage veto
-  blocks this.
+- **Structural equivalence across market types.** "Wins the ALDS" = "advances to the ALCS". A
+  predicate-scope veto (win vs advance) blocks this.
+- **Off-by-one deadlines with different cut-offs.** "Before Jan 1, 2027" vs "by Dec 31" is accepted only
+  if the venues' trading cut-offs are within 12 hours. For the labelled Netanyahu pair they are 22 hours
+  apart, so this conservative rule rejects a true equivalent.
 - **Low-similarity sports series markets** land in `review` (scores 0.32–0.45) and need a reviewer.
 
 ## 5. Path to production
@@ -226,6 +241,6 @@ Reading these results:
    produces a structured comparison of the YES regions, with a human confirming. The result is written to
    the **reviewed mapping table**. LLMs stay out of the routing path, which stays deterministic.
 3. Route production orders only with `-require-review`.
-4. Feed every confirmed false positive back as a **regression fixture**, as was done for the eight live
+4. Feed every confirmed false positive back as a **regression fixture**, as was done for the twelve live
    false positives in `TestLiveFalsePositivesAreVetoed`.
 5. Re-run the out-of-sample audit on every matcher change, and track precision and recall per category.

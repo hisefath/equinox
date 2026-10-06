@@ -17,6 +17,8 @@ flowchart LR
     PA["venues/polymarket<br/>outcome tokens → binary markets<br/>feeSchedule fee curve"]
     A2["A2 public REST is good enough:<br/>books polled, listings ≤ 15 s stale"]:::assume
     A5["A5 fees are knowable from venue data;<br/>an unknown schedule makes a market untradable"]:::assume
+    A8["A8 books are stamped with receipt time<br/>(Kalshi has no timestamp; Polymarket's is last change)"]:::assume
+    A9["A9 ingestion is scoped: 30 Kalshi pages,<br/>the 3,000 most-traded Polymarket markets"]:::assume
   end
 
   subgraph CORE["Venue-agnostic core"]
@@ -29,6 +31,8 @@ flowchart LR
     A3["A3 equivalence is inferred, never certain:<br/>precision over recall; review tier is not routed"]:::assume
     A4["A4 taker BUY only; displayed depth fills;<br/>no queue position or latency model"]:::assume
     A6["A6 a stale or failed venue is excluded, not guessed at"]:::assume
+    A7["A7 every rounding is conservative:<br/>sizes floored, fees rounded up"]:::assume
+    A10["A10 settlement-timing differences are caveats,<br/>not a different YES condition"]:::assume
   end
 
   subgraph OUT["Interfaces"]
@@ -60,3 +64,8 @@ flowchart LR
   A3 -.- MA
   A4 -.- RT
   A6 -.- ST
+  A7 -.- RT
+  A8 -.- KA
+  A8 -.- PA
+  A9 -.- F
+  A10 -.- MA
