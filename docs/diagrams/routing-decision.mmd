@@ -1,0 +1,17 @@
+%% route.Route: a pure function of (order, quotes, policy, now). No I/O, no clock, no randomness.
+flowchart TD
+  O["order: BUY qty of YES/NO, optional limit"] --> VAL{"valid order?"}
+  VAL -- no --> REJ["Rejected + reason"]
+  VAL -- yes --> SORT["sort quotes by (venue, market id)<br/>hash inputs → decision id"]
+  SORT --> EACH["for each quote"]
+  EACH --> E1{"venue healthy?<br/>market tradable?<br/>book valid & fresh?<br/>offers on this side, within limit?<br/>fillable size ≥ venue minimum?"}
+  E1 -- no --> EX["excluded, reason recorded"]
+  E1 -- yes --> SIM["simulate fill alone:<br/>walk asks best-first, Σ price×qty,<br/>fee from FeeCurve, rounded per order"]
+  SIM --> BEST["best single venue:<br/>most contracts, then lowest all-in cost<br/>(exact cross-multiplication), then ids"]
+  BEST --> SPLIT{"split allowed and > 1 venue?"}
+  SPLIT -- no --> DEC
+  SPLIT -- yes --> CB["consolidated book: every level of every venue,<br/>ranked by fee-inclusive price; greedy fill;<br/>drop venues below their minimum and refill"]
+  CB --> CMP{"fills more, or same for less?"}
+  CMP -- yes --> USE["use the split"] --> DEC
+  CMP -- no --> DEC["Decision: allocations, totals, all-in price,<br/>per-venue evaluations, explanation lines"]
+  DEC --> LOG[("append to decisions.jsonl")]

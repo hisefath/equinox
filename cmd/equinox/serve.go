@@ -101,8 +101,8 @@ func serveCmd(args []string) error {
 			reply(w, http.StatusNotFound, map[string]string{"error": err.Error()})
 			return
 		}
-		if pair.Tier != match.Equivalent && c.minTier != match.Review {
-			reply(w, http.StatusConflict, map[string]string{"error": "pair is only " + pair.Tier + "; not routable"})
+		if err := c.routable(pair); err != nil {
+			reply(w, http.StatusConflict, map[string]string{"error": err.Error()})
 			return
 		}
 		order := route.Order{Side: market.Side(strings.ToLower(cmp.Or(q.Get("side"), "yes")))}

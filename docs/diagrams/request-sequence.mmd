@@ -1,0 +1,32 @@
+%% serve mode: ingestion runs in the background; a routing request never waits on a venue.
+sequenceDiagram
+  autonumber
+  participant L as Ingestion loop
+  participant K as Kalshi API
+  participant P as Polymarket API
+  participant S as ingest.Store
+  participant M as match
+  participant H as /route handler
+  participant R as route.Route
+  participant J as decisions.jsonl
+
+  par every 5 min, both venues concurrently, each with its own deadline
+    L->>K: GET /series, /events (paged)
+    L->>P: GET /markets/keyset (paged)
+  end
+  K-->>L: markets (or error)
+  P-->>L: markets (or error)
+  L->>S: swap in a new snapshot (a failed venue keeps last-known-good, marked unhealthy)
+  L->>M: Match(snapshot.AllMarkets())
+  M-->>L: pairs + evidence + near misses
+  loop every 10 s
+    L->>K: GET /markets/orderbooks (100 tickers per call)
+    L->>P: POST /books (500 tokens per call)
+    L->>S: swap in new books (invalid books rejected, old ones age out)
+  end
+
+  Note over H,R: request path: memory only
+  H->>S: Snapshot() (one atomic load, never blocks)
+  H->>R: Route(order, quotes, policy, now)
+  R-->>H: Decision (deterministic, self-explaining)
+  H->>J: append decision + match evidence

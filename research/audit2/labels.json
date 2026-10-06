@@ -1,0 +1,1438 @@
+[
+ {
+  "n": 1,
+  "pair_id": "kalshi:KXSB-27-ATL~polymarket:1357372",
+  "label": "equivalent",
+  "reason": "Both ask whether Atlanta wins the Super Bowl played in Feb 2027 (Kalshi expects to resolve 2027-02-14; Polymarket has a March 31, 2027 deadline). Caveat: Polymarket resolves 'Other' if the game is cancelled or postponed past that date.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.568
+ },
+ {
+  "n": 7,
+  "pair_id": "kalshi:HOUSEPA1-26-R~polymarket:943748",
+  "label": "equivalent",
+  "reason": "Both ask whether a Republican wins the 2026 PA-01 seat. Caveat: Kalshi settles on who is sworn in for the 2027 term, while Polymarket settles on the race call and the winner's party affiliation.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.952
+ },
+ {
+  "n": 13,
+  "pair_id": "kalshi:KXFRENCHPRES-27-CLAG~polymarket:679060",
+  "label": "equivalent",
+  "reason": "Both ask whether Christine Lagarde wins the next French presidential election, including any runoff. Caveat: Polymarket has a Dec 31, 2027 fallback if no result is known by then.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.997
+ },
+ {
+  "n": 19,
+  "pair_id": "kalshi:KXSB-27-KC~polymarket:1357386",
+  "label": "equivalent",
+  "reason": "Both ask whether Kansas City wins the Super Bowl played in Feb 2027. Caveat: Polymarket resolves 'Other' if the game is postponed past March 31, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.685
+ },
+ {
+  "n": 25,
+  "pair_id": "kalshi:GOVPARTYIA-26-D~polymarket:629397",
+  "label": "equivalent",
+  "reason": "Both ask whether the Democratic nominee wins the 2026 Iowa governor race. Caveat: Kalshi settles on the inauguration, Polymarket on the election winner.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.92
+ },
+ {
+  "n": 31,
+  "pair_id": "kalshi:KXGTEMP-27-P0~polymarket:678690",
+  "label": "not_equivalent",
+  "failure_pattern": "different bucket",
+  "reason": "Kalshi asks whether 2026 is the hottest year on record (above the 2025 value and 1.28C), while Polymarket asks whether 2026 ranks exactly fifth-hottest. These outcomes are close to mutually exclusive.",
+  "recheck": {
+   "n": 31,
+   "pair_id": "kalshi:KXGTEMP-27-P0~polymarket:678690",
+   "label": "not_equivalent",
+   "failure_pattern": "different bucket",
+   "reason": "Kalshi pays YES only if 2026 is the hottest year on record (above 2025 and 1.28C on GISS). Polymarket pays YES only if 2026 ranks exactly fifth. A year can't be both, so the two are mutually exclusive."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.719
+ },
+ {
+  "n": 37,
+  "pair_id": "kalshi:KXPRESNOMD-28-JS~polymarket:559655",
+  "label": "equivalent",
+  "reason": "Both ask whether Josh Shapiro wins and accepts the 2028 Democratic presidential nomination. The wording is effectively identical.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.97
+ },
+ {
+  "n": 43,
+  "pair_id": "kalshi:KXHOUSEUT03-26-R~polymarket:944273",
+  "label": "equivalent",
+  "reason": "Both ask whether a Republican wins the 2026 UT-03 seat. Caveat: Kalshi settles on the swearing-in, Polymarket on the race call.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.957
+ },
+ {
+  "n": 49,
+  "pair_id": "kalshi:KXNHLPLAYOFF-27-MIN~polymarket:5084156",
+  "label": "equivalent",
+  "reason": "Both ask whether the Minnesota Wild qualify for the 2026-27 NHL playoffs. Polymarket explicitly counts wild-card berths.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.863
+ },
+ {
+  "n": 55,
+  "pair_id": "kalshi:KXHOUSERACE-OH05-26-R~polymarket:1284403",
+  "label": "equivalent",
+  "reason": "Both ask whether a Republican wins the 2026 OH-05 seat. Caveat: Kalshi settles on the swearing-in, Polymarket on the race call.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.955
+ },
+ {
+  "n": 61,
+  "pair_id": "kalshi:SENATEFLS-26-D~polymarket:631044",
+  "label": "equivalent",
+  "reason": "Both ask whether the Democrat wins the 2026 Florida Senate special election (Kalshi's ticker is FLS). Caveat: Kalshi's template text says 'term beginning in 2027', but a special-election winner fills the remaining term and would likely be sworn in during late 2026. Taken literally, the rule is sloppy, though the intent is the same race.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.995
+ },
+ {
+  "n": 67,
+  "pair_id": "kalshi:KXHOUSERACE-AL02-26-D~polymarket:1280801",
+  "label": "equivalent",
+  "reason": "Both ask whether a Democrat wins the 2026 AL-02 seat. Caveat: Kalshi settles on the swearing-in, Polymarket on the race call.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.959
+ },
+ {
+  "n": 73,
+  "pair_id": "kalshi:KXPRESNOMR-28-TCAR~polymarket:561996",
+  "label": "equivalent",
+  "reason": "Both ask whether Tucker Carlson wins and accepts the 2028 Republican presidential nomination.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.942
+ },
+ {
+  "n": 79,
+  "pair_id": "kalshi:SENATEKS-26-R~polymarket:630747",
+  "label": "equivalent",
+  "reason": "Both ask whether the Republican wins the 2026 Kansas Senate race, a regular election for the term beginning in 2027. Caveat: Kalshi settles on the swearing-in, Polymarket on the election winner.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.994
+ },
+ {
+  "n": 85,
+  "pair_id": "kalshi:KXPRESPERSON-28-MKEL~polymarket:561279",
+  "label": "equivalent",
+  "reason": "Both ask whether Mark Kelly becomes President through the 2028 election. Caveat: Kalshi settles on the 2029 inauguration, while Polymarket settles on an AP/Fox/NBC race call and falls back to the inauguration.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.969
+ },
+ {
+  "n": 91,
+  "pair_id": "kalshi:KXHOUSERACE-MN06-26-D~polymarket:1283881",
+  "label": "equivalent",
+  "reason": "Both ask whether a Democrat wins the 2026 MN-06 seat. Caveat: Kalshi settles on the swearing-in, Polymarket on the race call.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.958
+ },
+ {
+  "n": 97,
+  "pair_id": "kalshi:KXTRILATERAL-29JAN20-27JAN01~polymarket:2364958",
+  "label": "not_equivalent",
+  "failure_pattern": "different predicate",
+  "reason": "Kalshi asks about a Trump-Zelenskyy-Putin trilateral meeting, while Polymarket asks whether the next Trump-Putin meeting takes place in the United States. The participants and the predicate (location) differ.",
+  "recheck": {
+   "n": 97,
+   "pair_id": "kalshi:KXTRILATERAL-29JAN20-27JAN01~polymarket:2364958",
+   "label": "not_equivalent",
+   "failure_pattern": "different predicate",
+   "reason": "Kalshi needs a three-way in-person meeting of Trump, Zelenskyy and Putin. Polymarket asks whether the next Trump-Putin meeting takes place in the US, so a bilateral meeting on US soil makes only Polymarket YES and a trilateral meeting abroad makes only Kalshi YES."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.5
+ },
+ {
+  "n": 103,
+  "pair_id": "kalshi:KXELECTIRAN-27JAN01~polymarket:665374",
+  "label": "not_equivalent",
+  "failure_pattern": "different event",
+  "reason": "Kalshi asks whether Iran holds a presidential election, while Polymarket asks whether the US invades Iran. These are unrelated events.",
+  "recheck": {
+   "n": 103,
+   "pair_id": "kalshi:KXELECTIRAN-27JAN01~polymarket:665374",
+   "label": "not_equivalent",
+   "failure_pattern": "unrelated markets",
+   "reason": "Kalshi asks whether Iran holds a presidential election. Polymarket asks whether the US starts a military offensive to control Iranian territory. These are unrelated events."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.374
+ },
+ {
+  "n": 109,
+  "pair_id": "kalshi:KXUSCANADATARIFFDOWN-26SEP21-NOV01~polymarket:3900266",
+  "label": "not_equivalent",
+  "failure_pattern": "different predicate",
+  "reason": "Kalshi resolves YES on any unilateral presidential action that lowers Canada tariffs, while Polymarket requires a diplomatic agreement with Canada. A unilateral cut would make Kalshi YES and Polymarket NO.",
+  "recheck": {
+   "n": 109,
+   "pair_id": "kalshi:KXUSCANADATARIFFDOWN-26SEP21-NOV01~polymarket:3900266",
+   "label": "not_equivalent",
+   "failure_pattern": "unilateral action vs diplomatic agreement",
+   "reason": "The windows match (before Nov 1 vs by Oct 31). But Kalshi pays on any unilateral presidential tariff reduction or suspension, while Polymarket needs a mutually announced US-Canada agreement, so a realistic unilateral exemption or cut splits them."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.484
+ },
+ {
+  "n": 115,
+  "pair_id": "kalshi:KXMAMDANIWHVISIT-26SEP28-NOV01~polymarket:1386144",
+  "label": "not_equivalent",
+  "failure_pattern": "different subject",
+  "reason": "Kalshi asks about Zohran Mamdani visiting the White House before Nov 1, while Polymarket asks about the Seattle Seahawks visiting in 2026. The subjects and deadlines both differ.",
+  "recheck": {
+   "n": 115,
+   "pair_id": "kalshi:KXMAMDANIWHVISIT-26SEP28-NOV01~polymarket:1386144",
+   "label": "not_equivalent",
+   "failure_pattern": "different subject",
+   "reason": "Kalshi asks about Zohran Mamdani visiting the White House before Nov 1. Polymarket asks about the Seahawks visiting by Dec 31, 2026 as the championship team. The subject and the deadline both differ."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.329
+ },
+ {
+  "n": 4,
+  "pair_id": "kalshi:KXFRENCHPRES-27-DLIS~polymarket:679022",
+  "label": "equivalent",
+  "reason": "Both resolve YES if David Lisnard wins the next French presidential election, including any runoff. Caveat: Polymarket has a fallback if results are not known by Dec 31, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.997
+ },
+ {
+  "n": 10,
+  "pair_id": "kalshi:KXPRESNOMD-28-PB~polymarket:559654",
+  "label": "equivalent",
+  "reason": "Both require Pete Buttigieg to win and accept the 2028 Democratic presidential nomination.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.976
+ },
+ {
+  "n": 16,
+  "pair_id": "kalshi:KXPRESPERSON-28-AOCA~polymarket:561231",
+  "label": "equivalent",
+  "reason": "Same person and same 2028 presidency. Caveat: Kalshi pays on inauguration for the 2029 term and Polymarket on the AP/Fox/NBC race call, with inauguration as its fallback, so they differ only if the president-elect is not inaugurated.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.981
+ },
+ {
+  "n": 22,
+  "pair_id": "kalshi:SENATEMI-26-R~polymarket:630806",
+  "label": "equivalent",
+  "reason": "Both resolve on whether the Republican wins the 2026 Michigan U.S. Senate seat. Caveat: Kalshi settles on the swearing-in for the 2027 term and Polymarket on the election result.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.993
+ },
+ {
+  "n": 28,
+  "pair_id": "kalshi:KXHOUSERACE-FL06-26-D~polymarket:1282993",
+  "label": "equivalent",
+  "reason": "Both resolve on whether the Democrat wins the 2026 FL-06 House seat. Caveat: Kalshi uses the party of the member sworn in for 2027 and Polymarket the winner's party when the race is called.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.955
+ },
+ {
+  "n": 34,
+  "pair_id": "kalshi:KXISRDEFMIN-30-IKAT~polymarket:5151605",
+  "label": "uncertain",
+  "reason": "The subject and predicate match (Katz as first Defense Minister of the first government formed after the 2026 Knesset election), but Kalshi's window runs to Oct 28, 2030 while the Polymarket excerpt is cut off before any deadline or no-government fallback, and its close is Mar 2027. That matters because coalition talks could realistically stall. Sources also differ: a Times of Israel report versus Knesset approval.",
+  "recheck": {
+   "n": 34,
+   "pair_id": "kalshi:KXISRDEFMIN-30-IKAT~polymarket:5151605",
+   "label": "uncertain",
+   "reason": "Both ask whether Katz is the first non-caretaker Defense Minister of the first government formed after the 2026 Knesset election. Polymarket's rules are cut off before its deadline or no-government fallback, and its close is Mar 2027 against Kalshi's Oct 2030 window. A drawn-out coalition process could split them, and the truncated text can't rule that out."
+  },
+  "final": "uncertain",
+  "tier": "equivalent",
+  "score": 0.889
+ },
+ {
+  "n": 40,
+  "pair_id": "kalshi:KXPUTINZELMEET-29JAN01-27JAN01~polymarket:1301527",
+  "label": "not_equivalent",
+  "failure_pattern": "different predicate",
+  "reason": "Kalshi requires an in-person meeting, while Polymarket also counts a phone or video call, so a call alone would resolve Polymarket YES and Kalshi NO.",
+  "recheck": {
+   "n": 40,
+   "pair_id": "kalshi:KXPUTINZELMEET-29JAN01-27JAN01~polymarket:1301527",
+   "label": "not_equivalent",
+   "failure_pattern": "in-person meeting vs any talk",
+   "reason": "The windows match, but Polymarket also counts a phone or video call while Kalshi needs an in-person meeting. A call with no meeting is a realistic case that makes Polymarket YES and Kalshi NO."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.558
+ },
+ {
+  "n": 46,
+  "pair_id": "kalshi:KXNFLAFCWEST-27-KC~polymarket:1447946",
+  "label": "equivalent",
+  "reason": "Both resolve on Kansas City winning the AFC West for the 2026 NFL season. Caveat: Polymarket resolves to Other if the season is cancelled or runs past Jan 17, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.698
+ },
+ {
+  "n": 52,
+  "pair_id": "kalshi:KXNFLAFCCHAMP-27-HOU~polymarket:1361088",
+  "label": "equivalent",
+  "reason": "Both resolve on Houston winning the AFC Championship game played in early 2027 (the 2026 season), going by Kalshi's Feb 2027 resolution and Polymarket's Mar 31, 2027 cutoff.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.553
+ },
+ {
+  "n": 58,
+  "pair_id": "kalshi:KXTRUMPADMINLEAVE-26DEC31-SBES~polymarket:666661",
+  "label": "not_equivalent",
+  "failure_pattern": "different predicate (leave role vs leave administration; announcement counts)",
+  "reason": "Kalshi asks whether Bessent leaves the Treasury Secretary role. Polymarket asks whether he leaves the administration entirely and counts an announcement before year-end, so a move to another administration post or a December announcement taking effect in 2027 would resolve the two differently.",
+  "recheck": {
+   "n": 58,
+   "pair_id": "kalshi:KXTRUMPADMINLEAVE-26DEC31-SBES~polymarket:666661",
+   "label": "not_equivalent",
+   "failure_pattern": "different predicate (leave role vs leave administration; announcement counts)",
+   "reason": "Kalshi pays YES when Bessent leaves the Treasury role, so a move to another administration post counts there but not on Polymarket. Polymarket requires leaving the administration and pays YES on an announcement, so a December 2026 announcement effective in 2027 counts there but not on Kalshi."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.926
+ },
+ {
+  "n": 64,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-VFB~polymarket:2849014",
+  "label": "equivalent",
+  "reason": "Both resolve on VfB Stuttgart being the 2026-27 Bundesliga champion. Caveat: Polymarket has an Other fallback for cancellation.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.672
+ },
+ {
+  "n": 70,
+  "pair_id": "kalshi:SENATEIA-26-R~polymarket:630734",
+  "label": "equivalent",
+  "reason": "Both resolve on whether the Republican wins the 2026 Iowa U.S. Senate seat. Caveat: Kalshi settles on the swearing-in and Polymarket on the election result.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.995
+ },
+ {
+  "n": 76,
+  "pair_id": "kalshi:KXPRESNOMD-28-JOSS~polymarket:559661",
+  "label": "equivalent",
+  "reason": "Both require Jon Ossoff to win and accept the 2028 Democratic presidential nomination.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.97
+ },
+ {
+  "n": 82,
+  "pair_id": "kalshi:KXNBA-27-BKN~polymarket:2243298",
+  "label": "equivalent",
+  "reason": "Both resolve on Brooklyn winning the 2026-27 NBA championship. Caveat: Polymarket has tie-alphabetical and cancellation (Other) clauses.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.909
+ },
+ {
+  "n": 88,
+  "pair_id": "kalshi:KXTAIPEIMAYOR-26NOV28-CWAN~polymarket:3580932",
+  "label": "equivalent",
+  "reason": "Both resolve on Chiang Wan-an winning the Nov 28, 2026 Taipei mayoral election. Caveat: Polymarket resolves to Other if no result is known by Jun 30, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.913
+ },
+ {
+  "n": 94,
+  "pair_id": "kalshi:KXRANKLISTFFRB-27-JLOVE4~polymarket:4159940",
+  "label": "not_equivalent",
+  "failure_pattern": "different threshold (#1 vs top 5)",
+  "reason": "Kalshi requires Love to be the #1 PPR running back, while Polymarket requires only a top-5 finish, so finishing 2nd through 5th resolves Polymarket YES and Kalshi NO.",
+  "recheck": {
+   "n": 94,
+   "pair_id": "kalshi:KXRANKLISTFFRB-27-JLOVE4~polymarket:4159940",
+   "label": "not_equivalent",
+   "failure_pattern": "different threshold (#1 vs top 5)",
+   "reason": "Kalshi needs Love to be the #1 PPR running back, while Polymarket needs only a top-5 finish, so a 2nd to 5th place finish splits them."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.799
+ },
+ {
+  "n": 100,
+  "pair_id": "kalshi:KXCLAUDE-MYTH-26NOV01~polymarket:2421094",
+  "label": "not_equivalent",
+  "failure_pattern": "different subject/predicate",
+  "reason": "Kalshi asks whether Anthropic releases a model called Mythos; Polymarket asks whether Anthropic completes an IPO. These are unrelated events.",
+  "recheck": {
+   "n": 100,
+   "pair_id": "kalshi:KXCLAUDE-MYTH-26NOV01~polymarket:2421094",
+   "label": "not_equivalent",
+   "failure_pattern": "different predicate",
+   "reason": "Kalshi asks whether Anthropic releases a model called Mythos. Polymarket asks whether Anthropic is publicly listed by Oct 31. These are unrelated events."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.301
+ },
+ {
+  "n": 106,
+  "pair_id": "kalshi:KXNBA-27-MIN~polymarket:2243318",
+  "label": "equivalent",
+  "reason": "Both resolve on Minnesota winning the 2026-27 NBA championship. Caveat: Polymarket has tie and cancellation (Other) clauses.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "review",
+  "score": 0.458
+ },
+ {
+  "n": 112,
+  "pair_id": "kalshi:KXNFLTEAMPTS-MOST27-CHI~polymarket:2784920",
+  "label": "not_equivalent",
+  "failure_pattern": "different subject/predicate",
+  "reason": "Kalshi asks whether the Chicago NFL team is the season's highest-scoring team; Polymarket asks for an exact 2-2 score in a single MLS match between Chicago Fire and Vancouver.",
+  "recheck": {
+   "n": 112,
+   "pair_id": "kalshi:KXNFLTEAMPTS-MOST27-CHI~polymarket:2784920",
+   "label": "not_equivalent",
+   "failure_pattern": "unrelated markets",
+   "reason": "Kalshi asks whether the Chicago NFL team scores the most points in the regular season. Polymarket asks for an exact 2-2 score in one Chicago Fire vs Vancouver MLS match."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.412
+ },
+ {
+  "n": 118,
+  "pair_id": "kalshi:KXEARNINGSMENTIONC-26OCT13-INFL~polymarket:5144378",
+  "label": "not_equivalent",
+  "failure_pattern": "different predicate",
+  "reason": "Kalshi asks whether the word 'Inflation' is said on Citigroup's earnings call; Polymarket asks whether GAAP EPS beats $2.72.",
+  "recheck": {
+   "n": 118,
+   "pair_id": "kalshi:KXEARNINGSMENTIONC-26OCT13-INFL~polymarket:5144378",
+   "label": "not_equivalent",
+   "failure_pattern": "different predicate",
+   "reason": "Kalshi asks whether the word 'Inflation' is said on Citigroup's earnings call. Polymarket asks whether GAAP EPS is above $2.72. These are unrelated outcomes."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.434
+ },
+ {
+  "n": 5,
+  "pair_id": "kalshi:CONTROLS-2026-R~polymarket:562794",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Republicans win control of the U.S. Senate in the 2026 election. The only caveat is that Polymarket spells out majority/VP/President Pro Tempore tiebreaks that the Kalshi excerpt leaves implicit, and each venue settles at a different time.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.852
+ },
+ {
+  "n": 11,
+  "pair_id": "kalshi:GOVPARTYCA-26-R~polymarket:628940",
+  "label": "not_equivalent",
+  "failure_pattern": "party vs candidate",
+  "reason": "Kalshi resolves YES if any Republican is inaugurated as CA governor, while Polymarket resolves YES only if Steve Hilton wins. Under CA's top-two system a different Republican could win, which would make Kalshi YES and Polymarket NO.",
+  "recheck": {
+   "n": 11,
+   "pair_id": "kalshi:GOVPARTYCA-26-R~polymarket:628940",
+   "label": "uncertain",
+   "failure_pattern": "party vs candidate (likely moot post-primary)",
+   "reason": "The first auditor's 'another Republican could win' case needs a second Republican on the November top-two ballot. Kalshi's outcome label already names Steve Hilton as the Republican, and CA general elections allow no write-ins, so if Hilton faces a Democrat then a Republican win means a Hilton win and the pair is equivalent (inauguration vs race call is only a timing caveat). The source data does not state who the other finalist is, so check that before calling it equivalent."
+  },
+  "final": "uncertain",
+  "tier": "equivalent",
+  "score": 0.919
+ },
+ {
+  "n": 17,
+  "pair_id": "kalshi:KXPRESNOMD-28-RW~polymarket:559664",
+  "label": "equivalent",
+  "reason": "Both require Raphael Warnock to win and accept the 2028 Democratic presidential nomination.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.981
+ },
+ {
+  "n": 23,
+  "pair_id": "kalshi:KXNFLNFCEAST-27-DAL~polymarket:1447964",
+  "label": "equivalent",
+  "reason": "Both resolve on Dallas winning the NFC East for the 2026 NFL season. The season comes from Kalshi's ticker and Jan 2027 dates. Caveat: Polymarket resolves to Other if the season is postponed past Jan 17, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.593
+ },
+ {
+  "n": 29,
+  "pair_id": "kalshi:SENATEOHS-26-D~polymarket:631057",
+  "label": "equivalent",
+  "reason": "Both resolve on the Democrat winning the 2026 Ohio U.S. Senate special election. Caveat: Kalshi pays on swearing-in and its rules say the term begins in 2027 (odd wording for a special election), while Polymarket pays on the race call and excludes independents.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.993
+ },
+ {
+  "n": 35,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-FCA~polymarket:2849020",
+  "label": "equivalent",
+  "reason": "Both resolve on FC Augsburg being the 2026-27 Bundesliga champion. Caveat: Polymarket resolves to Other if the season is postponed past June 14, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.802
+ },
+ {
+  "n": 41,
+  "pair_id": "kalshi:KXNBA-27-LAC~polymarket:2243315",
+  "label": "equivalent",
+  "reason": "Both resolve on the LA Clippers winning the 2027 NBA Finals (the 2026-27 season). The edge cases are only caveats: Polymarket has a June 30, 2027 postponement cutoff and an alphabetical tiebreak.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.642
+ },
+ {
+  "n": 47,
+  "pair_id": "kalshi:KXSB-27-CLE~polymarket:1357378",
+  "label": "equivalent",
+  "reason": "Kalshi's 2027 Pro Football Championship (expected Feb 14, 2027) and Polymarket's 2027 NFL league championship (deadline Mar 31, 2027) are the same Super Bowl, and both ask whether Cleveland wins it.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.604
+ },
+ {
+  "n": 53,
+  "pair_id": "kalshi:KXHOUSERACE-OH06-26-D~polymarket:1284412",
+  "label": "equivalent",
+  "reason": "Both resolve on a Democrat winning the 2026 OH-06 House seat. Caveat: Kalshi settles on the swearing-in for the 2027 term and Polymarket on the race call by ballot party.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.959
+ },
+ {
+  "n": 59,
+  "pair_id": "kalshi:KXSPANISHPM-27AUG22-SABA~polymarket:2695687",
+  "label": "not_equivalent",
+  "failure_pattern": "different deadline",
+  "reason": "Kalshi allows Abascal to become PM after the next general election up to Aug 22, 2028, while Polymarket requires him to be the next PM sworn in by Mar 31, 2028. If government formation is drawn out and he takes office in Apr-Aug 2028, Kalshi resolves YES and Polymarket does not.",
+  "recheck": {
+   "n": 59,
+   "pair_id": "kalshi:KXSPANISHPM-27AUG22-SABA~polymarket:2695687",
+   "label": "not_equivalent",
+   "failure_pattern": "different deadline",
+   "reason": "Kalshi's window for Abascal runs to Aug 22, 2028, while Polymarket requires him to be the next PM sworn in by Mar 31, 2028. A drawn-out government formation that seats him in Apr-Aug 2028 makes only Kalshi YES."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.965
+ },
+ {
+  "n": 65,
+  "pair_id": "kalshi:KXFDARETATRUTIDE-RET-27JAN01~polymarket:1162139",
+  "label": "equivalent",
+  "reason": "Both resolve YES on FDA approval of retatrutide before Jan 1, 2027 (Polymarket: by Dec 31, 2026 11:59 PM ET). Caveat: Kalshi says 'approval for marketing' while Polymarket says 'full or conditional approval for any use'.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.859
+ },
+ {
+  "n": 71,
+  "pair_id": "kalshi:SENATESC-26-D~polymarket:630924",
+  "label": "equivalent",
+  "reason": "Both resolve on a Democrat winning the 2026 South Carolina U.S. Senate race. Caveat: Kalshi pays on swearing-in for the 2027 term, Polymarket on the race call, and Polymarket excludes independents.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.995
+ },
+ {
+  "n": 77,
+  "pair_id": "kalshi:KXGEMINI-GEM4-26NOV01~polymarket:3584362",
+  "label": "equivalent",
+  "reason": "'Before Nov 1, 2026' and 'by Oct 31, 2026' are the same deadline for Google releasing Gemini 4. Caveat: Polymarket explicitly requires public availability (open beta counts, closed beta does not) and the Kalshi excerpt does not define 'release'; the two cutoffs also differ by about an hour around the DST change.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.591
+ },
+ {
+  "n": 83,
+  "pair_id": "kalshi:HOUSEOH1-26-R~polymarket:943558",
+  "label": "equivalent",
+  "reason": "Both resolve on a Republican winning the 2026 OH-01 House seat. Caveat: Kalshi settles on the swearing-in, Polymarket on the race call.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.946
+ },
+ {
+  "n": 89,
+  "pair_id": "kalshi:KXSB-27-SEA~polymarket:1357399",
+  "label": "equivalent",
+  "reason": "Both are the same Super Bowl (the Feb 2027 championship game), and both ask whether Seattle wins it.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.55
+ },
+ {
+  "n": 95,
+  "pair_id": "kalshi:KXSB-27-NE~polymarket:1357392",
+  "label": "equivalent",
+  "reason": "Both are the same Super Bowl (the Feb 2027 championship game), and both ask whether New England wins it.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.839
+ },
+ {
+  "n": 101,
+  "pair_id": "kalshi:KXFEDEND-27-JAN01~polymarket:666861",
+  "label": "not_equivalent",
+  "failure_pattern": "different subject/predicate",
+  "reason": "Kalshi asks whether the Federal Reserve System is ended, while Polymarket asks whether Trump stops being President. These are unrelated events.",
+  "recheck": {
+   "n": 101,
+   "pair_id": "kalshi:KXFEDEND-27-JAN01~polymarket:666861",
+   "label": "not_equivalent",
+   "failure_pattern": "unrelated event",
+   "reason": "Kalshi asks whether the Federal Reserve System ends. Polymarket asks whether Trump stops being President, which is an unrelated event."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.379
+ },
+ {
+  "n": 107,
+  "pair_id": "kalshi:KXELECTUKRAINE-30JAN01-27JAN01~polymarket:665224",
+  "label": "not_equivalent",
+  "failure_pattern": "different subject/predicate",
+  "reason": "Kalshi asks whether Ukraine holds a presidential election, while Polymarket asks whether Ukraine signs a peace deal with Russia. These are different events.",
+  "recheck": {
+   "n": 107,
+   "pair_id": "kalshi:KXELECTUKRAINE-30JAN01-27JAN01~polymarket:665224",
+   "label": "not_equivalent",
+   "failure_pattern": "unrelated markets",
+   "reason": "Kalshi asks whether Ukraine holds a presidential election. Polymarket asks whether Ukraine signs a peace or ceasefire instrument with Russia. One can happen without the other."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.337
+ },
+ {
+  "n": 113,
+  "pair_id": "kalshi:KXSB-27-DET~polymarket:1357381",
+  "label": "equivalent",
+  "reason": "Both are the same Super Bowl (the Feb 2027 championship game), and both ask whether Detroit wins it.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "review",
+  "score": 0.492
+ },
+ {
+  "n": 119,
+  "pair_id": "kalshi:KXNBANEXTTEAM-27I1LJAMES23-IND~polymarket:741099",
+  "label": "not_equivalent",
+  "failure_pattern": "different subject/predicate",
+  "reason": "Kalshi asks whether LeBron's next team is Indiana before Feb 12, 2027, while Polymarket asks whether LeBron retires before the 2026-27 season. These are different predicates.",
+  "recheck": {
+   "n": 119,
+   "pair_id": "kalshi:KXNBANEXTTEAM-27I1LJAMES23-IND~polymarket:741099",
+   "label": "not_equivalent",
+   "failure_pattern": "different predicate",
+   "reason": "Kalshi asks whether LeBron's next team is Indiana. Polymarket asks whether he retires before the 2026-27 season, and the two outcomes are mutually exclusive rather than the same."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.467
+ },
+ {
+  "n": 2,
+  "pair_id": "kalshi:KXHOUSEUT02-26-R~polymarket:944265",
+  "label": "equivalent",
+  "reason": "Both settle on whether the Republican Party wins UT-02 in the 2026 House race (the outcome label is just the candidate's name). Caveat: Kalshi goes by the party of the member sworn in for the 2027 term, Polymarket by the party of the called winner, so they could differ only if the winner died or switched party.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.947
+ },
+ {
+  "n": 8,
+  "pair_id": "kalshi:HOUSENY4-26-D~polymarket:943433",
+  "label": "equivalent",
+  "reason": "Both settle on whether the Democratic Party wins NY-04 in the 2026 House race. Caveat: Kalshi uses the party of the member sworn in, Polymarket the party of the called winner.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.956
+ },
+ {
+  "n": 14,
+  "pair_id": "kalshi:KXHOLBORNVOTE-26DEC31GRN-15~polymarket:4571627",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether the Green Party gets at least 15% of the vote. Polymarket asks whether Labour wins by a margin of 15 points or more. Different subject and different predicate.",
+  "failure_pattern": "different subject/predicate",
+  "recheck": {
+   "n": 14,
+   "pair_id": "kalshi:KXHOLBORNVOTE-26DEC31GRN-15~polymarket:4571627",
+   "label": "not_equivalent",
+   "failure_pattern": "different subject/predicate",
+   "reason": "Kalshi asks whether the Green Party gets at least 15% of the vote. Polymarket asks whether Labour wins by a margin of 15 points or more, which is a different subject and a different measure."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.618
+ },
+ {
+  "n": 20,
+  "pair_id": "kalshi:KXNBA-27-MEM~polymarket:2243317",
+  "label": "equivalent",
+  "reason": "Both settle on whether Memphis (the Grizzlies) wins the 2026-27 NBA championship. Caveat: Polymarket resolves 'Other' if the Finals are postponed past June 30, 2027; Kalshi has no such cutoff.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.799
+ },
+ {
+  "n": 26,
+  "pair_id": "kalshi:KXSERIEA-27-MON~polymarket:2771212",
+  "label": "equivalent",
+  "reason": "Both settle on whether Monza is the 2026-27 Serie A champion. Caveat: Polymarket resolves 'Other' if the season is postponed past May 28, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.988
+ },
+ {
+  "n": 32,
+  "pair_id": "kalshi:KXPRESPERSON-28-DTRUJR~polymarket:561244",
+  "label": "equivalent",
+  "reason": "Both settle on whether Donald Trump Jr. wins the 2028 presidential election. Caveat: Kalshi uses the inauguration and Polymarket uses the AP/Fox/NBC call, falling back to the inauguration; they differ only if the winner died before taking office.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.97
+ },
+ {
+  "n": 38,
+  "pair_id": "kalshi:KXARGENTINAPRES-27-JMIL~polymarket:2127309",
+  "label": "equivalent",
+  "reason": "Both settle on whether Javier Milei wins the next (2027) Argentine presidential election, including any runoff. Caveat: Polymarket resolves 'Other' if the result is not known by Oct 31, 2028.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.939
+ },
+ {
+  "n": 44,
+  "pair_id": "kalshi:KXBALANCEPOWERCOMBO-27FEB-RD~polymarket:562830",
+  "label": "not_equivalent",
+  "reason": "Kalshi's YES is Republican House plus Democratic Senate. Polymarket's YES is Republican Senate plus Democratic House, the opposite split, so the two YES outcomes are mutually exclusive.",
+  "failure_pattern": "different bucket (inverted combo)",
+  "recheck": {
+   "n": 44,
+   "pair_id": "kalshi:KXBALANCEPOWERCOMBO-27FEB-RD~polymarket:562830",
+   "label": "not_equivalent",
+   "failure_pattern": "different bucket (inverted combo)",
+   "reason": "Kalshi's YES is Republican House plus Democratic Senate. Polymarket's YES is Republican Senate plus Democratic House, the opposite split, so the two YES outcomes can't both happen."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.655
+ },
+ {
+  "n": 50,
+  "pair_id": "kalshi:KXSPANISHPM-27AUG22-PSAN~polymarket:2695678",
+  "label": "not_equivalent",
+  "reason": "The deadlines differ: Kalshi allows until Aug 22, 2028, Polymarket only until Mar 31, 2028, and Spanish government formation has taken many months before. Polymarket's 'next PM' could also be installed by a no-confidence motion before the election, which Kalshi's post-election test would not count.",
+  "failure_pattern": "different deadline",
+  "recheck": {
+   "n": 50,
+   "pair_id": "kalshi:KXSPANISHPM-27AUG22-PSAN~polymarket:2695678",
+   "label": "not_equivalent",
+   "failure_pattern": "different deadline / different trigger",
+   "reason": "Polymarket counts the next PM invested by Mar 31, 2028, while Kalshi counts government formation after the next election up to Aug 22, 2028. A long or repeated formation (as in 2016) or a censure motion installing someone else before the election splits them."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.951
+ },
+ {
+  "n": 56,
+  "pair_id": "kalshi:KXGEMINI-GEM4-26OCT16~polymarket:5084763",
+  "label": "equivalent",
+  "reason": "'Before Oct 16, 2026' is the same deadline as 'by October 15, 2026', and both ask whether Google releases Gemini 4 (4.0). Caveat: Polymarket spells out that a closed beta or private access does not count; Kalshi's excerpt does not define 'release'.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.867
+ },
+ {
+  "n": 62,
+  "pair_id": "kalshi:KXQUEBECPREMIER-27JAN01-CFRE~polymarket:2133897",
+  "label": "equivalent",
+  "reason": "Both ask whether Christine Fréchette becomes the first Premier formally installed after the 2026 Quebec election, and interim premiers do not count. Caveat: the long-stops differ (Kalshi before Jan 1, 2027; Polymarket by June 30, 2027), but a Quebec government is normally formed within weeks of the election.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.93
+ },
+ {
+  "n": 68,
+  "pair_id": "kalshi:GOVPARTYTX-26-D~polymarket:629690",
+  "label": "equivalent",
+  "reason": "Both settle on whether the Democratic nominee wins the 2026 Texas governor race. Caveat: Kalshi pays on inauguration, Polymarket on the election winner.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.927
+ },
+ {
+  "n": 74,
+  "pair_id": "kalshi:KXPRESNOMR-28-ITRU~polymarket:561998",
+  "label": "equivalent",
+  "reason": "Both resolve YES if Ivanka Trump wins and accepts the 2028 Republican presidential nomination.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.935
+ },
+ {
+  "n": 80,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-SVW~polymarket:2849022",
+  "label": "equivalent",
+  "reason": "Both settle on whether Werder Bremen ('Bremen' on Kalshi) is the 2026-27 Bundesliga champion. Caveat: Polymarket resolves 'Other' if the season is postponed past June 14, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.688
+ },
+ {
+  "n": 86,
+  "pair_id": "kalshi:HOUSECA27-26-D~polymarket:703690",
+  "label": "equivalent",
+  "reason": "Both settle on whether the Democratic Party wins CA-27 in the 2026 House race. Caveat: Kalshi uses the party of the member sworn in, Polymarket the party of the called winner.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.953
+ },
+ {
+  "n": 92,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-SVE~polymarket:2849026",
+  "label": "equivalent",
+  "reason": "Both settle on whether SV Elversberg is the 2026-27 Bundesliga champion. Caveat: the Polymarket close and resolve times are placeholders (0001-01-01), which looks like a data gap, although the rules text names the correct season.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.688
+ },
+ {
+  "n": 98,
+  "pair_id": "kalshi:KXFEDERALCHARGE-27JAN01-MKEL~polymarket:5166375",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether Mark Kelly is federally charged before 2027. Polymarket asks whether any of the 'Cornell 7' defendants is charged with a felony sex crime. Different subjects and predicates.",
+  "failure_pattern": "unrelated markets",
+  "recheck": {
+   "n": 98,
+   "pair_id": "kalshi:KXFEDERALCHARGE-27JAN01-MKEL~polymarket:5166375",
+   "label": "not_equivalent",
+   "failure_pattern": "unrelated markets",
+   "reason": "Kalshi asks whether Senator Mark Kelly is federally charged. Polymarket asks whether any of seven named Cornell fraternity defendants is charged with a felony sex crime. The subjects share no one."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.316
+ },
+ {
+  "n": 104,
+  "pair_id": "kalshi:KXNCAAF-27-ALA~polymarket:1919746",
+  "label": "equivalent",
+  "reason": "Both settle on whether Alabama wins the 2026-27 College Football Playoff national championship (the January 2027 game). Caveat: the Kalshi excerpt does not name the season; the ticker and dates imply it.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "review",
+  "score": 0.376
+ },
+ {
+  "n": 110,
+  "pair_id": "kalshi:SENATENC-28-D~polymarket:5347191",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks about the 2028 North Carolina Senate race (Democratic win). Polymarket asks whether North Carolina enacts a data-center moratorium. Unrelated.",
+  "failure_pattern": "unrelated markets",
+  "recheck": {
+   "n": 110,
+   "pair_id": "kalshi:SENATENC-28-D~polymarket:5347191",
+   "label": "not_equivalent",
+   "failure_pattern": "unrelated markets",
+   "reason": "Kalshi asks about a Democratic win in the 2028 NC Senate race. Polymarket asks whether NC enacts a statewide data-center moratorium, and the two are unrelated."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.338
+ },
+ {
+  "n": 116,
+  "pair_id": "kalshi:KXCLAUDE-MYTH-26DEC01~polymarket:4319439",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether Anthropic releases a model called Mythos. Polymarket asks whether Anthropic goes public (IPO). The predicates are different.",
+  "failure_pattern": "different predicate",
+  "recheck": {
+   "n": 116,
+   "pair_id": "kalshi:KXCLAUDE-MYTH-26DEC01~polymarket:4319439",
+   "label": "not_equivalent",
+   "failure_pattern": "different predicate",
+   "reason": "Kalshi asks whether Anthropic releases a model called Mythos before Dec 1. Polymarket asks whether Anthropic shares are listed on an exchange by Nov 30. The company is the same but the events are unrelated."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.301
+ },
+ {
+  "n": 6,
+  "pair_id": "kalshi:KXHOUSERACE-SC07-26-D~polymarket:1284720",
+  "label": "equivalent",
+  "reason": "Both are YES if the Democrat takes SC-07 in the 2026 House election (Kalshi's 'term beginning 2027' is the same seat). Caveat: Kalshi resolves on who is sworn in, while Polymarket resolves on the race call and the party at the time of the call, so they only split in edge cases like death or a party switch before January 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.951
+ },
+ {
+  "n": 12,
+  "pair_id": "kalshi:KXARGENTINAPRES1R-27OCT24-JSCH~polymarket:2127314",
+  "label": "not_equivalent",
+  "failure_pattern": "different stage",
+  "reason": "Kalshi asks who wins the first round, while Polymarket asks who wins the presidency and explicitly includes any runoff, so a candidate who leads round one and loses the runoff splits them.",
+  "recheck": {
+   "n": 12,
+   "pair_id": "kalshi:KXARGENTINAPRES1R-27OCT24-JSCH~polymarket:2127314",
+   "label": "not_equivalent",
+   "failure_pattern": "different stage",
+   "reason": "Kalshi pays on winning the first round. Polymarket pays on winning the presidency, runoff included. Unless a candidate clears the 45% or 40%-plus-10-point threshold, the first-round leader can lose the runoff."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.924
+ },
+ {
+  "n": 18,
+  "pair_id": "kalshi:KXDEMORAESOUT-26SEP-27JAN01~polymarket:1544795",
+  "label": "not_equivalent",
+  "failure_pattern": "announcement vs effective departure",
+  "reason": "The deadlines match (before Jan 1, 2027 vs by Dec 31, 2026), but Polymarket also resolves YES as soon as a resignation or removal is announced before the deadline, even if it takes effect later; Kalshi needs him to actually leave, so a December announcement effective in 2027 splits them.",
+  "recheck": {
+   "n": 18,
+   "pair_id": "kalshi:KXDEMORAESOUT-26SEP-27JAN01~polymarket:1544795",
+   "label": "not_equivalent",
+   "failure_pattern": "announcement vs effective departure",
+   "reason": "The deadlines match, but Polymarket pays YES on an announced resignation or removal before the deadline even if it takes effect later, while Kalshi needs an actual departure. Barroso's 2025 early retirement was announced before it took effect, so a December announcement effective in January is a plausible split."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.886
+ },
+ {
+  "n": 24,
+  "pair_id": "kalshi:SENATESD-26-R~polymarket:630938",
+  "label": "equivalent",
+  "reason": "Both are YES if the Republican wins the 2026 South Dakota Senate seat. Caveat: Kalshi uses the swearing-in for the 2027 term and Polymarket uses the election winner (including run-offs), which differ only in edge cases like death before taking office.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.993
+ },
+ {
+  "n": 30,
+  "pair_id": "kalshi:KXNFLMVP-27-SBAR~polymarket:1747726",
+  "label": "equivalent",
+  "reason": "Both are YES if Saquon Barkley wins the NFL MVP for the 2026-27 season; the AP award is the official NFL MVP. Caveat: Polymarket breaks ties alphabetically and resolves 'Other' if no winner is named by Feb 28, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.979
+ },
+ {
+  "n": 36,
+  "pair_id": "kalshi:KXFEDDECISION-27JAN-H0~polymarket:3215012",
+  "label": "equivalent",
+  "reason": "Kalshi's 'hike of 0bps / maintains rate' at the January 27, 2027 meeting and Polymarket's 'no change' in the upper bound after the January 2027 FOMC meeting are the same outcome.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.835
+ },
+ {
+  "n": 42,
+  "pair_id": "kalshi:KXFRENCHPRES-27-DVIL~polymarket:679034",
+  "label": "equivalent",
+  "reason": "Both are YES if Dominique de Villepin wins the next French presidential election, whenever it is held, including the runoff.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.998
+ },
+ {
+  "n": 48,
+  "pair_id": "kalshi:KXPRESNOMR-28-SHS~polymarket:561982",
+  "label": "equivalent",
+  "reason": "Both are YES if Sarah Huckabee Sanders wins and accepts the 2028 Republican presidential nomination.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.954
+ },
+ {
+  "n": 54,
+  "pair_id": "kalshi:KXNFLMVP-27-DPRE~polymarket:1747722",
+  "label": "equivalent",
+  "reason": "Both are YES if Dak Prescott wins the 2026-27 NFL MVP (the AP award). Caveat: Polymarket breaks ties alphabetically and has an 'Other' cutoff.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.979
+ },
+ {
+  "n": 60,
+  "pair_id": "kalshi:KXHOUSERACE-AR02-26-D~polymarket:1280857",
+  "label": "equivalent",
+  "reason": "Both are YES if the Democrat wins AR-02 in the 2026 House election. Caveat: Kalshi resolves on who is sworn in, Polymarket on the race call, so they split only in edge cases like death or a party switch.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.941
+ },
+ {
+  "n": 66,
+  "pair_id": "kalshi:SENATESC-26-R~polymarket:630925",
+  "label": "equivalent",
+  "reason": "Both are party-level contracts on whether the Republican wins South Carolina's 2026 Senate seat; the candidate name is only a label. Caveat: Kalshi uses swearing-in, Polymarket uses the election winner.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.823
+ },
+ {
+  "n": 72,
+  "pair_id": "kalshi:HOUSEMT1-26-D~polymarket:942843",
+  "label": "equivalent",
+  "reason": "Both are YES if the Democrat wins MT-01 in the 2026 House election. Caveat: Kalshi resolves on swearing-in, Polymarket on the race call.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.952
+ },
+ {
+  "n": 78,
+  "pair_id": "kalshi:KXPRESPERSON-28-KHAR~polymarket:561239",
+  "label": "equivalent",
+  "reason": "Both are YES if Kamala Harris wins the 2028 presidency. Caveat: Kalshi resolves on who is inaugurated in 2029, Polymarket on the AP/Fox/NBC call (falling back to the inauguration), so they split only if the winner-elect is not inaugurated.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.972
+ },
+ {
+  "n": 84,
+  "pair_id": "kalshi:KXNFLMVP-27-LJAC~polymarket:1747718",
+  "label": "equivalent",
+  "reason": "Both are YES if Lamar Jackson wins the 2026-27 NFL MVP (the AP award). Caveat: Polymarket breaks ties alphabetically and has an 'Other' cutoff.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.972
+ },
+ {
+  "n": 90,
+  "pair_id": "kalshi:KXNBA-27-OKC~polymarket:2243320",
+  "label": "equivalent",
+  "reason": "Kalshi's 2027 'Pro Basketball Finals' win by Oklahoma City and Polymarket's Thunder as 2026-27 NBA champion are the same event. Caveat: Polymarket resolves 'Other' if the season is postponed past June 30, 2027.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.836
+ },
+ {
+  "n": 96,
+  "pair_id": "kalshi:KXQUEBECPREMIER-27JAN01-PSPP~polymarket:2133900",
+  "label": "equivalent",
+  "reason": "Both are YES if St-Pierre Plamondon is the first premier formally appointed after the 2026 Quebec election. Caveat: the cutoffs differ (before Jan 1, 2027 on Kalshi, June 30, 2027 on Polymarket), but that matters only if forming the government took more than about three months, which is not realistic in Quebec.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.944
+ },
+ {
+  "n": 102,
+  "pair_id": "kalshi:KXNFLMVP-27-JCHA~polymarket:2046990",
+  "label": "not_equivalent",
+  "failure_pattern": "different subject and competition",
+  "reason": "Ja'Marr Chase winning the NFL MVP and A'ja Wilson winning the WNBA MVP are unrelated events.",
+  "recheck": {
+   "n": 102,
+   "pair_id": "kalshi:KXNFLMVP-27-JCHA~polymarket:2046990",
+   "label": "not_equivalent",
+   "failure_pattern": "different subject and competition",
+   "reason": "Kalshi asks about Ja'Marr Chase winning the 2026-27 NFL AP MVP. Polymarket asks about A'ja Wilson winning the 2026 WNBA MVP. These are unrelated events."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.415
+ },
+ {
+  "n": 108,
+  "pair_id": "kalshi:KXWINNIPEGMAYOR-26OCT28-BGRO~polymarket:1812608",
+  "label": "not_equivalent",
+  "failure_pattern": "different subject and jurisdiction",
+  "reason": "These are different candidates (Brad Gross vs Brad Bradford) in different cities' mayoral races (Winnipeg vs Toronto).",
+  "recheck": {
+   "n": 108,
+   "pair_id": "kalshi:KXWINNIPEGMAYOR-26OCT28-BGRO~polymarket:1812608",
+   "label": "not_equivalent",
+   "failure_pattern": "different subject and jurisdiction",
+   "reason": "These are different candidates (Brad Gross vs Brad Bradford) in different cities' mayoral races (Winnipeg vs Toronto)."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.4
+ },
+ {
+  "n": 114,
+  "pair_id": "kalshi:KXGREENIND-27~polymarket:4712085",
+  "label": "not_equivalent",
+  "failure_pattern": "different predicate and subject",
+  "reason": "Greenland voting for independence in a referendum and Trump visiting Greenland by Oct 31 are unrelated events.",
+  "recheck": {
+   "n": 114,
+   "pair_id": "kalshi:KXGREENIND-27~polymarket:4712085",
+   "label": "not_equivalent",
+   "failure_pattern": "unrelated markets",
+   "reason": "Kalshi asks whether Greenland votes for independence in a referendum before 2027. Polymarket asks whether Trump physically visits Greenland by Oct 31, 2026. These are unrelated events."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.383
+ },
+ {
+  "n": 120,
+  "pair_id": "kalshi:KXFEDCHGCOUNT-27JAN01-E0~polymarket:616902",
+  "label": "not_equivalent",
+  "failure_pattern": "changes vs cuts only",
+  "reason": "Kalshi counts every rate change, hikes included, while Polymarket counts only cuts in 2026, so a year with a hike and no cuts makes Kalshi NO and Polymarket YES; the counting windows also differ.",
+  "recheck": {
+   "n": 120,
+   "pair_id": "kalshi:KXFEDCHGCOUNT-27JAN01-E0~polymarket:616902",
+   "label": "not_equivalent",
+   "failure_pattern": "changes vs cuts only",
+   "reason": "Kalshi counts every rate change, hikes included, while Polymarket counts only 25bp cuts in 2026, so a hike with no cuts makes Kalshi NO and Polymarket YES. Kalshi's contract also already closed and settled on 2026-09-16."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.433
+ },
+ {
+  "n": 3,
+  "pair_id": "kalshi:SENATETX-26-D~polymarket:630963",
+  "label": "equivalent",
+  "reason": "Both settle YES if the Democrat wins the 2026 Texas U.S. Senate seat. Kalshi pays when the Democrat is sworn in for the 2027 term and Polymarket pays on the Democratic nominee's election win, which is only a timing caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.992
+ },
+ {
+  "n": 9,
+  "pair_id": "kalshi:HOUSENY4-26-R~polymarket:943432",
+  "label": "equivalent",
+  "reason": "Both settle YES if a Republican wins NY-04 in 2026. Kalshi pays on the member sworn in for 2027 and Polymarket on the winner's party when the race is called; only edge cases like a party switch or death before swearing-in could differ, so those are caveats.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.96
+ },
+ {
+  "n": 15,
+  "pair_id": "kalshi:KXPRESNOMR-28-TC~polymarket:561989",
+  "label": "equivalent",
+  "reason": "Both settle YES if Ted Cruz wins and accepts the 2028 Republican presidential nomination.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.935
+ },
+ {
+  "n": 21,
+  "pair_id": "kalshi:KXTRUMPMEETING-27JAN01-NVPUT~polymarket:666608",
+  "label": "equivalent",
+  "reason": "Both settle YES on an in-person Trump-Putin meeting that ends by Dec 31, 2026. Caveat: Kalshi counts from its issuance date while Polymarket counts from Jan 1, 2026, and Polymarket requires direct interaction.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.935
+ },
+ {
+  "n": 27,
+  "pair_id": "kalshi:KXPRESPERSON-28-RKHA~polymarket:561259",
+  "label": "equivalent",
+  "reason": "Both settle YES if Ro Khanna wins the 2028 presidential election. Kalshi pays on the 2029 inauguration and Polymarket on the AP/Fox/NBC call, falling back to inauguration, which is only a timing caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.977
+ },
+ {
+  "n": 33,
+  "pair_id": "kalshi:KXGEMINI-NEXTPRO-26NOV01~polymarket:3667937",
+  "label": "equivalent",
+  "reason": "Both settle YES if the next Gemini Pro model is released before Nov 1, 2026, the same date as Polymarket's 'by Oct 31'. Caveat: Polymarket counts preview and GA-promotion releases, and the Kalshi excerpt does not define what qualifies.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.764
+ },
+ {
+  "n": 39,
+  "pair_id": "kalshi:KXFRENCHPRES-27-SLEC~polymarket:679054",
+  "label": "equivalent",
+  "reason": "Both settle YES if Sébastien Lecornu wins the next French presidential election, including any runoff. Polymarket's fallback if results are unknown by end-2027 is a caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.997
+ },
+ {
+  "n": 45,
+  "pair_id": "kalshi:GOVPARTYWI-26-R~polymarket:629721",
+  "label": "equivalent",
+  "reason": "Both settle YES if the Republican wins the 2026 Wisconsin governor race. Kalshi pays on inauguration and Polymarket on the nominee's election win, which is a timing caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.915
+ },
+ {
+  "n": 51,
+  "pair_id": "kalshi:HOUSEOH1-26-D~polymarket:943559",
+  "label": "equivalent",
+  "reason": "Both settle YES if a Democrat wins OH-01 in 2026. Kalshi pays on the member sworn in and Polymarket on the winner's party at the race call, which is a timing caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.948
+ },
+ {
+  "n": 57,
+  "pair_id": "kalshi:KXMEETINGS-27JAN01-TAKXI~polymarket:2062640",
+  "label": "equivalent",
+  "reason": "Both settle YES on an in-person Takaichi-Xi meeting from market creation through Dec 31, 2026. Caveat: Polymarket explicitly counts a handshake, which matters for a possible APEC greeting, while Kalshi only says 'meet in person'.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.894
+ },
+ {
+  "n": 63,
+  "pair_id": "kalshi:KXHOUSERACE-FL26-26-R~polymarket:1283136",
+  "label": "equivalent",
+  "reason": "Both settle YES if a Republican wins FL-26 in 2026. Sworn-in versus race-call settlement is only a timing caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.966
+ },
+ {
+  "n": 69,
+  "pair_id": "kalshi:HOUSECO3-26-D~polymarket:942304",
+  "label": "equivalent",
+  "reason": "Both settle YES if a Democrat wins CO-03 in 2026. Sworn-in versus race-call settlement is only a timing caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.959
+ },
+ {
+  "n": 75,
+  "pair_id": "kalshi:KXPERFORMSUPERBOWL-27B-EAG~polymarket:1357396",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether the band Eagles performs at the Super Bowl halftime show, while Polymarket asks whether the Philadelphia Eagles win the NFL championship.",
+  "failure_pattern": "different subject and predicate (name collision)",
+  "recheck": {
+   "n": 75,
+   "pair_id": "kalshi:KXPERFORMSUPERBOWL-27B-EAG~polymarket:1357396",
+   "label": "not_equivalent",
+   "failure_pattern": "name collision",
+   "reason": "Kalshi asks whether the band Eagles performs at the halftime show. Polymarket asks whether the Philadelphia Eagles win the NFL title, so only the name is shared."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.598
+ },
+ {
+  "n": 81,
+  "pair_id": "kalshi:KXNBA-27-CLE~polymarket:2243301",
+  "label": "equivalent",
+  "reason": "Both settle YES if the Cleveland Cavaliers win the 2026-27 NBA championship. Polymarket resolves to 'Other' if the Finals are postponed past June 30, 2027, which is a caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.528
+ },
+ {
+  "n": 87,
+  "pair_id": "kalshi:KXSPANISHPM-27AUG22-AFEI~polymarket:2695686",
+  "label": "not_equivalent",
+  "reason": "Kalshi's deadline is Aug 22, 2028 and requires the government to be formed after the next general election. Polymarket's deadline is Mar 31, 2028 and counts any next PM, for example one installed by a censure motion. A Feijóo investiture in April-August 2028 would split them.",
+  "failure_pattern": "different deadline",
+  "recheck": {
+   "n": 87,
+   "pair_id": "kalshi:KXSPANISHPM-27AUG22-AFEI~polymarket:2695686",
+   "label": "not_equivalent",
+   "failure_pattern": "different deadline",
+   "reason": "Kalshi allows Feijóo to take office through government formation after the next general election up to Aug 22, 2028. Polymarket requires him to be the next PM sworn in by Mar 31, 2028, and it would also count a PM installed by a pre-election censure motion. A long 2015-16-style formation or a censure motion would split the two."
+  },
+  "final": "not_equivalent",
+  "tier": "equivalent",
+  "score": 0.973
+ },
+ {
+  "n": 93,
+  "pair_id": "kalshi:GOVPARTYNV-26-D~polymarket:629505",
+  "label": "equivalent",
+  "reason": "Both settle YES if the Democrat wins the 2026 Nevada governor race. Inauguration versus election-call settlement is a timing caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "equivalent",
+  "score": 0.912
+ },
+ {
+  "n": 99,
+  "pair_id": "kalshi:KXTRUMPCHINA-26SEP25-DEC01~polymarket:567621",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether Trump visits China before Dec 1, 2026, while Polymarket asks whether China invades Taiwan by end-2026, which are unrelated events.",
+  "failure_pattern": "unrelated event",
+  "recheck": {
+   "n": 99,
+   "pair_id": "kalshi:KXTRUMPCHINA-26SEP25-DEC01~polymarket:567621",
+   "label": "not_equivalent",
+   "failure_pattern": "unrelated event",
+   "reason": "Kalshi asks whether Trump visits China before Dec 1, 2026. Polymarket asks whether China invades Taiwan, which is an unrelated event."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.3
+ },
+ {
+  "n": 105,
+  "pair_id": "kalshi:KXNBA-27-PHI~polymarket:2243308",
+  "label": "equivalent",
+  "reason": "Both settle YES if the Philadelphia 76ers win the 2026-27 NBA championship. Polymarket's postponement-to-Other rule is a caveat.",
+  "recheck": null,
+  "final": "equivalent",
+  "tier": "review",
+  "score": 0.471
+ },
+ {
+  "n": 111,
+  "pair_id": "kalshi:KXSTARSHIPFL-26JUN-27JAN01~polymarket:5091438",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether any Starship launches from Florida before 2027, while Polymarket asks whether Flight Test 15 launches from any pad by Nov 30, 2026. The predicate and the deadline both differ.",
+  "failure_pattern": "different predicate and deadline",
+  "recheck": {
+   "n": 111,
+   "pair_id": "kalshi:KXSTARSHIPFL-26JUN-27JAN01~polymarket:5091438",
+   "label": "not_equivalent",
+   "failure_pattern": "different predicate and deadline",
+   "reason": "Kalshi pays YES on any Starship launch from Florida before 2027. Polymarket pays YES if Flight 15 launches from any pad by Nov 30, 2026. A Flight 15 launch from Texas makes only Polymarket YES, and a Florida launch in December makes only Kalshi YES."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.473
+ },
+ {
+  "n": 117,
+  "pair_id": "kalshi:KXLAKEAMERICA-26AUGUNDO-JAN01~polymarket:4339019",
+  "label": "not_equivalent",
+  "reason": "Kalshi asks whether Trump reverses the Lake Ontario-to-Lake America renaming, while Polymarket asks whether Trump renames New Mexico, which are different subjects and actions.",
+  "failure_pattern": "unrelated event",
+  "recheck": {
+   "n": 117,
+   "pair_id": "kalshi:KXLAKEAMERICA-26AUGUNDO-JAN01~polymarket:4339019",
+   "label": "not_equivalent",
+   "failure_pattern": "unrelated event",
+   "reason": "Kalshi asks whether Trump reverses the Lake Ontario to Lake America renaming. Polymarket asks whether he renames New Mexico, so both the place and the action differ."
+  },
+  "final": "not_equivalent",
+  "tier": "review",
+  "score": 0.474
+ }
+]

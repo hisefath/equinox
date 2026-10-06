@@ -1,0 +1,62 @@
+%% Project Equinox: system design. Dashed yellow notes are the assumptions each component relies on
+%% (full register in docs/SYSTEM_DESIGN.md §3).
+%% Render: docker run --rm -e HOME=/tmp -v "$PWD":/data minlag/mermaid-cli -i /data/system-design.mmd -o /data/system-design.svg
+flowchart LR
+  classDef assume fill:#fff8db,stroke:#b8860b,stroke-dasharray:4 3,color:#3d3000,font-size:12px
+
+  subgraph EXT["External venues: public, unauthenticated, read-only"]
+    direction TB
+    K["Kalshi Trade API v2<br/>/series · /events · /markets/orderbooks"]
+    P["Polymarket<br/>Gamma /markets/keyset · CLOB POST /books"]
+  end
+
+  subgraph INT["Venue integration: the only venue-specific code"]
+    direction TB
+    F["fetch.Client<br/>per-call timeout · rate limit<br/>retry + backoff · record/replay"]
+    KA["venues/kalshi<br/>bids-only book → YES asks<br/>quadratic fee schedule"]
+    PA["venues/polymarket<br/>outcome tokens → binary markets<br/>feeSchedule fee curve"]
+    A2["A2 public REST is good enough:<br/>books polled, listings ≤ 15 s stale"]:::assume
+    A5["A5 fees are knowable from venue data;<br/>an unknown schedule makes a market untradable"]:::assume
+  end
+
+  subgraph CORE["Venue-agnostic core"]
+    direction TB
+    MKT[("market<br/>Market · Book · Amount (µ$) · FeeCurve")]
+    ST["ingest.Store<br/>immutable snapshots, atomic swap<br/>venue health · last-known-good"]
+    MA["match<br/>normalize → block → score<br/>→ veto → assign 1:1 → tier"]
+    RT["route: pure function<br/>eligibility → fill simulation<br/>→ best single / split → explanation"]
+    A1["A1 every contract is binary;<br/>multi-outcome = one market per outcome"]:::assume
+    A3["A3 equivalence is inferred, never certain:<br/>precision over recall; review tier is not routed"]:::assume
+    A4["A4 taker BUY only; displayed depth fills;<br/>no queue position or latency model"]:::assume
+    A6["A6 a stale or failed venue is excluded, not guessed at"]:::assume
+  end
+
+  subgraph OUT["Interfaces"]
+    direction TB
+    CLI["CLI: equinox scan · route"]
+    API["HTTP: equinox serve<br/>/pairs · /route · /healthz · /near-misses"]
+    LOG[("decisions.jsonl<br/>append-only audit log")]
+  end
+
+  K --> F
+  P --> F
+  F --> KA
+  F --> PA
+  KA -- "canonical markets + books" --> ST
+  PA -- "canonical markets + books" --> ST
+  ST -- "all markets" --> MA
+  MA -- "pairs + evidence" --> CLI
+  MA -- "pairs + evidence" --> API
+  MA -- "pair → quotes" --> RT
+  ST -- "snapshot read, no I/O" --> RT
+  RT --> CLI
+  RT --> API
+  RT --> LOG
+
+  A2 -.- F
+  A5 -.- KA
+  A5 -.- PA
+  A1 -.- MKT
+  A3 -.- MA
+  A4 -.- RT
+  A6 -.- ST

@@ -1,0 +1,23 @@
+%% How two markets become an "equivalent" pair, and every way they can be rejected.
+flowchart TD
+  IN["~60k Kalshi + ~3.4k Polymarket canonical markets"] --> X["extract features (parallel)<br/>tokens: synonyms, stems, team ids<br/>numbers · comparator · dates · scopes · sources"]
+  X --> IDF["TF-IDF vectors over the whole corpus<br/>+ 'context' vectors without the outcome label"]
+  IDF --> BL["blocking: inverted index on rare tokens<br/>(df ≤ 5%), top-25 candidates per market"]
+  BL --> SC{"cosine ≥ 0.30?"}
+  SC -- no --> DROP1["not a candidate"]
+  SC -- yes --> VETO{"any hard veto?"}
+  VETO -- yes --> NM["rejected with reason<br/>(high-scoring ones reported as near misses)"]
+  VETO -- no --> ASSIGN["one-to-one assignment per venue pair<br/>greedy by score, total-order tie-breaks"]
+  ASSIGN --> TIER{"score ≥ 0.50?"}
+  TIER -- yes --> EQ["equivalent: routable<br/>evidence + caveats attached"]
+  TIER -- no --> RV["review: needs a human or offline LLM"]
+
+  subgraph V["Vetoes, in evaluation order"]
+    direction LR
+    V1["threshold numbers differ"] --- V2["comparator: > ≥ = range touch"] --- V3["comparator on one side only"]
+    V4["explicit dates > 1 day apart"] --- V5["off-by-one deadline with different cut-offs"] --- V6["months / years differ"]
+    V7["resolution oracle differs"] --- V8["league / team / outcome entity differ"] --- V9["rank: #2, top half, top-ranked"]
+    V10["modifier on one side: core, fantasy, women's, any, final…"] --- V11["resolution > 180 days apart"] --- V12["scope: rate action, office, predicate,<br/>competition, stage, indicator, segment"]
+    V13["each side names something rare the other never mentions"] --- V14["question differs once outcome label is removed"]
+  end
+  VETO -.- V

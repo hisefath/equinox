@@ -1,0 +1,18 @@
+%% Import graph. route depends only on market (enforced by TestRouteIsVenueAgnostic).
+flowchart BT
+  market["internal/market"]
+  fetch["internal/fetch"]
+  ingest["internal/ingest"] --> market
+  kalshi["internal/venues/kalshi"] --> fetch
+  kalshi --> ingest
+  kalshi --> market
+  poly["internal/venues/polymarket"] --> fetch
+  poly --> ingest
+  poly --> market
+  match["internal/match"] --> market
+  route["internal/route"] --> market
+  cmd["cmd/equinox"] --> kalshi
+  cmd --> poly
+  cmd --> ingest
+  cmd --> match
+  cmd --> route

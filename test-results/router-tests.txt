@@ -1,0 +1,24 @@
+=== RUN   TestPicksCheapestVenue
+--- PASS: TestPicksCheapestVenue (0.00s)
+=== RUN   TestFeesCanFlipTheDecision
+--- PASS: TestFeesCanFlipTheDecision (0.00s)
+=== RUN   TestExclusions
+--- PASS: TestExclusions (0.00s)
+=== RUN   TestPrefersFullFillThenSplits
+--- PASS: TestPrefersFullFillThenSplits (0.00s)
+=== RUN   TestSplitDropsVenueBelowMinimum
+--- PASS: TestSplitDropsVenueBelowMinimum (0.00s)
+=== RUN   TestLimitPriceAndPartialFill
+--- PASS: TestLimitPriceAndPartialFill (0.00s)
+=== RUN   TestBuyNoLiftsComplementedYesBids
+--- PASS: TestBuyNoLiftsComplementedYesBids (0.00s)
+=== RUN   TestTieBreakIsByVenueID
+--- PASS: TestTieBreakIsByVenueID (0.00s)
+=== RUN   TestRejectsInvalidOrdersAndNoVenues
+--- PASS: TestRejectsInvalidOrdersAndNoVenues (0.00s)
+=== RUN   TestDeterministic
+--- PASS: TestDeterministic (0.00s)
+=== RUN   TestRouteIsVenueAgnostic
+--- PASS: TestRouteIsVenueAgnostic (0.00s)
+PASS
+ok  	github.com/hisefath/equinox/internal/route	0.222s

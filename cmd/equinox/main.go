@@ -66,6 +66,8 @@ type config struct {
 	polyPages      int
 	timeout        time.Duration
 	minTier        string
+	reviews        string
+	requireReview  bool
 	verbose        bool
 	clock          func() time.Time
 }
@@ -77,6 +79,8 @@ func (c *config) register(fs *flag.FlagSet) {
 	fs.IntVar(&c.polyPages, "poly-pages", 30, "Polymarket /markets pages to crawl (100 most-traded markets each)")
 	fs.DurationVar(&c.timeout, "timeout", 90*time.Second, "per-venue deadline for one refresh")
 	fs.StringVar(&c.minTier, "min-tier", match.Equivalent, "lowest match tier that may be routed: equivalent or review")
+	fs.StringVar(&c.reviews, "reviews", "reviews/pairs.json", "reviewed mapping table: verdicts that confirm or block proposed pairs")
+	fs.BoolVar(&c.requireReview, "require-review", false, "route only pairs a reviewer confirmed (production setting)")
 	fs.BoolVar(&c.verbose, "v", false, "debug logging")
 }
 
@@ -118,6 +122,11 @@ func (c *config) pipeline(ctx context.Context, store *ingest.Store, venues []ing
 	snap := store.Snapshot()
 	start := time.Now()
 	res := match.Match(snap.AllMarkets(), match.Options{})
+	if reviews, err := match.LoadReviews(c.reviews); err != nil {
+		slog.Error("reviews not applied", "err", err)
+	} else {
+		res.Pairs = match.ApplyReviews(res.Pairs, reviews)
+	}
 	slog.Info("matched", "markets", res.Markets, "candidates", res.Compared, "pairs", len(res.Pairs),
 		"vetoed", res.Vetoed, "took", time.Since(start).Round(time.Millisecond))
 	var ms []market.Market
@@ -188,13 +197,13 @@ func routeCmd(args []string) error {
 	if err != nil {
 		return err
 	}
-	if pair.Tier != match.Equivalent && c.minTier != match.Review {
-		return fmt.Errorf("pair %s is only %q; pass -min-tier review to route it anyway", pair.ID, pair.Tier)
+	if err := c.routable(pair); err != nil {
+		return err
 	}
 	// Ingestion is finished: from here on the decision reads only the in-memory snapshot.
 	d := route.Route(order, quotesFor(pair, store.Snapshot()), route.Policy{MaxBookAge: *maxAge, Split: *split}, c.clock())
 
-	fmt.Printf("Pair %s (%s, score %.2f)\n", pair.ID, pair.Tier, pair.Score)
+	fmt.Printf("Pair %s (%s, score %.2f%s)\n", pair.ID, pair.Tier, pair.Score, reviewedText(pair))
 	fmt.Printf("  %s: %s\n  %s: %s\n", pair.A.Venue, label(pair.A), pair.B.Venue, label(pair.B))
 	for _, e := range pair.Evidence {
 		fmt.Println("  evidence:", e)
@@ -207,6 +216,20 @@ func routeCmd(args []string) error {
 		fmt.Println("  -", line)
 	}
 	return logDecision(*logPath, pair, d)
+}
+
+// routable applies the routing gate: rejected pairs never route; review-tier pairs only if allowed;
+// with -require-review, only pairs a reviewer confirmed.
+func (c *config) routable(p match.Pair) error {
+	switch {
+	case p.Tier == match.Rejected:
+		return fmt.Errorf("pair %s was rejected by review", p.ID)
+	case c.requireReview && (p.Reviewed == "" || p.Tier != match.Equivalent):
+		return fmt.Errorf("pair %s has no confirming review and -require-review is set", p.ID)
+	case p.Tier == match.Review && c.minTier != match.Review:
+		return fmt.Errorf("pair %s is only %q; pass -min-tier review to route it anyway", p.ID, p.Tier)
+	}
+	return nil
 }
 
 // quotesFor assembles the router's input for a pair from a snapshot. A market without a book still
@@ -277,6 +300,13 @@ func printPairs(res match.Result, snap *ingest.Snapshot) {
 			bestAsk(snap.Books[p.A.Key()]), bestAsk(snap.Books[p.B.Key()]))
 	}
 	w.Flush()
+}
+
+func reviewedText(p match.Pair) string {
+	if p.Reviewed == "" {
+		return ", unreviewed"
+	}
+	return ", reviewed by " + p.Reviewed
 }
 
 func bestAsk(b market.Book) string {

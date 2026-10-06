@@ -68,6 +68,7 @@ type Pair struct {
 	B        market.Market `json:"b"`
 	Evidence []string      `json:"evidence"`
 	Caveats  []string      `json:"caveats,omitempty"`
+	Reviewed string        `json:"reviewed,omitempty"` // source of a reviewer's verdict, if any
 }
 
 // Rejection is a similar-looking pair that a veto ruled out: the cases that show why text

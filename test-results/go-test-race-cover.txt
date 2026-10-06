@@ -1,0 +1,10 @@
+go version go1.27.1 darwin/arm64
+run at 2026-10-06T04:55:00Z
+ok  	github.com/hisefath/equinox/cmd/equinox	91.440s	coverage: 13.4% of statements
+ok  	github.com/hisefath/equinox/internal/fetch	1.464s	coverage: 78.1% of statements
+ok  	github.com/hisefath/equinox/internal/ingest	1.904s	coverage: 85.9% of statements
+ok  	github.com/hisefath/equinox/internal/market	1.494s	coverage: 85.4% of statements
+ok  	github.com/hisefath/equinox/internal/match	169.225s	coverage: 98.2% of statements
+ok  	github.com/hisefath/equinox/internal/route	2.654s	coverage: 96.9% of statements
+ok  	github.com/hisefath/equinox/internal/venues/kalshi	2.419s	coverage: 86.1% of statements
+ok  	github.com/hisefath/equinox/internal/venues/polymarket	2.913s	coverage: 84.6% of statements

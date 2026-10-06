@@ -1,0 +1,63 @@
+=== RUN   TestLabelledPairs
+    eval_test.go:155: labelled pairs: 55 (tp=27 fp=0 fn=5 tn=23) precision=1.000 recall=0.844
+        ok   fed           equivalent                   0.84 0.62  Will the Federal Reserve Hike rates by 0 | Will there be no change in Fed interest  | tier="equivalent"
+        ok   fed           equivalent                   1.00 0.99  Will the Federal Reserve Cut rates by 25 | Will the Fed decrease interest rates by  | tier="equivalent"
+        ok   fed           equivalent                   1.00 0.99  Will the Federal Reserve Hike rates by 2 | Will the Fed increase interest rates by  | tier="equivalent"
+        ok   fed           equivalent                   0.83 0.59  Will the Federal Reserve Hike rates by 0 | Will there be no change in Fed interest  | tier="equivalent"
+        ok   fed           equivalent                   0.84 0.81  How many dissenting votes at the next Fe | Will no one dissent the October Fed deci | tier="equivalent"
+        ok   elections     equivalent                   0.85 0.52  Will Democrats win the U.S. Senate in 20 | Will the Democratic Party control the Se | tier="equivalent"
+        ok   elections     equivalent                   0.88 0.43  Will Democrats win the House in 2026? [D | Will the Democratic Party control the Ho | tier="equivalent"
+        ok   elections     equivalent                   0.73 0.56  Will House Control be Democratic AND Sen | 2026 Balance of Power: D Senate, D House | tier="equivalent"
+        ok   elections     equivalent                   0.99 0.98  Will Democratics win the Senate race in  | Will the Democrats win the Texas Senate  | tier="equivalent"
+        ok   elections     equivalent                   0.99 0.98  Will Republicans win the Senate race in  | Will the Republicans win the Maine Senat | tier="equivalent"
+        ok   elections     equivalent                   0.99 0.99  Will Republicans win the Senate race in  | Will the Republicans win the Louisiana S | tier="equivalent"
+        ok   elections     equivalent                   0.96 0.89  Will Democratic win the House race for N | Will the Democratic Party win the NY-17  | tier="equivalent"
+        ok   elections     equivalent                   0.95 0.89  Will Democratic win the House race for M | Will the Democratic Party win the MI-07  | tier="equivalent"
+        ok   geopolitics   equivalent                   0.82 0.98  Will Friedrich Merz leave Chancellor of  | Friedrich Merz out as Chancellor of Germ | tier="equivalent"
+        miss geopolitics   equivalent                   0.62 0.32  Will Benjamin Netanyahu leave Prime Mini | Netanyahu out by end of 2026? [December  | deadline: dates a day apart and trading closes 22h apart
+        ok   tech          equivalent                   0.87 0.83  Will Google release Gemini 4 before Oct  | Gemini 4.0 released by October 15, 2026? | tier="equivalent"
+        miss tech          equivalent                   0.44 0.74  Best AI in Oct 2026? [Gemini]            | Will Google have the best AI model at th | outcome: [gemini] vs [googl]
+        ok   economics     equivalent                   0.91 0.98  CPI core year-over-year in Sep 2026? [Ex | Will Core CPI YoY be 2.5% in September?  | tier="equivalent"
+        ok   economics     equivalent                   0.93 0.99  CPI core month-over-month in Sep 2026? [ | Will Core CPI MoM be 0.2% in September?  | tier="equivalent"
+        ok   economics     equivalent                   0.88 0.99  Unemployment rate in Oct 2026? [Exactly  | Will the October 2026 unemployment rate  | tier="equivalent"
+        miss sports        equivalent                   0.32 0.31  San Diego vs Milwaukee Division Series w | MLB Playoffs: Who Will Win Series? - Bre | tier="review"
+        miss sports        equivalent                   0.45 0.52  San Diego vs Milwaukee Division Series G | 2026 NLDS Series Spread: Brewers (-1.5)  | tier="review"
+        ok   sports        equivalent                   0.61 0.70  Tampa Bay qualifies for the ALCS         | Will Tampa Bay Rays advance to the ALCS  | tier="equivalent"
+        miss sports        equivalent                   0.44 0.00  New York Y vs Tampa Bay Division Series  | Will Tampa Bay Rays advance to the ALCS  | scope (predicate): win vs advance
+        ok   sports        equivalent                   0.68 0.95  Will Tampa Bay win the 2026 Pro Baseball | Will Tampa Bay Rays win the 2026 America | tier="equivalent"
+        ok   sports        equivalent                   0.69 0.99  Will Milwaukee win the 2026 Pro Baseball | Will the Milwaukee Brewers win the 2026  | tier="equivalent"
+        ok   sports        equivalent                   0.64 0.48  Baltimore wins                           | Ravens vs. Falcons                       | tier="equivalent"
+        ok   sports        equivalent                   0.66 0.61  BAL Ravens wins by over 7.5 points?      | Spread: Ravens (-7.5)                    | tier="equivalent"
+        ok   sports        equivalent                   0.67 0.53  Full Game: over 43.5 points scored? [Ove | Ravens vs. Falcons: O/U 43.5 [Over]      | tier="equivalent"
+        ok   sports        equivalent                   0.59 0.56  Tampa Bay wins                           | Buccaneers vs. Cowboys                   | tier="equivalent"
+        ok   entertainment equivalent                   0.72 0.87  Will Choosin' Texas be #1 on the Billboa | Will "Choosin' Texas - Ella Langley" be  | tier="equivalent"
+        ok   entertainment equivalent                   0.99 0.96  Will A Different World: Season 1 be Top  | Will "A Different World: Season 1" be th | tier="equivalent"
+        ok   fed           different_date_window        0.95 0.76  Will the Federal Reserve Hike rates by 2 | Will the Fed increase interest rates by  | month: [10] vs [12]
+        ok   fed           different_threshold          0.80 0.77  How many dissenting votes at the next Fe | Will four or more people dissent the Oct | comparator: = vs ≥
+        ok   fed           threshold_vs_bucket          0.81 0.72  Will the upper bound of the federal fund | Will the upper bound of the target feder | comparator: > vs =
+        ok   elections     different_date_window        0.81 0.41  Will the Democratic party win the Senate | Will the Democratic Party control the Se | year: [2028] vs [2026]
+        ok   elections     different_proposition        0.15 0.42  Will Republicans win the Senate race in  | Will the Republicans win the Louisiana S | outcome: [andy barr] vs [julia letlow]
+        ok   elections     different_proposition        0.42 0.96  Who will win the 2026 CA-14 House electi | Will the Democratic Party win the CA-14  | outcome: [aisha wahab] vs [democrat]
+        ok   geopolitics   different_date_window        0.98 0.98  Will Friedrich Merz leave Chancellor of  | Friedrich Merz out as Chancellor of Germ | date: day [305 305] vs day [334 334] of year
+        ok   tech          different_date_window        0.88 0.83  Will Google release Gemini 4 before Nov  | Gemini 4.0 released by November 30, 2026 | date: day [319 319] vs day [334 334] of year
+        ok   tech          different_resolution_source  0.31 0.51  Best AI in Oct 2026? [Gemini]            | Will Google have the #1 AI model at the  | outcome: [gemini] vs [googl]
+        ok   economics     threshold_vs_bucket          0.87 0.83  Will the rate of core CPI inflation be a | Will Core CPI YoY be 2.4% in September?  | comparator: > vs =
+        ok   economics     threshold_vs_bucket          0.81 0.74  Will CPI Core rise more than 0.2% in Sep | Will Core CPI MoM be 0.2% in September?  | comparator: > vs =
+        ok   economics     threshold_vs_bucket          0.93 0.89  Will the unemployment rate (U-3) be abov | Will the October 2026 unemployment rate  | comparator: > vs =
+        ok   economics     threshold_vs_bucket          0.47 0.64  Will **real GDP** increase by more than  | Will US GDP growth in Q3 2026 be between | threshold: [2.5] vs [2.5 3]
+        ok   crypto        different_resolution_source  0.85 0.75  Bitcoin price on Oct 9, 2026? [$84,000 o | Will the price of Bitcoin be above $84,0 | comparator: ≥ vs >
+        ok   crypto        different_resolution_source  0.60 0.53  Will BTC trimmed mean be above $95000.00 | Will Bitcoin reach $95,000 in October? [ | threshold: [0 11 59 95 95000] vs [0 95]
+        ok   crypto        different_resolution_source  0.49 0.53  Will BTC trimmed mean be below $80000.00 | Will Bitcoin dip to $80,000 in October?  | threshold: [0 11 59 80 80000] vs [0 80]
+        ok   sports        different_threshold          0.32 0.52  San Diego vs Milwaukee Division Series G | 2026 NLDS Series Spread: Brewers (-1.5)  | threshold: [2.5] vs [1.5]
+        ok   sports        related_but_different        0.58 0.51  Will Milwaukee win the 2026 Pro Baseball | Will the Milwaukee Brewers win the 2026  | scope (stage): nl vs title
+        ok   sports        inverse_polarity             0.48 0.48  Atlanta wins                             | Ravens vs. Falcons                       | team: [mlb:atl nba:atl nfl:atl] vs [nfl:bal]
+        ok   sports        different_threshold          0.58 0.61  BAL Ravens wins by over 7.5 points?      | Spread: Ravens (-8.5)                    | threshold: [7.5] vs [8.5]
+        ok   entertainment boundary_inclusivity         0.96 0.97  Other Mommy Rotten Tomatoes score? [Abov | Will "Other Mommy" score at least 50 on  | comparator: > vs ≥
+        ok   entertainment different_proposition        0.70 0.82  Will Choosin' Texas be #2 on the Billboa | Will "Choosin' Texas - Ella Langley" be  | threshold: [100 2] vs [1 100]
+        ok   entertainment threshold_vs_bucket          0.73 0.92  Will the #1 Show on Netflix have at leas | Will the #1 global Netflix show have bet | threshold: [1 6000000] vs [1 6 9000000]
+--- PASS: TestLabelledPairs (3.13s)
+=== RUN   TestLabelledPairsInContext
+    eval_test.go:190: in context (60229 markets): 348 pairs proposed, labelled tp=26 fp=0 fn=6, vetoes map[comparator:23048 context:3237 date:2830 deadline:155 league:2213 modifier:4849 month:293 outcome:5037 rank:1307 scope (competition):189 scope (indicator):2 scope (office):239 scope (predicate):1704 scope (rate action):29 scope (stage):18 subject:1428 team:109 threshold:46692 timing:4068 year:1118]
+--- PASS: TestLabelledPairsInContext (6.80s)
+PASS
+ok  	github.com/hisefath/equinox/internal/match	10.175s
