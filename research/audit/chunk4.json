@@ -1,0 +1,548 @@
+[
+ {
+  "n": 5,
+  "pair_id": "kalshi:KXNBA-27-DEN~polymarket:2243312",
+  "tier": "equivalent",
+  "score": 0.614,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-DEN",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Denver win the 2027 Pro Basketball Finals?",
+   "outcome": "Denver",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Denver wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243312",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Denver Nuggets win the 2027 NBA Finals?",
+   "outcome": "Denver Nuggets",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 11,
+  "pair_id": "kalshi:KXGPT-ASTRA61-26OCT09~polymarket:4882052",
+  "tier": "equivalent",
+  "score": 0.837,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGPT-ASTRA61-26OCT09",
+   "event": "When will OpenAI release Astra 6.1?",
+   "question": "Will OpenAI release Astra 6.1 before Oct 9, 2026?",
+   "outcome": "Before Oct 9, 2026",
+   "close": "2026-10-09T03:59:00Z",
+   "resolves": "2026-10-09T14:00:00Z",
+   "rules": "If OpenAI releases Astra 6.1 before Oct 9, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4882052",
+   "event": "GPT Astra 6.1+ released by...?",
+   "question": "Next Astra Model (6.1+) released by October 9, 2026?",
+   "outcome": "October 9",
+   "close": "2026-10-09T23:59:00Z",
+   "resolves": "2026-10-09T23:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if OpenAI makes a GPT Astra model designated 6.1 or higher available to the general public between market creation and the specified date (ET). Otherwise, this market will resolve to \"No\".\n\nA qualifying model must be an OpenAI model designated as version 6.1 or higher that includes \"Astra\" in its name or model identifier, regardless of capitalization or surrounding prefixes, suffixes, dates, or descriptors. For example, GPT-6.1 Astra, Astra 6.1, or GPT Astra 7 would all qualify. GPT-6 Astra, including any rollout, promotion, Pro or Fast mode, or snapshot of it, will not qualify. Tier-labeled models such as GPT-5.6 Sol, GPT-5.6 Terra, or GPT-5.6 Luna and thei"
+  }
+ },
+ {
+  "n": 17,
+  "pair_id": "kalshi:KXHOUSERACE-CA30-26-R~polymarket:1281132",
+  "tier": "equivalent",
+  "score": 0.95,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSERACE-CA30-26-R",
+   "event": "CA-30 House winner?",
+   "question": "Will Republican win the House race for CA-30?",
+   "outcome": "Scott Meyers",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T17:00:00Z",
+   "rules": "If the House member sworn in for CA-30 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1281132",
+   "event": "CA-30 House Election Winner",
+   "question": "Will the Republican Party win the CA-30 House seat?",
+   "outcome": "Scott Meyers (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the CA-30 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time"
+  }
+ },
+ {
+  "n": 23,
+  "pair_id": "kalshi:KXTRUMPPARDON-27JAN01-SBF~polymarket:687670",
+  "tier": "equivalent",
+  "score": 0.981,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXTRUMPPARDON-27JAN01-SBF",
+   "event": "Who will Trump pardon in 2026?",
+   "question": "Will Sam Bankman-Fried receive a presidential pardon before Jan 1, 2027?",
+   "outcome": "Sam Bankman-Fried",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Sam Bankman-Fried has been given a presidential pardon, commutation, or reprieve during Trump's second term and before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "687670",
+   "event": "Who will Trump pardon before 2027?",
+   "question": "Will Trump pardon Sam Bankman-Fried before 2027?",
+   "outcome": "Sam Bankman-Fried",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed individual receives a presidential pardon, commutation, or reprieve from Donald Trump between November 17, 2025 and December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nThe primary resolution source for whether the individual is pardoned or not will be official information from the US government, however a consensus of credible reporting will also be used."
+  }
+ },
+ {
+  "n": 29,
+  "pair_id": "kalshi:KXPRESNOMR-28-DJTJR~polymarket:561978",
+  "tier": "equivalent",
+  "score": 0.92,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESNOMR-28-DJTJR",
+   "event": "2028 Republican presidential nominee",
+   "question": "Will Donald J. Trump Jr. be the nominee for the Presidency for the Republican party?",
+   "outcome": "Donald J. Trump Jr.",
+   "close": "2028-11-07T15:00:00Z",
+   "resolves": "2028-11-07T15:00:00Z",
+   "rules": "If Donald J. Trump Jr. wins and accepts the nomination for the Presidency for the Republican party in 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561978",
+   "event": "Republican Presidential Nominee 2028",
+   "question": "Will Donald Trump Jr. win the 2028 Republican presidential nomination?",
+   "outcome": "Donald Trump Jr.",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the named individual wins and accepts the 2028 nomination of the Republican Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official Republican Party sources.\n\nAny replacement of the Republican nominee before election day will not change the resolution of the market."
+  }
+ },
+ {
+  "n": 35,
+  "pair_id": "kalshi:KXNHL-27-BUF~polymarket:2520283",
+  "tier": "equivalent",
+  "score": 0.879,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNHL-27-BUF",
+   "event": "2026-27 Stanley Cup® Finals Winner",
+   "question": "Will Buffalo Sabres win the 2026-27 Stanley Cup® Finals?",
+   "outcome": "Buffalo Sabres",
+   "close": "2029-06-30T14:00:00Z",
+   "resolves": "2027-07-01T14:00:00Z",
+   "rules": "If Buffalo Sabres wins the 2026-27 Stanley Cup® Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2520283",
+   "event": "NHL: 2027 Champion",
+   "question": "Will the Buffalo Sabres be named the 2026-27 NHL Stanley Cup Champion?",
+   "outcome": "Buffalo Sabres",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NHL for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed participant to be named as the champion of NHL for the 2026-27 season per the rules of NHL (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution sou"
+  }
+ },
+ {
+  "n": 41,
+  "pair_id": "kalshi:KXEPLTOP-27TOPHALF-ARS~polymarket:2771324",
+  "tier": "equivalent",
+  "score": 0.713,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXEPLTOP-27TOPHALF-ARS",
+   "event": "EPL Top Half Finishers",
+   "question": "Will Arsenal finish in the top half in the 2026-27 EPL season?",
+   "outcome": "Arsenal",
+   "close": "2027-06-14T02:00:00Z",
+   "resolves": "2027-05-31T02:00:00Z",
+   "rules": "If Arsenal is a top half finisher in the 2026-27 EPL season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771324",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Arsenal win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Arsenal",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 47,
+  "pair_id": "kalshi:KXNBA-27-SAC~polymarket:2243323",
+  "tier": "equivalent",
+  "score": 0.701,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-SAC",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Sacramento win the 2027 Pro Basketball Finals?",
+   "outcome": "Sacramento",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Sacramento wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243323",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Sacramento Kings win the 2027 NBA Finals?",
+   "outcome": "Sacramento Kings",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 53,
+  "pair_id": "kalshi:KXGPT-ASTRA61-26OCT16~polymarket:4882150",
+  "tier": "equivalent",
+  "score": 0.837,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGPT-ASTRA61-26OCT16",
+   "event": "When will OpenAI release Astra 6.1?",
+   "question": "Will OpenAI release Astra 6.1 before Oct 16, 2026?",
+   "outcome": "Before Oct 16, 2026",
+   "close": "2026-10-16T03:59:00Z",
+   "resolves": "2026-10-16T14:00:00Z",
+   "rules": "If OpenAI releases Astra 6.1 before Oct 16, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4882150",
+   "event": "GPT Astra 6.1+ released by...?",
+   "question": "Next Astra Model (6.1+) released by October 16, 2026?",
+   "outcome": "October 16",
+   "close": "2026-10-16T23:59:00Z",
+   "resolves": "2026-10-16T23:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if OpenAI makes a GPT Astra model designated 6.1 or higher available to the general public between market creation and the specified date (ET). Otherwise, this market will resolve to \"No\".\n\nA qualifying model must be an OpenAI model designated as version 6.1 or higher that includes \"Astra\" in its name or model identifier, regardless of capitalization or surrounding prefixes, suffixes, dates, or descriptors. For example, GPT-6.1 Astra, Astra 6.1, or GPT Astra 7 would all qualify. GPT-6 Astra, including any rollout, promotion, Pro or Fast mode, or snapshot of it, will not qualify. Tier-labeled models such as GPT-5.6 Sol, GPT-5.6 Terra, or GPT-5.6 Luna and thei"
+  }
+ },
+ {
+  "n": 59,
+  "pair_id": "kalshi:KXPRESNOMD-28-AB~polymarket:559660",
+  "tier": "equivalent",
+  "score": 0.976,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESNOMD-28-AB",
+   "event": "2028 Democratic presidential nominee",
+   "question": "Will Andy Beshear be the Democratic Presidential nominee in 2028?",
+   "outcome": "Andy Beshear",
+   "close": "2028-11-07T15:00:00Z",
+   "resolves": "2028-11-07T15:00:00Z",
+   "rules": "If Andy Beshear wins and accepts the nomination for the Presidency for the Democratic party in 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "559660",
+   "event": "Democratic Presidential Nominee 2028",
+   "question": "Will Andy Beshear win the 2028 Democratic presidential nomination?",
+   "outcome": "Andy Beshear",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the named individual wins and accepts the 2028 nomination of the Democratic Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official Democratic Party sources.\n\nAny replacement of the democratic nominee before election day will not change the resolution of the market."
+  }
+ },
+ {
+  "n": 65,
+  "pair_id": "kalshi:KXEPLTOP-27TOPHALF-EVE~polymarket:2771331",
+  "tier": "equivalent",
+  "score": 0.749,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXEPLTOP-27TOPHALF-EVE",
+   "event": "EPL Top Half Finishers",
+   "question": "Will Everton finish in the top half in the 2026-27 EPL season?",
+   "outcome": "Everton",
+   "close": "2027-06-14T02:00:00Z",
+   "resolves": "2027-05-31T02:00:00Z",
+   "rules": "If Everton is a top half finisher in the 2026-27 EPL season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771331",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Everton win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Everton",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 71,
+  "pair_id": "kalshi:KXALITOANNOUNCERETIRE-26JUN-JAN01~polymarket:1388704",
+  "tier": "equivalent",
+  "score": 0.75,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXALITOANNOUNCERETIRE-26JUN-JAN01",
+   "event": "Will Samuel Alito announce his retirement?",
+   "question": "Will Samuel Alito announce their departure as Supreme Court justice before Jan 1, 2027?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2026-07-06T14:00:00Z",
+   "rules": "If Samuel Alito retires as Supreme Court justice before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1388704",
+   "event": "Will Samuel Alito announce his retirement by...?",
+   "question": "Will Samuel Alito announce his retirement by December 31, 2026?",
+   "outcome": "December 31",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Samuel Alito announces that he will retire from his position as Associate Justice of the Supreme Court of the United States by the specified date at 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nThe announced timing of his retirement may be immediate, at the end of the current Supreme Court term, or at any point in the future.\n\nAny qualifying announcement from Alito will count for a \"Yes\" resolution, regardless of whether the announced retirement goes into effect.\n\nThe resolution source for this market will be official announcements from Alito or one of his official representatives."
+  }
+ },
+ {
+  "n": 77,
+  "pair_id": "kalshi:KXEPLRELEGATION-27-MCI~polymarket:3848389",
+  "tier": "equivalent",
+  "score": 0.749,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXEPLRELEGATION-27-MCI",
+   "event": "EPL Relegation",
+   "question": "Will Manchester City be relegated from EPL in 2026-27 Season?",
+   "outcome": "Manchester City",
+   "close": "2027-06-21T21:00:00Z",
+   "resolves": "2027-06-07T21:00:00Z",
+   "rules": "If Manchester City is relegated from the EPL in 2026-27 season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3848389",
+   "event": "Premier League: Teams relegated (2026-27)",
+   "question": "Will Manchester City be relegated from the 2026-27 Premier League?",
+   "outcome": "Manchester City",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is relegated from Premier League at the conclusion of the 2026-27 Premier League season. Otherwise, this market will resolve to \"No\".\n\nOfficial relegation is defined as a team losing its place in Premier League for the following season through their final standing in the 2026-27 Premier League, via relegation playoff defeat, or by any other official league decision recognized by Premier League.\n\nIf the 2026-27 Premier League season is cancelled, postponed after June 30, 2027, 11:59 PM ET, or there are no teams confirmed for relegation within that timeframe, the corresponding market will resolve to \"No\".\n\nThe primary resolution source will "
+  }
+ },
+ {
+  "n": 83,
+  "pair_id": "kalshi:KXHOUSERACE-CO05-26-R~polymarket:1282888",
+  "tier": "equivalent",
+  "score": 0.952,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSERACE-CO05-26-R",
+   "event": "CO-05 House winner?",
+   "question": "Will Republican win the House race for CO-05?",
+   "outcome": "Jeff Crank",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T17:00:00Z",
+   "rules": "If the House member sworn in for CO-05 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1282888",
+   "event": "CO-05 House Election Winner",
+   "question": "Will the Republican Party win the CO-05 House seat?",
+   "outcome": "Jeff Crank (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the CO-05 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time"
+  }
+ },
+ {
+  "n": 89,
+  "pair_id": "kalshi:KXFEDHIKE-2-26DEC31~polymarket:4620900",
+  "tier": "equivalent",
+  "score": 0.713,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFEDHIKE-2-26DEC31",
+   "event": "Next Fed rate hike?",
+   "question": "Will the Federal Reserve hike rates by December 31, 2026?",
+   "outcome": "Before 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2026-12-31T15:00:00Z",
+   "rules": "If the Federal Reserve announces an increase in the target range or target level for the federal funds rate after market Issuance and on or before Dec 31, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4620900",
+   "event": "Another Fed rate hike in 2026?",
+   "question": "Another Fed rate hike in 2026?",
+   "outcome": "",
+   "close": "2026-12-10T04:59:00Z",
+   "resolves": "2026-12-10T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the upper bound of the target federal funds rate is increased at any point between September 17, 2026 and the completion of the Fed's December 2026 meeting, currently scheduled for December 8 to 9, 2026, inclusive of any rate hike announced as a result of the December meeting. Otherwise, this market will resolve to “No”.\n\nAny change to the target federal funds rate announced at the conclusion of the September 15 to 16, 2026 FOMC meeting will not count toward this market. Emergency rate hikes announced on or after September 17, 2026 will qualify.\n\nThis market may not resolve to \"No\" until the Fed has released its rate change decision following its December"
+  }
+ },
+ {
+  "n": 95,
+  "pair_id": "kalshi:KXFEDCUT-31DEC28-31DEC26~polymarket:1439555",
+  "tier": "equivalent",
+  "score": 0.71,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFEDCUT-31DEC28-31DEC26",
+   "event": "Next Fed rate cut?",
+   "question": "Will the Federal Reserve cut rates by December 31, 2026?",
+   "outcome": "Before 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "If the Federal Open Market Committee announces a reduction in the target range for the federal funds rate at least once after market Issuance and on or before December 31, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1439555",
+   "event": "Fed rate cut by...?",
+   "question": "Fed rate cut by December 2026 meeting?",
+   "outcome": "December 2026 Meeting",
+   "close": "2027-01-29T04:59:00Z",
+   "resolves": "2027-01-29T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the upper bound of the target federal funds rate is decreased at any point between December 16, 2025 and the completion of the Federal Open Market Committee (FOMC) meeting for December 2026, currently scheduled for December 8-9. Otherwise, this market will resolve to “No”.\n\nIf no December meeting takes place by January 7, 2027, 11:59 PM ET, and no qualifying rate cut has been announced, this market will resolve to \"No\". \n\nEmergency rate cuts will qualify.\n\nThe primary resolution source for this market will be the official website of the Federal Reserve (https://www.federalreserve.gov/monetarypolicy/openmarket.htm), however a consensus of credible reportin"
+  }
+ },
+ {
+  "n": 101,
+  "pair_id": "kalshi:KXCANCUTS-26DEC31-E0~polymarket:616902",
+  "tier": "review",
+  "score": 0.493,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXCANCUTS-26DEC31-E0",
+   "event": "Number of Bank of Canada rate cuts in 2026?",
+   "question": "Will Bank of Canada rate cuts in 2026 be exactly 0ㅤ?",
+   "outcome": "Exactly 0ㅤ",
+   "close": "2027-01-01T03:28:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "If the number of Bank of Canada rate cuts in 2026 is exactly 0ㅤ, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "616902",
+   "event": "How many Fed rate cuts in 2026?",
+   "question": "Will no Fed rate cuts happen in 2026?",
+   "outcome": "0 (0 bps)",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve according to the exact amount of cuts of 25 basis points in 2026 by the Fed (including any cuts made during the December meeting).\n\nEmergency rate cuts outside of scheduled FOMC meetings will also count toward the total number of cuts in 2026. This market will remain open until December 31, 2026, 11:59 PM ET, to account for any such emergency actions.\n\nFor example, if the Fed cuts rates by 50 bps after a meeting, it would be considered 2 cuts (of 25 bps each).\n\nThis market will resolve early to \"No\" if the specified number of cuts becomes impossible — i.e., if more cuts have already occurred than the strike in question.\n\nNote that cuts between 1–24 bps (inclusive) wi"
+  }
+ },
+ {
+  "n": 107,
+  "pair_id": "kalshi:KXSB-27-MIN~polymarket:1357391",
+  "tier": "review",
+  "score": 0.472,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-MIN",
+   "event": "2027 Pro Football Champion",
+   "question": "Will Minnesota win the 2027 Pro Football Championship?",
+   "outcome": "Minnesota",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If Minnesota wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357391",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the Minnesota Vikings win the 2027 NFL league championship?",
+   "outcome": "Minnesota Vikings",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 113,
+  "pair_id": "kalshi:KXSNAPELECTIONTUR-27JAN01~polymarket:665484",
+  "tier": "review",
+  "score": 0.359,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSNAPELECTIONTUR-27JAN01",
+   "event": "Will Turkey announce a snap election in 2026?",
+   "question": "Will Turkey announce a snap election before Jan 1, 2027?",
+   "outcome": "Yes",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Turkey officially announces a snap election for its national legislature or head of government before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "665484",
+   "event": "Israel x Turkey military clash before 2027?",
+   "question": "Israel x Turkey military clash before 2027?",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if there is a military encounter between the military forces of Israel and Turkey by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nA \"military encounter\" is defined as any incident involving the use of force such as missile strikes, artillery fire, exchange of gunfire, or other forms of direct military engagement between Isreali and Turkish military forces. Non-violent actions, such as warning shots, artillery fire into uninhabited areas, or missile launches that land in territorial waters or pass through airspace, will not qualify for a \"Yes\" resolution. Intentional ship ramming that results in significant damage to (e.g., a "
+  }
+ },
+ {
+  "n": 119,
+  "pair_id": "kalshi:KXNBA-27-NYK~polymarket:2243306",
+  "tier": "review",
+  "score": 0.383,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-NYK",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will New York win the 2027 Pro Basketball Finals?",
+   "outcome": "New York",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If New York wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243306",
+   "event": "NBA: 2027 Champion",
+   "question": "Will New York Knicks win the 2027 NBA Finals?",
+   "outcome": "New York Knicks",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 125,
+  "pair_id": "kalshi:KXLEAVEOPEC-27~polymarket:1194695",
+  "tier": "review",
+  "score": 0.429,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLEAVEOPEC-27",
+   "event": "Will another country leave OPEC in 2026?",
+   "question": "Will another country leave OPEC in 2026?",
+   "outcome": "Yes",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If any member state of OPEC announces they are leaving the organization before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1194695",
+   "event": "Will Russia invade another country by...?",
+   "question": "Will Russia invade another country in 2026?",
+   "outcome": "December 31, 2026",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Russia commences a military offensive intended to establish control over any portion of any UN member state's territory, other than Ukraine's, by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nFor the purposes of this market, land de facto controlled by any UN member state, as of market creation, will be considered the sovereign territory of that country.\n\nThe resolution source for this market will be a consensus of credible reporting."
+  }
+ }
+]

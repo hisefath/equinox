@@ -1,0 +1,548 @@
+[
+ {
+  "n": 6,
+  "pair_id": "kalshi:KXLIMAMAYOR-26OCT04-RALI~polymarket:3081922",
+  "tier": "equivalent",
+  "score": 0.979,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLIMAMAYOR-26OCT04-RALI",
+   "event": "Lima Mayor winner?",
+   "question": "Will Rafael López Aliaga win the 2026 Lima mayoral election?",
+   "outcome": "Rafael López Aliaga",
+   "close": "2027-10-04T14:00:00Z",
+   "resolves": "2026-10-04T14:00:00Z",
+   "rules": "If Rafael López Aliaga wins the 2026 Lima mayoral election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3081922",
+   "event": "Lima Mayoral Election Winner",
+   "question": "Will Rafael López Aliaga win the next Lima mayoral elections?",
+   "outcome": "Rafael López Aliaga",
+   "close": "2026-10-05T03:59:00Z",
+   "resolves": "2026-10-05T03:59:00Z",
+   "rules": "The 2026 Lima, Peru mayoral election is currently scheduled to be held on October 4, 2026.\n\nThis market will resolve according to the candidate who becomes the next Mayor of Lima as a result of this election.\n\nTemporary, interim, or placeholder mayors appointed before the election will not be considered.\n\nIf the result of this election isn't known by June 30, 2027, 11:59 PM ET, the market will resolve to \"Other\".\n\nThe primary resolution source for this market will be a consensus of credible reporting; however, if there is any ambiguity in the results, this market will resolve according to official information from the Peruvian government, including the National Jury of Elections (Jurado Naci"
+  }
+ },
+ {
+  "n": 12,
+  "pair_id": "kalshi:KXSB-27-BUF~polymarket:1357374",
+  "tier": "equivalent",
+  "score": 0.705,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-BUF",
+   "event": "2027 Pro Football Champion",
+   "question": "Will Buffalo win the 2027 Pro Football Championship?",
+   "outcome": "Buffalo",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If Buffalo wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357374",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the Buffalo Bills win the 2027 NFL league championship?",
+   "outcome": "Buffalo Bills",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 18,
+  "pair_id": "kalshi:KXTIME-26-ZOH~polymarket:2363844",
+  "tier": "equivalent",
+  "score": 1,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXTIME-26-ZOH",
+   "event": "Time's Person of the Year for 2026",
+   "question": "Will Zohran Mamdani be Time Person of the Year in 2026?",
+   "outcome": "Zohran Mamdani",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Zohran Mamdani is Time Person of the Year for 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2363844",
+   "event": "TIME Person of the Year 2026",
+   "question": "Will Zohran Mamdani be TIME Person of the Year 2026?",
+   "outcome": "Zohran Mamdani",
+   "close": "2026-12-31T00:00:00Z",
+   "resolves": "2026-12-31T00:00:00Z",
+   "rules": "This market will resolve to “Yes” if the listed person, group, entity, or thing is TIME Person of the Year for 2026. Otherwise, this market will resolve to “No”.\n\nA listed option will be considered TIME Person of the Year if they/it are explicitly named as Person of the Year. \n\nAdditionally, the following rules apply:\n\nIf multiple people are explicitly named person of the year, both people will be considered TIME Person of the Year.\n\nIf the TIME Person of the Year is a concept, group or thing, a person may still be considered Person of the Year if they are also explicitly named person of the year, or if they are directly associated with the concept, group or thing named as person of the Year"
+  }
+ },
+ {
+  "n": 24,
+  "pair_id": "kalshi:KXUCLROUND-27QUAR-RMA~polymarket:4175601",
+  "tier": "equivalent",
+  "score": 0.824,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXUCLROUND-27QUAR-RMA",
+   "event": "Champions League Quarterfinals Qualifiers",
+   "question": "Will Real Madrid qualify for the Champions League Quarterfinals?",
+   "outcome": "Real Madrid",
+   "close": "2027-04-01T00:00:00Z",
+   "resolves": "2027-03-18T00:00:00Z",
+   "rules": "If Real Madrid is one of the teams to qualify for the Quarterfinals in the 2026-27 Champions League, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4175601",
+   "event": "UEFA Champions League: Team to advance to 2027 quarters",
+   "question": "Will Real Madrid reach the 2027 UEFA Champions League quarterfinal?",
+   "outcome": "Real Madrid",
+   "close": "2027-03-20T23:59:00Z",
+   "resolves": "2027-03-20T23:59:00Z",
+   "rules": "This market will resolve “Yes” if the listed team reaches the 2027 UEFA Champions League quarterfinal. \n\nIf at any point it becomes impossible for the listed club to advance to the UEFA Champions League quarterfinal (e.g. they are mathematically eliminated), the associated market will resolve to \"No\".\n\nIf the 2027 UEFA Champions League is cancelled, postponed after April 30, 2027, 11:59 PM ET or the 2027 UEFA Champions League quarterfinal matchup has not been declared within that timeframe, this market will resolve to “No”.\n\nThe resolution source for this market will be official information from the UEFA; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 30,
+  "pair_id": "kalshi:HOUSEMT1-26-R~polymarket:942841",
+  "tier": "equivalent",
+  "score": 0.954,
+  "a": {
+   "venue": "kalshi",
+   "id": "HOUSEMT1-26-R",
+   "event": "MT-01 House winner?",
+   "question": "Will Republican win the House race for MT-1?",
+   "outcome": "Aaron Flint",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If the House member sworn in for MT-01 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "942841",
+   "event": "MT-01 House Election Winner",
+   "question": "Will the Republican Party win the MT-01 House seat?",
+   "outcome": "Aaron Flint (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the MT-01 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the tim"
+  }
+ },
+ {
+  "n": 36,
+  "pair_id": "kalshi:KXIPOANTHROPIC-DATE-26DEC01~polymarket:4319439",
+  "tier": "equivalent",
+  "score": 0.512,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXIPOANTHROPIC-DATE-26DEC01",
+   "event": "When will Anthropic officially announce an IPO?",
+   "question": "When will Anthropic officially announce an IPO?",
+   "outcome": "Before Dec 1, 2026",
+   "close": "2026-12-01T04:59:00Z",
+   "resolves": "2026-09-01T13:00:00Z",
+   "rules": "If Anthropic confirms an IPO before Dec 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4319439",
+   "event": "Anthropic IPO by __?",
+   "question": "Will Anthropic IPO by November 30, 2026?",
+   "outcome": "November 30, 2026",
+   "close": "2026-12-01T04:59:00Z",
+   "resolves": "2026-12-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Anthropic shares are listed on a public securities exchange and open for trading by 11:59 PM ET on the listed date. Otherwise, this market will resolve to \"No.\"\n\nIf Anthropic is acquired by another company that is already public, this market will immediately resolve to \"No.\"\n\nThe primary resolution source for this market is official filings and announcements from Anthropic and the relevant securities exchange on which the shares are listed, including SEC filings (e.g., Form S-1, Form 8-A), exchange listing confirmations, and official press releases from Anthropic; however a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 42,
+  "pair_id": "kalshi:KXHOUSERACE-SDAL-26-D~polymarket:1284728",
+  "tier": "equivalent",
+  "score": 0.731,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSERACE-SDAL-26-D",
+   "event": "SD-AL House winner?",
+   "question": "Will Democratic win the House race for SD-AL?",
+   "outcome": "Nicole Gronli",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T17:00:00Z",
+   "rules": "If the House member sworn in for SD-AL for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1284728",
+   "event": "SD-AL House Election Winner",
+   "question": "Will the Democratic Party win the SD-AL House seat?",
+   "outcome": "Nikki Gronli (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the SD-AL congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time"
+  }
+ },
+ {
+  "n": 48,
+  "pair_id": "kalshi:GOVPARTYOH-26-D~polymarket:629557",
+  "tier": "equivalent",
+  "score": 0.921,
+  "a": {
+   "venue": "kalshi",
+   "id": "GOVPARTYOH-26-D",
+   "event": "Ohio Governor winner?",
+   "question": "Will the Democratic party win the governorship in Ohio",
+   "outcome": "Amy Acton",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-14T15:00:00Z",
+   "rules": "If a representative of the Democratic party is inaugurated as the governor of Ohio pursuant to the 2026 election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "629557",
+   "event": "Ohio Governor Election Winner",
+   "question": "Will the Democrats win the Ohio governor race in 2026?",
+   "outcome": "Amy Acton (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 Ohio gubernatorial election.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the "
+  }
+ },
+ {
+  "n": 54,
+  "pair_id": "kalshi:KXPRESNOMD-28-AOC~polymarket:559653",
+  "tier": "equivalent",
+  "score": 0.982,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESNOMD-28-AOC",
+   "event": "2028 Democratic presidential nominee",
+   "question": "Will Alexandria Ocasio-Cortez be the Democratic Presidential nominee in 2028?",
+   "outcome": "Alexandria Ocasio-Cortez",
+   "close": "2028-11-07T15:00:00Z",
+   "resolves": "2028-11-07T15:00:00Z",
+   "rules": "If Alexandria Ocasio-Cortez wins and accepts the nomination for the Presidency for the Democratic party in 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "559653",
+   "event": "Democratic Presidential Nominee 2028",
+   "question": "Will Alexandria Ocasio-Cortez win the 2028 Democratic presidential nomination?",
+   "outcome": "Alexandria Ocasio-Cortez",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the named individual wins and accepts the 2028 nomination of the Democratic Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official Democratic Party sources.\n\nAny replacement of the democratic nominee before election day will not change the resolution of the market."
+  }
+ },
+ {
+  "n": 60,
+  "pair_id": "kalshi:KXGPT-ASTRA61-26OCT23~polymarket:4882040",
+  "tier": "equivalent",
+  "score": 0.837,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGPT-ASTRA61-26OCT23",
+   "event": "When will OpenAI release Astra 6.1?",
+   "question": "Will OpenAI release Astra 6.1 before Oct 23, 2026?",
+   "outcome": "Before Oct 23, 2026",
+   "close": "2026-10-23T03:59:00Z",
+   "resolves": "2026-10-23T14:00:00Z",
+   "rules": "If OpenAI releases Astra 6.1 before Oct 23, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4882040",
+   "event": "GPT Astra 6.1+ released by...?",
+   "question": "Next Astra Model (6.1+) released by October 23, 2026?",
+   "outcome": "October 23",
+   "close": "2026-10-23T23:59:00Z",
+   "resolves": "2026-10-23T23:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if OpenAI makes a GPT Astra model designated 6.1 or higher available to the general public between market creation and the specified date (ET). Otherwise, this market will resolve to \"No\".\n\nA qualifying model must be an OpenAI model designated as version 6.1 or higher that includes \"Astra\" in its name or model identifier, regardless of capitalization or surrounding prefixes, suffixes, dates, or descriptors. For example, GPT-6.1 Astra, Astra 6.1, or GPT Astra 7 would all qualify. GPT-6 Astra, including any rollout, promotion, Pro or Fast mode, or snapshot of it, will not qualify. Tier-labeled models such as GPT-5.6 Sol, GPT-5.6 Terra, or GPT-5.6 Luna and thei"
+  }
+ },
+ {
+  "n": 66,
+  "pair_id": "kalshi:KXHOUSERACE-TX25-26-R~polymarket:1284975",
+  "tier": "equivalent",
+  "score": 0.944,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSERACE-TX25-26-R",
+   "event": "TX-25 House winner?",
+   "question": "Will Republican win the House race for TX-25?",
+   "outcome": "Roger Williams",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T17:00:00Z",
+   "rules": "If the House member sworn in for TX-25 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1284975",
+   "event": "TX-25 House Election Winner",
+   "question": "Will the Republican Party win the TX-25 House seat?",
+   "outcome": "Roger Williams (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the TX-25 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time"
+  }
+ },
+ {
+  "n": 72,
+  "pair_id": "kalshi:KXSB-27-DEN~polymarket:1357380",
+  "tier": "equivalent",
+  "score": 0.623,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-DEN",
+   "event": "2027 Pro Football Champion",
+   "question": "Will Denver win the 2027 Pro Football Championship?",
+   "outcome": "Denver",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If Denver wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357380",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the Denver Broncos win the 2027 NFL league championship?",
+   "outcome": "Denver Broncos",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 78,
+  "pair_id": "kalshi:KXGREENIND-27~polymarket:1302038",
+  "tier": "equivalent",
+  "score": 0.517,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGREENIND-27",
+   "event": "Will Greenland vote for independence in 2026?",
+   "question": "Will Greenland vote for independence before 2027?",
+   "outcome": "Before 2027",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Greenland has held an independence referendum after Issuance and before Jan 1, 2027 whose outcome is a majority of voters vote for independence, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1302038",
+   "event": "Will Alberta vote for independence in 2026?",
+   "question": "Will Alberta vote for independence in 2026?",
+   "outcome": "",
+   "close": "2026-10-20T03:59:00Z",
+   "resolves": "2026-10-20T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if a referendum on Alberta's independence from Canada is passed by December 31, 2026, 11:59 PM.\n\nOtherwise, this market will resolve to \"No\".\n\nAny referendum that establishes Alberta's desire for independence, sets a framework for independence, or establishes independence from Canada will qualify.\n\nThe primary resolution source for this market is official information from the government of Alberta, however a consensus of credible reporting will also be used."
+  }
+ },
+ {
+  "n": 84,
+  "pair_id": "kalshi:KXPRESPERSON-28-GNEWS~polymarket:561230",
+  "tier": "equivalent",
+  "score": 0.976,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESPERSON-28-GNEWS",
+   "event": "2028 U.S. Presidential Election winner?",
+   "question": "Who will win the next presidential election?",
+   "outcome": "Gavin Newsom",
+   "close": "2029-11-07T15:00:00Z",
+   "resolves": "2029-01-21T15:00:00Z",
+   "rules": "If Gavin Newsom is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561230",
+   "event": "Presidential Election Winner 2028",
+   "question": "Will Gavin Newsom win the 2028 US Presidential Election?",
+   "outcome": "Gavin Newsom",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "The 2028 US Presidential Election is scheduled to take place on November 7, 2028.\n\nThis market will resolve to the person who wins the 2028 US Presidential Election.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated."
+  }
+ },
+ {
+  "n": 90,
+  "pair_id": "kalshi:KXEPLTOP-27TOPHALF-CRY~polymarket:2771330",
+  "tier": "equivalent",
+  "score": 0.846,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXEPLTOP-27TOPHALF-CRY",
+   "event": "EPL Top Half Finishers",
+   "question": "Will Crystal Palace finish in the top half in the 2026-27 EPL season?",
+   "outcome": "Crystal Palace",
+   "close": "2027-06-14T02:00:00Z",
+   "resolves": "2027-05-31T02:00:00Z",
+   "rules": "If Crystal Palace is a top half finisher in the 2026-27 EPL season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771330",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Crystal Palace win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Crystal Palace",
+   "close": "2027-06-15T03:59:00Z",
+   "resolves": "2027-06-15T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 96,
+  "pair_id": "kalshi:KXEPLTOP-27TOPHALF-AVL~polymarket:2771325",
+  "tier": "equivalent",
+  "score": 0.835,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXEPLTOP-27TOPHALF-AVL",
+   "event": "EPL Top Half Finishers",
+   "question": "Will Aston Villa finish in the top half in the 2026-27 EPL season?",
+   "outcome": "Aston Villa",
+   "close": "2027-06-14T02:00:00Z",
+   "resolves": "2027-05-31T02:00:00Z",
+   "rules": "If Aston Villa is a top half finisher in the 2026-27 EPL season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771325",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Aston Villa win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Aston Villa",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 102,
+  "pair_id": "kalshi:KXPRESPERSON-28-DTRU~polymarket:561255",
+  "tier": "review",
+  "score": 0.446,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESPERSON-28-DTRU",
+   "event": "2028 U.S. Presidential Election winner?",
+   "question": "Who will win the next presidential election?",
+   "outcome": "Donald J. Trump",
+   "close": "2029-11-07T15:00:00Z",
+   "resolves": "2029-01-21T15:00:00Z",
+   "rules": "If Donald J. Trump is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561255",
+   "event": "Presidential Election Winner 2028",
+   "question": "Will Ivanka Trump win the 2028 US Presidential Election?",
+   "outcome": "Ivanka Trump",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "The 2028 US Presidential Election is scheduled to take place on November 7, 2028.\n\nThis market will resolve to the person who wins the 2028 US Presidential Election.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated."
+  }
+ },
+ {
+  "n": 108,
+  "pair_id": "kalshi:KXSB-27-CHI~polymarket:1357376",
+  "tier": "review",
+  "score": 0.458,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-CHI",
+   "event": "2027 Pro Football Champion",
+   "question": "Will Chicago win the 2027 Pro Football Championship?",
+   "outcome": "Chicago",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If Chicago wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357376",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the Chicago Bears win the 2027 NFL league championship?",
+   "outcome": "Chicago Bears",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 114,
+  "pair_id": "kalshi:KXUSAIRANAGREEMENT-27-26SEP~polymarket:2668005",
+  "tier": "review",
+  "score": 0.347,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXUSAIRANAGREEMENT-27-26SEP",
+   "event": "US-Iran nuclear deal?",
+   "question": "Will the US agree to a new Iranian nuclear deal this year?",
+   "outcome": "Before Sep 1, 2026",
+   "close": "2026-09-01T13:20:11Z",
+   "resolves": "2026-09-01T13:00:00Z",
+   "rules": "If the United States has agreed to, signed, or accepted a new Iran-US nuclear deal before Sep 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2668005",
+   "event": "What will be in a US-Iran deal in 2026?",
+   "question": "Will Iran Reconstruction Funding be in a US-Iran deal in 2026?",
+   "outcome": "Iran Reconstruction Funding",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market resolves to \"Yes\" if a written diplomatic instrument between the United States and Iran that establishes a non-Iranian fund or substantive funding mechanism for Iranian reconstruction or economic development, or creates an obligation for non-Iranian actors to commit funding to such reconstruction or development, has been mutually signed or otherwise formally adopted by December 31, 2026, 11:59 PM ET. Otherwise, this market resolves to \"No.\"\n\nThe instrument must either directly establish a fund or substantive funding mechanism the purpose of which is to hold or collect, and distribute funds used in the reconstruction or economic development of Iran, or establish a binding obligati"
+  }
+ },
+ {
+  "n": 120,
+  "pair_id": "kalshi:KXMIDTERMMOV-NMSEND-P21~polymarket:5231830",
+  "tier": "review",
+  "score": 0.497,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXMIDTERMMOV-NMSEND-P21",
+   "event": "New Mexico Senate margin of victory",
+   "question": "Will the margin of victory for Democrats in the U.S. Senate election in New Mexico be at least 21 percentage points?",
+   "outcome": "Luján, 21+ pts",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2026-11-03T15:00:00Z",
+   "rules": "If the Democratic Party wins the 2026 U.S. Senate election in New Mexico by 21 percentage points or more, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "5231830",
+   "event": "Highest temperature in Mexico City on October 5?",
+   "question": "Will the highest temperature in Mexico City be 21°C on October 5?",
+   "outcome": "21°C",
+   "close": "2026-10-05T12:00:00Z",
+   "resolves": "2026-10-05T06:00:00Z",
+   "rules": "This market will resolve to the temperature range that contains the highest temperature recorded by NOAA at the Benito Juárez International Airport Station in degrees Celsius on 5 Oct '26.\n\nThe resolution source for this market will be information from NOAA, specifically the highest reading under the \"Temp\" column for all times on this day, available here: https://www.weather.gov/wrh/timeseries?site=mmmx\n\nIf NOAA data for the observation date is unavailable by 11:59 PM ET on the day following the observation date, the Weather Underground Daily Observations table will be used as the resolution source.\n\nIn the event that there is no data for the observation date by 11:59 PM ET on the day follo"
+  }
+ },
+ {
+  "n": 126,
+  "pair_id": "kalshi:KXHUNTCONF-26SEP14-MAR01~polymarket:665218",
+  "tier": "review",
+  "score": 0.343,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHUNTCONF-26SEP14-MAR01",
+   "event": "When will Wesley Hunt be confirmed as U.S. Ambassador to Saudi Arabia?",
+   "question": "Will Wesley Hunt be confirmed as U.S. Ambassador to Saudi Arabia before Mar 1, 2027?",
+   "outcome": "Before Mar 1, 2027",
+   "close": "2027-03-01T15:00:00Z",
+   "resolves": "2027-03-01T05:00:00Z",
+   "rules": "If Wesley Hunt is the first person confirmed as U.S. Ambassador to Saudi Arabia before Mar 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "665218",
+   "event": "Israel and Saudi Arabia normalize relations before 2027?",
+   "question": "Israel and Saudi Arabia normalize relations before 2027?",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if both Israel and the Kingdom of Saudi Arabia officially announce the establishment of diplomatic relations by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nThe primary resolution source for this market will be official information from Israel and the Kingdom of Saudi Arabia, however a consensus of credible reporting may also be used.\n"
+  }
+ }
+]

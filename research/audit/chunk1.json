@@ -1,0 +1,574 @@
+[
+ {
+  "n": 2,
+  "pair_id": "kalshi:GOVPARTYNV-26-R~polymarket:629506",
+  "tier": "equivalent",
+  "score": 0.919,
+  "a": {
+   "venue": "kalshi",
+   "id": "GOVPARTYNV-26-R",
+   "event": "Nevada Governor winner?",
+   "question": "Will the Republican party win the governorship in Nevada",
+   "outcome": "Joe Lombardo",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-02T15:00:00Z",
+   "rules": "If a representative of the Republican party is inaugurated as the governor of Nevada pursuant to the 2026 election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "629506",
+   "event": "Nevada Governor Election Winner",
+   "question": "Will the Republicans win the Nevada governor race in 2026?",
+   "outcome": "Joe Lombardo (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 Nevada gubernatorial election.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, th"
+  }
+ },
+ {
+  "n": 8,
+  "pair_id": "kalshi:KXUSAIRANAGREEMENT-27-26DEC~polymarket:3491438",
+  "tier": "equivalent",
+  "score": 0.683,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXUSAIRANAGREEMENT-27-26DEC",
+   "event": "US-Iran nuclear deal?",
+   "question": "Will the US agree to a new Iranian nuclear deal this year?",
+   "outcome": "Before Dec 1, 2026",
+   "close": "2026-12-01T15:00:00Z",
+   "resolves": "2026-09-01T13:00:00Z",
+   "rules": "If the United States has agreed to, signed, or accepted a new Iran-US nuclear deal before Dec 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3491438",
+   "event": "US-Iran Final Nuclear Deal by…?",
+   "question": "US-Iran Final Nuclear Deal by November 30, 2026?",
+   "outcome": "November 30",
+   "close": "2026-12-01T04:59:00Z",
+   "resolves": "2026-12-01T04:59:00Z",
+   "rules": "On June 14, 2026, the United States and Iran announced a written diplomatic agreement, including a 60-day extendable period in which both countries committed to negotiate toward a “final deal” regarding Iran’s nuclear program and other topics.\n\nThis market resolves to “Yes” if a qualifying written diplomatic instrument between the United States and Iran has been mutually signed or adopted by the specified date, 11:59 PM ET. Otherwise, this market resolves to “No.”\n\nUnless the written instrument is formally adopted without signature as described below, the instrument must be signed by both the United States and Iran. Both parties must either sign the same document or sign individual documents"
+  }
+ },
+ {
+  "n": 14,
+  "pair_id": "kalshi:KXGTEMP-26-P0~polymarket:678686",
+  "tier": "equivalent",
+  "score": 0.792,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGTEMP-26-P0",
+   "event": "Will 2026 be the hottest year ever?",
+   "question": "Will 2026 be the hottest year on record?",
+   "outcome": "Hottest",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If the unsmoothed Land-Ocean Temperature Index value for 2026 reported by NASA’s Goddard Institute for Space Studies (GISS) is above the 2025 value and 1.28 degrees Celsius, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "678686",
+   "event": "Where will 2026 rank among the hottest years on record?",
+   "question": "Will 2026 be the hottest year on record?",
+   "outcome": "1",
+   "close": "2027-03-02T04:59:00Z",
+   "resolves": "2027-03-02T04:59:00Z",
+   "rules": "This market will resolve according to the numerical rank of how hot 2026 is when compared against all other years for which the Global Land-Ocean Temperature Index has data.\n\nYears will be ranked in descending order, starting with the hottest as number 1, the second hottest as number 2, etc.\n\nIf 2026 ties with any other year, it will resolve according to the place the year it ties with occupies.\n\nThis market will resolve immediately once the specified data becomes available, regardless of whether the figure for the relevant years is later revised.\n\nThe primary resolution source for this market will be the figure found in the table titled \"Land-Ocean Temperature Index (C)\" under the column \"N"
+  }
+ },
+ {
+  "n": 20,
+  "pair_id": "kalshi:KXLIGUE1-27-OM~polymarket:2771649",
+  "tier": "equivalent",
+  "score": 0.988,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLIGUE1-27-OM",
+   "event": "Ligue 1 Champion",
+   "question": "Will Marseille win the 2026-27 Ligue 1?",
+   "outcome": "Marseille",
+   "close": "2027-06-13T02:00:00Z",
+   "resolves": "2027-05-30T02:00:00Z",
+   "rules": "If Marseille is the 2026-2027 Ligue 1 champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771649",
+   "event": "Ligue 1: 2027 Champion",
+   "question": "Will Marseille win the 2026-27 Ligue 1 Championship?",
+   "outcome": "Marseille",
+   "close": "2027-06-15T03:59:00Z",
+   "resolves": "2027-06-15T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 Ligue 1 Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 Ligue 1 Championship per the rules of Ligue 1 (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 Ligue 1 season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from Ligue 1; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 26,
+  "pair_id": "kalshi:KXLEAVEWALZ-27JAN01-TWAL-27JAN01~polymarket:1046969",
+  "tier": "equivalent",
+  "score": 0.573,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLEAVEWALZ-27JAN01-TWAL-27JAN01",
+   "event": "Tim Walz out as Governor of Minnesota?",
+   "question": "Will Tim Walz leave the governorship of Minnesota after Issuance and before 2027?",
+   "outcome": "Before 2027",
+   "close": "2027-01-02T14:59:00Z",
+   "resolves": "2026-09-01T13:00:00Z",
+   "rules": "If Tim Walz leaves as Governor of Minnesota after Issuance and before 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1046969",
+   "event": "Tim Walz charged by...?",
+   "question": "Tim Walz charged by December 31, 2026?",
+   "outcome": "Before 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if any Federal or State jurisdiction of the United States formally charges or otherwise announces a criminal indictment of Governor Tim Walz by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to “No”.\n\nFor the purposes of this market the District of Columbia and any county, municipality, or other subdivision of a State shall be included within the definition of a State.\n\nThe primary resolution source for this market will be official information from US governmental sources, however a wide consensus of credible reporting will also be used."
+  }
+ },
+ {
+  "n": 32,
+  "pair_id": "kalshi:KXHOUSERACE-VA05-26-R~polymarket:1285079",
+  "tier": "equivalent",
+  "score": 0.947,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSERACE-VA05-26-R",
+   "event": "VA-05 House winner?",
+   "question": "Will Republican win the House race for VA-05?",
+   "outcome": "John McGuire",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T17:00:00Z",
+   "rules": "If the House member sworn in for VA-05 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1285079",
+   "event": "VA-05 House Election Winner",
+   "question": "Will the Republican Party win the VA-05 House seat?",
+   "outcome": "John McGuire (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the VA-05 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time"
+  }
+ },
+ {
+  "n": 38,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-BMU~polymarket:2849009",
+  "tier": "equivalent",
+  "score": 0.989,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXBUNDESLIGA-27-BMU",
+   "event": "Bundesliga Champion",
+   "question": "Will Bayern Munich win the 2026-27 Bundesliga?",
+   "outcome": "Bayern Munich",
+   "close": "2027-06-06T02:00:00Z",
+   "resolves": "2027-05-23T02:00:00Z",
+   "rules": "If Bayern Munich is the 2026-27 Bundesliga champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2849009",
+   "event": "Bundesliga: 2027 Champion",
+   "question": "Will Bayern Munich be the 2026-27 Bundesliga champion?",
+   "outcome": "Bayern Munich",
+   "close": "2027-06-15T03:59:00Z",
+   "resolves": "2027-06-15T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 Bundesliga.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 Bundesliga per the rules of the Bundesliga (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 Bundesliga season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from the Bundesliga; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 44,
+  "pair_id": "kalshi:KXLEADERSOUT-27JAN01-TRUEPDRC~polymarket:921660",
+  "tier": "equivalent",
+  "score": 0.557,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLEADERSOUT-27JAN01-TRUEPDRC",
+   "event": "Which leaders will leave office in 2026?",
+   "question": "Will Denis Sassou Nguesso leave President of the Republic of the Congo before Jan 1, 2027?",
+   "outcome": "Denis Sassou Nguesso",
+   "close": "2027-01-02T03:17:49Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Denis Sassou Nguesso has either officially announced their intention to leave as President of the Republic of the Congo or has actually left President of the Republic of the Congo before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "921660",
+   "event": "Nguesso out as President of the Republic of the Congo by December 31, 2026?",
+   "question": "Nguesso out as President of the Republic of the Congo by December 31, 2026?",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if Denis Sassou Nguesso ceases to be President of the Republic of the Congo for any period of time between market creation and the specified date (ET). Otherwise, this market will resolve to “No”.\n\nAn announcement of Denis Sassou Nguesso's resignation/removal before this market's end date will immediately resolve this market to \"Yes\", regardless of when the announced resignation/removal goes into effect.\n\nIf the specified individual is detained, effectively removed from the specified position, or otherwise permanently prevented from fulfilling the duties of the specified position within this market’s timeframe, it will qualify for a “Yes” resolution.\n\nThe re"
+  }
+ },
+ {
+  "n": 50,
+  "pair_id": "kalshi:KXOPENAIANOTHERMILLENNIUM-28-27JAN01~polymarket:4412200",
+  "tier": "equivalent",
+  "score": 0.882,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXOPENAIANOTHERMILLENNIUM-28-27JAN01",
+   "event": "Will OpenAI announce another Millennium Prize solution?",
+   "question": "Will OpenAI announce another Millennium Prize solution before Jan 1, 2027?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T05:00:00Z",
+   "rules": "If OpenAI announces a complete solution developed by OpenAI or researchers collaborating directly with OpenAI on that solution to one of the five qualifying Millennium Prize Problems (Birch and Swinnerton-Dyer, Hodge, P versus NP, Riemann, or Yang-Mills), excluding the Navier-Stokes existence and smoothness problem and the Poincare conjecture before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4412200",
+   "event": "OpenAI announces another Millennium Prize solution by...?",
+   "question": "Will OpenAI announce another Millennium Prize solution by December 31, 2026?",
+   "outcome": "December 31, 2026",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if OpenAI, or an official representative of OpenAI, announces that OpenAI has solved any of the qualifying Millennium Prize Problems between market creation and the specified date, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nThe qualifying problems are the Riemann Hypothesis, P versus NP, the Yang-Mills existence and mass gap problem, the Hodge Conjecture, and the Birch and Swinnerton-Dyer Conjecture (https://www.claymath.org/millennium-problems/). Announcements concerning the Navier-Stokes existence and smoothness problem will not qualify.\n\nA qualifying announcement must express that the problem has been solved; announcements of partial resul"
+  }
+ },
+ {
+  "n": 56,
+  "pair_id": "kalshi:KXIPO-26-ANTHROPIC~polymarket:2413330",
+  "tier": "equivalent",
+  "score": 0.691,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXIPO-26-ANTHROPIC",
+   "event": "Which companies will officially announce an IPO this year?",
+   "question": "Who will IPO before 2027?",
+   "outcome": "Anthropic",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Anthropic confirms an IPO before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2413330",
+   "event": "Anthropic IPO by __?",
+   "question": "Will Anthropic IPO by December 31, 2026?",
+   "outcome": "December 31, 2026",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Anthropic shares are listed on a public securities exchange and open for trading by 11:59 PM ET on the listed date. Otherwise, this market will resolve to \"No.\"\n\nIf Anthropic is acquired by another company that is already public, this market will immediately resolve to \"No.\"\n\nThe primary resolution source for this market is official filings and announcements from Anthropic and the relevant securities exchange on which the shares are listed, including SEC filings (e.g., Form S-1, Form 8-A), exchange listing confirmations, and official press releases from Anthropic; however a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 62,
+  "pair_id": "kalshi:KXNBA-27-MIA~polymarket:2243304",
+  "tier": "equivalent",
+  "score": 0.526,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-MIA",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Miami win the 2027 Pro Basketball Finals?",
+   "outcome": "Miami",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Miami wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243304",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Miami Heat win the 2027 NBA Finals?",
+   "outcome": "Miami Heat",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 68,
+  "pair_id": "kalshi:KXUEL-27-TOR~polymarket:4566922",
+  "tier": "equivalent",
+  "score": 0.71,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXUEL-27-TOR",
+   "event": "Europa League Champion",
+   "question": "Will Torreense win the Europa League?",
+   "outcome": "Torreense",
+   "close": "2027-06-09T22:00:00Z",
+   "resolves": "2027-05-26T22:00:00Z",
+   "rules": "If Torreense is the 2026-27 Europa League champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4566922",
+   "event": "UEFA Europa League: Team to Finish 9th-24th in League Phase",
+   "question": "Will Torreense finish 9th-24th in UEL league phase?",
+   "outcome": "Torreense",
+   "close": "2027-02-28T23:59:00Z",
+   "resolves": "2027-02-28T23:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed club finishes 9th through 24th, inclusive, in the final league phase standings of the 2026-27 UEFA Europa League. Otherwise, this market will resolve to \"No\".\n\nOnly matches played in the league phase of the 2026-27 UEFA Europa League will be considered. Qualifying rounds, the knockout phase play-offs, and all knockout rounds will not be considered.\n\nIf two or more clubs are level on points, the ranking will be determined according to UEFA's official tie-breaker criteria as published for the competition.\n\nIf at any point it becomes impossible for the listed club to finish 9th through 24th in the league phase (e.g. they clinch a place in the top "
+  }
+ },
+ {
+  "n": 74,
+  "pair_id": "kalshi:KXMLBTEAMSALE-27JANLAD-Y~polymarket:1235572",
+  "tier": "equivalent",
+  "score": 0.521,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXMLBTEAMSALE-27JANLAD-Y",
+   "event": "Will the Los Angeles D Pro Baseball team be sold this year?",
+   "question": "Will the Los Angeles D Pro Baseball team be sold after Issuance and before Jan 1, 2027?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If the Los Angeles D Pro Baseball team  is sold before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1235572",
+   "event": "MLB World Series Champion 2026",
+   "question": "Will the Los Angeles Dodgers win the 2026 World Series?",
+   "outcome": "Los Angeles Dodgers",
+   "close": "2026-10-31T23:55:00Z",
+   "resolves": "2026-10-31T23:55:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026 MLB World Series. \n\nIf at any point it becomes impossible for a listed team to win the 2026 MLB World Series per the rules of MLB (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2026 MLB season is cancelled, postponed after December 31, 2026 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from MLB (https://www.mlb.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 80,
+  "pair_id": "kalshi:KXEPLTOP-27TOPHALF-LEE~polymarket:2771333",
+  "tier": "equivalent",
+  "score": 0.803,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXEPLTOP-27TOPHALF-LEE",
+   "event": "EPL Top Half Finishers",
+   "question": "Will Leeds United finish in the top half in the 2026-27 EPL season?",
+   "outcome": "Leeds United",
+   "close": "2027-06-14T02:00:00Z",
+   "resolves": "2027-05-31T02:00:00Z",
+   "rules": "If Leeds United is a top half finisher in the 2026-27 EPL season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771333",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Leeds United win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Leeds United",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 86,
+  "pair_id": "kalshi:KXSB-27-NO~polymarket:1357393",
+  "tier": "equivalent",
+  "score": 0.699,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-NO",
+   "event": "2027 Pro Football Champion",
+   "question": "Will New Orleans win the 2027 Pro Football Championship?",
+   "outcome": "New Orleans",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If New Orleans wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357393",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the New Orleans Saints win the 2027 NFL league championship?",
+   "outcome": "New Orleans Saints",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 92,
+  "pair_id": "kalshi:KXRATEHIKE-2026-1~polymarket:2657589",
+  "tier": "equivalent",
+  "score": 0.533,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXRATEHIKE-2026-1",
+   "event": "Number of rate hikes in 2026?",
+   "question": "Will there be exactly 1 Fed rate hike in 2026?",
+   "outcome": "Exactly 1",
+   "close": "2027-01-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If the number of rate hikes by the Federal Open Market Committee during calendar year 2026 is exactly 1, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2657589",
+   "event": "How many Fed rate hikes in 2026?",
+   "question": "Will 1 Fed rate hike happen in 2026?",
+   "outcome": "1 (25 bps)",
+   "close": "2026-12-31T23:59:00Z",
+   "resolves": "2026-12-31T23:59:00Z",
+   "rules": "This market will resolve according to the exact amount of hikes of 25 basis points in 2026 by the Fed (including any hikes made during the December meeting).\n\nEmergency rate hikes outside of scheduled FOMC meetings will also count toward the total number of hikes in 2026. This market will remain open until December 31, 2026, 11:59 PM ET, to account for any such emergency actions.\n\nFor example, if the Fed hikes rates by 50 bps after a meeting, it would be considered 2 hikes (of 25 bps each).\n\nThis market will resolve early to \"No\" if the specified number of hikes becomes impossible — i.e., if more hikes have already occurred than the strike in question.\n\nNote that hikes between 1–24 bps (incl"
+  }
+ },
+ {
+  "n": 98,
+  "pair_id": "kalshi:KXPRESNOMR-28-TCOT~polymarket:562013",
+  "tier": "equivalent",
+  "score": 0.927,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESNOMR-28-TCOT",
+   "event": "2028 Republican presidential nominee",
+   "question": "Will Tom Cotton be the nominee for the Presidency for the Republican party?",
+   "outcome": "Tom Cotton",
+   "close": "2028-11-07T15:00:00Z",
+   "resolves": "2028-11-07T15:00:00Z",
+   "rules": "If Tom Cotton wins and accepts the nomination for the Presidency for the Republican party in 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "562013",
+   "event": "Republican Presidential Nominee 2028",
+   "question": "Will Tom Cotton win the 2028 Republican presidential nomination?",
+   "outcome": "Tom Cotton",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the named individual wins and accepts the 2028 nomination of the Republican Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official Republican Party sources.\n\nAny replacement of the Republican nominee before election day will not change the resolution of the market."
+  }
+ },
+ {
+  "n": 104,
+  "pair_id": "kalshi:KXFEDERALCHARGE-27JAN01-JSMI~polymarket:5166375",
+  "tier": "review",
+  "score": 0.322,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFEDERALCHARGE-27JAN01-JSMI",
+   "event": "Who will be charged with a federal crime in 2026?",
+   "question": "Will Jack Smith be charged with a any crime before Jan 1, 2027?",
+   "outcome": "Jack Smith",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Jack Smith has been formally charged with a federal crime  after Issuance and before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "5166375",
+   "event": "Any of the Cornell 7 charged with a felony sex crime?",
+   "question": "Any of the Cornell 7 charged with a felony sex crime?",
+   "outcome": "",
+   "close": "2027-02-01T04:59:00Z",
+   "resolves": "2027-02-01T04:59:00Z",
+   "rules": "In a civil complaint filed in September 2026, a Cornell University student alleged that she was drugged and sexually assaulted in October 2024 by multiple members of the Chi Phi fraternity at the fraternity's house in Ithaca, New York. Matthew Ingalls, Johnathan Newell, Winston Lee, Gillio Lopes, Diego Sarabia, Scott Norris and Scott Kretzschmar are the 7 individual defendants alleged in the September 2026 civil complaint to have participated in the alleged October 2024 sexual assault.\n\nThis market will resolve to “Yes” if any Federal or State jurisdiction of the United States formally charges or otherwise announces a criminal indictment of Matthew Ingalls, Johnathan Newell, Winston Lee, Gil"
+  }
+ },
+ {
+  "n": 110,
+  "pair_id": "kalshi:KXLJUBLJANAMAYOR-26NOV15-AROP~polymarket:4038220",
+  "tier": "review",
+  "score": 0.423,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLJUBLJANAMAYOR-26NOV15-AROP",
+   "event": "Ljubljana mayoral election winner?",
+   "question": "Will Anton Rop win the 2026 Ljubljana mayoral election?",
+   "outcome": "Anton Rop",
+   "close": "2027-11-15T15:00:00Z",
+   "resolves": "2026-11-15T14:00:00Z",
+   "rules": "If Anton Rop wins the 2026 Ljubljana mayoral election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4038220",
+   "event": "Poprad Mayoral Election Winner",
+   "question": "Will Anton Danko win the 2026 Poprad mayoral election?",
+   "outcome": "Anton Danko",
+   "close": "2026-10-25T03:59:00Z",
+   "resolves": "2026-10-25T03:59:00Z",
+   "rules": "The 2026 Poprad mayoral election is currently scheduled to be held on October 24, 2026.\n\nThis market will resolve according to the candidate who becomes the next Mayor of Poprad as a result of this election.\n\nTemporary, interim, or placeholder mayors appointed before the election will not be considered.\n\nIf the result of this election isn't known by March 31, 2027, 11:59 PM ET, the market will resolve to \"Other\".\n\nThis market will resolve based on the results of this election, as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve solely based on official results as reported by government sources of Poprad, Prešov Region and Slovakia, including the"
+  }
+ },
+ {
+  "n": 116,
+  "pair_id": "kalshi:KXTRADEDEALCUBA-27-B260801~polymarket:1107878",
+  "tier": "review",
+  "score": 0.35,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXTRADEDEALCUBA-27-B260801",
+   "event": "Will Trump announce a trade deal with Cuba?",
+   "question": "Will Trump announce a trade deal with Cuba before Aug 1, 2026?",
+   "outcome": "Before Aug 1, 2026",
+   "close": "2026-08-01T03:59:00Z",
+   "resolves": "2026-08-01T14:00:00Z",
+   "rules": "If the United States announces a new free trade agreement, multilateral trade agreement, trade framework, or economic cooperation arrangement with Cuba before Aug 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1107878",
+   "event": "Will the U.S. invade Cuba in 2026?",
+   "question": "Will the U.S. invade Cuba in 2026?",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the United States commences a military offensive intended to establish control over any portion of Cuban land territory by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nFor the purposes of this market, land de facto controlled by Cuba or the United States as market creation, will be considered the sovereign territory of that country.\n\nThe resolution source for this market will be a consensus of credible sources."
+  }
+ },
+ {
+  "n": 122,
+  "pair_id": "kalshi:KXLOCALLAW-MEDATA-28JAN01~polymarket:5126782",
+  "tier": "review",
+  "score": 0.443,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLOCALLAW-MEDATA-28JAN01",
+   "event": "Will Maine enact a law restricting large data centers?",
+   "question": "Will Maine enact a law restricting large data centers?",
+   "outcome": "Yes",
+   "close": "2028-01-01T04:59:00Z",
+   "resolves": "2028-01-01T15:00:00Z",
+   "rules": "If legislation conditioning or restricting the development, siting, or electric service of data centers above a defined size or load threshold (by moratorium, mandatory state or utility-regulator approval, or binding large-load cost-allocation requirements) and not merely a study, reporting, or tax-treatment measure is enacted in Maine before Jan 1, 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "5126782",
+   "event": "Oklahoma enacts data center moratorium by...?",
+   "question": "Will Oklahoma enact a data center moratorium by December 31, 2027?",
+   "outcome": "December 31, 2027",
+   "close": "2028-01-01T04:59:00Z",
+   "resolves": "2028-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the State of Oklahoma enacts a law or constitutional provision that establishes a statewide moratorium on new data centers between market creation and the specified date, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nA statewide moratorium on new data centers refers to a binding policy with legal force that generally prohibits or suspends the approval, permitting, construction, grid interconnection, or operation of all new data centers, or a subset of data centers that includes all new data centers with an interconnection capacity above 100 MW per facility (requested or nameplate), throughout the state. Suspensions of tax incentives, exemptio"
+  }
+ },
+ {
+  "n": 128,
+  "pair_id": "kalshi:KXUSAIRANAGREEMENT-27-26OCT~polymarket:2668006",
+  "tier": "review",
+  "score": 0.361,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXUSAIRANAGREEMENT-27-26OCT",
+   "event": "US-Iran nuclear deal?",
+   "question": "Will the US agree to a new Iranian nuclear deal this year?",
+   "outcome": "Before Oct 1, 2026",
+   "close": "2026-10-01T13:37:39Z",
+   "resolves": "2026-10-01T13:30:00Z",
+   "rules": "If the United States has agreed to, signed, or accepted a new Iran-US nuclear deal before Oct 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2668006",
+   "event": "What will be in a US-Iran deal in 2026?",
+   "question": "Will Dilution of Iranian Uranium be in a US-Iran deal in 2026?",
+   "outcome": "Dilution of Iran's Uranium",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market resolves to “Yes” if a written diplomatic instrument between the United States and Iran that establishes a commitment for Iranian-controlled enriched uranium to be downblended or diluted has been mutually signed or otherwise formally adopted by December 31, 2026, 11:59 PM ET. Otherwise, this market resolves to “No.” \n\nA qualifying written instrument must provide for any quantity of enriched uranium held by Iran to be downblended or diluted to a lower enrichment level. The establishment of an enrichment cap or an enrichment moratorium, without a commitment to downblend or dilute already enriched uranium, will not qualify.\n\nThe instrument must require the dilution to occur within I"
+  }
+ }
+]

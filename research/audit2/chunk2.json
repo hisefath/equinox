@@ -1,0 +1,522 @@
+[
+ {
+  "n": 3,
+  "pair_id": "kalshi:SENATETX-26-D~polymarket:630963",
+  "tier": "equivalent",
+  "score": 0.992,
+  "a": {
+   "venue": "kalshi",
+   "id": "SENATETX-26-D",
+   "event": "Texas Senate winner?",
+   "question": "Will Democratics win the Senate race in Texas?",
+   "outcome": "James Talarico",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If a representative of the Democratic party is sworn in as a Senator of Texas for the term beginning in 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "630963",
+   "event": "Texas Senate Election Winner",
+   "question": "Will the Democrats win the Texas Senate race in 2026?",
+   "outcome": "James Talarico (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 midterm Texas U.S. Senate election, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective"
+  }
+ },
+ {
+  "n": 9,
+  "pair_id": "kalshi:HOUSENY4-26-R~polymarket:943432",
+  "tier": "equivalent",
+  "score": 0.96,
+  "a": {
+   "venue": "kalshi",
+   "id": "HOUSENY4-26-R",
+   "event": "NY-04 House winner?",
+   "question": "Will Republican win the House race for NY-4?",
+   "outcome": "Jeanine Driscoll",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If the House member sworn in for NY-04 for the term beginning in 2027 is a member of the Republican party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "943432",
+   "event": "NY-04 House Election Winner",
+   "question": "Will the Republican Party win the NY-04 House seat?",
+   "outcome": "Jeanine Driscoll (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the NY-04 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the tim"
+  }
+ },
+ {
+  "n": 15,
+  "pair_id": "kalshi:KXPRESNOMR-28-TC~polymarket:561989",
+  "tier": "equivalent",
+  "score": 0.935,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESNOMR-28-TC",
+   "event": "2028 Republican presidential nominee",
+   "question": "Will Ted Cruz be the nominee for the Presidency for the Republican party?",
+   "outcome": "Ted Cruz",
+   "close": "2028-11-07T15:00:00Z",
+   "resolves": "2028-11-07T15:00:00Z",
+   "rules": "If Ted Cruz wins and accepts the nomination for the Presidency for the Republican party in 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561989",
+   "event": "Republican Presidential Nominee 2028",
+   "question": "Will Ted Cruz win the 2028 Republican presidential nomination?",
+   "outcome": "Ted Cruz",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the named individual wins and accepts the 2028 nomination of the Republican Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official Republican Party sources.\n\nAny replacement of the Republican nominee before election day will not change the resolution of the market."
+  }
+ },
+ {
+  "n": 21,
+  "pair_id": "kalshi:KXTRUMPMEETING-27JAN01-NVPUT~polymarket:666608",
+  "tier": "equivalent",
+  "score": 0.935,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXTRUMPMEETING-27JAN01-NVPUT",
+   "event": "Who will Donald Trump meet in 2026?",
+   "question": "Will Donald Trump meet in person Vladimir Putin before Jan 1, 2027?",
+   "outcome": "Vladimir Putin",
+   "close": "2027-01-01T14:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Donald Trump and Vladimir Putin meet in person after Issuance and before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "666608",
+   "event": "Who will Trump meet with in 2026?",
+   "question": "Will Trump meet with Vladimir Putin in 2026?",
+   "outcome": "Vladimir Putin",
+   "close": "2026-12-31T23:59:00Z",
+   "resolves": "2026-12-31T23:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed individual meets with Donald Trump between January 1, and December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nA meeting is defined as any encounter where both listed individual and Trump are present and interact with each other in person.\n\nThe resolution source will be a consensus of credible reporting."
+  }
+ },
+ {
+  "n": 27,
+  "pair_id": "kalshi:KXPRESPERSON-28-RKHA~polymarket:561259",
+  "tier": "equivalent",
+  "score": 0.977,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESPERSON-28-RKHA",
+   "event": "2028 U.S. Presidential Election winner?",
+   "question": "Who will win the next presidential election?",
+   "outcome": "Ro Khanna",
+   "close": "2029-11-07T15:00:00Z",
+   "resolves": "2029-01-20T15:00:00Z",
+   "rules": "If Ro Khanna is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561259",
+   "event": "Presidential Election Winner 2028",
+   "question": "Will Ro Khanna win the 2028 US Presidential Election?",
+   "outcome": "Ro Khanna",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "The 2028 US Presidential Election is scheduled to take place on November 7, 2028.\n\nThis market will resolve to the person who wins the 2028 US Presidential Election.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated."
+  }
+ },
+ {
+  "n": 33,
+  "pair_id": "kalshi:KXGEMINI-NEXTPRO-26NOV01~polymarket:3667937",
+  "tier": "equivalent",
+  "score": 0.764,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGEMINI-NEXTPRO-26NOV01",
+   "event": "Next Gemini Pro model release",
+   "question": "Will Google release next Gemini Pro model before Nov 1, 2026?",
+   "outcome": "Before Nov 1, 2026",
+   "close": "2026-11-01T04:59:00Z",
+   "resolves": "2026-09-01T13:00:00Z",
+   "rules": "If Google releases next Gemini Pro model before Nov 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3667937",
+   "event": "Next Google Gemini Pro Model released by...?",
+   "question": "Will the next Google Gemini Pro model be released by October 31, 2026?",
+   "outcome": "October 31",
+   "close": "2026-11-01T03:59:00Z",
+   "resolves": "2026-11-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Google's next Gemini Pro model is made available to the general public between market creation and the specified date (ET). Otherwise, this market will resolve to “No”.\n\nAny Gemini model released after market creation and labeled as \"Pro\" may qualify (e.g., gemini-3.2-pro, gemini-3.5-pro, or gemini-4.0-pro-preview). Gemini models labeled only as Flash, Flash-Lite, or another non-Pro variant will not qualify.\n\nProducts labeled as a GA promotion of an already-existing Preview model (e.g., gemini-3.1-pro-ga) may qualify\n\nA qualifying model must be launched and publicly accessible, including via open beta or open rolling waitlist signups. A closed beta or any"
+  }
+ },
+ {
+  "n": 39,
+  "pair_id": "kalshi:KXFRENCHPRES-27-SLEC~polymarket:679054",
+  "tier": "equivalent",
+  "score": 0.997,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFRENCHPRES-27-SLEC",
+   "event": "Next French presidential election winner?",
+   "question": "Will Sébastien Lecornu win the 2027 French presidential election?",
+   "outcome": "Sébastien Lecornu",
+   "close": "2028-05-30T14:00:00Z",
+   "resolves": "2027-05-31T14:00:00Z",
+   "rules": "If Sébastien Lecornu wins the next French presidential election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "679054",
+   "event": "Next French Presidential Election",
+   "question": "Will Sébastien Lecornu win the 2027 French presidential election?",
+   "outcome": "Sébastien Lecornu",
+   "close": "2027-04-19T03:59:00Z",
+   "resolves": "2027-04-19T03:59:00Z",
+   "rules": "The next French presidential election is currently expected to be held around April 2027.  This market pertains to the outcome of the next French presidential election, regardless of whether it follows the scheduled end of the current term or is held earlier. \n\nThe President of France is elected via a two-round system; a candidate must secure over 50% of the vote to win outright in the first round. If no candidate achieves this, the top two contenders advance to a runoff.\n\nThis market will resolve according to the candidate who wins this election.\n\nThis market includes any potential second round. If, for any reason, the results of the election are not known by December 31, 2027, 11:59 PM ET,"
+  }
+ },
+ {
+  "n": 45,
+  "pair_id": "kalshi:GOVPARTYWI-26-R~polymarket:629721",
+  "tier": "equivalent",
+  "score": 0.915,
+  "a": {
+   "venue": "kalshi",
+   "id": "GOVPARTYWI-26-R",
+   "event": "Wisconsin Governor winner?",
+   "question": "Will the Republican party win the governorship in Wisconsin",
+   "outcome": "Tom Tiffany",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-07T15:00:00Z",
+   "rules": "If a representative of the Republican party is inaugurated as the governor of Wisconsin pursuant to the 2026 election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "629721",
+   "event": "Wisconsin Governor Election Winner",
+   "question": "Will the Republicans win the Wisconsin governor race in 2026?",
+   "outcome": "Tom Tiffany (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 Wisconsin gubernatorial election.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the \"Democrat\" or \"Republican\" options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day,"
+  }
+ },
+ {
+  "n": 51,
+  "pair_id": "kalshi:HOUSEOH1-26-D~polymarket:943559",
+  "tier": "equivalent",
+  "score": 0.948,
+  "a": {
+   "venue": "kalshi",
+   "id": "HOUSEOH1-26-D",
+   "event": "OH-01 House winner?",
+   "question": "Will a Democrat win the House race for OH-1?",
+   "outcome": "Greg Landsman",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If the House member sworn in for OH-01 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "943559",
+   "event": "OH-01 House Election Winner",
+   "question": "Will the Democratic Party win the OH-01 House seat?",
+   "outcome": "Greg Landsman (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the OH-01 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the tim"
+  }
+ },
+ {
+  "n": 57,
+  "pair_id": "kalshi:KXMEETINGS-27JAN01-TAKXI~polymarket:2062640",
+  "tier": "equivalent",
+  "score": 0.894,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXMEETINGS-27JAN01-TAKXI",
+   "event": "Which leaders will meet before 2027?",
+   "question": "Will Takaichi and Xi meet before Jan 1, 2027?",
+   "outcome": "Takaichi and Xi",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Sanae Takaichi and Xi Jinping meet in person after Issuance and before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2062640",
+   "event": "Will Xi meet with Takaichi by...?",
+   "question": "Will Xi meet with Takaichi by December 31, 2026?",
+   "outcome": "December 31",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Sanae Takaichi meets with Xi Jinping between market creation and the listed date, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nA meeting is defined as any encounter where both Takaichi and Jinping are present and interact with each other in person.\n\nAn exchange of words, handshake, direct conversation, or other clear personal interaction between the named individuals will qualify as a meeting. Merely standing in proximity, making eye contact, or being present in the same room or event without direct interaction will not qualify.\n\nThe resolution source will be a consensus of credible reporting."
+  }
+ },
+ {
+  "n": 63,
+  "pair_id": "kalshi:KXHOUSERACE-FL26-26-R~polymarket:1283136",
+  "tier": "equivalent",
+  "score": 0.966,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSERACE-FL26-26-R",
+   "event": "FL-26 House winner?",
+   "question": "Will Republican win the House race for FL-26?",
+   "outcome": "Mario Díaz-Balart",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T17:00:00Z",
+   "rules": "If the House member sworn in for FL-26 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1283136",
+   "event": "FL-26 House Election Winner",
+   "question": "Will the Republican Party win the FL-26 House seat?",
+   "outcome": "Mario Díaz-Balart (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the FL-26 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time"
+  }
+ },
+ {
+  "n": 69,
+  "pair_id": "kalshi:HOUSECO3-26-D~polymarket:942304",
+  "tier": "equivalent",
+  "score": 0.959,
+  "a": {
+   "venue": "kalshi",
+   "id": "HOUSECO3-26-D",
+   "event": "CO-03 House winner?",
+   "question": "Will Democratic win the House race for CO-3?",
+   "outcome": "Dwayne Romero",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If the House member sworn in for CO-03 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "942304",
+   "event": "CO-03 House Election Winner",
+   "question": "Will the Democratic Party win the CO-03 House seat?",
+   "outcome": "Dwayne Romero (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the CO-03 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the tim"
+  }
+ },
+ {
+  "n": 75,
+  "pair_id": "kalshi:KXPERFORMSUPERBOWL-27B-EAG~polymarket:1357396",
+  "tier": "equivalent",
+  "score": 0.598,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPERFORMSUPERBOWL-27B-EAG",
+   "event": "Pro Football Championship Halftime Show: Performers",
+   "question": "Who will perform at the 2027 Pro Football Championship Halftime Show scheduled for Sunday, February 14, 2027?",
+   "outcome": "Eagles",
+   "close": "2027-02-15T15:00:00Z",
+   "resolves": "2027-02-15T15:00:00Z",
+   "rules": "If Eagles performs (or it is announced that they will perform at) at the 2027 Pro Football Championship Halftime Show scheduled for Sunday, February 14, 2027 during the official event timeframe, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357396",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the Philadelphia Eagles win the 2027 NFL league championship?",
+   "outcome": "Philadelphia Eagles",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 81,
+  "pair_id": "kalshi:KXNBA-27-CLE~polymarket:2243301",
+  "tier": "equivalent",
+  "score": 0.528,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-CLE",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Cleveland win the 2027 Pro Basketball Finals?",
+   "outcome": "Cleveland",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Cleveland wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243301",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Cleveland Cavaliers win the 2027 NBA Finals?",
+   "outcome": "Cleveland Cavaliers",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 87,
+  "pair_id": "kalshi:KXSPANISHPM-27AUG22-AFEI~polymarket:2695686",
+  "tier": "equivalent",
+  "score": 0.973,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSPANISHPM-27AUG22-AFEI",
+   "event": "Prime Minister of Spain after the next election?",
+   "question": "Will Alberto Núñez Feijóo become Prime Minister of Spain following the next Spanish general election?",
+   "outcome": "Alberto Núñez Feijóo",
+   "close": "2028-08-22T14:00:00Z",
+   "resolves": "2028-08-22T14:00:00Z",
+   "rules": "If Alberto Núñez Feijóo becomes Prime Minister of Spain as a result of government formation following the next Spanish general election and meets all constitutional requirements before Aug 22, 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2695686",
+   "event": "Next Prime Minister of Spain?",
+   "question": "Will Alberto Núñez Feijóo be the next Prime Minister of Spain?",
+   "outcome": "Alberto Núñez Feijóo",
+   "close": "2028-04-01T03:59:00Z",
+   "resolves": "2028-04-01T03:59:00Z",
+   "rules": "This market will resolve to the next individual who officially assumes the office of Prime Minister of Spain by March 31, 2028, 11:59 PM ET.\n\nTo count for resolution, the individual must receive a vote of confidence from the Congress of Deputies and be formally sworn-in, resulting in the official formation of a new government. Any interim or caretaker Prime Minister who does not receive a parliamentary vote of confidence will not count toward the resolution of this market.\n\nIf no such Prime Minister takes office by March 31, 2028, 11:59 PM ET, this market will resolve to “Other”.\n\nThe primary resolution source for this market will be official information from the Government of Spain; however"
+  }
+ },
+ {
+  "n": 93,
+  "pair_id": "kalshi:GOVPARTYNV-26-D~polymarket:629505",
+  "tier": "equivalent",
+  "score": 0.912,
+  "a": {
+   "venue": "kalshi",
+   "id": "GOVPARTYNV-26-D",
+   "event": "Nevada Governor winner?",
+   "question": "Will the Democratic party win the governorship in Nevada",
+   "outcome": "Aaron Ford",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-02T15:00:00Z",
+   "rules": "If a representative of the Democratic party is inaugurated as the governor of Nevada pursuant to the 2026 election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "629505",
+   "event": "Nevada Governor Election Winner",
+   "question": "Will the Democrats win the Nevada governor race in 2026?",
+   "outcome": "Aaron Ford (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 Nevada gubernatorial election.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, th"
+  }
+ },
+ {
+  "n": 99,
+  "pair_id": "kalshi:KXTRUMPCHINA-26SEP25-DEC01~polymarket:567621",
+  "tier": "review",
+  "score": 0.3,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXTRUMPCHINA-26SEP25-DEC01",
+   "event": "Will Trump visit China?",
+   "question": "Will Donald Trump visit China before Dec 1, 2026?",
+   "outcome": "Before Dec 1, 2026",
+   "close": "2026-12-01T15:00:00Z",
+   "resolves": "2026-12-01T15:00:00Z",
+   "rules": "If Donald Trump has physically travelled to and been present within the geographic boundaries of China after Issuance and before Dec 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "567621",
+   "event": "Will China invade Taiwan by end of 2026?",
+   "question": "Will China invade Taiwan by end of 2026?",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if China commences a military offensive intended to establish control over any portion of the Republic of China (Taiwan) by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nTerritory under the administration of the Republic of China including any inhabited islands will qualify, however uninhabited islands will not qualify. \n\nThe resolution source for this market will be will be official confirmation by China, Taiwan, the United Nations, or any permanent member of the UN Security Council, however a consensus of credible reporting will also be used."
+  }
+ },
+ {
+  "n": 105,
+  "pair_id": "kalshi:KXNBA-27-PHI~polymarket:2243308",
+  "tier": "review",
+  "score": 0.471,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-PHI",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Philadelphia win the 2027 Pro Basketball Finals?",
+   "outcome": "Philadelphia",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Philadelphia wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243308",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Philadelphia 76ers win the 2027 NBA Finals?",
+   "outcome": "Philadelphia 76ers",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 111,
+  "pair_id": "kalshi:KXSTARSHIPFL-26JUN-27JAN01~polymarket:5091438",
+  "tier": "review",
+  "score": 0.473,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSTARSHIPFL-26JUN-27JAN01",
+   "event": "When will SpaceX's Starship launch from Florida?",
+   "question": "Will SpaceX's Starship launch from Florida this year?",
+   "outcome": "Before 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If the SpaceX Starship has launched from Florida before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "5091438",
+   "event": "SpaceX Starship Flight Test 15?",
+   "question": "Will SpaceX Starship Flight Test 15 launch by November 30, 2026?",
+   "outcome": "November 30, 2026",
+   "close": "2026-12-01T04:59:00Z",
+   "resolves": "2026-12-01T04:59:00Z",
+   "rules": "If the 15th SpaceX Starship successfully launches from its launch pad by November 30, 2026, 11:59 PM ET, this market will resolve to \"Yes\". Otherwise, this market will resolve to \"No\".\n\nThe outcome of any launch will be corroborated by examining official video provided by SpaceX (https://www.youtube.com/c/SpaceX), as well as secondary video feeds and/or written reports if necessary.\n\nAny subsequent anomaly (e.g., an explosion) after the launch will have no bearing on the outcome. Any name change of the Starship with another vehicle will have no bearing on the outcome of the market."
+  }
+ },
+ {
+  "n": 117,
+  "pair_id": "kalshi:KXLAKEAMERICA-26AUGUNDO-JAN01~polymarket:4339019",
+  "tier": "review",
+  "score": 0.474,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLAKEAMERICA-26AUGUNDO-JAN01",
+   "event": "Will Trump reverse the Lake America renaming?",
+   "question": "Will Trump reverse the Lake America renaming before Jan 1, 2027?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Donald Trump has taken any signed executive action reversing the renaming of Lake Ontario to Lake America before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4339019",
+   "event": "Trump renames New Mexico to New America by...?",
+   "question": "Trump renames New Mexico to New America by December 31, 2026?",
+   "outcome": "December 31",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Donald Trump issues any executive order, presidential memorandum, or proclamation, signs any bill into law, or otherwise formally directs the federal government to rename New Mexico to \"New America\" or any other name including \"America\" by the specified date, 11:59 PM ET. Otherwise, this market will resolve to \"No.\"\n\nA formal Trump administration directive to rename New Mexico, including through the U.S. Board on Geographic Names, will qualify.\n\nFor the purposes of this market, \"rename\" includes directing the federal government to use the new name when referring to the state, regardless of whether the state's legal name is changed.\n\nStatements, social med"
+  }
+ }
+]

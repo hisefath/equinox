@@ -1,0 +1,522 @@
+[
+ {
+  "n": 5,
+  "pair_id": "kalshi:CONTROLS-2026-R~polymarket:562794",
+  "tier": "equivalent",
+  "score": 0.852,
+  "a": {
+   "venue": "kalshi",
+   "id": "CONTROLS-2026-R",
+   "event": "Which party will win the U.S. Senate?",
+   "question": "Will Republicans win the U.S. Senate in 2026?",
+   "outcome": "Republican Party",
+   "close": "2027-02-01T15:00:00Z",
+   "resolves": "2027-02-01T15:00:00Z",
+   "rules": "If the Republican Party has won control of the U.S. Senate in 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "562794",
+   "event": "Which party will win the Senate in 2026?",
+   "question": "Will the Republican Party control the Senate after the 2026 Midterm elections?",
+   "outcome": "Republican Party",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party that wins control of the United States Senate in the 2026 United States midterm election.\n\nA party wins control of the United States Senate if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the party that wins control of the chamber is the party that wins half of the voting seats and holds the Vice Presidency. If the outcome remains ambiguous after applying the above criteria, the chamber will be deemed controlled by the party with which the first selected President Pro Tempore of the Congress that convenes after the specified election is affiliated.\n\nThe following rules govern the counting of sea"
+  }
+ },
+ {
+  "n": 11,
+  "pair_id": "kalshi:GOVPARTYCA-26-R~polymarket:628940",
+  "tier": "equivalent",
+  "score": 0.919,
+  "a": {
+   "venue": "kalshi",
+   "id": "GOVPARTYCA-26-R",
+   "event": "California Governor winner?",
+   "question": "Will the Republican party win the governorship in California",
+   "outcome": "Steve Hilton",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-07T15:00:00Z",
+   "rules": "If a representative of the Republican party is inaugurated as the governor of California pursuant to the 2026 election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "628940",
+   "event": "California Governor Election Winner",
+   "question": "Will Steve Hilton win the California Governor Election in 2026?",
+   "outcome": "Steve Hilton",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve to according to the candidate who wins the 2026 California gubernatorial election currently scheduled for November 3, 2026.\n\nIf the results of the election are not confirmed by July 31, 2027, this market will resolve to \"Other\".\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race in this state for the same candidate, this market will resolve based on official certification."
+  }
+ },
+ {
+  "n": 17,
+  "pair_id": "kalshi:KXPRESNOMD-28-RW~polymarket:559664",
+  "tier": "equivalent",
+  "score": 0.981,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESNOMD-28-RW",
+   "event": "2028 Democratic presidential nominee",
+   "question": "Will Raphael Warnock be the Democratic Presidential nominee in 2028?",
+   "outcome": "Raphael Warnock",
+   "close": "2028-11-07T15:00:00Z",
+   "resolves": "2028-11-07T15:00:00Z",
+   "rules": "If Raphael Warnock wins and accepts the nomination for the Presidency for the Democratic party in 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "559664",
+   "event": "Democratic Presidential Nominee 2028",
+   "question": "Will Raphael Warnock win the 2028 Democratic presidential nomination?",
+   "outcome": "Raphael Warnock",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the named individual wins and accepts the 2028 nomination of the Democratic Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official Democratic Party sources.\n\nAny replacement of the democratic nominee before election day will not change the resolution of the market."
+  }
+ },
+ {
+  "n": 23,
+  "pair_id": "kalshi:KXNFLNFCEAST-27-DAL~polymarket:1447964",
+  "tier": "equivalent",
+  "score": 0.593,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNFLNFCEAST-27-DAL",
+   "event": "NFC East Division Winner",
+   "question": "Will Dallas win the Pro Football NFC East Division?",
+   "outcome": "Dallas",
+   "close": "2027-01-25T15:00:00Z",
+   "resolves": "2027-01-11T15:00:00Z",
+   "rules": "If Dallas wins the Pro Football NFC East Division, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1447964",
+   "event": "Pro Football: NFC East Champion",
+   "question": "Will Dallas Cowboys win the 2026 NFC East?",
+   "outcome": "Dallas Cowboys",
+   "close": "2027-01-04T00:00:00Z",
+   "resolves": "2027-01-04T00:00:00Z",
+   "rules": "This market will resolve according to the team that is declared as the NFC East division champion for the 2026 NFL regular season.\n\nIf multiple teams tie atop the division, this market will resolve according to the official tiebreak procedure of the NFL.\n\nIf the 2026 NFL regular season is cancelled, postponed after January 17, 2027, 11:59 PM ET, or there is otherwise no winner declared for this division within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source for this market will be official information from the NFL; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 29,
+  "pair_id": "kalshi:SENATEOHS-26-D~polymarket:631057",
+  "tier": "equivalent",
+  "score": 0.993,
+  "a": {
+   "venue": "kalshi",
+   "id": "SENATEOHS-26-D",
+   "event": "Ohio Senate winner?",
+   "question": "Will Democratics win the Senate race in Ohio?",
+   "outcome": "Sherrod Brown",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If a representative of the Democratic party is sworn in as a Senator of Ohio for the term beginning in 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "631057",
+   "event": "Ohio Senate Election Winner",
+   "question": "Will the Democrats win the Ohio Senate race in 2026?",
+   "outcome": "Sherrod Brown (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 Ohio U.S. Senate special election currently scheduled for November 3, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced "
+  }
+ },
+ {
+  "n": 35,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-FCA~polymarket:2849020",
+  "tier": "equivalent",
+  "score": 0.802,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXBUNDESLIGA-27-FCA",
+   "event": "Bundesliga Champion",
+   "question": "Will Augsburg win the 2026-27 Bundesliga?",
+   "outcome": "Augsburg",
+   "close": "2027-06-06T02:00:00Z",
+   "resolves": "2027-05-23T02:00:00Z",
+   "rules": "If Augsburg is the 2026-27 Bundesliga champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2849020",
+   "event": "Bundesliga: 2027 Champion",
+   "question": "Will FC Augsburg be the 2026-27 Bundesliga champion?",
+   "outcome": "FC Augsburg",
+   "close": "2027-06-15T03:59:00Z",
+   "resolves": "2027-06-15T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 Bundesliga.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 Bundesliga per the rules of the Bundesliga (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 Bundesliga season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from the Bundesliga; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 41,
+  "pair_id": "kalshi:KXNBA-27-LAC~polymarket:2243315",
+  "tier": "equivalent",
+  "score": 0.642,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-LAC",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Los Angeles C win the 2027 Pro Basketball Finals?",
+   "outcome": "Los Angeles C",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Los Angeles C wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243315",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Los Angeles Clippers win the 2027 NBA Finals?",
+   "outcome": "Los Angeles Clippers",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 47,
+  "pair_id": "kalshi:KXSB-27-CLE~polymarket:1357378",
+  "tier": "equivalent",
+  "score": 0.604,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-CLE",
+   "event": "2027 Pro Football Champion",
+   "question": "Will Cleveland win the 2027 Pro Football Championship?",
+   "outcome": "Cleveland",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If Cleveland wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357378",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the Cleveland Browns win the 2027 NFL league championship?",
+   "outcome": "Cleveland Browns",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 53,
+  "pair_id": "kalshi:KXHOUSERACE-OH06-26-D~polymarket:1284412",
+  "tier": "equivalent",
+  "score": 0.959,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSERACE-OH06-26-D",
+   "event": "OH-06 House winner?",
+   "question": "Will Democratic win the House race for OH-06?",
+   "outcome": "Elizabeth Kirtley",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T17:00:00Z",
+   "rules": "If the House member sworn in for OH-06 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1284412",
+   "event": "OH-06 House Election Winner",
+   "question": "Will the Democratic Party win the OH-06 House seat?",
+   "outcome": "Elizabeth Kirtley (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the OH-06 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time"
+  }
+ },
+ {
+  "n": 59,
+  "pair_id": "kalshi:KXSPANISHPM-27AUG22-SABA~polymarket:2695687",
+  "tier": "equivalent",
+  "score": 0.965,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSPANISHPM-27AUG22-SABA",
+   "event": "Prime Minister of Spain after the next election?",
+   "question": "Will Santiago Abascal become Prime Minister of Spain following the next Spanish general election?",
+   "outcome": "Santiago Abascal",
+   "close": "2028-08-22T14:00:00Z",
+   "resolves": "2028-08-22T14:00:00Z",
+   "rules": "If Santiago Abascal becomes Prime Minister of Spain as a result of government formation following the next Spanish general election and meets all constitutional requirements before Aug 22, 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2695687",
+   "event": "Next Prime Minister of Spain?",
+   "question": "Will Santiago Abascal be the next Prime Minister of Spain?",
+   "outcome": "Santiago Abascal",
+   "close": "2028-03-31T23:59:00Z",
+   "resolves": "2028-03-31T23:59:00Z",
+   "rules": "This market will resolve to the next individual who officially assumes the office of Prime Minister of Spain by March 31, 2028, 11:59 PM ET.\n\nTo count for resolution, the individual must receive a vote of confidence from the Congress of Deputies and be formally sworn-in, resulting in the official formation of a new government. Any interim or caretaker Prime Minister who does not receive a parliamentary vote of confidence will not count toward the resolution of this market.\n\nIf no such Prime Minister takes office by March 31, 2028, 11:59 PM ET, this market will resolve to “Other”.\n\nThe primary resolution source for this market will be official information from the Government of Spain; however"
+  }
+ },
+ {
+  "n": 65,
+  "pair_id": "kalshi:KXFDARETATRUTIDE-RET-27JAN01~polymarket:1162139",
+  "tier": "equivalent",
+  "score": 0.859,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFDARETATRUTIDE-RET-27JAN01",
+   "event": "Will the FDA approve retatrutide?",
+   "question": "When will the FDA approve retatrutide (LY3437943)?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If the FDA approves retatrutide (LY3437943) for marketing before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1162139",
+   "event": "FDA approves Retatrutide this year?",
+   "question": "FDA approves Retatrutide this year?",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "Retatrutide is a triple agonist hormone/peptide drug developed by Eli Lilly and currently in trial to treat obesity, fatty liver disease, type-2 diabetes, knee osteoarthritis, and more.\n\nThis market will resolve to \"Yes\" if the U.S. Food and Drug Administration (FDA) grants a full or conditional approval for Eli Lilly’s for a drug product whose active ingredient is Eli Lilly’s retatrutide (including any brand name or identifier such as LY3437943) for any use between market creation and December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No.\"\n\nAn approval is defined as:\nFor new drugs: FDA issuance of an approval letter for a New Drug Application (NDA) or Biologics License "
+  }
+ },
+ {
+  "n": 71,
+  "pair_id": "kalshi:SENATESC-26-D~polymarket:630924",
+  "tier": "equivalent",
+  "score": 0.995,
+  "a": {
+   "venue": "kalshi",
+   "id": "SENATESC-26-D",
+   "event": "South Carolina Senate winner?",
+   "question": "Will Democratics win the Senate race in South Carolina?",
+   "outcome": "Annie Andrews",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If a representative of the Democratic party is sworn in as a Senator of South Carolina for the term beginning in 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "630924",
+   "event": "South Carolina Senate Election Winner",
+   "question": "Will the Democrats win the South Carolina Senate race in 2026?",
+   "outcome": "Annie Andrews (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 midterm South Carolina U.S. Senate election, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their r"
+  }
+ },
+ {
+  "n": 77,
+  "pair_id": "kalshi:KXGEMINI-GEM4-26NOV01~polymarket:3584362",
+  "tier": "equivalent",
+  "score": 0.591,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGEMINI-GEM4-26NOV01",
+   "event": "When will Google release Gemini 4?",
+   "question": "Will Google release Gemini 4 before Nov 1, 2026?",
+   "outcome": "Before Nov 1, 2026",
+   "close": "2026-11-01T04:59:00Z",
+   "resolves": "2026-11-01T15:00:00Z",
+   "rules": "If Google releases Gemini 4 before Nov 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3584362",
+   "event": "Gemini 4.0 released by...?",
+   "question": "Gemini 4.0 released by October 31, 2026?",
+   "outcome": "October 31",
+   "close": "2026-11-01T03:59:00Z",
+   "resolves": "2026-11-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Google's Gemini 4.0 is made available to the general public by the listed date. Otherwise, this market will resolve to \"No\".\n\nFor this market to resolve to \"Yes,\" Gemini 4.0 must be launched and publicly accessible, including via open beta or open rolling waitlist signups. A closed beta or any form of private access will not suffice. The release must be clearly defined and publicly announced by Google as being accessible to the general public.\n\nIf a qualifying model is made publicly accessible and explicitly labeled with the relevant version name within the company’s official website, this will qualify as “publicly announced”. Labeling errors, placeholder"
+  }
+ },
+ {
+  "n": 83,
+  "pair_id": "kalshi:HOUSEOH1-26-R~polymarket:943558",
+  "tier": "equivalent",
+  "score": 0.946,
+  "a": {
+   "venue": "kalshi",
+   "id": "HOUSEOH1-26-R",
+   "event": "OH-01 House winner?",
+   "question": "Will a Republican win the House race for OH-1?",
+   "outcome": "Eric Conroy",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If the House member sworn in for OH-01 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "943558",
+   "event": "OH-01 House Election Winner",
+   "question": "Will the Republican Party win the OH-01 House seat?",
+   "outcome": "Eric Conroy (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the OH-01 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the tim"
+  }
+ },
+ {
+  "n": 89,
+  "pair_id": "kalshi:KXSB-27-SEA~polymarket:1357399",
+  "tier": "equivalent",
+  "score": 0.55,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-SEA",
+   "event": "2027 Pro Football Champion",
+   "question": "Will Seattle win the 2027 Pro Football Championship?",
+   "outcome": "Seattle",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If Seattle wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357399",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the Seattle Seahawks win the 2027 NFL league championship?",
+   "outcome": "Seattle Seahawks",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 95,
+  "pair_id": "kalshi:KXSB-27-NE~polymarket:1357392",
+  "tier": "equivalent",
+  "score": 0.839,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-NE",
+   "event": "2027 Pro Football Champion",
+   "question": "Will New England win the 2027 Pro Football Championship?",
+   "outcome": "New England",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If New England wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357392",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the New England Patriots win the 2027 NFL league championship?",
+   "outcome": "New England Patriots",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 101,
+  "pair_id": "kalshi:KXFEDEND-27-JAN01~polymarket:666861",
+  "tier": "review",
+  "score": 0.379,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFEDEND-27-JAN01",
+   "event": "Will Trump end the Federal Reserve before 2027?",
+   "question": "Will Trump end the Federal Reserve before Jan 1, 2027?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If the Federal Reserve System has ended before January 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "666861",
+   "event": "Trump out as President before 2027?",
+   "question": "Trump out as President before 2027?",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if Donald Trump resigns or is removed as President or otherwise ceases to be the President of the United States for any period of time by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to “No”.\n\nAn announcement of Donald Trump's resignation/removal before this market's end date will immediately resolve this market to \"Yes\", regardless of when the announced resignation/removal goes into effect.\n\nOnly permanent removal from office will qualify. Temporary removal (e.g. temporary invocation of the 25th Amendment under Section 3 or a Section 4 invocation not sustained by both Houses of Congress) or impeachment without removal will not count.\n"
+  }
+ },
+ {
+  "n": 107,
+  "pair_id": "kalshi:KXELECTUKRAINE-30JAN01-27JAN01~polymarket:665224",
+  "tier": "review",
+  "score": 0.337,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXELECTUKRAINE-30JAN01-27JAN01",
+   "event": "When will Ukraine hold a presidential election?",
+   "question": "Will Ukraine hold a presidential election before Jan 1, 2027?",
+   "outcome": "Before 2027",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Ukraine holds a presidential election before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "665224",
+   "event": "Ukraine signs peace deal with Russia before 2027?",
+   "question": "Ukraine signs peace deal with Russia before 2027?",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to “Yes”  if, Ukraine signs any written instrument (e.g., treaty, ceasefire/armistice, framework/“roadmap,” exchange of letters, or mediated agreement text) that: (i) includes both Ukraine and the Russian Federation as parties, and (ii) either ends hostilities/establishes a ceasefire or commits both sides to a defined process toward ending the war (i.e., stated objective of peace/normalization plus principles, steps, and/or a timetable) by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to “No”. \n\nOnly Ukraine’s signature is required; Russia’s signature or ratification is not.\n\nLocalized, temporary, or issue-specific arrangements—such as airstrike"
+  }
+ },
+ {
+  "n": 113,
+  "pair_id": "kalshi:KXSB-27-DET~polymarket:1357381",
+  "tier": "review",
+  "score": 0.492,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-DET",
+   "event": "2027 Pro Football Champion",
+   "question": "Will Detroit win the 2027 Pro Football Championship?",
+   "outcome": "Detroit",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If Detroit wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357381",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the Detroit Lions win the 2027 NFL league championship?",
+   "outcome": "Detroit Lions",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 119,
+  "pair_id": "kalshi:KXNBANEXTTEAM-27I1LJAMES23-IND~polymarket:741099",
+  "tier": "review",
+  "score": 0.467,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBANEXTTEAM-27I1LJAMES23-IND",
+   "event": "LeBron James Next Team",
+   "question": "LeBron James' next team before Feb 12, 2027: Indiana",
+   "outcome": "Indiana",
+   "close": "2027-02-12T04:59:00Z",
+   "resolves": "2027-02-12T15:00:00Z",
+   "rules": "If LeBron James' \nnext team is the Indiana Pro Basketball team\n before Feb 12, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "741099",
+   "event": "Will LeBron James retire before next NBA season?",
+   "question": "Will LeBron James retire before next NBA season?",
+   "outcome": "",
+   "close": "2026-10-22T03:59:00Z",
+   "resolves": "2026-10-22T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if LeBron James retires from the NBA before the start of the 2026-2027 NBA season. Otherwise, this market will resolve to \"No\".\n\nAn official announcement from James that he is retiring will qualify even if his official retirement has not yet occurred, as long as the announced retirement is stated to take effect before the start of the 2026-2027 NBA season. Announcements that he will retire after the start of the 2026-2027 NBA season will not qualify.\n\nThe primary resolution source for this market will be official statements from LeBron James, however a consensus of credible reporting may also be used."
+  }
+ }
+]

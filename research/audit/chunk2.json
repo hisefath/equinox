@@ -1,0 +1,574 @@
+[
+ {
+  "n": 3,
+  "pair_id": "kalshi:KXEPLTOP-27TOPHALF-MUN~polymarket:2771336",
+  "tier": "equivalent",
+  "score": 0.766,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXEPLTOP-27TOPHALF-MUN",
+   "event": "EPL Top Half Finishers",
+   "question": "Will Manchester United finish in the top half in the 2026-27 EPL season?",
+   "outcome": "Manchester United",
+   "close": "2027-06-14T02:00:00Z",
+   "resolves": "2027-05-31T02:00:00Z",
+   "rules": "If Manchester United is a top half finisher in the 2026-27 EPL season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771336",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Manchester United win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Manchester United",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 9,
+  "pair_id": "kalshi:KXSB-27-BAL~polymarket:1357373",
+  "tier": "equivalent",
+  "score": 0.646,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-BAL",
+   "event": "2027 Pro Football Champion",
+   "question": "Will Baltimore win the 2027 Pro Football Championship?",
+   "outcome": "Baltimore",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If Baltimore wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357373",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the Baltimore Ravens win the 2027 NFL league championship?",
+   "outcome": "Baltimore Ravens",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 15,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-SGE~polymarket:2849013",
+  "tier": "equivalent",
+  "score": 0.688,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXBUNDESLIGA-27-SGE",
+   "event": "Bundesliga Champion",
+   "question": "Will Frankfurt win the 2026-27 Bundesliga?",
+   "outcome": "Frankfurt",
+   "close": "2027-06-06T02:00:00Z",
+   "resolves": "2027-05-23T02:00:00Z",
+   "rules": "If Frankfurt is the 2026-27 Bundesliga champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2849013",
+   "event": "Bundesliga: 2027 Champion",
+   "question": "Will Eintracht Frankfurt be the 2026-27 Bundesliga champion?",
+   "outcome": "Eintracht Frankfurt",
+   "close": "0001-01-01T00:00:00Z",
+   "resolves": "0001-01-01T00:00:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 Bundesliga.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 Bundesliga per the rules of the Bundesliga (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 Bundesliga season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from the Bundesliga; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 21,
+  "pair_id": "kalshi:KXPRESPERSON-28-REMA~polymarket:561282",
+  "tier": "equivalent",
+  "score": 0.978,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESPERSON-28-REMA",
+   "event": "2028 U.S. Presidential Election winner?",
+   "question": "Who will win the next presidential election?",
+   "outcome": "Rahm Emanuel",
+   "close": "2029-11-07T15:00:00Z",
+   "resolves": "2029-01-20T15:00:00Z",
+   "rules": "If Rahm Emanuel is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561282",
+   "event": "Presidential Election Winner 2028",
+   "question": "Will Rahm Emanuel win the 2028 US Presidential Election?",
+   "outcome": "Rahm Emanuel",
+   "close": "2028-11-07T00:00:00Z",
+   "resolves": "2028-11-07T00:00:00Z",
+   "rules": "The 2028 US Presidential Election is scheduled to take place on November 7, 2028.\n\nThis market will resolve to the person who wins the 2028 US Presidential Election.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated."
+  }
+ },
+ {
+  "n": 27,
+  "pair_id": "kalshi:KXIPOOPENAI-27JAN01~polymarket:608368",
+  "tier": "equivalent",
+  "score": 0.533,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXIPOOPENAI-27JAN01",
+   "event": "When will OpenAI officially announce an IPO?",
+   "question": "When will OpenAI IPO?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2026-09-01T13:15:00Z",
+   "rules": "If OpenAI confirms an IPO before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "608368",
+   "event": "OpenAI IPO Closing Market Cap",
+   "question": "Will OpenAI not IPO by December 31, 2026?",
+   "outcome": "No IPO by December 31, 2026",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve based on OpenAI's market capitalization at the closing price on its first day of trading.\n\nIf no IPO occurs by December 31, 2026, 11:59 PM ET, the market will resolve to \"No IPO by December 31, 2026\".\n\nMarket capitalization expresses the monetary value of a company’s outstanding shares, stated in its pricing currency. It is calculated as the number of shares outstanding multiplied by the closing share price on the first trading day.\n\nIf the relevant value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nResolution will be based on the primary exchange’s official listing page. In the event that the relevant figure is not "
+  }
+ },
+ {
+  "n": 33,
+  "pair_id": "kalshi:KXPRAGUEMAYOR-26OCT10-PHLA~polymarket:4038304",
+  "tier": "equivalent",
+  "score": 0.904,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRAGUEMAYOR-26OCT10-PHLA",
+   "event": "Prague mayoral election winner?",
+   "question": "Will Petr Hlaváček win the first Prague mayoral election following the October 2026 municipal election?",
+   "outcome": "Petr Hlaváček",
+   "close": "2027-10-10T14:00:00Z",
+   "resolves": "2026-10-10T12:00:00Z",
+   "rules": "If Petr Hlaváček wins the first successful City Assembly vote electing Mayor of Prague following the October 2026 municipal election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4038304",
+   "event": "Next Mayor of Prague",
+   "question": "Will Petr Hlaváček be the next Mayor of Prague?",
+   "outcome": "Petr Hlaváček",
+   "close": "2026-10-10T03:59:00Z",
+   "resolves": "2026-10-10T03:59:00Z",
+   "rules": "Municipal elections are currently scheduled to be held in Czechia on October 9-10, 2026. The next mayor of Prague will be elected by the newly constituted council following the 2026 Czech municipal elections.\n\nThis market will resolve to the first individual who officially assumes the role of Mayor of Prague following the 2026 Czech municipal elections.\n\nA qualifying individual must be elected mayor by the city council. Temporary, interim, or placeholder mayors appointed before the election will not be considered.\n\nIf the result of this election isn't known by June 30, 2027, 11:59 PM ET, the market will resolve to \"Other\".\n\nThe primary resolution source for this market will be official infor"
+  }
+ },
+ {
+  "n": 39,
+  "pair_id": "kalshi:GOVPARTYFL-26-R~polymarket:629325",
+  "tier": "equivalent",
+  "score": 0.908,
+  "a": {
+   "venue": "kalshi",
+   "id": "GOVPARTYFL-26-R",
+   "event": "Florida Governor winner?",
+   "question": "Will the Republican party win the governorship in Florida",
+   "outcome": "Byron Donalds",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-08T15:00:00Z",
+   "rules": "If a representative of the Republican party is inaugurated as the governor of Florida pursuant to the 2026 election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "629325",
+   "event": "Florida Governor Election Winner",
+   "question": "Will the Republicans win the Florida governor race in 2026?",
+   "outcome": "Byron Donalds (R) ",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 Florida gubernatorial election.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, t"
+  }
+ },
+ {
+  "n": 45,
+  "pair_id": "kalshi:KXSB-27-JAC~polymarket:1357385",
+  "tier": "equivalent",
+  "score": 0.82,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSB-27-JAC",
+   "event": "2027 Pro Football Champion",
+   "question": "Will Jacksonville win the 2027 Pro Football Championship?",
+   "outcome": "Jacksonville",
+   "close": "2029-02-13T23:30:00Z",
+   "resolves": "2027-02-14T23:30:00Z",
+   "rules": "If Jacksonville wins the 2027 Pro Football Championship, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1357385",
+   "event": "Pro Football: 2027 Champion",
+   "question": "Will the Jacksonville Jaguars win the 2027 NFL league championship?",
+   "outcome": "Jacksonville Jaguars",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2027 NFL league championship. \n\nIf at any point it becomes impossible for a listed team to win the 2027 NFL league championship per the rules of the NFL (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2027 NFL league championship game is cancelled, postponed after March 31, 2027 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from NFL (https://www.nfl.com/); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 51,
+  "pair_id": "kalshi:KXLEADERSOUT-27JAN01-BNETISR~polymarket:682705",
+  "tier": "equivalent",
+  "score": 0.886,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLEADERSOUT-27JAN01-BNETISR",
+   "event": "Which leaders will leave office in 2026?",
+   "question": "Will Benjamin Netanyahu leave Prime Minister of Israel before Jan 1, 2027?",
+   "outcome": "Benjamin Netanyahu",
+   "close": "2027-01-02T03:17:48Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Benjamin Netanyahu has either officially announced their intention to leave as Prime Minister of Israel or has actually left Prime Minister of Israel before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "682705",
+   "event": "Prime Minister of Israel after the next election?",
+   "question": "Will Benjamin Netanyahu be the next Prime Minister of Israel?",
+   "outcome": "Benjamin Netanyahu",
+   "close": "2026-10-28T03:59:00Z",
+   "resolves": "2026-10-28T03:59:00Z",
+   "rules": "Legislative elections are schedule to be held in Israel on October 27, 2026. \n\nThis market will resolve to the next individual who is officially appointed and sworn in as Prime Minister of Israel following the 2026 parliamentary election. If an election is called early, this market will immediately resolve to the individual who is officially appointed and sworn in after that election.\n\nTo count for resolution, the individual must be formally sworn in. Any interim or caretaker Prime Minister will not count toward the resolution of this market.\n\nIf no such Prime Minister is sworn in by December 31, 2027, 11:59 PM ET, this market will resolve to “Other”.\n\nThe primary resolution source for this "
+  }
+ },
+ {
+  "n": 57,
+  "pair_id": "kalshi:KXUSAIRANAGREEMENT-27~polymarket:2696747",
+  "tier": "equivalent",
+  "score": 0.717,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXUSAIRANAGREEMENT-27",
+   "event": "US-Iran nuclear deal?",
+   "question": "Will the US agree to a new Iranian nuclear deal this year?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2026-09-01T13:00:00Z",
+   "rules": "If the United States has agreed to, signed, or accepted a new Iran-US nuclear deal before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2696747",
+   "event": "US-Iran Final Nuclear Deal by…?",
+   "question": "US-Iran Final Nuclear Deal by December 31, 2026?",
+   "outcome": "December 31",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "On June 14, 2026, the United States and Iran announced a written diplomatic agreement, including a 60-day extendable period in which both countries committed to negotiate toward a “final deal” regarding Iran’s nuclear program and other topics.\n\nThis market resolves to “Yes” if a qualifying written diplomatic instrument between the United States and Iran has been mutually signed or adopted by the specified date, 11:59 PM ET. Otherwise, this market resolves to “No.”\n\nUnless the written instrument is formally adopted without signature as described below, the instrument must be signed by both the United States and Iran. Both parties must either sign the same document or sign individual documents"
+  }
+ },
+ {
+  "n": 63,
+  "pair_id": "kalshi:KXF1NEXTTEAM-27VER-MER~polymarket:898660",
+  "tier": "equivalent",
+  "score": 0.583,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXF1NEXTTEAM-27VER-MER",
+   "event": "Max Verstappen's Next F1 Team",
+   "question": "What will be Max Verstappen's next F1 team?",
+   "outcome": "Mercedes",
+   "close": "2027-03-12T04:59:00Z",
+   "resolves": "2027-03-12T15:00:00Z",
+   "rules": "If Max Verstappen's next team is the Mercedes F1 Team before Mar 12, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "898660",
+   "event": "F1 Constructors' Champion",
+   "question": "Will Mercedes be the 2026 F1 Constructors' Champion?",
+   "outcome": "Mercedes",
+   "close": "2027-04-01T03:59:00Z",
+   "resolves": "2027-04-01T03:59:00Z",
+   "rules": "This market will resolve according to the winner of the Constructors’ Championship for the 2026 F1 season. \n\nThis market will resolve as soon as the official results of the final scheduled race of the 2026 F1 season are known.\n\nIn the case of a tie between multiple teams, this market will resolve according to the tiebreak procedure used by F1 to determine the 2026 F1 Constructors’ champion.\n\nIf at any point it becomes impossible for a listed team to win the 2026 F1 Constructors’ Championship based on the rules of F1 (e.g., they are mathematically eliminated from contention), the corresponding market will resolve to “No.”\n\nIf the F1 season is permanently canceled or has not been completed by "
+  }
+ },
+ {
+  "n": 69,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-PAD~polymarket:2849025",
+  "tier": "equivalent",
+  "score": 0.8,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXBUNDESLIGA-27-PAD",
+   "event": "Bundesliga Champion",
+   "question": "Will Paderborn win the 2026-27 Bundesliga?",
+   "outcome": "Paderborn",
+   "close": "2027-06-06T02:00:00Z",
+   "resolves": "2027-05-23T02:00:00Z",
+   "rules": "If Paderborn is the 2026-27 Bundesliga champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2849025",
+   "event": "Bundesliga: 2027 Champion",
+   "question": "Will SC Paderborn be the 2026-27 Bundesliga champion?",
+   "outcome": "SC Paderborn",
+   "close": "0001-01-01T00:00:00Z",
+   "resolves": "0001-01-01T00:00:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 Bundesliga.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 Bundesliga per the rules of the Bundesliga (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 Bundesliga season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from the Bundesliga; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 75,
+  "pair_id": "kalshi:KXPRESPERSON-28-PBUT~polymarket:561232",
+  "tier": "equivalent",
+  "score": 0.975,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESPERSON-28-PBUT",
+   "event": "2028 U.S. Presidential Election winner?",
+   "question": "Who will win the next presidential election?",
+   "outcome": "Pete Buttigieg",
+   "close": "2029-11-07T15:00:00Z",
+   "resolves": "2029-01-21T15:00:00Z",
+   "rules": "If Pete Buttigieg is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561232",
+   "event": "Presidential Election Winner 2028",
+   "question": "Will Pete Buttigieg win the 2028 US Presidential Election?",
+   "outcome": "Pete Buttigieg",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "The 2028 US Presidential Election is scheduled to take place on November 7, 2028.\n\nThis market will resolve to the person who wins the 2028 US Presidential Election.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated."
+  }
+ },
+ {
+  "n": 81,
+  "pair_id": "kalshi:KXECONSTATCPICORE-27JAN13-E0.1~polymarket:5194675",
+  "tier": "equivalent",
+  "score": 0.615,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXECONSTATCPICORE-27JAN13-E0.1",
+   "event": "CPI core month-over-month in Dec 2026",
+   "question": "Will CPI core month-over-month for Dec 2026 be exactly 0.1%?",
+   "outcome": "Exactly 0.1%",
+   "close": "2027-01-13T13:29:00Z",
+   "resolves": "2027-01-13T15:00:00Z",
+   "rules": "If the CPI core month-over-month for Dec 2026 is exactly 0.1%, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "5194675",
+   "event": "Core PCE MoM - September 2026",
+   "question": "Will Core PCE MoM be 0.1% in September?",
+   "outcome": "0.1%",
+   "close": "2026-10-29T13:30:00Z",
+   "resolves": "2026-10-29T13:30:00Z",
+   "rules": "This is a market about core inflation (excluding food and energy) over the 1-month period ending September 2026, seasonally adjusted, as reported by the Bureau of Economic Analysis.\n\nThis market will resolve to the percentage change in the Personal Consumption Expenditures Price Index excluding food and energy (Core PCE) over the 1-month period ending in September 2026 according to the monthly Bureau of Economic Analysis (BEA) report.\n\nThe resolution source for this market will be the BEA Personal Income and Outlays report for September 2026 (https://www.bea.gov/data/personal-consumption-expenditures-price-index), currently scheduled to be released on October 29, 2026, at 8:30 AM ET. Resolut"
+  }
+ },
+ {
+  "n": 87,
+  "pair_id": "kalshi:KXGRAMAOTY-69-LUX~polymarket:3377041",
+  "tier": "equivalent",
+  "score": 0.723,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGRAMAOTY-69-LUX",
+   "event": "Grammy winner: Album of the Year",
+   "question": "Will Lux win Album of the Year at the Grammys?",
+   "outcome": "Lux",
+   "close": "2027-12-31T15:00:00Z",
+   "resolves": "2027-02-08T04:59:00Z",
+   "rules": "If  Lux has won Album of the Year at the 69th Annual Grammy Awards, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3377041",
+   "event": "Grammys 2027: Album of the Year Winner",
+   "question": "Will Lux (Rosalía) win Album of the Year at the 69th Annual GRAMMY Awards?",
+   "outcome": "Lux - Rosalía",
+   "close": "2027-02-07T23:59:00Z",
+   "resolves": "2027-02-07T23:59:00Z",
+   "rules": "The GRAMMY Awards are presented annually by the Recording Academy. For the 69th Annual GRAMMY Awards, nominations are scheduled for November 16, 2026, and the ceremony for February 7, 2027.\n\nThis market will resolve according to the listed album that wins Album of the Year at the 69th Annual GRAMMY Awards.\n\nIf an album is not officially nominated for Album of the Year when the 69th Annual GRAMMY Awards nominees are announced, the corresponding market will immediately resolve to \"No\".\n\nIn case of a tie for the winner, this market will resolve in favor of the nominated album whose listed title comes first in alphabetical order.\n\nIf, for any reason, no winner is declared by June 30, 2027, 11:59"
+  }
+ },
+ {
+  "n": 93,
+  "pair_id": "kalshi:KXISRDEFMIN-30-OWIN~polymarket:5151756",
+  "tier": "equivalent",
+  "score": 0.767,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXISRDEFMIN-30-OWIN",
+   "event": "Who will be Israeli defense minister after the election?",
+   "question": "Will it be reported by The Times of Israel that Ofer Winter is the first Minister of Defense to take office in the first new Israeli government formed after the next Knesset election before Oct 28, 2030?",
+   "outcome": "Ofer Winter",
+   "close": "2030-10-28T03:59:00Z",
+   "resolves": "2027-03-08T15:00:00Z",
+   "rules": "If it is reported by The Times of Israel after Issuance and before Oct 28, 2030 that Ofer Winter is the first Minister of Defense to take office in the first new Israeli government formed after the next Knesset election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "5151756",
+   "event": "Next Israeli Minister of National Security?",
+   "question": "Will Ofer Winter be the next Israeli Minister of National Security?",
+   "outcome": "Ofer Winter",
+   "close": "2027-03-01T04:59:00Z",
+   "resolves": "2027-03-01T04:59:00Z",
+   "rules": "This market will resolve to the individual who first assumes office as Israeli Minister of National Security in the first government formed following the 2026 Knesset elections.\n\nTo count for resolution, the individual’s ministership must be approved by the Knesset in a vote of confidence in that government or a subsequent vote approving the individual’s appointment to that government. Any interim or caretaker Minister of National Security will not count toward the resolution of this market. Once a qualifying individual assumes office, subsequent replacements will not affect resolution.\n\nThe individual must be appointed as “Minister of National Security” or be appointed to the ministerial po"
+  }
+ },
+ {
+  "n": 99,
+  "pair_id": "kalshi:KXPRESNOMR-28-TMAS~polymarket:562005",
+  "tier": "equivalent",
+  "score": 0.941,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESNOMR-28-TMAS",
+   "event": "2028 Republican presidential nominee",
+   "question": "Will Thomas Massie be the nominee for the Presidency for the Republican party?",
+   "outcome": "Thomas Massie",
+   "close": "2028-11-07T15:00:00Z",
+   "resolves": "2028-11-07T15:00:00Z",
+   "rules": "If Thomas Massie wins and accepts the nomination for the Presidency for the Republican party in 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "562005",
+   "event": "Republican Presidential Nominee 2028",
+   "question": "Will Thomas Massie win the 2028 Republican presidential nomination?",
+   "outcome": "Thomas Massie",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the named individual wins and accepts the 2028 nomination of the Republican Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official Republican Party sources.\n\nAny replacement of the Republican nominee before election day will not change the resolution of the market."
+  }
+ },
+ {
+  "n": 105,
+  "pair_id": "kalshi:KXNBA-27-CHI~polymarket:2243300",
+  "tier": "review",
+  "score": 0.435,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-CHI",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Chicago win the 2027 Pro Basketball Finals?",
+   "outcome": "Chicago",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Chicago wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243300",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Chicago Bulls win the 2027 NBA Finals?",
+   "outcome": "Chicago Bulls",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 111,
+  "pair_id": "kalshi:KXARRESTNETANYAHU-28JAN01-27JAN01~polymarket:567688",
+  "tier": "review",
+  "score": 0.426,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXARRESTNETANYAHU-28JAN01-27JAN01",
+   "event": "Will Netanyahu be arrested?",
+   "question": "Will Benjamin Netanyahu be arrested before Jan 1, 2027?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Benjamin Netanyahu has been arrested before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "567688",
+   "event": "Netanyahu out by...?",
+   "question": "Netanyahu out by end of 2026?",
+   "outcome": "December 31",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if Benjamin Netanyahu ceases to be Prime Minister of Israel for any period of time between market creation and the specified date (ET). Otherwise, this market will resolve to “No”.\n\nAn announcement of Benjamin Netanyahu's resignation/removal before this market's end date will immediately resolve this market to \"Yes\", regardless of when the announced resignation/removal goes into effect.\n\nThe resolution source for this market will be official information from Benjamin Netanyahu and the government of Israel; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 117,
+  "pair_id": "kalshi:KXNBAPLAYOFF-27-MIA~polymarket:2850885",
+  "tier": "review",
+  "score": 0.431,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBAPLAYOFF-27-MIA",
+   "event": "Pro Basketball Playoff Qualifiers",
+   "question": "Pro Basketball Playoff Qualifiers",
+   "outcome": "Miami",
+   "close": "2027-06-01T14:00:00Z",
+   "resolves": "2027-06-01T14:00:00Z",
+   "rules": "If Miami qualifies for the Pro Basketball Playoffs in the 2026-27 season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2850885",
+   "event": "NBA: Team to Make Playoffs",
+   "question": "Will the Miami Heat make the 2027 NBA Playoffs?",
+   "outcome": "Miami Heat",
+   "close": "2027-05-16T03:59:00Z",
+   "resolves": "2027-05-16T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team clinches a spot in the 2027 NBA Playoffs per the rules of the NBA. Otherwise, the associated market will resolve to \"No\".\n\nIf at any point it becomes impossible for the listed team to advance to the 2027 NBA Playoffs (e.g. they are mathematically eliminated), the associated market will resolve to \"No\". \n\nReaching the Play-In Tournament does not, by itself, qualify a team for the Playoffs and will not resolve this market to \"Yes.\" A team must win its way through the Play-In into the 7-seed or 8-seed to qualify. Losing in the Play-In Tournament (or any associated tiebreaker) resolves this market to \"No.\"\n\nIf the 2027 NBA Playoffs are cancell"
+  }
+ },
+ {
+  "n": 123,
+  "pair_id": "kalshi:KXELECTUKRAINE-30JAN01-27JAN01~polymarket:2264328",
+  "tier": "review",
+  "score": 0.334,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXELECTUKRAINE-30JAN01-27JAN01",
+   "event": "When will Ukraine hold a presidential election?",
+   "question": "Will Ukraine hold a presidential election before Jan 1, 2027?",
+   "outcome": "Before 2027",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Ukraine holds a presidential election before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2264328",
+   "event": "Russia x Ukraine Ceasefire by...?",
+   "question": "Russia x Ukraine ceasefire by December 31, 2026?",
+   "outcome": "December 31",
+   "close": "2026-12-31T21:59:00Z",
+   "resolves": "2026-12-31T21:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if a ceasefire between Russia and Ukraine goes into effect by 11:59 PM Eastern European Time (EET) on the specified date and remains continuously in effect for at least 10 calendar days. Otherwise, this market will resolve to \"No\".\n\nA ceasefire refers to any mutually agreed suspension of direct military engagement between Russia and Ukraine, which is officially announced by both countries or confirmed by a consensus of credible reporting to have been mutually agreed by both countries, and which constitutes a general suspension of direct kinetic military engagement across the primary theater of the overall conflict. A broader peace deal, normalization agreeme"
+  }
+ },
+ {
+  "n": 129,
+  "pair_id": "kalshi:KXNBA-27-DET~polymarket:2243302",
+  "tier": "review",
+  "score": 0.472,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-DET",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Detroit win the 2027 Pro Basketball Finals?",
+   "outcome": "Detroit",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Detroit wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243302",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Detroit Pistons win the 2027 NBA Finals?",
+   "outcome": "Detroit Pistons",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ }
+]

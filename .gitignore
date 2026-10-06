@@ -1,0 +1,7 @@
+DECISION_JOURNAL.md
+/bin/
+/data/
+/research/raw/
+*.out
+coverage.html
+.DS_Store

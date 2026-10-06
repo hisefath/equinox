@@ -1,0 +1,522 @@
+[
+ {
+  "n": 6,
+  "pair_id": "kalshi:KXHOUSERACE-SC07-26-D~polymarket:1284720",
+  "tier": "equivalent",
+  "score": 0.951,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSERACE-SC07-26-D",
+   "event": "SC-07 House winner?",
+   "question": "Will Democratic win the House race for SC-07?",
+   "outcome": "John Vincent",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T17:00:00Z",
+   "rules": "If the House member sworn in for SC-07 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1284720",
+   "event": "SC-07 House Election Winner",
+   "question": "Will the Democratic Party win the SC-07 House seat?",
+   "outcome": "John Vincent (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the SC-07 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time"
+  }
+ },
+ {
+  "n": 12,
+  "pair_id": "kalshi:KXARGENTINAPRES1R-27OCT24-JSCH~polymarket:2127314",
+  "tier": "equivalent",
+  "score": 0.924,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXARGENTINAPRES1R-27OCT24-JSCH",
+   "event": "Argentina presidential election: first round winner?",
+   "question": "Will Juan Schiaretti win the first round of the 2027 Argentine presidential election?",
+   "outcome": "Juan Schiaretti",
+   "close": "2028-10-23T14:00:00Z",
+   "resolves": "2027-10-24T14:00:00Z",
+   "rules": "If Juan Schiaretti wins the first round of the 2027 Argentine presidential election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2127314",
+   "event": "Argentina Presidential Election Winner",
+   "question": "Will Juan Schiaretti win the 2027 Argentina presidential election?",
+   "outcome": "Juan Schiaretti",
+   "close": "2027-10-25T03:59:00Z",
+   "resolves": "2027-10-25T03:59:00Z",
+   "rules": "A presidential election scheduled to be held in Argentina on October 24, 2027.\n\nThis market will resolve according to the listed candidate who wins the next Argentinian Presidential election. \n\nThis market includes any potential second round. \n\nIf the results are not known definitively by October 31, 2028, 11:59 PM ET, this market will resolve to \"Other\".\n\nThis market will resolve based on the results of this election, as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve solely based on official results as reported by Argentina government sources, including the Cámara Nacional Electoral (https://www.electoral.gob.ar/nuevo/index.php) and the Direc"
+  }
+ },
+ {
+  "n": 18,
+  "pair_id": "kalshi:KXDEMORAESOUT-26SEP-27JAN01~polymarket:1544795",
+  "tier": "equivalent",
+  "score": 0.886,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXDEMORAESOUT-26SEP-27JAN01",
+   "event": "Will Alexandre de Moraes leave Brazil's Supreme Court?",
+   "question": "Will Alexandre de Moraes leave Brazil's Supreme Court before Jan 1, 2027?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "If Alexandre de Moraes leaves as Justice of the Supreme Federal Court of Brazil before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1544795",
+   "event": "Alexandre de Moraes out as Brazil Supreme Court Justice?",
+   "question": "Alexandre de Moraes out as Brazil Supreme Court Justice?",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if Alexandre de Moraes ceases to be a Justice of Brazil’s Supreme Federal Court for any period of time between market creation and December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to “No”.\n\nAn announcement of Alexandre de Moraes's resignation/removal before this market's end date will immediately resolve this market to \"Yes\", regardless of when the announced resignation/removal goes into effect.\n\nThe resolution source for this market will be official information from Alexandre de Moraes and the government of Brazil; however, a consensus of credible reporting may also be used.\n"
+  }
+ },
+ {
+  "n": 24,
+  "pair_id": "kalshi:SENATESD-26-R~polymarket:630938",
+  "tier": "equivalent",
+  "score": 0.993,
+  "a": {
+   "venue": "kalshi",
+   "id": "SENATESD-26-R",
+   "event": "South Dakota Senate winner?",
+   "question": "Will Republicans win the Senate race in South Dakota?",
+   "outcome": "Mike Rounds",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If a representative of the Republican party is sworn in as a Senator of South Dakota for the term beginning in 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "630938",
+   "event": "South Dakota Senate Election Winner",
+   "question": "Will the Republicans win the South Dakota Senate race in 2026?",
+   "outcome": "Mike Rounds (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 midterm South Dakota U.S. Senate election, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their res"
+  }
+ },
+ {
+  "n": 30,
+  "pair_id": "kalshi:KXNFLMVP-27-SBAR~polymarket:1747726",
+  "tier": "equivalent",
+  "score": 0.979,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNFLMVP-27-SBAR",
+   "event": "MVP Winner?",
+   "question": "Will Saquon Barkley win the MVP?",
+   "outcome": "Saquon Barkley",
+   "close": "2028-02-12T15:00:00Z",
+   "resolves": "2027-03-14T15:00:00Z",
+   "rules": "If Saquon Barkley wins the Pro Football AP Regular Season MVP in the 2026-27 season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1747726",
+   "event": "Pro Football: 2026 MVP Winner",
+   "question": "Will Saquon Barkley win the 2026 NFL MVP?",
+   "outcome": "Saquon Barkley",
+   "close": "2027-03-01T04:59:00Z",
+   "resolves": "2027-03-01T04:59:00Z",
+   "rules": "This market will resolve to the player who wins the 2026 NFL Most Valuable Player award for the 2026-27 NFL season.\n\nIn the event of a tie, this market will resolve according to the official winner as determined by NFL rules. If multiple winners are announced then this market will resolve to the player whose listed last name comes first alphabetically.\n\nIf the 2026-27 NFL season is cancelled, postponed after February 28, 2027, 11:59 PM ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe resolution source for this market will be official information from the NFL; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 36,
+  "pair_id": "kalshi:KXFEDDECISION-27JAN-H0~polymarket:3215012",
+  "tier": "equivalent",
+  "score": 0.835,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFEDDECISION-27JAN-H0",
+   "event": "Fed decision in Jan 2027?",
+   "question": "Will the Federal Reserve Hike rates by 0bps at their January 2027 meeting?",
+   "outcome": "Fed maintains rate",
+   "close": "2027-01-27T18:59:00Z",
+   "resolves": "2027-01-27T19:05:00Z",
+   "rules": "If the Federal Reserve does a Hike of 0bps on January 27, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3215012",
+   "event": "Fed Decision in January?",
+   "question": "Will there be no change in Fed interest rates after the January 2027 meeting?",
+   "outcome": "No change",
+   "close": "2027-01-28T04:59:00Z",
+   "resolves": "2027-01-28T04:59:00Z",
+   "rules": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal funds range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's January 2027 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source "
+  }
+ },
+ {
+  "n": 42,
+  "pair_id": "kalshi:KXFRENCHPRES-27-DVIL~polymarket:679034",
+  "tier": "equivalent",
+  "score": 0.998,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFRENCHPRES-27-DVIL",
+   "event": "Next French presidential election winner?",
+   "question": "Will Dominique de Villepin win the 2027 French presidential election?",
+   "outcome": "Dominique de Villepin",
+   "close": "2028-05-30T14:00:00Z",
+   "resolves": "2027-05-31T14:00:00Z",
+   "rules": "If Dominique de Villepin wins the next French presidential election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "679034",
+   "event": "Next French Presidential Election",
+   "question": "Will Dominique de Villepin win the 2027 French presidential election?",
+   "outcome": "Dominique de Villepin",
+   "close": "2027-04-19T03:59:00Z",
+   "resolves": "2027-04-19T03:59:00Z",
+   "rules": "The next French presidential election is currently expected to be held around April 2027.  This market pertains to the outcome of the next French presidential election, regardless of whether it follows the scheduled end of the current term or is held earlier. \n\nThe President of France is elected via a two-round system; a candidate must secure over 50% of the vote to win outright in the first round. If no candidate achieves this, the top two contenders advance to a runoff.\n\nThis market will resolve according to the candidate who wins this election.\n\nThis market includes any potential second round. If, for any reason, the results of the election are not known by December 31, 2027, 11:59 PM ET,"
+  }
+ },
+ {
+  "n": 48,
+  "pair_id": "kalshi:KXPRESNOMR-28-SHS~polymarket:561982",
+  "tier": "equivalent",
+  "score": 0.954,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESNOMR-28-SHS",
+   "event": "2028 Republican presidential nominee",
+   "question": "Will Sarah Huckabee Sanders be the nominee for the Presidency for the Republican party?",
+   "outcome": "Sarah Huckabee Sanders",
+   "close": "2028-11-07T15:00:00Z",
+   "resolves": "2028-11-07T15:00:00Z",
+   "rules": "If Sarah Huckabee Sanders wins and accepts the nomination for the Presidency for the Republican party in 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561982",
+   "event": "Republican Presidential Nominee 2028",
+   "question": "Will Sarah Huckabee Sanders win the 2028 Republican presidential nomination?",
+   "outcome": "Sarah Huckabee Sanders",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the named individual wins and accepts the 2028 nomination of the Republican Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official Republican Party sources.\n\nAny replacement of the Republican nominee before election day will not change the resolution of the market."
+  }
+ },
+ {
+  "n": 54,
+  "pair_id": "kalshi:KXNFLMVP-27-DPRE~polymarket:1747722",
+  "tier": "equivalent",
+  "score": 0.979,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNFLMVP-27-DPRE",
+   "event": "MVP Winner?",
+   "question": "Will Dak Prescott win the MVP?",
+   "outcome": "Dak Prescott",
+   "close": "2028-02-12T15:00:00Z",
+   "resolves": "2027-03-14T15:00:00Z",
+   "rules": "If Dak Prescott wins the Pro Football AP Regular Season MVP in the 2026-27 season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1747722",
+   "event": "Pro Football: 2026 MVP Winner",
+   "question": "Will Dak Prescott win the 2026 NFL MVP?",
+   "outcome": "Dak Prescott",
+   "close": "2027-02-15T00:00:00Z",
+   "resolves": "2027-02-15T00:00:00Z",
+   "rules": "This market will resolve to the player who wins the 2026 NFL Most Valuable Player award for the 2026-27 NFL season.\n\nIn the event of a tie, this market will resolve according to the official winner as determined by NFL rules. If multiple winners are announced then this market will resolve to the player whose listed last name comes first alphabetically.\n\nIf the 2026-27 NFL season is cancelled, postponed after February 28, 2027, 11:59 PM ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe resolution source for this market will be official information from the NFL; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 60,
+  "pair_id": "kalshi:KXHOUSERACE-AR02-26-D~polymarket:1280857",
+  "tier": "equivalent",
+  "score": 0.941,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSERACE-AR02-26-D",
+   "event": "AR-02 House winner?",
+   "question": "Will Democratic win the House race for AR-02?",
+   "outcome": "Chris Jones",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T17:00:00Z",
+   "rules": "If the House member sworn in for AR-02 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1280857",
+   "event": "AR-02 House Election Winner",
+   "question": "Will the Democratic Party win the AR-02 House seat?",
+   "outcome": "Chris Jones (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the AR-02 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the time"
+  }
+ },
+ {
+  "n": 66,
+  "pair_id": "kalshi:SENATESC-26-R~polymarket:630925",
+  "tier": "equivalent",
+  "score": 0.823,
+  "a": {
+   "venue": "kalshi",
+   "id": "SENATESC-26-R",
+   "event": "South Carolina Senate winner?",
+   "question": "Will Republicans win the Senate race in South Carolina?",
+   "outcome": "Darline Graham",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If a representative of the Republican party is sworn in as a Senator of South Carolina for the term beginning in 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "630925",
+   "event": "South Carolina Senate Election Winner",
+   "question": "Will the Republicans win the South Carolina Senate race in 2026?",
+   "outcome": "Darline Graham Nordone (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 midterm South Carolina U.S. Senate election, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their r"
+  }
+ },
+ {
+  "n": 72,
+  "pair_id": "kalshi:HOUSEMT1-26-D~polymarket:942843",
+  "tier": "equivalent",
+  "score": 0.952,
+  "a": {
+   "venue": "kalshi",
+   "id": "HOUSEMT1-26-D",
+   "event": "MT-01 House winner?",
+   "question": "Will Democratic win the House race for MT-1?",
+   "outcome": "Sam Forstag",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If the House member sworn in for MT-01 for the term beginning in 2027 is a member of the Democratic Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "942843",
+   "event": "MT-01 House Election Winner",
+   "question": "Will the Democratic Party win the MT-01 House seat?",
+   "outcome": "Sam Forstag (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the MT-01 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the tim"
+  }
+ },
+ {
+  "n": 78,
+  "pair_id": "kalshi:KXPRESPERSON-28-KHAR~polymarket:561239",
+  "tier": "equivalent",
+  "score": 0.972,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESPERSON-28-KHAR",
+   "event": "2028 U.S. Presidential Election winner?",
+   "question": "Who will win the next presidential election?",
+   "outcome": "Kamala Harris",
+   "close": "2029-11-07T15:00:00Z",
+   "resolves": "2029-01-21T15:00:00Z",
+   "rules": "If Kamala Harris is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561239",
+   "event": "Presidential Election Winner 2028",
+   "question": "Will Kamala Harris win the 2028 US Presidential Election?",
+   "outcome": "Kamala Harris",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "The 2028 US Presidential Election is scheduled to take place on November 7, 2028.\n\nThis market will resolve to the person who wins the 2028 US Presidential Election.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated."
+  }
+ },
+ {
+  "n": 84,
+  "pair_id": "kalshi:KXNFLMVP-27-LJAC~polymarket:1747718",
+  "tier": "equivalent",
+  "score": 0.972,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNFLMVP-27-LJAC",
+   "event": "MVP Winner?",
+   "question": "Will Lamar Jackson win the MVP?",
+   "outcome": "Lamar Jackson",
+   "close": "2028-02-12T15:00:00Z",
+   "resolves": "2027-03-14T15:00:00Z",
+   "rules": "If Lamar Jackson wins the Pro Football AP Regular Season MVP in the 2026-27 season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1747718",
+   "event": "Pro Football: 2026 MVP Winner",
+   "question": "Will Lamar Jackson win the 2026 NFL MVP?",
+   "outcome": "Lamar Jackson",
+   "close": "2027-02-15T00:00:00Z",
+   "resolves": "2027-02-15T00:00:00Z",
+   "rules": "This market will resolve to the player who wins the 2026 NFL Most Valuable Player award for the 2026-27 NFL season.\n\nIn the event of a tie, this market will resolve according to the official winner as determined by NFL rules. If multiple winners are announced then this market will resolve to the player whose listed last name comes first alphabetically.\n\nIf the 2026-27 NFL season is cancelled, postponed after February 28, 2027, 11:59 PM ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe resolution source for this market will be official information from the NFL; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 90,
+  "pair_id": "kalshi:KXNBA-27-OKC~polymarket:2243320",
+  "tier": "equivalent",
+  "score": 0.836,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-OKC",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Oklahoma City win the 2027 Pro Basketball Finals?",
+   "outcome": "Oklahoma City",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Oklahoma City wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243320",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Oklahoma City Thunder win the 2027 NBA Finals?",
+   "outcome": "Oklahoma City Thunder",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 96,
+  "pair_id": "kalshi:KXQUEBECPREMIER-27JAN01-PSPP~polymarket:2133900",
+  "tier": "equivalent",
+  "score": 0.944,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXQUEBECPREMIER-27JAN01-PSPP",
+   "event": "Who will be Premier of Quebec after the 2026 election?",
+   "question": "Will it be confirmed that Paul St-Pierre Plamondon is the first person to serve as Premier of Quebec after government formation following the 2026 Quebec general election?",
+   "outcome": "Paul St-Pierre Plamondon",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2026-10-06T00:00:00Z",
+   "rules": "If Paul St-Pierre Plamondon is the first person to serve as Premier of Quebec after government formation following the 2026 Quebec general election before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2133900",
+   "event": "Next Premier of Quebec",
+   "question": "Will Paul St-Pierre Plamondon be the next Premier of Quebec following the 2026 Quebec general election?",
+   "outcome": "Paul St-Pierre Plamondon",
+   "close": "2026-10-06T03:59:00Z",
+   "resolves": "2026-10-06T03:59:00Z",
+   "rules": "The 2026 Quebec general election is scheduled to be held no later than October 5, 2026.\n\nThis market will resolve to the individual who is formally appointed as Premier of Quebec as a result of the specified elections.\n\nTo count for resolution, the individual must be formally appointed as Premier following the specified elections. Any interim or caretaker head of government will not count toward the resolution of this market.\n\nIf no such Premier is appointed by June 30, 2027, 11:59 PM ET, this market will resolve to “Other”.\n\nThe primary resolution source for this market will be official information from the Government of Quebec; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 102,
+  "pair_id": "kalshi:KXNFLMVP-27-JCHA~polymarket:2046990",
+  "tier": "review",
+  "score": 0.415,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNFLMVP-27-JCHA",
+   "event": "MVP Winner?",
+   "question": "Will Ja'Marr Chase win the MVP?",
+   "outcome": "Ja'Marr Chase",
+   "close": "2028-02-12T15:00:00Z",
+   "resolves": "2027-03-14T15:00:00Z",
+   "rules": "If Ja'Marr Chase wins the Pro Football AP Regular Season MVP in the 2026-27 season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2046990",
+   "event": "WNBA: 2026 MVP",
+   "question": "Will A'ja Wilson win the 2026 WNBA MVP award?",
+   "outcome": "A'ja Wilson",
+   "close": "2026-11-15T04:59:00Z",
+   "resolves": "2026-11-15T04:59:00Z",
+   "rules": "This market will resolve to the player who wins the 2026 WNBA Most Valuable Player Award.\n\nIn the event of a tie, this market will resolve according to the official winner as determined by WNBA rules. If multiple winners are announced then this market will resolve to the player whose listed last name comes first alphabetically.\n\nIf the 2026 WNBA season is cancelled, postponed after November 14, 2026, 11:59 PM ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe resolution source for this market will be official information from the Women’s National Basketball Association; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 108,
+  "pair_id": "kalshi:KXWINNIPEGMAYOR-26OCT28-BGRO~polymarket:1812608",
+  "tier": "review",
+  "score": 0.4,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXWINNIPEGMAYOR-26OCT28-BGRO",
+   "event": "Winnipeg mayoral election winner?",
+   "question": "Will Brad Gross win the 2026 Winnipeg mayoral election?",
+   "outcome": "Brad Gross",
+   "close": "2027-10-28T14:00:00Z",
+   "resolves": "2026-10-28T14:00:00Z",
+   "rules": "If Brad Gross wins the 2026 Winnipeg mayoral election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1812608",
+   "event": "Toronto Mayoral Election Winner",
+   "question": "Will Brad Bradford win the 2026 Toronto mayoral election?",
+   "outcome": "Brad Bradford",
+   "close": "2026-10-27T03:59:00Z",
+   "resolves": "2026-10-27T03:59:00Z",
+   "rules": "The 2026 Toronto mayoral election is currently scheduled to be held on October 26, 2026.\n\nThis market will resolve according to the candidate who becomes the next mayor of Toronto as a result of this election.\n\nTemporary, interim, or placeholder mayors appointed before the election will not be considered.\n\nIf the result of this election isn't known by June 30, 2027, 11:59 PM ET, the market will resolve to \"Other\".\n\nThe primary resolution source for this market will be a consensus of credible reporting; however, if there is any ambiguity in the results, this market will resolve according to official information from Toronto."
+  }
+ },
+ {
+  "n": 114,
+  "pair_id": "kalshi:KXGREENIND-27~polymarket:4712085",
+  "tier": "review",
+  "score": 0.383,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGREENIND-27",
+   "event": "Will Greenland vote for independence in 2026?",
+   "question": "Will Greenland vote for independence before 2027?",
+   "outcome": "Before 2027",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Greenland has held an independence referendum after Issuance and before Jan 1, 2027 whose outcome is a majority of voters vote for independence, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4712085",
+   "event": "Will Trump visit Greenland by...?",
+   "question": "Will Trump visit Greenland by October 31?",
+   "outcome": "October 31",
+   "close": "2026-11-01T03:59:00Z",
+   "resolves": "2026-11-01T03:59:00Z",
+   "rules": "If U.S. President Donald Trump visits the autonomous territory of Greenland by October 31, 2026 11:59 PM ET, this market will resolve to \"Yes\". Otherwise, this market will resolve to \"No\".\n\nFor the purpose of this market, a \"visit\" is defined as Trump physically entering the terrestrial or maritime territory of Greenland. Whether or not Trump enters the country's airspace during the timeframe of this market will have no bearing on a positive resolution.\n\nThe primary resolution source for this information will be official information from government of the United States of America, official information from Trump or released by his verified social media accounts (e.g. https://twitter.com/POTU"
+  }
+ },
+ {
+  "n": 120,
+  "pair_id": "kalshi:KXFEDCHGCOUNT-27JAN01-E0~polymarket:616902",
+  "tier": "review",
+  "score": 0.433,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFEDCHGCOUNT-27JAN01-E0",
+   "event": "Number of Fed rate changes before 2027",
+   "question": "Will the number of rate changes before 2027 be exactly 0?",
+   "outcome": "Exactly 0",
+   "close": "2026-09-16T18:29:25Z",
+   "resolves": "2026-09-16T18:13:45.179Z",
+   "rules": "If the number of rate changes before 2027 is exactly 0, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "616902",
+   "event": "How many Fed rate cuts in 2026?",
+   "question": "Will no Fed rate cuts happen in 2026?",
+   "outcome": "0 (0 bps)",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve according to the exact amount of cuts of 25 basis points in 2026 by the Fed (including any cuts made during the December meeting).\n\nEmergency rate cuts outside of scheduled FOMC meetings will also count toward the total number of cuts in 2026. This market will remain open until December 31, 2026, 11:59 PM ET, to account for any such emergency actions.\n\nFor example, if the Fed cuts rates by 50 bps after a meeting, it would be considered 2 cuts (of 25 bps each).\n\nThis market will resolve early to \"No\" if the specified number of cuts becomes impossible — i.e., if more cuts have already occurred than the strike in question.\n\nNote that cuts between 1–24 bps (inclusive) wi"
+  }
+ }
+]

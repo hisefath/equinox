@@ -1,0 +1,522 @@
+[
+ {
+  "n": 2,
+  "pair_id": "kalshi:KXHOUSEUT02-26-R~polymarket:944265",
+  "tier": "equivalent",
+  "score": 0.947,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSEUT02-26-R",
+   "event": "UT-02 House winner?",
+   "question": "Will Republican win the House race for UT-02?",
+   "outcome": "Blake Moore",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If the House member sworn in for UT-02 for the term beginning in 2027 is a member of the Republican Party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "944265",
+   "event": "UT-02 House Election Winner",
+   "question": "Will the Republican Party win the UT-02 House seat?",
+   "outcome": "Blake Moore (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the UT-02 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the tim"
+  }
+ },
+ {
+  "n": 8,
+  "pair_id": "kalshi:HOUSENY4-26-D~polymarket:943433",
+  "tier": "equivalent",
+  "score": 0.956,
+  "a": {
+   "venue": "kalshi",
+   "id": "HOUSENY4-26-D",
+   "event": "NY-04 House winner?",
+   "question": "Will Democratic win the House race for NY-4?",
+   "outcome": "Laura Gillen",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If the House member sworn in for NY-04 for the term beginning in 2027 is a member of the Democratic party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "943433",
+   "event": "NY-04 House Election Winner",
+   "question": "Will the Democratic Party win the NY-04 House seat?",
+   "outcome": "Laura Gillen (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the NY-04 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the tim"
+  }
+ },
+ {
+  "n": 14,
+  "pair_id": "kalshi:KXHOLBORNVOTE-26DEC31GRN-15~polymarket:4571627",
+  "tier": "equivalent",
+  "score": 0.618,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOLBORNVOTE-26DEC31GRN-15",
+   "event": "Holborn and St Pancras by-election: Green Party vote percent",
+   "question": "Will Green Party receive at least 15% of the popular vote in the 2026 Holborn and St Pancras by-election?",
+   "outcome": "At least 15%",
+   "close": "2027-12-31T15:00:00Z",
+   "resolves": "2026-12-31T15:00:00Z",
+   "rules": "If the certified percentage of the popular vote received by Green Party in the 2026 Holborn and St Pancras by-election is 15% to 100%, inclusive of both endpoints, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4571627",
+   "event": "Holborn and St Pancras By-Election: Vote Share Margin of Victory",
+   "question": "Will the Labour candidate win the Holborn and St Pancras by-election by a margin of 15% or more?",
+   "outcome": "Labour 15%+",
+   "close": "2026-10-08T23:59:00Z",
+   "resolves": "2026-10-08T23:59:00Z",
+   "rules": "A by-election for the United Kingdom parliamentary constituency of Holborn and St Pancras is scheduled to be held on October 8, 2026, following the resignation of incumbent Sir Keir Starmer.\n\nThis market will resolve according to the margin of victory between the top two candidates in this by-election.\n\nThe “margin of victory” is defined as the absolute difference between the percentages of valid votes received by the candidate who wins the most valid votes and the candidate who wins the second-most valid votes. Percentages will be determined by dividing the total number of valid votes each of the top two candidates receives by the total number of valid votes cast in the by-election.\n\nValid "
+  }
+ },
+ {
+  "n": 20,
+  "pair_id": "kalshi:KXNBA-27-MEM~polymarket:2243317",
+  "tier": "equivalent",
+  "score": 0.799,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-MEM",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Memphis win the 2027 Pro Basketball Finals?",
+   "outcome": "Memphis",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Memphis wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243317",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Memphis Grizzlies win the 2027 NBA Finals?",
+   "outcome": "Memphis Grizzlies",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 26,
+  "pair_id": "kalshi:KXSERIEA-27-MON~polymarket:2771212",
+  "tier": "equivalent",
+  "score": 0.988,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSERIEA-27-MON",
+   "event": "Serie A Champion",
+   "question": "Will Monza win the 2026-27 Serie A?",
+   "outcome": "Monza",
+   "close": "2027-06-14T02:00:00Z",
+   "resolves": "2027-05-31T02:00:00Z",
+   "rules": "If Monza is the 2026-2027 Serie A champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771212",
+   "event": "Serie A: 2027 Champion",
+   "question": "Will Monza win the 2026-27 Serie A Championship?",
+   "outcome": "Monza",
+   "close": "2027-05-30T23:59:00Z",
+   "resolves": "2027-05-30T23:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 Serie A Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 Serie A Championship per the rules of Serie A (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 Serie A season is cancelled, postponed after May 28, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from Serie A; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 32,
+  "pair_id": "kalshi:KXPRESPERSON-28-DTRUJR~polymarket:561244",
+  "tier": "equivalent",
+  "score": 0.97,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESPERSON-28-DTRUJR",
+   "event": "2028 U.S. Presidential Election winner?",
+   "question": "Who will win the next presidential election?",
+   "outcome": "Donald J. Trump Jr.",
+   "close": "2029-11-07T15:00:00Z",
+   "resolves": "2029-01-21T15:00:00Z",
+   "rules": "If Donald J. Trump Jr. is the next person inaugurated as President for the term beginning in 2029, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561244",
+   "event": "Presidential Election Winner 2028",
+   "question": "Will Donald Trump Jr. win the 2028 US Presidential Election?",
+   "outcome": "Donald Trump Jr.",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "The 2028 US Presidential Election is scheduled to take place on November 7, 2028.\n\nThis market will resolve to the person who wins the 2028 US Presidential Election.\n\nThe resolution source for this market is the Associated Press, Fox News, and NBC. This market will resolve once all three sources call the race for the same candidate. If all three sources haven’t called the race for the same candidate by the inauguration date (January 20, 2029) this market will resolve based on who is inaugurated."
+  }
+ },
+ {
+  "n": 38,
+  "pair_id": "kalshi:KXARGENTINAPRES-27-JMIL~polymarket:2127309",
+  "tier": "equivalent",
+  "score": 0.939,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXARGENTINAPRES-27-JMIL",
+   "event": "Argentina presidential election winner?",
+   "question": "Who will win the next Argentine presidential election?",
+   "outcome": "Javier Milei",
+   "close": "2028-10-30T14:00:00Z",
+   "resolves": "2027-10-31T14:00:00Z",
+   "rules": "If the winner of the next Argentine presidential election is Javier Milei, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2127309",
+   "event": "Argentina Presidential Election Winner",
+   "question": "Will Javier Milei win the 2027 Argentina presidential election?",
+   "outcome": "Javier Milei",
+   "close": "2027-10-25T03:59:00Z",
+   "resolves": "2027-10-25T03:59:00Z",
+   "rules": "A presidential election scheduled to be held in Argentina on October 24, 2027.\n\nThis market will resolve according to the listed candidate who wins the next Argentinian Presidential election. \n\nThis market includes any potential second round. \n\nIf the results are not known definitively by October 31, 2028, 11:59 PM ET, this market will resolve to \"Other\".\n\nThis market will resolve based on the results of this election, as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve solely based on official results as reported by Argentina government sources, including the Cámara Nacional Electoral (https://www.electoral.gob.ar/nuevo/index.php) and the Direc"
+  }
+ },
+ {
+  "n": 44,
+  "pair_id": "kalshi:KXBALANCEPOWERCOMBO-27FEB-RD~polymarket:562830",
+  "tier": "equivalent",
+  "score": 0.655,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXBALANCEPOWERCOMBO-27FEB-RD",
+   "event": "2026 Midterms: Congress Balance of Power?",
+   "question": "Will House Control be Republican AND Senate Control be Democratic for Feb 2027?",
+   "outcome": "R-House, D-Senate",
+   "close": "2027-02-01T15:00:00Z",
+   "resolves": "2027-02-01T15:00:00Z",
+   "rules": "If ALL of the following occur: House Control: Republican, Senate Control: Democratic, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "562830",
+   "event": "Balance of Power: 2026 Midterms",
+   "question": "2026 Balance of Power: R Senate, D House",
+   "outcome": "R Senate, D House",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party that wins control of the United States Senate and the party that wins control of the United States House of Representatives in the 2026 United States midterm election.\n\nA party wins control of the United States Senate if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the party that wins control of the chamber is the party that wins half of the voting seats and holds the Vice Presidency. If the outcome remains ambiguous after applying the above criteria, the chamber will be deemed controlled by the party with which the first selected President Pro Tempore of the Congress that convenes after the spe"
+  }
+ },
+ {
+  "n": 50,
+  "pair_id": "kalshi:KXSPANISHPM-27AUG22-PSAN~polymarket:2695678",
+  "tier": "equivalent",
+  "score": 0.951,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXSPANISHPM-27AUG22-PSAN",
+   "event": "Prime Minister of Spain after the next election?",
+   "question": "Will Pedro Sánchez become Prime Minister of Spain following the next Spanish general election?",
+   "outcome": "Pedro Sánchez",
+   "close": "2028-08-22T14:00:00Z",
+   "resolves": "2028-08-22T14:00:00Z",
+   "rules": "If Pedro Sánchez becomes Prime Minister of Spain as a result of government formation following the next Spanish general election and meets all constitutional requirements before Aug 22, 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2695678",
+   "event": "Next Prime Minister of Spain?",
+   "question": "Will Pedro Sánchez be the next Prime Minister of Spain?",
+   "outcome": "Pedro Sánchez",
+   "close": "2028-04-01T03:59:00Z",
+   "resolves": "2028-04-01T03:59:00Z",
+   "rules": "This market will resolve to the next individual who officially assumes the office of Prime Minister of Spain by March 31, 2028, 11:59 PM ET.\n\nTo count for resolution, the individual must receive a vote of confidence from the Congress of Deputies and be formally sworn-in, resulting in the official formation of a new government. Any interim or caretaker Prime Minister who does not receive a parliamentary vote of confidence will not count toward the resolution of this market.\n\nIf no such Prime Minister takes office by March 31, 2028, 11:59 PM ET, this market will resolve to “Other”.\n\nThe primary resolution source for this market will be official information from the Government of Spain; however"
+  }
+ },
+ {
+  "n": 56,
+  "pair_id": "kalshi:KXGEMINI-GEM4-26OCT16~polymarket:5084763",
+  "tier": "equivalent",
+  "score": 0.867,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGEMINI-GEM4-26OCT16",
+   "event": "When will Google release Gemini 4?",
+   "question": "Will Google release Gemini 4 before Oct 16, 2026?",
+   "outcome": "Before Oct 16, 2026",
+   "close": "2026-10-16T03:59:00Z",
+   "resolves": "2026-10-16T14:00:00Z",
+   "rules": "If Google releases Gemini 4 before Oct 16, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "5084763",
+   "event": "Gemini 4.0 released by...?",
+   "question": "Gemini 4.0 released by October 15, 2026?",
+   "outcome": "October 15",
+   "close": "2026-10-16T03:59:00Z",
+   "resolves": "2026-10-16T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Google's Gemini 4.0 is made available to the general public by the listed date. Otherwise, this market will resolve to \"No\".\n\nFor this market to resolve to \"Yes,\" Gemini 4.0 must be launched and publicly accessible, including via open beta or open rolling waitlist signups. A closed beta or any form of private access will not suffice. The release must be clearly defined and publicly announced by Google as being accessible to the general public.\n\nIf a qualifying model is made publicly accessible and explicitly labeled with the relevant version name within the company’s official website, this will qualify as “publicly announced”. Labeling errors, placeholder"
+  }
+ },
+ {
+  "n": 62,
+  "pair_id": "kalshi:KXQUEBECPREMIER-27JAN01-CFRE~polymarket:2133897",
+  "tier": "equivalent",
+  "score": 0.93,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXQUEBECPREMIER-27JAN01-CFRE",
+   "event": "Who will be Premier of Quebec after the 2026 election?",
+   "question": "Will it be confirmed that Christine Fréchette is the first person to serve as Premier of Quebec after government formation following the 2026 Quebec general election?",
+   "outcome": "Christine Fréchette",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2026-10-06T00:00:00Z",
+   "rules": "If Christine Fréchette is the first person to serve as Premier of Quebec after government formation following the 2026 Quebec general election before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2133897",
+   "event": "Next Premier of Quebec",
+   "question": "Will Christine Fréchette be the next Premier of Quebec following the 2026 Quebec general election?",
+   "outcome": "Christine Fréchette",
+   "close": "2026-10-06T03:59:00Z",
+   "resolves": "2026-10-06T03:59:00Z",
+   "rules": "The 2026 Quebec general election is scheduled to be held no later than October 5, 2026.\n\nThis market will resolve to the individual who is formally appointed as Premier of Quebec as a result of the specified elections.\n\nTo count for resolution, the individual must be formally appointed as Premier following the specified elections. Any interim or caretaker head of government will not count toward the resolution of this market.\n\nIf no such Premier is appointed by June 30, 2027, 11:59 PM ET, this market will resolve to “Other”.\n\nThe primary resolution source for this market will be official information from the Government of Quebec; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 68,
+  "pair_id": "kalshi:GOVPARTYTX-26-D~polymarket:629690",
+  "tier": "equivalent",
+  "score": 0.927,
+  "a": {
+   "venue": "kalshi",
+   "id": "GOVPARTYTX-26-D",
+   "event": "Texas Governor winner?",
+   "question": "Will the Democratic party win the governorship in Texas",
+   "outcome": "Gina Hinojosa",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-20T15:00:00Z",
+   "rules": "If a representative of the Democratic party is inaugurated as the governor of Texas pursuant to the 2026 election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "629690",
+   "event": "Texas Governor Election Winner",
+   "question": "Will the Democrats win the Texas governor race in 2026?",
+   "outcome": "Gina Hinojosa (D) ",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 Texas gubernatorial election.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the \"Democrat\" or \"Republican\" options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, the"
+  }
+ },
+ {
+  "n": 74,
+  "pair_id": "kalshi:KXPRESNOMR-28-ITRU~polymarket:561998",
+  "tier": "equivalent",
+  "score": 0.935,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESNOMR-28-ITRU",
+   "event": "2028 Republican presidential nominee",
+   "question": "Will Ivanka Trump be the nominee for the Presidency for the Republican party?",
+   "outcome": "Ivanka Trump",
+   "close": "2028-11-07T15:00:00Z",
+   "resolves": "2028-11-07T15:00:00Z",
+   "rules": "If Ivanka Trump wins and accepts the nomination for the Presidency for the Republican party in 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "561998",
+   "event": "Republican Presidential Nominee 2028",
+   "question": "Will Ivanka Trump win the 2028 Republican presidential nomination?",
+   "outcome": "Ivanka Trump",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the named individual wins and accepts the 2028 nomination of the Republican Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official Republican Party sources.\n\nAny replacement of the Republican nominee before election day will not change the resolution of the market."
+  }
+ },
+ {
+  "n": 80,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-SVW~polymarket:2849022",
+  "tier": "equivalent",
+  "score": 0.688,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXBUNDESLIGA-27-SVW",
+   "event": "Bundesliga Champion",
+   "question": "Will Bremen win the 2026-27 Bundesliga?",
+   "outcome": "Bremen",
+   "close": "2027-06-06T02:00:00Z",
+   "resolves": "2027-05-23T02:00:00Z",
+   "rules": "If Bremen is the 2026-27 Bundesliga champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2849022",
+   "event": "Bundesliga: 2027 Champion",
+   "question": "Will Werder Bremen be the 2026-27 Bundesliga champion?",
+   "outcome": "Werder Bremen",
+   "close": "2027-06-15T03:59:00Z",
+   "resolves": "2027-06-15T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 Bundesliga.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 Bundesliga per the rules of the Bundesliga (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 Bundesliga season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from the Bundesliga; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 86,
+  "pair_id": "kalshi:HOUSECA27-26-D~polymarket:703690",
+  "tier": "equivalent",
+  "score": 0.953,
+  "a": {
+   "venue": "kalshi",
+   "id": "HOUSECA27-26-D",
+   "event": "CA-27 House winner?",
+   "question": "Will Democratic win the House race for CA-27?",
+   "outcome": "George Whitesides",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If the House member sworn in for CA-27 for the term beginning in 2027 is a member of the Democratic party, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "703690",
+   "event": "CA-27 House Election Winner",
+   "question": "Will the Democratic Party win the CA-27 House seat?",
+   "outcome": "George Whitesides (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the party of the candidate who wins the CA-27 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The midterm elections will take place on November 3, 2026.\n\n​​A candidate's party will be determined by their ballot-listed or otherwise identifiable affiliation with that party at the time all of the 2026 House elections are conclusively called by this market's resolution sources. A candidate without a ballot-listed affiliation to either the Democrat or Republican parties will be considered a member of one of these parties based on the party with which they most recently expressed their intent to caucus at the tim"
+  }
+ },
+ {
+  "n": 92,
+  "pair_id": "kalshi:KXBUNDESLIGA-27-SVE~polymarket:2849026",
+  "tier": "equivalent",
+  "score": 0.688,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXBUNDESLIGA-27-SVE",
+   "event": "Bundesliga Champion",
+   "question": "Will Elversberg win the 2026-27 Bundesliga?",
+   "outcome": "Elversberg",
+   "close": "2027-06-06T02:00:00Z",
+   "resolves": "2027-05-23T02:00:00Z",
+   "rules": "If Elversberg is the 2026-27 Bundesliga champion, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2849026",
+   "event": "Bundesliga: 2027 Champion",
+   "question": "Will SV Elversberg be the 2026-27 Bundesliga champion?",
+   "outcome": "SV Elversberg",
+   "close": "0001-01-01T00:00:00Z",
+   "resolves": "0001-01-01T00:00:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 Bundesliga.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 Bundesliga per the rules of the Bundesliga (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 Bundesliga season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from the Bundesliga; however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 98,
+  "pair_id": "kalshi:KXFEDERALCHARGE-27JAN01-MKEL~polymarket:5166375",
+  "tier": "review",
+  "score": 0.316,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFEDERALCHARGE-27JAN01-MKEL",
+   "event": "Who will be charged with a federal crime in 2026?",
+   "question": "Will Mark Kelly be charged with a any crime before Jan 1, 2027?",
+   "outcome": "Mark Kelly",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Mark Kelly has been formally charged with a federal crime  after Issuance and before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "5166375",
+   "event": "Any of the Cornell 7 charged with a felony sex crime?",
+   "question": "Any of the Cornell 7 charged with a felony sex crime?",
+   "outcome": "",
+   "close": "2027-02-01T04:59:00Z",
+   "resolves": "2027-02-01T04:59:00Z",
+   "rules": "In a civil complaint filed in September 2026, a Cornell University student alleged that she was drugged and sexually assaulted in October 2024 by multiple members of the Chi Phi fraternity at the fraternity's house in Ithaca, New York. Matthew Ingalls, Johnathan Newell, Winston Lee, Gillio Lopes, Diego Sarabia, Scott Norris and Scott Kretzschmar are the 7 individual defendants alleged in the September 2026 civil complaint to have participated in the alleged October 2024 sexual assault.\n\nThis market will resolve to “Yes” if any Federal or State jurisdiction of the United States formally charges or otherwise announces a criminal indictment of Matthew Ingalls, Johnathan Newell, Winston Lee, Gil"
+  }
+ },
+ {
+  "n": 104,
+  "pair_id": "kalshi:KXNCAAF-27-ALA~polymarket:1919746",
+  "tier": "review",
+  "score": 0.376,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNCAAF-27-ALA",
+   "event": "College Football National Championship Winner",
+   "question": "Will Alabama win the College Football Playoff National Championship?",
+   "outcome": "Alabama",
+   "close": "2027-02-23T04:00:00Z",
+   "resolves": "2027-01-26T04:00:00Z",
+   "rules": "If Alabama wins the College Football Playoff National Championship Game, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1919746",
+   "event": "NCAA Football: 2027 National Champion",
+   "question": "Will Alabama Crimson Tide win the 2027 CFP National Championship?",
+   "outcome": "Alabama Crimson Tide",
+   "close": "2027-01-26T00:00:00Z",
+   "resolves": "2027-01-26T00:00:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed club is determined as the national champion of the 2026-27 College Football Playoff. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed participant to be named as the national champion of 2026-27 NCAA Football Division 1 season per the rules of NCAA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after February 8, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market wil"
+  }
+ },
+ {
+  "n": 110,
+  "pair_id": "kalshi:SENATENC-28-D~polymarket:5347191",
+  "tier": "review",
+  "score": 0.338,
+  "a": {
+   "venue": "kalshi",
+   "id": "SENATENC-28-D",
+   "event": "North Carolina Senate winner? (2028)",
+   "question": "Will Democratics win the Senate race in North Carolina?",
+   "outcome": "Democratic party",
+   "close": "2029-11-07T15:00:00Z",
+   "resolves": "2029-01-03T15:00:00Z",
+   "rules": "If a representative of the Democratic party is sworn in as a Senator of North Carolina for the term beginning in 2029, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "5347191",
+   "event": "North Carolina enacts data center moratorium by...?",
+   "question": "Will North Carolina enact a data center moratorium by December 31, 2028?",
+   "outcome": "December 31, 2028",
+   "close": "2029-01-01T04:59:00Z",
+   "resolves": "2029-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the State of North Carolina enacts a law or constitutional provision that establishes a statewide moratorium on new data centers between market creation and the specified date, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nA statewide moratorium on new data centers refers to a binding policy with legal force that generally prohibits or suspends the approval, permitting, construction, grid interconnection, or operation of all new data centers, or a subset of data centers that includes all new data centers with an interconnection capacity above 100 MW per facility (requested or nameplate), throughout the state. Suspensions of tax incentives, ex"
+  }
+ },
+ {
+  "n": 116,
+  "pair_id": "kalshi:KXCLAUDE-MYTH-26DEC01~polymarket:4319439",
+  "tier": "review",
+  "score": 0.301,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXCLAUDE-MYTH-26DEC01",
+   "event": "When will Anthropic release Mythos?",
+   "question": "Will Anthropic release Mythos before Dec 1, 2026?",
+   "outcome": "Before Dec 1, 2026",
+   "close": "2026-12-01T04:59:00Z",
+   "resolves": "2026-09-01T13:00:00Z",
+   "rules": "If Anthropic releases A model called Mythos  before Dec 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4319439",
+   "event": "Anthropic IPO by __?",
+   "question": "Will Anthropic IPO by November 30, 2026?",
+   "outcome": "November 30, 2026",
+   "close": "2026-12-01T04:59:00Z",
+   "resolves": "2026-12-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Anthropic shares are listed on a public securities exchange and open for trading by 11:59 PM ET on the listed date. Otherwise, this market will resolve to \"No.\"\n\nIf Anthropic is acquired by another company that is already public, this market will immediately resolve to \"No.\"\n\nThe primary resolution source for this market is official filings and announcements from Anthropic and the relevant securities exchange on which the shares are listed, including SEC filings (e.g., Form S-1, Form 8-A), exchange listing confirmations, and official press releases from Anthropic; however a consensus of credible reporting may also be used."
+  }
+ }
+]

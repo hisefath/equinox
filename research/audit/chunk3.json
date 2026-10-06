@@ -1,0 +1,574 @@
+[
+ {
+  "n": 4,
+  "pair_id": "kalshi:KXEPLTOP-27TOPHALF-FUL~polymarket:2771332",
+  "tier": "equivalent",
+  "score": 0.753,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXEPLTOP-27TOPHALF-FUL",
+   "event": "EPL Top Half Finishers",
+   "question": "Will Fulham finish in the top half in the 2026-27 EPL season?",
+   "outcome": "Fulham",
+   "close": "2027-06-14T02:00:00Z",
+   "resolves": "2027-05-31T02:00:00Z",
+   "rules": "If Fulham is a top half finisher in the 2026-27 EPL season, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2771332",
+   "event": "EPL: 2027 Champion",
+   "question": "Will Fulham win the 2026-27 English Premier League (EPL) Championship?",
+   "outcome": "Fulham",
+   "close": "2027-06-15T03:59:00Z",
+   "resolves": "2027-06-15T03:59:00Z",
+   "rules": "This market will resolve according to the team that wins the 2026-27 English Premier League (EPL) Championship.\n\nIf at any point it becomes impossible for a listed team to win the 2026-27 English Premier League (EPL) Championship per the rules of English Premier League (EPL) (e.g., they are eliminated in the playoffs), the corresponding market will resolve to \"No\".\n\nIf the 2026-27 English Premier League (EPL) season is cancelled, postponed after June 14, 2027, 11:59 PM ET or there is otherwise no winner declared within that timeframe, this market will resolve to \"Other\".\n\nThe primary resolution source will be official information from English Premier League (EPL); however, a consensus of cre"
+  }
+ },
+ {
+  "n": 10,
+  "pair_id": "kalshi:KXTAIWANLOCAL-26NOV28-KMT~polymarket:814612",
+  "tier": "equivalent",
+  "score": 0.716,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXTAIWANLOCAL-26NOV28-KMT",
+   "event": "Taiwan Local Elections winner?",
+   "question": "Will Kuomintang win the most mayoral and magistrate races in Taiwan’s 2026 local elections?",
+   "outcome": "Kuomintang",
+   "close": "2027-11-28T15:00:00Z",
+   "resolves": "2026-11-28T15:00:00Z",
+   "rules": "If the Kuomintang wins the most mayoral and magistrate races in Taiwan’s 2026 local elections, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "814612",
+   "event": "2026 Taiwanese Local Elections: Party Winner",
+   "question": "Will Kuomintang (KMT) win the most head of local government elections in the 2026 Taiwan local elections?",
+   "outcome": "Kuomintang (KMT)",
+   "close": "2026-11-29T04:59:00Z",
+   "resolves": "2026-11-29T04:59:00Z",
+   "rules": "Taiwanese local elections are scheduled to be held on November 28, 2026. \n\nThis market will resolve according to the party whose official candidates win the most head of local government (mayor or magistrate) elections for Taiwan’s major special municipalities, counties, and cities during these elections.\n\nA candidate will be considered an official candidate of a party if they are officially nominated by that party and are registered for the relevant election in affiliation with that party. Independent candidates will not count for any party.\n\nTaiwan’s local governments include the following cities, special municipalities, and counties:\n\nCities/special municipalities (mayoral elections): Tai"
+  }
+ },
+ {
+  "n": 16,
+  "pair_id": "kalshi:KXLARGECUT-26~polymarket:3215006",
+  "tier": "equivalent",
+  "score": 0.83,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLARGECUT-26",
+   "event": "Will the Fed do a rate cut greater than 25bps this year?",
+   "question": "Will the Fed cut rates more than 25 bps in 2026?",
+   "outcome": "In 2026",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If the Federal Reserve cuts rates by more than 25 basis points before Dec 31, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3215006",
+   "event": "Fed Decision in December?",
+   "question": "Will the Fed decrease interest rates by 25 bps after the December 2026 meeting?",
+   "outcome": "25 bps decrease",
+   "close": "2026-12-09T23:59:00Z",
+   "resolves": "2026-12-09T23:59:00Z",
+   "rules": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal funds range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's December 2026 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source"
+  }
+ },
+ {
+  "n": 22,
+  "pair_id": "kalshi:GOVPARTYVT-26-D~polymarket:629707",
+  "tier": "equivalent",
+  "score": 0.929,
+  "a": {
+   "venue": "kalshi",
+   "id": "GOVPARTYVT-26-D",
+   "event": "Vermont Governor winner?",
+   "question": "Will the Democratic party win the governorship in Vermont",
+   "outcome": "Amanda Janoo",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-05T15:00:00Z",
+   "rules": "If a representative of the Democratic party is inaugurated as the governor of Vermont pursuant to the 2026 election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "629707",
+   "event": "Vermont Governor Election Winner",
+   "question": "Will the Democrats win the Vermont governor race in 2026?",
+   "outcome": "Amanda Janoo (D)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 Vermont gubernatorial election.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the \"Democrat\" or \"Republican\" options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replaced as the nominee of their respective party prior to election day, t"
+  }
+ },
+ {
+  "n": 28,
+  "pair_id": "kalshi:KXUSIRANMEETING-27-26NOV01~polymarket:4867451",
+  "tier": "equivalent",
+  "score": 0.592,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXUSIRANMEETING-27-26NOV01",
+   "event": "When will the U.S. and Iran hold a diplomatic meeting?",
+   "question": "Will the U.S. and Iran hold a senior-level meeting before Nov 1, 2026?",
+   "outcome": "Before Nov 1, 2026",
+   "close": "2026-11-01T03:59:00Z",
+   "resolves": "2026-11-01T04:00:00Z",
+   "rules": "If the United States and Iran hold a senior-level diplomatic meeting after Issuance and before Nov 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "4867451",
+   "event": "Next US-Iran senior diplomatic meeting by...?",
+   "question": "Next US-Iran senior diplomatic meeting by October 31, 2026? (copy)",
+   "outcome": "October 31, 2026",
+   "close": "2026-10-31T23:59:00Z",
+   "resolves": "2026-10-31T23:59:00Z",
+   "rules": "On September 22, U.S. Special Envoy Steve Witkoff and Jared Kushner met Iranian Foreign Minister Abbas Araghchi on the sidelines of the UN General Assembly in New York, with President Trump saying another meeting is scheduled in the near future.(see: https://www.israelhayom.com/2026/09/22/witkoff-kushner-attended-us-iran-meeting-another-expected-soon). \n\nThis market will resolve to “Yes” if there is a direct or indirect senior-level diplomatic meeting between the United States and Iran by the listed date, 11:59 PM ET. Otherwise, this market will resolve to “No”.\n\nA diplomatic meeting occurs when representatives of both listed countries who are acting in an official capacity and are authorize"
+  }
+ },
+ {
+  "n": 34,
+  "pair_id": "kalshi:KXNHL-27-OTT~polymarket:2520300",
+  "tier": "equivalent",
+  "score": 0.892,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNHL-27-OTT",
+   "event": "2026-27 Stanley Cup® Finals Winner",
+   "question": "Will Ottawa Senators win the 2026-27 Stanley Cup® Finals?",
+   "outcome": "Ottawa Senators",
+   "close": "2029-06-30T14:00:00Z",
+   "resolves": "2027-07-01T14:00:00Z",
+   "rules": "If Ottawa Senators wins the 2026-27 Stanley Cup® Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2520300",
+   "event": "NHL: 2027 Champion",
+   "question": "Will the Ottawa Senators be named the 2026-27 NHL Stanley Cup Champion?",
+   "outcome": "Ottawa Senators",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NHL for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed participant to be named as the champion of NHL for the 2026-27 season per the rules of NHL (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution sou"
+  }
+ },
+ {
+  "n": 40,
+  "pair_id": "kalshi:KXPRESNOMD-28-LC~polymarket:559678",
+  "tier": "equivalent",
+  "score": 0.983,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXPRESNOMD-28-LC",
+   "event": "2028 Democratic presidential nominee",
+   "question": "Will Liz Cheney be the Democratic Presidential nominee in 2028?",
+   "outcome": "Liz Cheney",
+   "close": "2028-11-07T15:00:00Z",
+   "resolves": "2028-11-07T15:00:00Z",
+   "rules": "If Liz Cheney wins and accepts the nomination for the Presidency for the Democratic party in 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "559678",
+   "event": "Democratic Presidential Nominee 2028",
+   "question": "Will Liz Cheney win the 2028 Democratic presidential nomination?",
+   "outcome": "Liz Cheney",
+   "close": "2028-11-08T04:59:00Z",
+   "resolves": "2028-11-08T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if the named individual wins and accepts the 2028 nomination of the Democratic Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official Democratic Party sources.\n\nAny replacement of the democratic nominee before election day will not change the resolution of the market."
+  }
+ },
+ {
+  "n": 46,
+  "pair_id": "kalshi:KXTRUMPPARDON-27JAN01-EHOL~polymarket:687688",
+  "tier": "equivalent",
+  "score": 0.973,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXTRUMPPARDON-27JAN01-EHOL",
+   "event": "Who will Trump pardon in 2026?",
+   "question": "Will Elizabeth Holmes receive a presidential pardon before Jan 1, 2027?",
+   "outcome": "Elizabeth Holmes",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Elizabeth Holmes has been given a presidential pardon, commutation, or reprieve during Trump's second term and before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "687688",
+   "event": "Who will Trump pardon before 2027?",
+   "question": "Will Trump pardon Elizabeth Holmes before 2027?",
+   "outcome": "Elizabeth Holmes",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed individual receives a presidential pardon, commutation, or reprieve from Donald Trump between November 17, 2025 and December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nThe primary resolution source for whether the individual is pardoned or not will be official information from the US government, however a consensus of credible reporting will also be used."
+  }
+ },
+ {
+  "n": 52,
+  "pair_id": "kalshi:KXNBA-27-ORL~polymarket:2243307",
+  "tier": "equivalent",
+  "score": 0.814,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-ORL",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Orlando win the 2027 Pro Basketball Finals?",
+   "outcome": "Orlando",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Orlando wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243307",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Orlando Magic win the 2027 NBA Finals?",
+   "outcome": "Orlando Magic",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 58,
+  "pair_id": "kalshi:KXLEADERSOUT-27JAN01-PSANPM~polymarket:802374",
+  "tier": "equivalent",
+  "score": 0.772,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXLEADERSOUT-27JAN01-PSANPM",
+   "event": "Which leaders will leave office in 2026?",
+   "question": "Will Pedro Sánchez leave Prime Minister of Spain before Jan 1, 2027?",
+   "outcome": "Pedro Sánchez",
+   "close": "2027-01-02T03:17:49Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If Pedro Sánchez has either officially announced their intention to leave as Prime Minister of Spain or has actually left Prime Minister of Spain before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "802374",
+   "event": "Pedro Sánchez out as PM of Spain by...?",
+   "question": "Pedro Sánchez out as PM of Spain by December 31, 2026?",
+   "outcome": "December 31, 2026",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if Pedro Sánchez ceases to be Prime Minister of Spain for any period of time between market creation and the specified date (ET). Otherwise, this market will resolve to “No”.\n\nAn announcement of Pedro Sánchez's resignation/removal before this market's end date will immediately resolve this market to \"Yes\", regardless of when the announced resignation/removal goes into effect.\n\nIf the specified individual is detained, effectively removed from the specified position, or otherwise permanently prevented from fulfilling the duties of the specified position within this market’s timeframe, it will qualify for a “Yes” resolution.\n\nThe resolution source for this mark"
+  }
+ },
+ {
+  "n": 64,
+  "pair_id": "kalshi:KXAOCSENATE-28~polymarket:3708351",
+  "tier": "equivalent",
+  "score": 0.596,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXAOCSENATE-28",
+   "event": "Will Alexandria Ocasio-Cortez run for Senate in 2028?",
+   "question": "Will Alexandria Ocasio-Cortez run for Senate in 2028?",
+   "outcome": "Before 2028",
+   "close": "2028-04-01T14:00:00Z",
+   "resolves": "2028-04-01T14:00:00Z",
+   "rules": "If Alexandria Ocasio-Cortez runs for Senate in 2028 before Apr 1, 2028, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3708351",
+   "event": "Will AOC announce a run for Senate or President before 2028?",
+   "question": "Will Alexandria Ocasio-Cortez not run for Senate or President in 2028?",
+   "outcome": "Neither",
+   "close": "2027-12-31T23:59:00Z",
+   "resolves": "2027-12-31T23:59:00Z",
+   "rules": "This market will resolve based on the office, between United States Senator and President of the United States, that Rep. Alexandria Ocasio-Cortez first officially announces that she is running for in the 2028 election cycle by December 31, 2027, 11:59 PM ET. \n\nAn announcement by the listed individual will be sufficient to resolve this market in favor of the corresponding outcome, regardless of whether they actually filed a nomination to run, or whether they actually file a nomination to run in the future.\n\nA qualifying announcement must be explicit and unambiguous. Conditional statements, or statements that are clearly sarcastic, made in jest, or immediately clarified as not being genuine w"
+  }
+ },
+ {
+  "n": 70,
+  "pair_id": "kalshi:KXNCAAMBMW-27-UNM~polymarket:3249918",
+  "tier": "equivalent",
+  "score": 0.599,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNCAAMBMW-27-UNM",
+   "event": "Mountain West Men's Conference Tournament Champion",
+   "question": "Will New Mexico be the 2027 Mountain West conference tournament champions?",
+   "outcome": "New Mexico",
+   "close": "2027-03-28T21:00:00Z",
+   "resolves": "2027-03-14T21:00:00Z",
+   "rules": "If the New Mexico men's college basketball team are the 2027 Mountain West conference tournament champions, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3249918",
+   "event": "NCAA Football 2026 Mountain West Conference: Winner",
+   "question": "Will New Mexico Lobos Win the 2026 Mountain West Championship?",
+   "outcome": "New Mexico Lobos",
+   "close": "2026-12-19T04:59:00Z",
+   "resolves": "2026-12-19T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 Mountain West Football Championship Game, determining the champion of the Mountain West Conference for the 2026 college football season, currently scheduled for December 4, 2026.\n\nIf this championship is postponed after December 18, 2026, 11:59 PM ET, canceled, or a champion has not been declared within this timeframe, this market will resolve to \"Other.\"\n\nIf multiple teams are declared co-champions, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nThe resolution source for this market will be official information from the Mountain West Conference (https://themw.com); however, a consensus"
+  }
+ },
+ {
+  "n": 76,
+  "pair_id": "kalshi:SENATEFLS-26-R~polymarket:631045",
+  "tier": "equivalent",
+  "score": 0.995,
+  "a": {
+   "venue": "kalshi",
+   "id": "SENATEFLS-26-R",
+   "event": "Florida Senate winner?",
+   "question": "Will Republicans win the Senate race in Florida?",
+   "outcome": "Ashley Moody",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T15:00:00Z",
+   "rules": "If a representative of the Republican party is sworn in as a Senator of Florida for the term beginning in 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "631045",
+   "event": "Florida Senate Election Winner",
+   "question": "Will the Republicans win the Florida Senate race in 2026?",
+   "outcome": "Ashley Moody (R)",
+   "close": "2026-11-04T04:59:00Z",
+   "resolves": "2026-11-04T04:59:00Z",
+   "rules": "This market will resolve according to the winner of the 2026 Florida U.S. Senate special election currently scheduled for November 3, inclusive of any run-offs.\n\nA candidate shall be considered to represent a party in the event that he or she is the nominee of the party in question. Candidates other than the Democratic or Republican nominee (e.g., Greens, Libertarian, independent) may be added at a later date.\n\nCandidates who run as independents will not be encompassed by the “Democrat” or “Republican” options regardless of any affiliation they may have with the party.\n\nThe candidates may be named in the contract for the convenience of traders. In the event that any named candidate is replac"
+  }
+ },
+ {
+  "n": 82,
+  "pair_id": "kalshi:KXTOPAI-27-JAN01-MOON~polymarket:2431419",
+  "tier": "equivalent",
+  "score": 0.8,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXTOPAI-27-JAN01-MOON",
+   "event": "Which companies will have a top-ranked AI model this year?",
+   "question": "Will Moonshot AI have a top-ranked AI model before 2027?",
+   "outcome": "Moonshot AI",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-02T15:00:00Z",
+   "rules": "If Moonshot AI has a #1 ranked AI model before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2431419",
+   "event": "Which company has best AI model end of 2026?",
+   "question": "Will Moonshot have the best AI model at the end of December 2026?",
+   "outcome": "Moonshot",
+   "close": "2026-12-31T17:00:00Z",
+   "resolves": "2026-12-31T17:00:00Z",
+   "rules": "This market will resolve according to the company which owns the model which has the highest arena rank based off the Chatbot Arena LLM Leaderboard (https://lmarena.ai/) when the table under the \"Leaderboard\" tab is checked on December 31, 2026, 12:00 PM ET.\n\nResults from the \"Rank\" section on the Leaderboard tab of https://lmarena.ai/leaderboard/text with the style control off will be used to resolve this market.\n\nModels will be ordered primarily by their leaderboard rank at the market’s check time. If two or more models are tied on rank, they will be ordered by their Arena score, including any underlying, unrounded, granular values reflected in the data below the leaderboard. If a tie rema"
+  }
+ },
+ {
+  "n": 88,
+  "pair_id": "kalshi:KXRATECUT-26DEC31~polymarket:616903",
+  "tier": "equivalent",
+  "score": 0.598,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXRATECUT-26DEC31",
+   "event": "Fed rate cut before 2027?",
+   "question": "Will the Federal Reserve cut rates before 2027?",
+   "outcome": "Cuts",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If the Federal Reserve cuts its target federal funds rate range at least once between February 26, 2026 and December 31, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "616903",
+   "event": "How many Fed rate cuts in 2026?",
+   "question": "Will 1 Fed rate cut happen in 2026?",
+   "outcome": "1 (25 bps)",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve according to the exact amount of cuts of 25 basis points in 2026 by the Fed (including any cuts made during the December meeting).\n\nEmergency rate cuts outside of scheduled FOMC meetings will also count toward the total number of cuts in 2026. This market will remain open until December 31, 2026, 11:59 PM ET, to account for any such emergency actions.\n\nFor example, if the Fed cuts rates by 50 bps after a meeting, it would be considered 2 cuts (of 25 bps each).\n\nThis market will resolve early to \"No\" if the specified number of cuts becomes impossible — i.e., if more cuts have already occurred than the strike in question.\n\nNote that cuts between 1–24 bps (inclusive) wi"
+  }
+ },
+ {
+  "n": 94,
+  "pair_id": "kalshi:KXNBA-27-BOS~polymarket:2243297",
+  "tier": "equivalent",
+  "score": 0.548,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXNBA-27-BOS",
+   "event": "2027 Pro Basketball Champion",
+   "question": "Will Boston win the 2027 Pro Basketball Finals?",
+   "outcome": "Boston",
+   "close": "2029-07-30T14:00:00Z",
+   "resolves": "2027-07-31T14:00:00Z",
+   "rules": "If Boston wins the 2027 Pro Basketball Finals, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "2243297",
+   "event": "NBA: 2027 Champion",
+   "question": "Will Boston Celtics win the 2027 NBA Finals?",
+   "outcome": "Boston Celtics",
+   "close": "2027-07-01T03:59:00Z",
+   "resolves": "2027-07-01T03:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if the listed team is determined as the champion of the NBA for the 2026-27 season. Otherwise, it will resolve to \"No\".\n\nIf at any point it becomes impossible for a listed team to be named as the champion of NBA for the 2026-27 season per the rules of NBA (e.g., participant is eliminated), the corresponding market will resolve to \"No\".\n\nIf multiple teams are declared winners, this market will resolve in favor of the team whose listed name comes first alphabetically.\n\nIf this event is cancelled, postponed after June 30, 2027, 11:59 PM ET, or a champion has not been declared within this timeframe, this market will resolve to \"Other\".\n\nThe resolution source wil"
+  }
+ },
+ {
+  "n": 100,
+  "pair_id": "kalshi:KXFRENCHPRES-27-FRUF~polymarket:679025",
+  "tier": "equivalent",
+  "score": 0.998,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXFRENCHPRES-27-FRUF",
+   "event": "Next French presidential election winner?",
+   "question": "Will François Ruffin win the 2027 French presidential election?",
+   "outcome": "François Ruffin",
+   "close": "2028-05-30T14:00:00Z",
+   "resolves": "2027-05-31T14:00:00Z",
+   "rules": "If François Ruffin wins the next French presidential election, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "679025",
+   "event": "Next French Presidential Election",
+   "question": "Will François Ruffin win the 2027 French presidential election?",
+   "outcome": "François Ruffin",
+   "close": "2027-04-19T03:59:00Z",
+   "resolves": "2027-04-19T03:59:00Z",
+   "rules": "The next French presidential election is currently expected to be held around April 2027.  This market pertains to the outcome of the next French presidential election, regardless of whether it follows the scheduled end of the current term or is held earlier. \n\nThe President of France is elected via a two-round system; a candidate must secure over 50% of the vote to win outright in the first round. If no candidate achieves this, the top two contenders advance to a runoff.\n\nThis market will resolve according to the candidate who wins this election.\n\nThis market includes any potential second round. If, for any reason, the results of the election are not known by December 31, 2027, 11:59 PM ET,"
+  }
+ },
+ {
+  "n": 106,
+  "pair_id": "kalshi:KXGROK-GROK5-26DEC01~polymarket:1371094",
+  "tier": "review",
+  "score": 0.306,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGROK-GROK5-26DEC01",
+   "event": "When will xAI release Grok 5?",
+   "question": "Will xAI release Grok 5 before Dec 1, 2026?",
+   "outcome": "Before December",
+   "close": "2026-12-01T04:59:00Z",
+   "resolves": "2026-12-01T15:00:00Z",
+   "rules": "If xAI releases Grok 5 before Dec 1, 2026, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1371094",
+   "event": "Will Grok AI beat T1 in 2026? ",
+   "question": "Will Grok AI beat T1 in 2026? ",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if Grok AI officially defeats T1 in any exhibition/competitive match of League of Legends played in 2026. Otherwise, this market will resolve to \"No\".\n\nIf no match takes place between T1 and Grok AI or no winner can be determined for any reason by December 31, 2026, 11:59PM ET, the market will resolve to \"No\".\n\nThe primary resolution sources for this market will be official announcements from T1, X, Riot Games (if involved); however, a consensus of credible reporting may also be used."
+  }
+ },
+ {
+  "n": 112,
+  "pair_id": "kalshi:KXHOUSEWINSTATE-MID-B5~polymarket:3930556",
+  "tier": "review",
+  "score": 0.419,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXHOUSEWINSTATE-MID-B5",
+   "event": "How many House seats will Democrats win in Michigan?",
+   "question": "Will Democrats win fewer than 5 seats in the 2026 U.S. House of Representatives elections in Michigan?",
+   "outcome": "Below 5",
+   "close": "2027-11-03T15:00:00Z",
+   "resolves": "2027-01-03T17:00:00Z",
+   "rules": "If Democrats win below 5 seats in the 2026 U.S. House of Representatives elections in Michigan, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "3930556",
+   "event": "Quebec General Election: CAQ # Seats?",
+   "question": "Will the CAQ win fewer than 5 seats in the National Assembly of Quebec in this election?",
+   "outcome": "<5",
+   "close": "2026-10-06T03:59:00Z",
+   "resolves": "2026-10-06T03:59:00Z",
+   "rules": "Parliamentary elections to elect all 127 seats of the National Assembly of Quebec are scheduled to take place in Quebec on October 5, 2026.\n\nThis market will resolve according to the number of seats won by the Coalition Avenir Québec (CAQ) in the National Assembly of Quebec as a result of this election.\n\nThis market's resolution will be based solely on the number of seats won by candidates whose political affiliation is listed as the specified party in the official election results, not any coalition or parliamentary group of which the party may be part. Seats won by candidates listed under any other affiliation will not be counted, regardless of any endorsement or association with the speci"
+  }
+ },
+ {
+  "n": 118,
+  "pair_id": "kalshi:KXCANCUTS-26DEC31-E4~polymarket:616906",
+  "tier": "review",
+  "score": 0.41,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXCANCUTS-26DEC31-E4",
+   "event": "Number of Bank of Canada rate cuts in 2026?",
+   "question": "Will Bank of Canada rate cuts in 2026 be exactly 4ㅤ?",
+   "outcome": "Exactly 4ㅤ",
+   "close": "2027-01-01T03:28:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "If the number of Bank of Canada rate cuts in 2026 is exactly 4ㅤ, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "616906",
+   "event": "How many Fed rate cuts in 2026?",
+   "question": "Will 4 Fed rate cuts happen in 2026?",
+   "outcome": "4 (100 bps)",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve according to the exact amount of cuts of 25 basis points in 2026 by the Fed (including any cuts made during the December meeting).\n\nEmergency rate cuts outside of scheduled FOMC meetings will also count toward the total number of cuts in 2026. This market will remain open until December 31, 2026, 11:59 PM ET, to account for any such emergency actions.\n\nFor example, if the Fed cuts rates by 50 bps after a meeting, it would be considered 2 cuts (of 25 bps each).\n\nThis market will resolve early to \"No\" if the specified number of cuts becomes impossible — i.e., if more cuts have already occurred than the strike in question.\n\nNote that cuts between 1–24 bps (inclusive) wi"
+  }
+ },
+ {
+  "n": 124,
+  "pair_id": "kalshi:KXGREENLANDSNAP-28-27JAN01~polymarket:1507879",
+  "tier": "review",
+  "score": 0.488,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXGREENLANDSNAP-28-27JAN01",
+   "event": "When will Greenland call a snap election?",
+   "question": "Will Greenland call a snap election before Jan 1, 2027?",
+   "outcome": "Before Jan 1, 2027",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T05:00:00Z",
+   "rules": "If a listed news source reports that the government of Greenland officially calls a snap parliamentary election after Issuance and before Jan 1, 2027, then the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "1507879",
+   "event": "Spain snap election called by...?",
+   "question": "Spain snap election called in 2026?",
+   "outcome": "December 31",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to “Yes” if a snap election is called in Spain by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to “No.”\n\nThe calling of a snap election requires the formal dissolution of at least one house of the Spanish Parliament or another formal scheduling, according to the rules of the jurisdiction, of an election for all members of at least one house of the Spanish Parliament prior to their scheduled election at the end of their parliamentary term.\n\nThe resolution source for this market will be official information from the government of Spain; however, a consensus of credible reporting may also be used.\n"
+  }
+ },
+ {
+  "n": 130,
+  "pair_id": "kalshi:KXRECOGROC-29-27~polymarket:567621",
+  "tier": "review",
+  "score": 0.35,
+  "a": {
+   "venue": "kalshi",
+   "id": "KXRECOGROC-29-27",
+   "event": "Will Trump recognize Taiwan?",
+   "question": "Will Trump recognize the Republic of China?",
+   "outcome": "Before 2027",
+   "close": "2027-01-01T15:00:00Z",
+   "resolves": "2027-01-01T15:00:00Z",
+   "rules": "If the United States explicitly and formally recognizes the Republic of China as a sovereign state independent from any previously recognized country after Issuance and before Jan 1, 2027, the market resolves to Yes."
+  },
+  "b": {
+   "venue": "polymarket",
+   "id": "567621",
+   "event": "Will China invade Taiwan by end of 2026?",
+   "question": "Will China invade Taiwan by end of 2026?",
+   "outcome": "",
+   "close": "2027-01-01T04:59:00Z",
+   "resolves": "2027-01-01T04:59:00Z",
+   "rules": "This market will resolve to \"Yes\" if China commences a military offensive intended to establish control over any portion of the Republic of China (Taiwan) by December 31, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nTerritory under the administration of the Republic of China including any inhabited islands will qualify, however uninhabited islands will not qualify. \n\nThe resolution source for this market will be will be official confirmation by China, Taiwan, the United Nations, or any permanent member of the UN Security Council, however a consensus of credible reporting will also be used."
+  }
+ }
+]
