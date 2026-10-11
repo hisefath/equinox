@@ -1,0 +1,140 @@
+%% diagram: erd
+%% source: docs/architecture/lld.md#1-data-model @ d7cc8b2
+%% drawn: 2026-10-11T22:13:40Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams erd`.
+%% Types: Go "pkg.Type" is drawn "pkg-Type" and "[]T" is drawn "T[]", because a Mermaid attribute type cannot hold "." or start with "[".
+erDiagram
+    markets ||--o| books : "market_key"
+    markets ||..o{ pairs : "a_key"
+    markets ||..o{ pairs : "b_key"
+    pairs |o..o| verdicts : "pair_id + fingerprints"
+    pairs |o..o| overrides : "pair_id + fingerprints"
+    samples ||--o{ labels : "sample_id"
+    pairs |o..o{ decisions : "order.pair_id (copied, not linked)"
+    markets {
+        market-Key key PK "not null · (string #lt;venue#gt;:#lt;venue id#gt;[:#lt;outcome index#gt;])"
+        string venue "not null"
+        string event_id "not null"
+        string question "not null"
+        string outcome "not null"
+        string rules_text "not null"
+        string rules_fingerprint "not null · (hex SHA-256 of rules_text + terms)"
+        market-Terms terms "not null · (subject, predicate, threshold value and comparator, window start and end, source, statistic, edge rules)"
+        string topic "not null"
+        time-Time opens_at "not null"
+        time-Time closes_at "not null"
+        time-Time resolves_at "nullable"
+        int64 volume_24h "not null · (contracts)"
+        bool tradable "not null"
+        string untradable_reason "nullable"
+        market-FeeTerms fee "not null · (rate in parts per million, curve exponents, rounding unit in micro-dollars, per-order or per-fill rounding)"
+        int64 min_qty "not null"
+        string book_ref "not null"
+        time-Time received_at "not null"
+    }
+    books {
+        market-Key market_key PK, FK "not null · ref markets.key"
+        market-Level[] bids "not null · (price Amount, quantity int64), best first"
+        market-Level[] asks "not null · best first"
+        time-Time as_of "not null"
+        bool crossed "not null"
+    }
+    pairs {
+        string pair_id PK "not null · (hex SHA-256 of the two keys in sorted order, first 16 chars)"
+        market-Key a_key FK "not null · ref markets.key · uq_pairs_one_to_one: each market key appears in at most one equivalent pair"
+        market-Key b_key FK "not null · ref markets.key · uq_pairs_one_to_one: each market key appears in at most one equivalent pair"
+        string verdict "not null"
+        string decided_by "not null"
+        string differing_part "nullable"
+        string[] evidence "not null"
+        string[] caveats "not null"
+        int64 score "not null · (similarity in parts per thousand)"
+        string fingerprint_a "not null"
+        string fingerprint_b "not null"
+        string rules_version "not null"
+        time-Time matched_at "not null"
+    }
+    venue_health {
+        string venue PK "not null"
+        string state "not null"
+        time-Time last_good_at "nullable"
+        string last_error "nullable"
+        time-Time wait_until "nullable"
+    }
+    refresh_reports {
+        string venue PK "not null"
+        int64 listed "not null"
+        int64 considered "not null"
+        int64 inactive "not null"
+        int64 too_short "not null"
+        int64 unreadable "not null"
+        int64 undecided_pairs "not null"
+        time-Duration duration "not null"
+        time-Time finished_at "not null"
+    }
+    %% decisions — Primary key: none (append-only log; position in the file orders it)
+    decisions {
+        string decision_id "not null · (hex SHA-256 of the canonical order + quotes + policy + snapshot time, first 16 chars)"
+        time-Time logged_at "not null"
+        string request_id "not null"
+        route-Order order "not null · (pair id, side yes or no, quantity, optional limit Amount, customer region)"
+        time-Time snapshot_as_of "not null"
+        string outcome "not null"
+        string venue "nullable"
+        int64 filled_qty "not null"
+        int64 unfilled_qty "not null"
+        market-Amount avg_price "nullable"
+        market-Amount fees "not null"
+        market-Amount all_in "not null"
+        string deciding_rule "nullable"
+        market-Amount saving "nullable"
+        route-VenueResult[] venues "not null · (venue, eligible, reason, filled, all-in)"
+        string[] evidence "not null"
+        string[] caveats "not null"
+        string problem_type "nullable"
+    }
+    eligibility {
+        string venue PK "not null"
+        string[] regions "not null"
+        string source "not null"
+        string checked_on "not null · (date)"
+    }
+    verdicts {
+        string pair_id PK "not null"
+        string fingerprint_a PK "not null"
+        string fingerprint_b PK "not null"
+        string verdict "not null"
+        string differing_part "nullable"
+        string reason "not null"
+        string model "not null"
+        string prompt_version "not null"
+        time-Time decided_at "not null"
+    }
+    overrides {
+        string pair_id PK "not null"
+        string fingerprint_a PK "not null"
+        string fingerprint_b PK "not null"
+        string verdict "not null"
+        string note "nullable"
+        time-Time decided_at "not null"
+    }
+    samples {
+        string sample_id PK "not null · (#lt;date#gt;-#lt;seed#gt;)"
+        uint64 seed "not null"
+        string rules_version "not null"
+        time-Time drawn_at "not null"
+        string[] precision_pairs "not null · (pair ids)"
+        string[] recall_pool "not null · (pair ids)"
+        measure-Card[] cards "not null · (both questions and rules texts only)"
+    }
+    labels {
+        string sample_id PK, FK "not null · ref samples.sample_id"
+        string pair_id PK "not null"
+        string rater PK "not null"
+        string label "not null"
+        time-Time labelled_at "not null"
+        string rules_version "not null"
+    }
