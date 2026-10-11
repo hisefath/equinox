@@ -7,10 +7,10 @@ several harnesses read it and the repo is public.
 ## Resume
 
 <!-- Rewritten as the LAST edit of every supervisor move. Times come from `date`. -->
-- **As of:** 2026-10-11 16:38 CDT
-- **In flight:** M3 G3: lld.md + openapi.yaml committed (11 record shapes, 14 BE, 5 FE, 6 EP, 5 SEQ, 2 SM, D19-D20 proposed, 5 open Q); 10 diagram jobs M3-D04..D13 dispatched
-- **Next:** verify + squash diagram jobs → embed into lld.md → G3 (D19, D20, closing) → log-decision → push → /define-acceptance
-- **Waiting on:** diagram jobs; then the human: G3
+- **As of:** 2026-10-11 17:12 CDT
+- **In flight:** M3 G3: lld.md revised per the 8 diagram findings (G3 Revise 17:10); 8 diagram jobs re-dispatched (D04-D07, D09, D10, D12, D13); D08 and D11 accepted
+- **Next:** verify redraws → squash all 10 → embed → G3 (D19, D20, closing) → log-decision (D19, D20, then the local-first decision) → push → /define-acceptance; local-run instructions land in README + AGENTS.md Commands once M4 code exists (REQ-25)
+- **Waiting on:** 8 diagram redraws
 - **Verified:** design-lld Done-when checks all pass; openapi.yaml parses (ruby YAML); not machine-validated as OpenAPI (no lint command in AGENTS.md)
 
 ## Tasks
@@ -30,16 +30,16 @@ several harnesses read it and the repo is public.
 | M3-D02 | draw-diagrams hld-container | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-container.mmd | 90cbf0e → squashed 153a8af (attempt 1 archived) |
 | M3-D03 | draw-diagrams deployment | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/deployment.mmd | 5328a88 → squashed 7652384 |
 | M3-S02 | /design-lld (human: "approve, also push and /design-lld"; scope M4-M6 per "b, all three in one pass") | Full / phase 6 design-lld | supervisor (claude-opus-5-5) | done | 2026-10-11 16:38 CDT | docs/architecture/lld.md, docs/architecture/contracts/openapi.yaml | — (awaiting G3) |
-| M3-D04 | draw-diagrams erd | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/erd.mmd | — |
-| M3-D05 | draw-diagrams be-class | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/be-class.mmd | — |
-| M3-D06 | draw-diagrams fe-components | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/fe-components.mmd | — |
-| M3-D07 | draw-diagrams sequence-refresh-and-match | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-refresh-and-match.mmd | — |
-| M3-D08 | draw-diagrams sequence-route-order | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-route-order.mmd | — |
-| M3-D09 | draw-diagrams sequence-venue-down | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-venue-down.mmd | — |
-| M3-D10 | draw-diagrams sequence-measure-precision | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-measure-precision.mmd | — |
-| M3-D11 | draw-diagrams sequence-adjudicate-offline | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-adjudicate-offline.mmd | — |
-| M3-D12 | draw-diagrams state-pair | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/state-pair.mmd | — |
-| M3-D13 | draw-diagrams state-venue-health | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/state-venue-health.mmd | — |
+| M3-D04 | draw-diagrams erd | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/erd.mmd | re-dispatched after G3 Revise (attempt 1 archived) |
+| M3-D05 | draw-diagrams be-class | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/be-class.mmd | re-dispatched after G3 Revise (attempt 1 archived) |
+| M3-D06 | draw-diagrams fe-components | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/fe-components.mmd | re-dispatched after G3 Revise (attempt 1 archived) |
+| M3-D07 | draw-diagrams sequence-refresh-and-match | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-refresh-and-match.mmd | re-dispatched after G3 Revise (attempt 1 archived) |
+| M3-D08 | draw-diagrams sequence-route-order | Full / phase 6b | claude-subagent | done | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-route-order.mmd | 168a16d (complete; only the kit step-counter false positive) |
+| M3-D09 | draw-diagrams sequence-venue-down | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-venue-down.mmd | re-dispatched after G3 Revise (attempt 1 archived) |
+| M3-D10 | draw-diagrams sequence-measure-precision | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-measure-precision.mmd | re-dispatched after G3 Revise (attempt 1 archived) |
+| M3-D11 | draw-diagrams sequence-adjudicate-offline | Full / phase 6b | claude-subagent | done | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-adjudicate-offline.mmd | ce81839 |
+| M3-D12 | draw-diagrams state-pair | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/state-pair.mmd | re-dispatched after G3 Revise (attempt 1 archived) |
+| M3-D13 | draw-diagrams state-venue-health | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/state-venue-health.mmd | re-dispatched after G3 Revise (attempt 1 archived) |
 
 ## Approvals
 
@@ -63,6 +63,8 @@ several harnesses read it and the repo is public.
 | 2026-10-11 16:23 CDT | G2 Revise | docs/architecture/hld.md@5d35114 §5 (M3-D02's three gaps; proposal in the supervisor's message: host zone CN-1+CN-2, developer zone CN-3, repository zone CN-4, TB-1..TB-4 restated) | "/design-hld revise §5 trust zones as proposed" |
 | 2026-10-11 16:30 CDT | G2 (closing) | docs/architecture/hld.md@e74350c (diagrams embedded; binds D13-D16 and the §5 revision; also covers: push milestone/m3-design + draft MR !3) | "approve, also push and /design-lld" |
 | 2026-10-11 16:31 CDT | decision: LLD scope (design-lld Input 6 question, options a M4 only / b M4-M6 in one pass / do nothing) | docs/product/prd.md@40eb5d5 ## Milestone cut | "b, all three in one pass" |
+| 2026-10-11 17:10 CDT | G3 Revise | docs/architecture/lld.md@5f07d6d (the 8 findings from M3-D04..D13 listed in the supervisor's message) | "/design-lld revise per the 8 diagram findings, also we can deploy things later, lets just run things locally for now, and also give instructions in the repo for anyone that wants to run locally" |
+| 2026-10-11 17:10 CDT | decision: run locally first, deploy to Railway later; local-run instructions in the repo (same words as the G3 Revise row) | PRD C-2 / US-7 sequencing; REQ-25 setup instructions | "/design-lld revise per the 8 diagram findings, also we can deploy things later, lets just run things locally for now, and also give instructions in the repo for anyone that wants to run locally" |
 
 ## Log
 
@@ -106,3 +108,14 @@ several harnesses read it and the repo is public.
 2026-10-11 16:38 CDT DISPATCH M3-D11 harness=claude-subagent why=draw-diagrams sequence-adjudicate-offline: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D11/task.md
 2026-10-11 16:38 CDT DISPATCH M3-D12 harness=claude-subagent why=draw-diagrams state-pair: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D12/task.md
 2026-10-11 16:38 CDT DISPATCH M3-D13 harness=claude-subagent why=draw-diagrams state-venue-health: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D13/task.md
+2026-10-11 16:41 CDT RESULT M3-D06 harness=claude-subagent status=human_review evidence=1 gap: lld.md §3 FE-2 'Owns state' says ST-1 while the State ownership row says BE-6 Store owns it (real inconsistency; fix = FE-2 owns none, renders ST-1 passed from the server)
+2026-10-11 16:41 CDT RESULT M3-D13 harness=claude-subagent status=human_review evidence=SM-2 'Terminal: none' leaves no end arrow (intended: health has no final state); kit check counts 5 rows vs 8 arrows because two rows list several From states (fix = one From per row)
+2026-10-11 16:41 CDT RESULT M3-D12 harness=claude-subagent status=human_review evidence=SM-1 no terminal (intended within a snapshot); rows 3-4 list several From/To states (6 rows vs 10 arrows); human-override self-transitions (equivalent→equivalent, related→related) need stating
+2026-10-11 16:41 CDT RESULT M3-D08 harness=claude-subagent status=human_review evidence=0 gaps, all 17 steps drawn; only the kit's step counter failed (it counts aN steps only, missing SEQ-2's b1/c1/c2)
+2026-10-11 16:41 CDT FAIL kit harness=supervisor why=draw-diagrams' step counter counts only 'aN.' alt steps, so a journey with several alt branches (b1, c1) fails its own check though the diagram is complete evidence=.handoff/runs/M3-D08/result.md; route-failure candidate
+2026-10-11 16:42 CDT RESULT M3-D05 harness=claude-subagent status=human_review evidence=4 Depends-on contradictions in lld.md §2 (BE-9, BE-12, BE-13, BE-14)
+2026-10-11 16:43 CDT RESULT M3-D10 harness=claude-subagent status=human_review evidence=2 gaps in SEQ-4: step 5 names no receiver for the label files; the below-0.90 alt says 'after step 7' instead of what it replaces; kit counter misses b1 (same kit bug as M3-D08)
+2026-10-11 16:43 CDT RESULT M3-D09 harness=claude-subagent status=human_review evidence=SEQ-3: retry owner unstated (BE-5 retries); alt a replaces only step 6 so step 7 would answer twice (should replace 6-7); steps 1 and 7 hold two messages each; BE-6 names both Refresher and Store
+2026-10-11 16:44 CDT RESULT M3-D07 harness=claude-subagent status=human_review evidence=SEQ-1: the refusal alt names no replaced range; steps 3, 4, 8 hold two arrows; a1/b1 target 'BE-3 or BE-4'; BE-6 names both Refresher and Store
+2026-10-11 17:12 CDT VERIFY M3-D08 harness=supervisor why=diagram complete (17 steps, 0 gaps); human_review only from the kit step counter (b/c alt steps) — accepted as a kit false positive evidence=.handoff/runs/M3-D08/result.md
+2026-10-11 17:12 CDT ROUTE M3 harness=supervisor why=G3 Revise 17:10 fixed the 8 findings; attempts archived to .handoff/runs/M3-D{04,05,06,07,09,10,12,13}.attempt-20261011T1712/ evidence=lld.md Change log row 17:12 CDT

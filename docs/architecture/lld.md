@@ -7,10 +7,10 @@
 | UX | n/a — no `docs/design/` (map-ux-flows skipped; G1 approved without it, D12); the one page (FR-042) is designed here from FR-042 and AE-036 |
 | Milestone | M4-M6 (M4 tracer bullet, M5 trust, M6 reach), one pass by the human's choice (TRACKER Approvals 2026-10-11 16:31 CDT) |
 | Mode | greenfield — from `specs/M1-cross-venue-equivalence-routing/brief.md` ## Track |
-| Pass | first |
+| Pass | revise per G3 row 2026-10-11 17:10 CDT |
 | Stack | Go 1.27 standard library only (D13); no database: in-memory snapshots, an append-only file log, reviewed files in git (D14, D15) |
 | Contract | `docs/architecture/contracts/openapi.yaml` (OpenAPI 3.1) |
-| Last updated | 2026-10-11 16:36 CDT |
+| Last updated | 2026-10-11 17:12 CDT |
 | Written by | design-lld (Claude Code, claude-opus-5-5) |
 | Approval | G3 — recorded in `.handoff/TRACKER.md ## Approvals` (never in this file); decisions in `docs/decisions/DECISION_JOURNAL.md` |
 
@@ -226,7 +226,8 @@ All times are `time.Time` in UTC (HLD §10 Time).
 | `deciding_rule` | `string` | yes | — | CHECK `ck_decisions_rule`: `most_filled`, `lowest_all_in`, `tie_break`, `only_eligible` | FR-010 |
 | `saving` | `market.Amount` | yes | — | — | against the next-best venue |
 | `venues` | `[]route.VenueResult` (venue, eligible, reason, filled, all-in) | no | — | — | why each venue lost or was left out (FR-011) |
-| `evidence`, `caveats` | `[]string` | no | empty | — | copied from the pair (FR-019) |
+| `evidence` | `[]string` | no | empty | — | copied from the pair (FR-019) |
+| `caveats` | `[]string` | no | empty | — | copied from the pair (FR-019) |
 | `problem_type` | `string` | yes | — | CHECK `ck_decisions_problem`: set iff `outcome` is `refused` | a §4 registry path |
 
 - **Primary key:** none (append-only log; position in the file orders it) · **Foreign keys:** none (the snapshot is gone after the next refresh; the line carries what it needs)
@@ -255,7 +256,8 @@ All times are `time.Time` in UTC (HLD §10 Time).
 | Column | Type | Null | Default | Constraint | Notes |
 |---|---|---|---|---|---|
 | `pair_id` | `string` | no | — | PK `pk_verdicts_pair_fp` with the two fingerprints | |
-| `fingerprint_a`, `fingerprint_b` | `string` | no | — | — | a verdict applies only while both rules texts are unchanged (FR-027) |
+| `fingerprint_a` | `string` | no | — | — | a verdict applies only while both rules texts are unchanged (FR-027) |
+| `fingerprint_b` | `string` | no | — | — | same, for the other market |
 | `verdict` | `string` | no | — | CHECK `ck_verdicts_value`: `equivalent`, `related` | |
 | `differing_part` | `string` | yes | — | set iff `related` | |
 | `reason` | `string` | no | — | CHECK `ck_verdicts_reason`: non-empty | FR-039 |
@@ -273,7 +275,8 @@ All times are `time.Time` in UTC (HLD §10 Time).
 | Column | Type | Null | Default | Constraint | Notes |
 |---|---|---|---|---|---|
 | `pair_id` | `string` | no | — | PK `pk_overrides` with the fingerprints | |
-| `fingerprint_a`, `fingerprint_b` | `string` | no | — | — | |
+| `fingerprint_a` | `string` | no | — | — | |
+| `fingerprint_b` | `string` | no | — | — | |
 | `verdict` | `string` | no | — | CHECK `ck_overrides_value`: `equivalent`, `not_equivalent` | wins over the AI verdict (FR-041) |
 | `note` | `string` | yes | — | — | the person's reason |
 | `decided_at` | `time.Time` | no | — | — | |
@@ -324,10 +327,10 @@ All times are `time.Time` in UTC (HLD §10 Time).
 |---|---|---|---|---|---|
 | `markets` | `books` | 1 — 0..1 | `books.market_key` | a market may have no book yet; it is then not routable | FR-009, FR-023 |
 | `markets` | `pairs` | 1 — 0..N (at most 1 `equivalent`) | `pairs.a_key`, `pairs.b_key` | no | FR-004, D20 |
-| `pairs` | `verdicts` | 1 — 0..1 per fingerprint pair | `pair_id` + fingerprints | no | FR-038, FR-039 |
-| `pairs` | `overrides` | 1 — 0..1 per fingerprint pair | `pair_id` + fingerprints | no | FR-041 |
+| `pairs` | `verdicts` | 0..1 — 0..1 per fingerprint pair (a verdict outlives its pair across refreshes) | `pair_id` + fingerprints | no | FR-038, FR-039 |
+| `pairs` | `overrides` | 0..1 — 0..1 per fingerprint pair (an override outlives its pair across refreshes) | `pair_id` + fingerprints | no | FR-041 |
 | `samples` | `labels` | 1 — 0..N | `labels.sample_id` | a score needs every card labelled by the AI rater and 30 by the human | FR-030, FR-031 |
-| `pairs` | `decisions` | 1 — 0..N | `decisions.order.pair_id` (copied, not linked) | no | FR-012 |
+| `pairs` | `decisions` | 0..1 — 0..N (a logged decision outlives its pair) | `decisions.order.pair_id` (copied, not linked) | no | FR-012 |
 
 ### Invariants the database enforces
 
@@ -462,7 +465,7 @@ only code that knows a venue; `fetch` (BE-5) is the only HTTP client. `route` im
 ### BE-9 decisionlog.Log · package `internal/decisionlog` · CN-1, CN-2 · new
 
 - **Responsibility:** append each decision as one durable JSON line and read pages back newest first.
-- **Depends on:** `os` (SEAM-3 file)
+- **Depends on:** `os` (SEAM-3 file), BE-8 (the `route.Decision` type it stores)
 - **Tables:** writes and reads `decisions`
 - **Transactions:** `Append` writes the whole line and syncs it to disk before returning (INV-6)
 - **Basis:** FR-012, NFR-006, D15
@@ -506,7 +509,7 @@ only code that knows a venue; `fetch` (BE-5) is the only HTTP client. `route` im
 ### BE-12 cmd.Main · package `cmd/equinox` · CN-1, CN-3 · new
 
 - **Responsibility:** parse the command line and wire components for each command.
-- **Depends on:** every BE above
+- **Depends on:** every other BE (BE-1..BE-11, BE-13, BE-14)
 - **Tables:** none · **Transactions:** none
 - **Basis:** FR-043, US-4, US-6, D14, D17
 
@@ -517,7 +520,7 @@ only code that knows a venue; `fetch` (BE-5) is the only HTTP client. `route` im
 ### BE-13 measure.Measurer · package `internal/measure` · CN-3 · new
 
 - **Responsibility:** draw seeded samples, produce blind cards and score labels into a measurement report.
-- **Depends on:** BE-1, BE-7 (`Compare` for the recall pool), `math/rand/v2` (SEAM-4)
+- **Depends on:** BE-1, BE-6 (`*ingest.Snapshot`), BE-7 (`Compare` for the recall pool), `math/rand/v2` (SEAM-4)
 - **Tables:** writes `samples`; reads `labels` · **Transactions:** none
 - **Basis:** FR-028..FR-034, D9, SC-001, SC-002, SC-003
 
@@ -531,7 +534,7 @@ only code that knows a venue; `fetch` (BE-5) is the only HTTP client. `route` im
 ### BE-14 adjudicate.Exchange · package `internal/adjudicate` · CN-3 · new
 
 - **Responsibility:** export undecided pairs as AI cards and import the AI's verdict file after validation.
-- **Depends on:** BE-1, BE-7, BE-13 `Card`
+- **Depends on:** BE-1, BE-6 (`*ingest.Snapshot`), BE-7, BE-10 (`refdata.Verdict`), BE-13 (`Card`)
 - **Tables:** writes `verdicts` (as a reviewed file) · **Transactions:** none
 - **Basis:** FR-038, FR-039, FR-040, D10, D16
 
@@ -560,7 +563,7 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 | Id | Component | Screen | Props in | Events out | Owns state | Screen states rendered |
 |---|---|---|---|---|---|---|
 | **FE-1** | PageShell | index, decision | version, snapshot time | none | none (stateless) | warming up (no snapshot yet), error (problem title) |
-| **FE-2** | PairsTable | index | equivalent pairs (top 50 by score), near misses (top 20) | none (each row links to EP-2 for more) | ST-1 (rendered from the server) | empty ("no equivalent pairs in this refresh"), success |
+| **FE-2** | PairsTable | index | equivalent pairs (top 50 by score), near misses (top 20) | none (each row links to EP-2 for more) | none (stateless; renders ST-1, which BE-6 Store owns and the server passes in) | empty ("no equivalent pairs in this refresh"), success |
 | **FE-3** | HealthPanel | index | venue health rows, refresh report rows, decision-log status | none | none (stateless) | healthy, backing off, unhealthy, warming |
 | **FE-4** | OrderForm | index | pair options, last submitted values | form post to EP-3 | none (stateless; the form fields are plain HTML) | validation error (fields named), rate limited |
 | **FE-5** | DecisionView | decision | the decision or the refusal problem | none | none (stateless) | filled, partial, not filled, refused |
@@ -631,29 +634,34 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 <!-- diagram: sequence-refresh-and-match -->
 
 - **Trigger:** the refresher's catalog timer fires (every 15 min) or the service starts
-- **Participants:** BE-6 Refresher, BE-3 kalshi.Adapter, BE-4 polymarket.Adapter, BE-5 fetch.Client, US-regulated venue, Offshore venue, BE-7 Matcher, BE-10 refdata Set, BE-6 Store
+- **Participants:** BE-6 ingest (Refresher and Store), BE-3 kalshi.Adapter, BE-4 polymarket.Adapter, BE-5 fetch.Client, US-regulated venue, Offshore venue, BE-7 Matcher, BE-10 refdata Set
 - **Preconditions:** BE-10 loaded the reviewed files at start
 
-1. BE-6 → BE-3: `Catalog(ctx)` (L-2), in parallel with step 2
-2. BE-6 → BE-4: `Catalog(ctx)` (L-3)
-3. BE-3 → BE-5 → US-regulated venue: page through open markets, at most 2 requests per second
-4. BE-4 → BE-5 → Offshore venue: page through open markets in 24-hour-volume order; stop at the first market with zero volume
-5. BE-3, BE-4: build each record with `market.NewMarket`; skip and count unreadable, inactive and too-short records
-6. BE-6 → BE-7: `Match(a, b, ref)` → candidate search, `Compare` per candidate, one-to-one assignment
-7. BE-7 → BE-10 Set: apply human overrides, then AI verdicts, whose fingerprints match (SM-1)
-8. BE-6 → BE-3, BE-4: `Books(keys of equivalent pairs)`; afterwards a 30-second book timer repeats this step
-9. BE-6 → BE-6 Store: publish the new immutable snapshot with `venue_health` and `refresh_reports` (one pointer swap)
+1. BE-6 → BE-3: `Catalog(ctx)` (L-2), in parallel with step 3
+2. BE-3 → BE-5: page requests for open markets, paced to at most 2 per second
+3. BE-6 → BE-4: `Catalog(ctx)` (L-3)
+4. BE-4 → BE-5: page requests in 24-hour-volume order, stopping at the first market with zero volume
+5. BE-5 → US-regulated venue: HTTPS GET per page (L-2)
+6. BE-5 → Offshore venue: HTTPS GET per page (L-3)
+7. BE-3 → BE-6: active markets plus counts (unreadable, inactive and too-short records skipped and counted)
+8. BE-4 → BE-6: active markets plus counts
+9. BE-6 → BE-7: `Match(a, b, ref)` → candidate search, `Compare` per candidate, one-to-one assignment
+10. BE-7 → BE-10: reads human overrides, then AI verdicts, whose fingerprints match (SM-1)
+11. BE-6 → BE-3: `Books(keys of equivalent pairs)`; a 30-second book timer repeats this step
+12. BE-6 → BE-4: `Books(keys of equivalent pairs)`; the same timer repeats this step
+13. BE-6 → BE-6: publish the new immutable snapshot with `venue_health` and `refresh_reports` (one pointer swap)
 
-**alt a venue fails or returns unreadable data after its retries** (replaces steps 3-5 for that venue)
+**alt the offshore venue fails or returns unreadable data after its retries** (replaces steps 4, 6 and 8; the US-regulated venue's failure replaces steps 2, 5 and 7 the same way)
 
-- a1. BE-5 → BE-3 or BE-4: transport error or `ErrMalformed` after up to 3 attempts
-- a2. BE-6: keeps that venue's markets and books from the previous snapshot, sets its health `unhealthy` with the error (FR-021, SM-2)
-- a3. BE-6 → Store: publishes; the health panel shows the venue unhealthy with its last good time
+- a1. BE-5 → BE-4: transport error or `ErrMalformed` after BE-5's own retries (up to 3 attempts)
+- a2. BE-4 → BE-6: the error
+- a3. BE-6 → BE-6: keeps that venue's markets and books from the previous snapshot, sets its health `unhealthy` with the error (FR-021, SM-2), then publishes as in step 13
 
-**alt a venue refuses requests (rate limit or blocked)**
+**alt the offshore venue refuses requests (rate limit or blocked)** (replaces steps 4, 6 and 8; the same for the US-regulated venue in steps 2, 5 and 7)
 
-- b1. BE-5 → BE-3 or BE-4: `ErrRefused{Wait}` (the stated wait, or 5 minutes for a block)
-- b2. BE-6: sets that venue `backing_off` until the wait passes and sends it no requests meanwhile (FR-025)
+- b1. BE-5 → BE-4: `ErrRefused{Wait}` (the stated wait, or 5 minutes for a block)
+- b2. BE-4 → BE-6: the refusal
+- b3. BE-6 → BE-6: sets that venue `backing_off` until the wait passes and sends it no requests meanwhile (FR-025), then publishes as in step 13
 
 - **Postconditions:** one new snapshot is current; old readers finish on the old one
 - **Invariants touched:** INV-1, INV-4
@@ -701,21 +709,24 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 <!-- diagram: sequence-venue-down -->
 
 - **Trigger:** the offshore venue times out on every request during a refresh, then an order arrives
-- **Participants:** BE-6 Refresher, BE-5 fetch.Client, Offshore venue, BE-6 Store, Labs engineer (actor), BE-11 web.Server, BE-8 Router, BE-9 Log
+- **Participants:** BE-6 ingest (Refresher and Store), BE-5 fetch.Client, Offshore venue, Labs engineer (actor), BE-11 web.Server, BE-8 Router, BE-9 Log
 - **Preconditions:** an earlier refresh succeeded for both venues
 
-1. BE-6 → BE-5 → Offshore venue: book refresh request times out (30 s), retried up to 3 times
-2. BE-6: keeps the offshore venue's last good books; health `unhealthy` with "timed out" (FR-021)
-3. BE-6 → Store: publishes the snapshot
-4. Labs engineer → BE-11: POST /route (EP-3)
-5. BE-11 → Store: `Current()`; builds quotes; the offshore book's age is 95 s, above the 90 s freshness limit
-6. BE-11 → BE-8: `Route(...)` → the offshore venue is left out with "data 95 s old" (FR-022); the US-regulated venue fills
-7. BE-11 → BE-9: `Append(decision)`; → Labs engineer: 200 decision naming both venues' reasons
+1. BE-6 → BE-5: book refresh request for the offshore venue's matched markets
+2. BE-5 → Offshore venue: request; each attempt times out at 30 s and BE-5 retries up to 3 times
+3. BE-5 → BE-6: timeout error
+4. BE-6 → BE-6: keeps the offshore venue's last good books, sets its health `unhealthy` with "timed out" (FR-021) and publishes the snapshot
+5. Labs engineer → BE-11: POST /route (EP-3)
+6. BE-11 → BE-6: `Store.Current()`; the quotes show the offshore book is 95 s old, above the 90 s freshness limit
+7. BE-11 → BE-8: `Route(...)` → the offshore venue is left out with "data 95 s old" (FR-022); the US-regulated venue fills
+8. BE-11 → BE-9: `Append(decision)`
+9. BE-11 → Labs engineer: 200 decision naming both venues' reasons
 
-**alt every venue is stale or unhealthy** (replaces step 6)
+**alt every venue is stale or unhealthy** (replaces steps 7-9)
 
-- a1. BE-8 → BE-11: outcome `not_filled`, each venue with its reason (FR-017)
-- a2. BE-11 → Labs engineer: 200 decision "not filled" with the reasons
+- a1. BE-11 → BE-8: `Route(...)` → outcome `not_filled`, each venue with its reason (FR-017)
+- a2. BE-11 → BE-9: `Append(decision)`
+- a3. BE-11 → Labs engineer: 200 decision "not filled" with the reasons
 
 - **Postconditions:** a decision exists although a venue is down; 0 requests reached any venue while deciding (NFR-002)
 - **Invariants touched:** INV-1, INV-6
@@ -732,19 +743,21 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 2. BE-12 → BE-6: `RefreshOnce(ctx)` → snapshot
 3. BE-12 → BE-13: `Draw(pairs, snapshot, seed, 100, rulesVersion)` → sample with a recall pool; written to `refdata/samples/`
 4. BE-12 → BE-13: `Cards(sample)` → blind cards (no verdict, no score) for the AI rater and the human rater (INV-8)
-5. AI rater (via the agent harness, L-8) → labels file; Human rater → labels file for 30 of the same cards (L-10)
-6. Labs lead → BE-12: `import-labels`; BE-13 `ImportLabels` validates each line (FR-033)
-7. Labs lead → BE-12: `score`; BE-13 `Score(...)` → precision with counts and 95% interval, recall, kappa (FR-030, FR-031)
-8. BE-12 → Labs lead: the report; a merge request carries the sample and labels into CN-4 (L-9)
+5. AI rater → BE-12: an AI labels file for every card, carried by the agent harness to the Labs lead's command line (L-8)
+6. Human rater → BE-12: a human labels file for 30 of the same cards, saved on the Labs lead's machine (L-10)
+7. Labs lead → BE-12: `import-labels`; BE-13 `ImportLabels` validates each line (FR-033)
+8. Labs lead → BE-12: `score`; BE-13 `Score(...)` → precision with counts and 95% interval, recall, kappa (FR-030, FR-031)
+9. BE-12 → Labs lead: the report; a merge request carries the sample and labels into CN-4 (L-9)
 
-**alt the rules version changed since the sample was drawn** (replaces step 7)
+**alt the rules version changed since the sample was drawn** (replaces steps 8-9)
 
 - a1. BE-13 → BE-12: error "labels drawn under rules v<x>, current is v<y>" (INV-9)
 - a2. BE-12 → Labs lead: exit 1; a new sample must be drawn and labelled
 
-**alt precision is below 0.90** (after step 7)
+**alt precision is below 0.90** (replaces step 9)
 
-- b1. BE-13: the report states that routing needs a human-reviewed pair list (FR-034)
+- b1. BE-13 → BE-12: the report with the statement that routing needs a human-reviewed pair list (FR-034)
+- b2. BE-12 → Labs lead: that report; the merge request still carries the sample and labels into CN-4 (L-9)
 
 - **Postconditions:** a reproducible sample, two label files and a report, all reviewable in git
 - **Invariants touched:** INV-8, INV-9
@@ -778,7 +791,7 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 
 <!-- diagram: state-pair -->
 
-- **Initial:** `undecided` · **Terminal:** none within a snapshot; a new snapshot rebuilds every pair · **Stored in:** CHECK `ck_pairs_verdict`
+- **Initial:** `undecided` · **Terminal:** none by design (draw no end state): every refresh rebuilds every pair, so no state is final · **Stored in:** CHECK `ck_pairs_verdict`
 - **Enforced in:** BE-7, the only writer of `pairs`; a snapshot is immutable once published, so no two writers race
 
 | State | Meaning |
@@ -792,8 +805,12 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 |---|---|---|---|---|---|
 | `undecided` | rules compare (BE-7.Compare in SEQ-1) | every part agrees | `equivalent` | evidence and timing caveat recorded | — |
 | `undecided` | rules compare | a known part differs | `related` | differing part recorded | — |
-| `undecided` | AI verdict applied (BE-7 with BE-10 Set) | fingerprints match the verdict's | `equivalent` or `related` | `decided_by = ai` | a stale verdict is ignored and the pair stays `undecided` |
-| `equivalent`, `related` | human override applied | fingerprints match | `equivalent` or `related` | `decided_by = human` | — |
+| `undecided` | AI verdict "equivalent" applied (BE-7 with BE-10 Set) | the verdict's fingerprints match | `equivalent` | `decided_by = ai` | a stale verdict is ignored and the pair stays `undecided` |
+| `undecided` | AI verdict "related" applied | the verdict's fingerprints match | `related` | `decided_by = ai`; differing part from the verdict | a stale verdict is ignored |
+| `equivalent` | human override "equivalent" (a person confirms the pair) | fingerprints match | `equivalent` | `decided_by = human` | — |
+| `equivalent` | human override "not equivalent" | fingerprints match | `related` | `decided_by = human`; differing part "human review" | — |
+| `related` | human override "equivalent" | fingerprints match | `equivalent` | `decided_by = human` | — |
+| `related` | human override "not equivalent" (a person confirms the pair) | fingerprints match | `related` | `decided_by = human` | — |
 | `equivalent` | rules text changes (BE-11 check in SEQ-2, or the next refresh) | fingerprint differs | `stale` | orders refused with `/problems/rules-changed` | — |
 | `stale` | next refresh re-matches | — | `undecided` | pair rebuilt | — |
 
@@ -801,7 +818,7 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 
 <!-- diagram: state-venue-health -->
 
-- **Initial:** `warming` · **Terminal:** none · **Stored in:** CHECK `ck_venue_health_state`
+- **Initial:** `warming` · **Terminal:** none by design (draw no end state): health is recomputed every refresh for as long as the service runs · **Stored in:** CHECK `ck_venue_health_state`
 - **Enforced in:** BE-6, the only writer; each refresh computes the next row from the previous one
 
 | State | Meaning |
@@ -814,10 +831,13 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 | From | Event (trigger) | Guard | To | Side effects | If illegal |
 |---|---|---|---|---|---|
 | `warming` | refresh succeeds (SEQ-1) | — | `healthy` | `last_good_at` set | — |
-| `warming`, `healthy` | refresh fails after retries | — | `unhealthy` | `last_error` set; previous data kept | — |
-| `healthy`, `unhealthy`, `warming` | venue refuses (`ErrRefused`) | — | `backing_off` | `wait_until` set | — |
-| `backing_off` | timer reaches `wait_until` | — | `unhealthy` | next refresh may run | — |
+| `warming` | refresh fails after retries | — | `unhealthy` | `last_error` set | — |
+| `warming` | venue refuses (`ErrRefused`) | — | `backing_off` | `wait_until` set | — |
+| `healthy` | refresh fails after retries | — | `unhealthy` | `last_error` set; previous data kept | — |
+| `healthy` | venue refuses (`ErrRefused`) | — | `backing_off` | `wait_until` set; previous data kept | — |
+| `unhealthy` | venue refuses (`ErrRefused`) | — | `backing_off` | `wait_until` set | — |
 | `unhealthy` | refresh succeeds | — | `healthy` | `last_good_at` set; `last_error` cleared | — |
+| `backing_off` | timer reaches `wait_until` | — | `unhealthy` | the next refresh may run | — |
 
 ## 7. Invariants → enforcement
 
@@ -944,3 +964,4 @@ recorded venue responses in acceptance tests (they are the venues' own bytes, D1
 | Date | Change | Ids affected | Approval |
 |---|---|---|---|
 | 2026-10-11 16:36 CDT | First draft (M4-M6 in one pass) | all | pending G3 |
+| 2026-10-11 17:12 CDT | Revise per G3 row 2026-10-11 17:10 CDT ("revise per the 8 diagram findings"): §1 one column per row and 0..1 parent ends; §2 Depends on for BE-9, BE-12, BE-13, BE-14; §3 FE-2 owns no state; SEQ-1 one arrow per step with replaced ranges; SEQ-3 retries owned by BE-5, alt replaces steps 7-9; SEQ-4 label receivers and alt ranges; SM-1 and SM-2 one transition per row, no terminal state by design | `decisions`, `verdicts`, `overrides`, Relationships, BE-9, BE-12, BE-13, BE-14, FE-2, SEQ-1, SEQ-3, SEQ-4, SM-1, SM-2 | pending G3 |
