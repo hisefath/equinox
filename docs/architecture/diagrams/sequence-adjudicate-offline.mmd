@@ -1,0 +1,27 @@
+%% diagram: sequence-adjudicate-offline
+%% source: docs/architecture/lld.md#seq-5-adjudicate-undecided-pairs-offline-sequence-adjudicate-offline-covers-us-6-fr-038fr-041-ae-032ae-035 @ 5f07d6d
+%% drawn: 2026-10-11T21:39:41Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams sequence-adjudicate-offline`.
+sequenceDiagram
+    autonumber
+    actor P1 as Labs engineer
+    participant BE12 as BE-12 cmd.Main
+    participant BE14 as BE-14 Exchange
+    participant X1 as AI adjudicator (external)
+    participant CN4 as CN-4 reviewed files
+    participant BE10 as BE-10 Loader
+    participant BE7 as BE-7 Matcher
+    P1->>BE12: export-adjudication -prompt v1
+    BE12->>BE14: Export(pairs, snapshot, #quot;v1#quot;) → cards with both rules texts and fingerprints
+    P1->>X1: (agent harness, L-8) cards in#59; verdict file out (verdict, differing part, reason, model, prompt version)
+    P1->>BE12: import-verdicts#59; BE-14 Import(...) validates every line and every fingerprint
+    alt main path (steps 5-6)
+        BE12->>CN4: writes refdata/verdicts.jsonl#59; a person reviews it in a merge request, adding any overrides (FR-041)
+        Note over CN4: After merge and deploy: BE-10 Load reads verdicts and overrides#59; BE-7 applies them at the next match (SM-1)
+    else the verdict file has a bad line or a stale fingerprint
+        BE14-->>BE12: error naming the line#59; nothing is imported
+        BE12-->>P1: exit 1#59; the pairs stay undecided and not routable (FR-040)
+    end
