@@ -7,10 +7,10 @@ several harnesses read it and the repo is public.
 ## Resume
 
 <!-- Rewritten as the LAST edit of every supervisor move. Times come from `date`. -->
-- **As of:** 2026-10-11 16:14 CDT
-- **In flight:** M3 G2: hld.md committed (4 decisions D13-D16, 7 open Q); diagram jobs M3-D01..D03 dispatched to Claude subagents in worktrees from milestone/m3-design
-- **Next:** G2 decisions one per reply (D13 → D16), verify + squash diagram jobs, embed, closing G2 → log-decision → /design-lld
-- **Waiting on:** the human: D14; then a G2 Revise of hld.md §5 for the M3-D02 gaps (re-dispatch hld-container after)
+- **As of:** 2026-10-11 16:23 CDT
+- **In flight:** M3 G2: D13-D17 accepted; hld.md §5 revised (zones); M3-D02 re-dispatched from the revised milestone head
+- **Next:** verify M3-D02 → squash D01-D03 onto milestone/m3-design → embed-diagrams → commit → closing G2 → log-decision → push → /design-lld
+- **Waiting on:** M3-D02 redraw
 - **Verified:** design-hld Done-when checks all pass (CN=4 L=11 TB=4 INV=9 D=4 open=7)
 
 ## Tasks
@@ -27,7 +27,7 @@ several harnesses read it and the repo is public.
 | M2-S01 | /write-prd (human: "approve and /write-prd") | Full / phase 3 write-prd | supervisor (claude-opus-5-5) | done | 2026-10-11 16:01 CDT | docs/product/prd.md | 40eb5d5 (G1); D7-D12 |
 | M3-S01 | /design-hld (human: "approve, also push and /design-hld") | Full / phase 5 design-hld | supervisor (claude-opus-5-5) | done | 2026-10-11 16:14 CDT | docs/architecture/hld.md | — (awaiting G2) |
 | M3-D01 | draw-diagrams hld-context | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-context.mmd | cb8c797 (m3/d01-hld-context) |
-| M3-D02 | draw-diagrams hld-container | Full / phase 6b | claude-subagent | human_review | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-container.mmd | adcc25b (m3/d02-hld-container), 3 ⚠ in hld.md §5 |
+| M3-D02 | draw-diagrams hld-container | Full / phase 6b | claude-subagent | working | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-container.mmd | re-dispatched after G2 Revise of §5 (attempt 1 archived: adcc25b) |
 | M3-D03 | draw-diagrams deployment | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/deployment.mmd | 5328a88 (m3/d03-deployment) |
 
 ## Approvals
@@ -49,6 +49,7 @@ several harnesses read it and the repo is public.
 | 2026-10-11 16:20 CDT | G2 D15 | docs/architecture/hld.md@5d35114 ### D15 (journal id D15) | "approved for the recc" |
 | 2026-10-11 16:22 CDT | G2 D16 | docs/architecture/hld.md@5d35114 ### D16 (journal id D16) | "yes lets do it" (quoting the original recommendation: "b) exported files plus an agent harness"; the earlier venue-mock question stays unanswered, so the design's recorded-responses-plus-live path is unchanged) |
 | 2026-10-11 16:22 CDT | decision: venue mocks (chat options card a/b/c, after the human asked for mock venue APIs to save time) | docs/architecture/hld.md@5d35114 (CN-3 recording, §11 CI row: unchanged) | "yes i agree" (quoting option a "Recorded real responses as the mock, plus a live switch (recommended).") |
+| 2026-10-11 16:23 CDT | G2 Revise | docs/architecture/hld.md@5d35114 §5 (M3-D02's three gaps; proposal in the supervisor's message: host zone CN-1+CN-2, developer zone CN-3, repository zone CN-4, TB-1..TB-4 restated) | "/design-hld revise §5 trust zones as proposed" |
 
 ## Log
 
@@ -77,3 +78,4 @@ several harnesses read it and the repo is public.
 2026-10-11 16:16 CDT VERIFY M3-D01 harness=supervisor why=scope-guard OK (1 path in Owns); diff = hld-context.mmd only; 10 nodes = the 10 §2 rows, 9 edges labelled with each row's interaction evidence=scope-guard exit 0
 2026-10-11 16:18 CDT RESULT M3-D02 harness=claude-subagent status=human_review evidence=result.md: 3 gaps in hld.md §5 (CN-2's trust zone unstated; TB-2 and TB-3 overlap at CN-3 without nesting; TB-4's trusted side vs its crossing connections disagree)
 2026-10-11 16:18 CDT VERIFY M3-D02 harness=supervisor why=scope-guard OK; the three gaps are real defects in hld.md §5 (design-hld's section), not the drawing; fix = /design-hld revision mode restating §5 as nested zones, then re-dispatch M3-D02 evidence=hld.md@5d35114 §5 rows TB-1..TB-4
+2026-10-11 16:23 CDT ROUTE M3-D02 harness=supervisor why=G2 Revise of §5 (Approvals 16:23 CDT) fixed the three gaps M3-D02 reported; attempt 1 archived to .handoff/runs/M3-D02.attempt-20261011T1623/ evidence=hld.md Change log row 16:24 CDT

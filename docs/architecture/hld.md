@@ -5,7 +5,7 @@
 | PRD | `docs/product/prd.md` @ 40eb5d5 |
 | Milestone | M3-design |
 | Mode | greenfield (v1 at main@9c3bf48 is a cited prior experiment only, D3) |
-| Last updated | 2026-10-11 16:10 CDT |
+| Last updated | 2026-10-11 16:24 CDT |
 | Written by | design-hld (Claude Code, claude-opus-5-5) |
 | Approval | G2 — recorded in `.handoff/TRACKER.md ## Approvals` (never in this file); decisions in `docs/decisions/DECISION_JOURNAL.md` |
 
@@ -146,12 +146,22 @@ API, a background worker, a database, a queue, a cache, an object store. It is n
 
 ### Boundaries
 
+Every container sits in exactly one trust zone, and zones never overlap; a boundary is the edge a connection
+crosses between zones (or from an outside party into a zone).
+
+- **Host zone** (Railway): CN-1 and CN-2. L-4 (service → decision log) stays inside this zone and crosses no
+  boundary.
+- **Developer zone** (the human's machine and the CI runner): CN-3 and the working copy of the reviewed data. L-6
+  and L-10 (people working on their own machine) stay inside this zone.
+- **Repository zone** (GitLab): CN-4, the reviewed reference data, changed only by a merged merge request.
+- **Outside parties:** anonymous internet users, the two venues, the AI model provider.
+
 | Id | Boundary | Less trusted side | More trusted side | Crossing connections |
 |---|---|---|---|---|
-| TB-1 | internet → service | anonymous browser or script | CN-1 | L-1 |
-| TB-2 | venues → service | the venues' public data | CN-1, CN-3 | L-2, L-3, L-7 |
-| TB-3 | AI provider ↔ offline jobs | AI model output | CN-3, CN-4 | L-8 |
-| TB-4 | repository → host | anyone who can push or change Railway settings | the running CN-1 | L-9, L-11 |
+| TB-1 | internet → host zone | anonymous browser or script on the internet | host zone (CN-1) | L-1 |
+| TB-2 | venues → our zones | the venues' public data | host zone (CN-1) for L-2 and L-3; developer zone (CN-3) for L-7 | L-2, L-3, L-7 |
+| TB-3 | AI provider → developer zone | AI model output | developer zone (CN-3) | L-8 |
+| TB-4 | the change path: developer zone → repository zone → host zone | unreviewed changes from the developer zone, and anyone who can change Railway settings | repository zone (CN-4, only merged changes) and, after a human deploy of a named commit, the host zone (CN-1) | L-9 (developer → repository), L-11 and L-5 (repository → host) |
 
 ### Threats per boundary
 
@@ -402,3 +412,4 @@ never the picture.
 | Date | Change | Ids affected | Approval |
 |---|---|---|---|
 | 2026-10-11 16:10 CDT | First draft | all | pending G2 |
+| 2026-10-11 16:24 CDT | Revision (G2 Revise "revise §5 trust zones as proposed"): §5 restated as three non-overlapping trust zones; CN-2 placed in the host zone with CN-1 so L-4 crosses no boundary; TB-2 and TB-3 now name the zone each crossing enters; TB-4 is the change path and its crossings are L-9, L-11 and L-5 | TB-1, TB-2, TB-3, TB-4 | pending closing G2 |
