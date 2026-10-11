@@ -50,6 +50,7 @@ several harnesses read it and the repo is public.
 | 2026-10-11 16:22 CDT | G2 D16 | docs/architecture/hld.md@5d35114 ### D16 (journal id D16) | "yes lets do it" (quoting the original recommendation: "b) exported files plus an agent harness"; the earlier venue-mock question stays unanswered, so the design's recorded-responses-plus-live path is unchanged) |
 | 2026-10-11 16:22 CDT | decision: venue mocks (chat options card a/b/c, after the human asked for mock venue APIs to save time) | docs/architecture/hld.md@5d35114 (CN-3 recording, §11 CI row: unchanged) | "yes i agree" (quoting option a "Recorded real responses as the mock, plus a live switch (recommended).") |
 | 2026-10-11 16:23 CDT | G2 Revise | docs/architecture/hld.md@5d35114 §5 (M3-D02's three gaps; proposal in the supervisor's message: host zone CN-1+CN-2, developer zone CN-3, repository zone CN-4, TB-1..TB-4 restated) | "/design-hld revise §5 trust zones as proposed" |
+| 2026-10-11 16:30 CDT | G2 (closing) | docs/architecture/hld.md@e74350c (diagrams embedded; binds D13-D16 and the §5 revision; also covers: push milestone/m3-design + draft MR !3) | "approve, also push and /design-lld" |
 
 ## Log
 

@@ -29,13 +29,14 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 - ●●○ D14 — One service with snapshots over a split ingest; a restart warm-up.
 - ●●○ D16 — AI via exported files and a harness over an API key; manual rounds.
 
-### Process (6)
+### Process (7)
 
 - ●●○ D1 — Restart via the kit on a branch over keeping v1; costs a rebuild.
 - ●●○ D3 — Cite v1 as evidence over reusing its code; costs re-checking facts.
 - ●●○ D4 — Finish v2 today over submitting v1; main keeps v1 until green.
 - ●●○ D6 — Full track over Standard; about a dozen gates in one day.
 - ●●○ D12 — PRD approved with both open items as recommended; terms of use unread.
+- ●●○ D18 — HLD approved after a trust-zone fix; open questions measured in M4.
 - ●○○ D5 — Docs-only checks until design over Go checks now; checks prove little early.
 
 ## How the workflow improved
@@ -48,6 +49,7 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D18 · Process · ●●○ — HLD approved after a trust-zone fix; open questions measured in M4.
 - D17 · Data · ●○○ — Recorded real responses with a live switch over invented mocks; recordings age.
 - D16 · Infrastructure · ●●○ — AI via exported files and a harness over an API key; manual rounds.
 - D15 · Data · ●●○ — Log file plus git-reviewed data over Postgres; reads scan a file.
