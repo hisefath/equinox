@@ -7,10 +7,10 @@ several harnesses read it and the repo is public.
 ## Resume
 
 <!-- Rewritten as the LAST edit of every supervisor move. Times come from `date`. -->
-- **As of:** 2026-10-11 17:19 CDT
-- **In flight:** M3 closing G3 (lld.md + 10 embedded diagrams); M4 build: T001 done (0a64b51), T002 router, T003 venues, T004 matcher dispatched in parallel
-- **Next:** closing G3 → T005 integration (ingest, log, web, cmd, measure, adjudicate) → make check → review → docs (README run-locally, AI usage, test results) → demo script → submit by 23:00 CDT
-- **Waiting on:** the human: closing G3; build workers T002-T004
+- **As of:** 2026-10-11 17:56 CDT
+- **In flight:** M4 build approved at d3fe3ab; pushed with draft MR; measurement provisional (precision 12/12, CI 0.76-1.00; recall 0.80) pending the human's 30 blind labels
+- **Next:** human labels → score with kappa → TEST_RESULTS.md, demo script → merge M1..M4 into main in order (D4) → submit by 23:00 CDT
+- **Waiting on:** the human: 30 blind labels (data/human-labels.md in the m4 worktree); demo recording
 - **Verified:** make check OK with 10 LLD diagrams embedded; all 13 .mmd parse in mermaid 11.4.1 (browser)
 
 ## Tasks
@@ -69,6 +69,7 @@ several harnesses read it and the repo is public.
 | 2026-10-11 17:16 CDT | G3 D20 | docs/architecture/lld.md@d7cc8b2 ### D20 (journal id D20; provisional until the closing G3) | "for this project, lets tighten up the flow so that we can reduce a lot of time between human  gates, as we have to deliver this soon. lets not run tests and builds everytime, lets iterate faster, so wherever we can cut time. in the future, we'll deploy an observability tool for you to read from to see what to do better, but for now, take your best route at making the time to finihsh this project shorter, as its due at 11pm tonight approve for D20" |
 | 2026-10-11 17:16 CDT | standing: fast flow for the rest of Equinox (supervisor takes its recommended defaults; gates batched into one closing check-in per phase; tests and builds at milestone ends, not every step; due 23:00 CDT) | process | "for this project, lets tighten up the flow so that we can reduce a lot of time between human  gates, as we have to deliver this soon. lets not run tests and builds everytime, lets iterate faster, so wherever we can cut time. in the future, we'll deploy an observability tool for you to read from to see what to do better, but for now, take your best route at making the time to finihsh this project shorter, as its due at 11pm tonight approve for D20" |
 | 2026-10-11 17:21 CDT | G3 (closing) | docs/architecture/lld.md@4f9a72d (diagrams embedded; binds D19, D20 and the LLD revision) | "approve, let me know when the build is done" |
+| 2026-10-11 17:56 CDT | build check-in (D22; stands in for G4 + build review) | milestone/m4-build@d3fe3ab | "approve, also push" |
 
 ## Log
 
