@@ -1,0 +1,14 @@
+[
+  {
+    "venue": "kalshi",
+    "regions": ["US", "non-US"],
+    "source": "R06 F7: CFTC designated KalshiEX LLC a contract market (release 8302-20, DCM list)",
+    "checked_on": "2026-10-11"
+  },
+  {
+    "venue": "polymarket",
+    "regions": ["non-US"],
+    "source": "R06 F8, F10: polymarket.com has no DCM designation and its own pages bar new US orders",
+    "checked_on": "2026-10-11"
+  }
+]
