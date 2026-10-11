@@ -270,3 +270,24 @@ func (m Market) Active() (bool, string) {
 	}
 	return true, ""
 }
+
+// MarshalJSON writes an amount as an exact decimal dollar string ("0.585"), as the API contract specifies.
+func (a Amount) MarshalJSON() ([]byte, error) { return []byte(`"` + a.String() + `"`), nil }
+
+// UnmarshalJSON reads a decimal dollar string (or a JSON number in micro-dollars, for older files).
+func (a *Amount) UnmarshalJSON(b []byte) error {
+	s := string(b)
+	if len(s) >= 2 && s[0] == '"' {
+		neg := strings.HasPrefix(s[1:len(s)-1], "-")
+		v, err := ParseAmount(strings.TrimPrefix(s[1:len(s)-1], "-"))
+		if neg {
+			v = -v
+		}
+		*a = v
+		return err
+	}
+	var n int64
+	_, err := fmt.Sscan(s, &n)
+	*a = Amount(n)
+	return err
+}
