@@ -93,11 +93,11 @@ explained decision that names the unhealthy venue."
 ## 8. Measured matching quality (30 s)
 
 **Show:** `docs/TEST_RESULTS.md`, the measurement section.
-**Screen:** precision 12/12 = 1.00 (95% interval 0.76-1.00), recall 12/15 = 0.80, kappa 1.00 between two blind AI raters.
+**Screen:** precision 12/12 = 1.00 (95% interval 0.76-1.00), recall 12/15 = 0.80, a three-model blind quorum unanimous on all 30 pairs.
 **Say:** "Pair counts say nothing about correctness, so we measured. A fixed-seed random sample of equivalent pairs,
 labelled blind by an AI rater that never sees our verdict, gives 12 out of 12 correct. But the lower bound is 0.76, under our 0.90 gate, because 12 is a small sample, so the
-gate is not proven yet. Recall is 0.80: the three misses write a threshold differently. A second, independent blind
-rater agreed on all 30 pairs, but both raters are models, and a human second rater is the next step."
+gate is not proven yet. Recall is 0.80: the three misses write a threshold differently. A blind quorum of three
+different models agreed on all 30 pairs, but they are all one vendor's models, so a human rater is the next step."
 
 ## 9. Where AI is and isn't used, then the verdict (30 s)
 

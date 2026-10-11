@@ -12,7 +12,7 @@ where AI sits (and does not sit) inside the running system.
 | How it was used | The developer made every product and design decision at a human gate; the AI drafted each artifact, ran research and builds, and recorded the developer's exact words before acting. Each gate answer is a dated entry in `.handoff/TRACKER.md ## Approvals` and a `D<n>` entry in `docs/decisions/DECISION_JOURNAL.md` |
 | AI in the routing path | **None.** Routing is a deterministic Go function over a frozen snapshot (D10, INV-1) |
 | AI in matching | **Offline only, and optional:** pairs the deterministic rules cannot settle can be exported, adjudicated by an AI agent outside the product, reviewed by a person in a merge request, and only then read by the router (D10, D16) |
-| AI in measurement | An AI rater labels a blind sample (it never sees the system's verdict or score); a second, independent blind AI rater labelled 30 of the same pairs and agreement is reported as Cohen's kappa. The plan (D9) was for the developer to be that second rater; under the deadline the developer chose an AI substitute, disclosed in `docs/TEST_RESULTS.md` |
+| AI in measurement | An AI rater labels a blind sample (it never sees the system's verdict or score); a blind quorum of three models (Fable, Opus, Sonnet; majority of 3) labelled 30 of the same pairs and agreement is reported as Cohen's kappa. The plan (D9) was for the developer to be that second rater; under the deadline the developer chose the model quorum instead, disclosed in `docs/TEST_RESULTS.md` |
 
 ## Why v2 exists
 
@@ -46,6 +46,6 @@ over without a gate choosing it (D3).
 
 ## Limits of the AI-produced evidence
 
-- AI labels are a strong second opinion, not ground truth. Both raters were models, so their agreement (kappa 1.00) can hide a shared blind spot; human labels remain the open check.
+- AI labels are a strong second opinion, not ground truth. Every rater was a Claude model, so their unanimity can hide a shared blind spot; human labels remain the open check.
 - The US-regulated venue's fee schedule could not be read by the research agents (HTTP 429); the fee is an
   assumption until a person reads it.

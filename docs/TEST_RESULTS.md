@@ -53,22 +53,25 @@ never the verdict, score or evidence; INV-8). Gate: precision ≥ 0.90 (aspirati
 |---|---|---|
 | Precision | **12 / 12 = 1.00**, 95% Wilson interval **0.76 - 1.00** | AI rater 1, all 12 equivalent pairs |
 | Recall | **12 / 15 = 0.80** | AI rater 1, 12 found + 100-pair rejected pool |
-| Agreement between raters | **30 / 30, Cohen's kappa = 1.00** | AI rater 1 vs a second, independent blind AI rater on 30 pairs (12 precision + 18 pool) |
+| Quorum check | **30 / 30 unanimous; every pairwise Cohen's kappa = 1.00** | Three fresh blind raters on 30 pairs (12 precision + 18 pool), one per model: Fable 5.1, Opus 5.5, Sonnet 5.5; majority of 3 decides. The quorum confirms all 12 equivalents and finds no equivalent in the 18 pool pairs, the same as AI rater 1 |
 
-Labels: `refdata/labels/20261011-20261011.jsonl` (rater 1), `test-results/labels-second-rater-ai.jsonl` (rater 2).
+Labels: `refdata/labels/20261011-20261011.jsonl` (rater 1); `test-results/labels-rater-{fable,opus,sonnet}.jsonl` (quorum raters, each with a one-line reason per pair); `test-results/labels-quorum.jsonl` (votes and majority).
 Reproduce: `./bin/equinox score -sample refdata/samples/20261011-20261011.json`.
 
 ### What these numbers do not show
 
 - **No human labels.** The plan (D9) was a blind human second rater; it was not done before the deadline. The
-  developer chose to substitute a second AI rater: a fresh agent that read only the blind sheet. Two models can share
-  the same blind spots, so kappa = 1.00 here is weaker evidence than human agreement would be.
+  developer chose a quorum of three models instead, each a fresh agent that read only the blind sheet. No other
+  vendor's model was available on this machine, so all three are Claude models: a quorum removes one model's noise,
+  but models from one family can share a blind spot, so unanimity here is weaker evidence than human agreement.
 - **The precision gate is not yet proven.** 12/12 has a lower bound of 0.76, below the 0.90 gate: the sample is too
   small. About 35 equivalent pairs, all correct, would be needed for the lower bound to clear 0.90.
 - **Narrow coverage.** All 12 equivalent pairs come from two event families (TIME Person of the Year, the Ballon d'Or).
   Precision on other topics (sports props, prices, elections) is unmeasured.
-- **Weakest calls.** The second rater flagged the three TIME pairs: one venue resolves NO if there is no announcement
-  by 30 June 2027 and the other states no deadline. A stricter rater could call them not equivalent (9/12).
+- **Weakest calls.** All three quorum raters named the same doubts: the three TIME pairs (one venue resolves NO if
+  there is no announcement by 30 June 2027, the other states no deadline; group winners could be read differently) and
+  the Ballon d'Or "no winner by 31 Dec 2026" rule on one side only. Each judged these implausible to split in practice;
+  a strict reading would make precision 9/12 (TIME out) or 3/12 (both out).
 - **Recall misses.** The 3 missed equivalents differ only in how a threshold is written (for example "at least N"
   vs "more than N - 0.5"). Normalising inclusive and exclusive thresholds would recover them.
 - **Noisy "related" pool.** Candidate generation can pair markets that share no subject (on the small test fixture, a
