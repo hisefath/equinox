@@ -17,8 +17,9 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 - ●●○ D9 — Blind sampled precision with recall and kappa guards; costs 30 human labels.
 - ●●○ D10 — Offline AI adjudication over runtime AI or none; adds a review step.
 
-### Data (1)
+### Data (2)
 
+- ●●○ D15 — Log file plus git-reviewed data over Postgres; reads scan a file.
 - ●○○ D11 — Active markets only over the full catalog; quiet markets go unmatched.
 
 ### Infrastructure (2)
@@ -45,6 +46,7 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D15 · Data · ●●○ — Log file plus git-reviewed data over Postgres; reads scan a file.
 - D14 · Infrastructure · ●●○ — One service with snapshots over a split ingest; a restart warm-up.
 - D13 · Infrastructure · ●●● — Go standard library over Python or TypeScript; more hand-written matching.
 - D12 · Process · ●●○ — PRD approved with both open items as recommended; terms of use unread.
