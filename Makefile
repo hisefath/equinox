@@ -27,7 +27,7 @@ types:
 ## test: every Go test (recorded venue responses only, no network) + design diagrams in sync
 test:
 	go test -count=1 ./...
-	@set -- docs/architecture/*.md; if [ -e "$$1" ]; then bash scripts/embed-diagrams.sh --check "$$@"; fi
+	@set -- docs/architecture/*.md; if [ -e "$$1" ]; then env -u GIT_DIR -u GIT_WORK_TREE -u GIT_INDEX_FILE bash scripts/embed-diagrams.sh --check "$$@"; fi
 
 ## decisions: docs/decisions/REVIEW.md matches the decision journal (works as is; no adapting needed)
 decisions:
