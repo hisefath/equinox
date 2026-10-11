@@ -106,3 +106,82 @@ Copy this block for each new entry (D-ids increase by one, starting at D1):
 - Cost accepted: every phase runs (research, PRD, design, acceptance, tasks, build, review, ship) with a gate at each; scope, not time, bends if the day runs short. · Reversibility: Type 2 two-way — a track may move up mid-flight; dropping to Standard after the PRD exists is a supervisor re-route · Confidence: ⚠ not stated in the brief
 - Revisit if: ⚠ what progress by when would make the human cut phases? · Evidence: specs/M1-cross-venue-equivalence-routing/brief.md:172; approval G0 2026-10-11 14:35 CDT · Interview line: "Even with a same-day deadline I ran the full gated track, because the PRD is where I decide what 'equivalent' means, and that is what's graded."
 - Review: Topic Process · Weight ●●○ · One-liner: Full track over Standard; about a dozen gates in one day.
+
+### D7 Equivalent means same payout in every outcome  [status: accepted]
+- Date 2026-10-11 16:07 CDT · phase 3 write-prd · milestone M2 · Decided by: human, G1 2026-10-11 16:06 CDT: "approve, also push and /design-hld" (interview Q1: "ok") · Proposed by: write-prd (Claude Code, claude-opus-5-5) · artifact: docs/product/prd.md@40eb5d5
+- Context and forces: The assignment requires a defined and justified "equivalent" (REQ-04) and it decides the North Star's true positives. R02 found 65 of 150 drawn events had a same-event listing on the other venue but only 38 a same-question one; R03 found look-alikes that settled on opposite sides over event definition, carve-outs, timing and source (FR-004, FR-005, FR-006).
+- Options:
+  - Do nothing / simplest — ⚠ not offered at the gate (leave "equivalent" undefined until design)
+  - Same payout in every outcome the rules name, edge cases included; payout timing may differ as a caveat; anything else that differs is "related, not routable" (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: fewer routable pairs; edge-case rules must be read — chosen
+  - Same event is enough — cost: about 1.7x more pairs, many of them different bets — rejected: the human chose the recommendation
+  - Main outcome only, edge-case differences as caveats — cost: a carve-out like Khamenei 2026 would be routed — rejected: the human chose the recommendation
+  - Payout timing also breaks equivalence — cost: drops identical-outcome pairs such as the 2024 election (about 75 days apart) — rejected: the human chose the recommendation
+- Choice: same payout in every outcome, timing as caveat · Why: In the context of a router that may send money only into the bet the customer intended, facing look-alike listings that have settled on opposite sides, we chose the strict settlement-level definition over same-event or main-outcome matching to keep false matches out, accepting fewer routable pairs and the work of reading edge-case rules.
+- Cost accepted: fewer routable pairs; every pair needs its edge-case rules compared; capital lock-up differences are disclosed, not prevented. · Reversibility: Type 2 two-way — loosening later means relabelling the sample and re-measuring, not rebuilding · Confidence: ⚠ not stated in the PRD
+- Revisit if: measured recall (SC-002) shows the strict rules miss most true pairs · Evidence: docs/product/prd.md:137; R02, R03; approval G1 2026-10-11 16:06 CDT · Interview line: "I defined 'equivalent' as paying the same in every outcome, not the same event, because look-alike markets have settled on opposite sides."
+- Review: Topic Product · Weight ●●● · One-liner: Same payout in every outcome over same-event matching; fewer routable pairs.
+
+### D8 Kalshi and polymarket.com, eligibility as data  [status: accepted]
+- Date 2026-10-11 16:07 CDT · phase 3 write-prd · milestone M2 · Decided by: human, G1 2026-10-11 16:06 CDT: "approve, also push and /design-hld" (interview Q2: "ok") · Proposed by: write-prd (Claude Code, claude-opus-5-5) · artifact: docs/product/prd.md@40eb5d5
+- Context and forces: Two venues with public metadata and prices are required (REQ-01). R01 confirmed unauthenticated order-book depth live for Kalshi and polymarket.com; Polymarket US is documented but unconfirmed live. R06: polymarket.com takes no new US orders and is not a CFTC designated contract market, while Kalshi and Polymarket US are; regulatory implementation is out of scope (REQ-29) (FR-035, FR-036, FR-037, C-1).
+- Options:
+  - Do nothing / simplest — ⚠ not offered at the gate
+  - Kalshi + polymarket.com, customer-region eligibility as declared data, ineligible venues left out with the reason; Polymarket US named as the next venue (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: an eligibility list to maintain and disclose as not legal advice — chosen
+  - Kalshi + Polymarket US — cost: the second venue's live data and overlap are unproven today — rejected: the human chose the recommendation
+  - Kalshi + polymarket.com, ignoring eligibility — cost: would route a US customer to a venue they cannot use — rejected: the human chose the recommendation
+  - Eligibility as an outright ban on polymarket.com — cost: only one venue left for US customers, nothing to route between — rejected: the human chose the recommendation
+- Choice: Kalshi + polymarket.com with eligibility as data · Why: In the context of a partner whose broker platform must respect where customers may trade, facing one venue that bars US orders and another whose regulated twin is unproven live, we chose two venues with confirmed public depth plus eligibility as data over a regulated-only pair to keep the build feasible today, accepting an eligibility list that is declared, dated and not legal advice.
+- Cost accepted: a declared, dated eligibility list; the regulated-only pairing is deferred to a third venue. · Reversibility: Type 2 two-way — venues sit behind the venue-integration boundary and routing reads eligibility as data (REQ-11) · Confidence: ⚠ not stated in the PRD
+- Revisit if: Polymarket US's public book is confirmed live and its overlap with Kalshi is measured · Evidence: docs/product/prd.md:168; R01, R02, R06; approval G1 2026-10-11 16:06 CDT · Interview line: "I picked the two venues with public depth I could verify, then made 'who may use this venue' data the router reads, so a US order never lands offshore."
+- Review: Topic Product · Weight ●●○ · One-liner: Kalshi plus polymarket.com with eligibility data; maintain a dated list.
+
+### D9 Blind sampled precision with recall and kappa  [status: accepted]
+- Date 2026-10-11 16:07 CDT · phase 3 write-prd · milestone M2 · Decided by: human, G1 2026-10-11 16:06 CDT: "approve, also push and /design-hld" (interview Q3: "ok") · Proposed by: write-prd (Claude Code, claude-opus-5-5) · artifact: docs/product/prd.md@40eb5d5
+- Context and forces: The North Star (matching precision) must survive the interview question of how it could be gamed (REQ-30). R05: precision is gamed by matching less or by raters seeing the system's output; kappa, not percent agreement, with about 30 comparisons as a floor (SC-001, SC-002, SC-003, FR-028 to FR-034).
+- Options:
+  - Do nothing / simplest (shown as "Report the number with no target"): honest, but nothing marks the number good or bad — rejected: the human chose the recommendation
+  - Fixed-seed sample of up to 100 equivalent pairs, AI rater blind, the human labels 30 blind, kappa reported, labels frozen before tuning; hard gate 0.90 (v1 one-shot 0.879 as a prior experiment), aspirational 0.95 (preprint under 2% false positives); recall as the guard (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: about 30 careful labels from the human today — chosen
+  - The human labels all 100 — cost: about 1-2 hours of reading today — rejected: the human chose the recommendation
+  - AI labels only — cost: a model grading a model — rejected: the human chose the recommendation
+- Choice: blind sampled precision, gate 0.90, aspire 0.95, recall and kappa guards · Why: In the context of an interview that probes how a number could be gamed, facing a cheap AI rater that may share the matcher's blind spots, we chose a blind sample with a human cross-check over AI-only or all-human labels to get a defensible number today, accepting 30 human labels and a single-day sample.
+- Cost accepted: about 30 blind labels by the human; a sample, not a census; a hard gate that, if missed, turns the verdict into "routing needs a reviewed pair list". · Reversibility: Type 2 two-way — the sample size and targets can change before measurement runs · Confidence: ⚠ not stated in the PRD
+- Revisit if: kappa between the human and the AI rater falls below 0.60 (SC-003) · Evidence: docs/product/prd.md:191; R05 F5, D3; approval G1 2026-10-11 16:06 CDT · Interview line: "Precision is measured on a blind random sample I cross-checked myself, with recall alongside it, so you can't score well by matching less."
+- Review: Topic Product · Weight ●●○ · One-liner: Blind sampled precision with recall and kappa guards; costs 30 human labels.
+
+### D10 AI only offline, as an adjudicator  [status: accepted]
+- Date 2026-10-11 16:07 CDT · phase 3 write-prd · milestone M2 · Decided by: human, G1 2026-10-11 16:06 CDT: "approve, also push and /design-hld" (interview Q4: "ok") · Proposed by: write-prd (Claude Code, claude-opus-5-5) · artifact: docs/product/prd.md@40eb5d5
+- Context and forces: AI-assisted matching is allowed (REQ-04) and the hiring team values applied AI (decode QB-3), but routing must be deterministic and never block on outside calls (REQ-07, REQ-08). R03: the decisive differences sit in free-text rules (FR-038 to FR-041, NOGO-1).
+- Options:
+  - Do nothing / simplest (shown as "No AI in the product"): fully deterministic — cost: rules-text differences are the hardest part for plain rules, and the AI signal is lost — rejected: the human chose the recommendation
+  - Offline only: deterministic rules first, AI adjudicates the rest, verdicts stored with model, prompt version and reason, reviewable and frozen before routing; routing never calls a model; works with AI off (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: a review step and stored verdicts to maintain — chosen
+  - AI at decision time — cost: answers change between runs and add delay, breaking REQ-07/08 — rejected: the human chose the recommendation
+  - AI checks every candidate pair — cost: expensive over about 375,000 open markets; a model graded by a model — rejected: the human chose the recommendation
+- Choice: AI offline only, as an adjudicator · Why: In the context of deterministic, non-blocking routing, facing settlement differences written in free text, we chose offline AI adjudication with frozen, reviewable verdicts over no AI or AI at decision time to catch rules-text differences without making routing depend on a model, accepting a review step and stored verdicts.
+- Cost accepted: stored AI verdicts to review; matching coverage depends on the adjudicator being available (the system reports undecided pairs when it is off). · Reversibility: Type 2 two-way — the adjudicator is optional (FR-038 is Optional) · Confidence: ⚠ not stated in the PRD
+- Revisit if: SC-003 shows the AI rater and the human disagree, since the adjudicator and the rater may share blind spots (RISK-3) · Evidence: docs/product/prd.md:171; R03; approval G1 2026-10-11 16:06 CDT · Interview line: "AI reads the fine print offline and its verdicts are frozen and reviewable; the router itself never calls a model, so decisions replay exactly."
+- Review: Topic Product · Weight ●●○ · One-liner: Offline AI adjudication over runtime AI or none; adds a review step.
+
+### D11 Consider active markets only  [status: accepted]
+- Date 2026-10-11 16:07 CDT · phase 3 write-prd · milestone M2 · Decided by: human, G1 2026-10-11 16:06 CDT: "approve, also push and /design-hld" (interview Q5: "ok") · Proposed by: write-prd (Claude Code, claude-opus-5-5) · artifact: docs/product/prd.md@40eb5d5
+- Context and forces: R08 measured about 126,000 open Kalshi and 249,000 Polymarket markets, of which 17.8% and 7.9% traded in 24 hours; a full Polymarket sweep took about 2,500 requests and 12 minutes, and a repeat sweep was refused (HTTP 403). R02: thousands of 5- and 15-minute windows (FR-001, FR-003, NG-5, NFR-004).
+- Options:
+  - Do nothing / simplest (shown as "The whole open catalog"): most complete — cost: about 85% of markets do not trade; slow sweeps risk blocks — rejected: the human chose the recommendation
+  - Open markets with at least one trade in the last 24 hours and a life of at least 1 hour, left-out counts reported (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: quiet long-tail markets are not matched — chosen
+  - Top N by volume per venue — cost: an arbitrary cut biased toward sports — rejected: the human chose the recommendation
+  - A few topics only — cost: hides how matching does on the long tail — rejected: the human chose the recommendation
+- Choice: active markets only, with left-out counts reported · Why: In the context of a feasibility verdict about routable listings, facing a catalog where most markets never trade and sweeps risk blocks, we chose active markets over the whole catalog to keep refreshes within limits and matches tradable, accepting that quiet markets go unmatched.
+- Cost accepted: markets with no trade in 24 hours and sub-hour windows are never matched; the report always says how many were left out. · Reversibility: Type 2 two-way — the activity window is a stated rule that can widen · Confidence: ⚠ not stated in the PRD
+- Revisit if: the verdict needs evidence on quiet, long-tail markets · Evidence: docs/product/prd.md:134; R02, R08; approval G1 2026-10-11 16:06 CDT · Interview line: "I matched only markets that traded in the last day, because a market nobody trades has no price worth routing to, and I report what I left out."
+- Review: Topic Data · Weight ●○○ · One-liner: Active markets only over the full catalog; quiet markets go unmatched.
+
+### D12 Approve the Equinox PRD at G1  [status: accepted]
+- Date 2026-10-11 16:07 CDT · phase 3 write-prd · milestone M2 · Decided by: human, G1 2026-10-11 16:06 CDT: "approve, also push and /design-hld" · Proposed by: write-prd (Claude Code, claude-opus-5-5) · artifact: docs/product/prd.md@40eb5d5
+- Context and forces: The PRD fixes scope, non-goals and success measures before design (REQ-04, REQ-16, REQ-29): 7 stories (4 P1), 44 FRs, 7 NFRs, 4 SCs, 38 AEs, milestones M4 tracer bullet, M5 trust, M6 reach. Two open questions remained: reading public data before the venues' terms are read (→ R01), and the US-regulated venue's fee formula (→ R04); seven agent assumptions (A-1 to A-3, A-5 to A-8) awaited confirmation.
+- Options:
+  - Do nothing / simplest (shown as "Stop"): nothing proceeds — cost: no design work starts — rejected: the human approved
+  - Approve, taking both open-question recommendations (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: later changes need a PRD edit, a fresh G1 and design rework — chosen
+  - Revise — cost: time now — rejected: the human approved
+- Choice: Approve; both open questions take their recommendations (read public data for a non-commercial prototype; the human downloads the fee schedule by hand for design-hld); A-1 to A-3 and A-5 to A-8 confirmed · Why: In the context of a same-day appetite, facing a PRD whose choices all trace to the human's answers or cited research, we chose to approve over revising to start design now, accepting that the two open items are settled by recommendation rather than new evidence.
+- Cost accepted: the venues' terms of use stay unread for now; FR-009's fee formula for the US-regulated venue waits on the human's download. · Reversibility: Type 2 two-way — a clarify-spec pass and a fresh G1 can change any requirement · Confidence: ⚠ not stated in the PRD
+- Revisit if: the venues' terms forbid the prototype's reads, or the fee schedule changes the routing rules · Evidence: docs/product/prd.md:280; approval G1 2026-10-11 16:06 CDT · Interview line: "I froze the requirements only after five decisions of my own, each traced to research, so design starts from what I chose, not what the AI guessed."
+- Review: Topic Process · Weight ●●○ · One-liner: PRD approved with both open items as recommended; terms of use unread.
