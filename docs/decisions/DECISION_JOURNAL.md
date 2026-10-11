@@ -303,3 +303,15 @@ Copy this block for each new entry (D-ids increase by one, starting at D1):
 - Cost accepted: fewer human checkpoints; problems surface at milestone ends. · Reversibility: Type 2 two-way · Confidence: ⚠ not stated
 - Revisit if: a milestone-end check fails badly · Evidence: TRACKER Approvals 2026-10-11 17:16 CDT · Interview line: "Near the deadline I batched the gates and kept the checks at milestone ends, trading step-by-step steering for delivery."
 - Review: Topic Process · Weight ●●○ · One-liner: Batched gates over per-step gates to meet the deadline.
+
+### D23 Approve the Equinox LLD at G3  [status: accepted]
+- Date 2026-10-11 17:21 CDT · phase 6 design-lld · milestone M3 · Decided by: human, G3 (closing) 2026-10-11 17:21 CDT: "approve, let me know when the build is done" · Proposed by: design-lld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/lld.md@4f9a72d
+- Context and forces: LLD for M4-M6 in one pass: 11 record shapes, 14 components, 6 endpoints, 5 journeys, 2 state machines, revised once for eight diagram findings; D19 and D20 answered on d7cc8b2; 10 diagrams embedded (FR-001 to FR-043).
+- Options:
+  - Do nothing / simplest (shown as "Stop"): nothing downstream starts — rejected: the human approved
+  - Approve the embedded LLD (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: later shape changes need an LLD revision — chosen
+  - Revise — cost: time now — rejected: the human approved
+- Choice: Approve · Why: In the context of a deadline tonight, facing an LLD already revised once from its own diagrams, we chose to approve over another revision to build now, accepting three diagrams with small kit-reported notes.
+- Cost accepted: three diagrams carry small notes (adapter methods "as BE-2", the US venue's alt "the same way", kit counter false positives). · Reversibility: Type 2 two-way · Confidence: ⚠ not stated
+- Revisit if: the build finds a shape the LLD cannot hold · Evidence: approval G3 (closing) 2026-10-11 17:21 CDT · Interview line: "The low-level design was redrawn from its own text, which caught eight inconsistencies before any code existed."
+- Review: Topic Process · Weight ●●○ · One-liner: LLD approved after a diagram-driven revision; build starts.
