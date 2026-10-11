@@ -1,0 +1,58 @@
+kalshi      healthy   listed 118696 · considered 19195 · inactive 99474 · too short 26 · unreadable 1
+polymarket  healthy   listed 20886 · considered 20743 · inactive 2 · too short 15 · unreadable 126
+pairs: 12 equivalent · 2116 related, not routable · 0 undecided (for offline AI) · 2116 near misses
+
+b9648543260d126e  Will Pope Leo XIV be Time Person of the Year in 2026?
+   ⇄ Will Pope Leo XIV be TIME Person of the Year 2026?
+   evidence: [statistic agrees: none threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source, window]
+c5fe64b6c6cf028d  Will Bernie Sanders be Time Person of the Year in 2026?
+   ⇄ Will Bernie Sanders be TIME Person of the Year 2026?
+   evidence: [statistic agrees: none window agrees: 2027-01-01 threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source]
+f133962fe1711282  Will Christina Koch be Time Person of the Year in 2026?
+   ⇄ Will Christina Koch be TIME Person of the Year 2026?
+   evidence: [statistic agrees: none threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source, window]
+1b3c354e56dfae2b  Who will win the Ballon d'Or in 2026?
+   ⇄ Will Jude Bellingham win the 2026 Ballon d'Or?
+   evidence: [statistic agrees: none window agrees: 2027-01-01 threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source]
+283f31e560ce63ba  Who will win the Ballon d'Or in 2026?
+   ⇄ Will Harry Kane win the 2026 Ballon d'Or?
+   evidence: [statistic agrees: none window agrees: 2027-01-01 threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source]
+2db836f4dc428d66  Who will win the Ballon d'Or in 2026?
+   ⇄ Will Michael Olise win the 2026 Ballon d'Or?
+   evidence: [statistic agrees: none window agrees: 2027-01-01 threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source]
+44fd7e7f79f4da3e  Who will win the Ballon d'Or in 2026?
+   ⇄ Will Erling Haaland win the 2026 Ballon d'Or?
+   evidence: [statistic agrees: none window agrees: 2027-01-01 threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source]
+7c74a444f2d29a00  Who will win the Ballon d'Or in 2026?
+   ⇄ Will Khvicha Kvaratskhelia win the 2026 Ballon d'Or?
+   evidence: [statistic agrees: none window agrees: 2027-01-01 threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source]
+96fd378f2b486591  Who will win the Ballon d'Or in 2026?
+   ⇄ Will Lionel Messi win the 2026 Ballon d'Or?
+   evidence: [statistic agrees: none window agrees: 2027-01-01 threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source]
+b6f93a7da0e0e2f6  Who will win the Ballon d'Or in 2026?
+   ⇄ Will Lamine Yamal win the 2026 Ballon d'Or?
+   evidence: [statistic agrees: none window agrees: 2027-01-01 threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source]
+7701c6bd7be69ec8  Who will win the Ballon d'Or in 2026?
+   ⇄ Will Vitinha win the 2026 Ballon d'Or?
+   evidence: [statistic agrees: none window agrees: 2027-01-01 threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source]
+8affb9c210c4012a  Who will win the Ballon d'Or in 2026?
+   ⇄ Will Rodri win the 2026 Ballon d'Or?
+   evidence: [statistic agrees: none window agrees: 2027-01-01 threshold agrees: none edge rule agrees: none]
+   caveats: [to check: question, source]
+near miss: Jaylen Waddle: 2+ touchdowns ⇄ Jaylen Waddle: 2+ Touchdowns — edge rule differs
+near miss: Tory Horton: 2+ touchdowns ⇄ Tory Horton: 2+ Touchdowns — edge rule differs
+near miss: Sam LaPorta: 2+ touchdowns ⇄ Sam LaPorta: 2+ Touchdowns — edge rule differs
+near miss: Elijah Arroyo: 2+ touchdowns ⇄ Elijah Arroyo: 2+ Touchdowns — edge rule differs
+near miss: Isaac TeSlaa: 2+ touchdowns ⇄ Isaac TeSlaa: 2+ Touchdowns — edge rule differs
+./bin/equinox refresh -record data/rec-live2 -top 12  13.11s user 5.60s system 19% cpu 1:37.81 total
