@@ -12,17 +12,17 @@
 check: lint types test decisions
 	@echo "make check: OK"
 
-## lint: formatting / style, in check-only mode (never rewrite files here)
+## lint: workflow scripts must parse (docs-only phase: no product code yet; stack tools are added at the design gate)
 lint:
-	@echo "make lint: not configured — edit Makefile (see the Laravel example below)" >&2; exit 1
+	@for f in scripts/*.sh .githooks/pre-push; do bash -n "$$f" || exit 1; done
 
-## types: static analysis / type checking
+## types: none until a stack exists
 types:
-	@echo "make types: not configured — edit Makefile (see the Laravel example below)" >&2; exit 1
+	@true
 
-## test: the whole test suite, including tests/acceptance/**
+## test: design docs' embedded diagrams must match their .mmd sources (once docs/architecture/*.md exist)
 test:
-	@echo "make test: not configured — edit Makefile (see the Laravel example below)" >&2; exit 1
+	@set -- docs/architecture/*.md; if [ -e "$$1" ]; then bash scripts/embed-diagrams.sh --check "$$@"; fi
 
 ## decisions: docs/decisions/REVIEW.md matches the decision journal (works as is; no adapting needed)
 decisions:

@@ -81,3 +81,15 @@ Copy this block for each new entry (D-ids increase by one, starting at D1):
 - Cost accepted: a compressed day of gates; main is not updated per milestone until v2 is complete; the deadline is not a planning input. · Reversibility: Type 2 two-way — main@9c3bf48 stays the fallback until the human says otherwise · Confidence: ⚠ not stated in decode.md
 - Revisit if: ⚠ what state of v2 would make the human submit main@9c3bf48 instead? · Evidence: specs/M1-cross-venue-equivalence-routing/decode.md:89, :119-120; approval G-decode 2026-10-11 14:02 CDT · Interview line: "I chose to finish the gated rebuild the same day, but kept v1 on main until v2 passed every check, so graders never saw a broken build."
 - Review: Topic Process · Weight ●●○ · One-liner: Finish v2 today over submitting v1; main keeps v1 until green.
+
+### D5 Docs-only make check until the design gate  [status: accepted]
+- Date 2026-10-11 14:27 CDT · phase 0 (setup, init-repo) · milestone M1 · Decided by: human, G-init 2026-10-11 14:26 CDT: "1" · Proposed by: supervisor (Claude Code, claude-opus-5-5) · artifact: scaffold@82e0ef7
+- Context and forces: `make check` is the single pass/fail gate the pre-push hook and CI run, and the scaffold's placeholder fails on purpose. Go is the partner's preference and v1's language, but D3 and trap T-6 hold the stack open until the design gate (G2).
+- Options:
+  - Do nothing / simplest (shown as "Do nothing"): leave the failing placeholder — cost: the pre-push hook blocks every push and CI stays red — rejected: the human chose 1
+  - 1. Docs-only checks until the design gate (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: the checks prove little until code exists — chosen
+  - 2. Go checks now (gofmt, go vet, go test) — cost: picks the stack before design, against T-6 and D3, making G2 a formality — rejected: the human chose 1
+- Choice: 1, `make check` = workflow scripts parse + embedded diagrams match their sources + decision review current; AGENTS.md says the stack is decided at the design gate and lists the project rules · Why: In the context of a docs-only first milestone, facing a partner preference for Go that design has not yet weighed, we chose docs-only checks over Go checks now to keep the design gate a real decision, accepting a gate that proves little until code exists.
+- Cost accepted: until the stack is chosen, `make check` guards only scripts, diagrams and the decision review; one Makefile edit is owed at G2/G3. · Reversibility: Type 2 two-way — the Makefile's three recipes are replaced when the stack is chosen · Confidence: ⚠ not stated in the G-init card
+- Revisit if: the design gate picks a stack (then lint, types and test get that stack's tools) · Evidence: Makefile:15-25, AGENTS.md:6-11, :57-63; approval G-init 2026-10-11 14:26 CDT · Interview line: "Before choosing a stack, my one pass/fail check only guarded docs and scripts, so the design gate stayed a real choice rather than a rubber stamp."
+- Review: Topic Process · Weight ●○○ · One-liner: Docs-only checks until design over Go checks now; checks prove little early.

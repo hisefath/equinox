@@ -1,16 +1,13 @@
-# AGENTS.md — <project name>
+# AGENTS.md — equinox
 
-<One sentence: what this project is and who it is for.> Built with software-factory-kit 0.1 (spec-driven, one milestone
+Equinox: a feasibility prototype for PEAK6 Labs that detects equivalent prediction markets across two venues and simulates explained, deterministic routing between them. Built with software-factory-kit 0.1 (spec-driven, one milestone
 per merge request). Every harness (Claude Code, Codex, Cursor, Antigravity) reads this file.
 
 ## Commands
 | Purpose | Command |
 |---|---|
-| Setup | `<e.g. composer install && cp .env.example .env && php artisan key:generate>` |
-| Run locally | `<e.g. php artisan serve>` |
-| **All checks (the one green/red gate)** | `make check` |
-| Tests only | `<e.g. php artisan test>` |
-| Lint / format | `<e.g. vendor/bin/pint --test>` |
+| Setup / run / tests | not yet: the stack is decided at the design gate (G2/G3); this table is filled then |
+| **All checks (the one green/red gate)** | `make check` (docs-only until the stack exists: script syntax, diagram embeds in sync, decision review current) |
 | Deploy | see `docs/runbooks/deploy.md` (human-only) |
 
 ## Where things live
@@ -55,4 +52,9 @@ test output, questions). Templates: `specs/_templates/task.md`, `specs/_template
 - Canonical remote: Gauntlet GitLab (`origin`); GitHub is a push mirror (no PRs there).
 
 ## Project specifics
-<Stack, conventions, gotchas, test data. Keep this file under ~100 lines: one line per rule, pointers not essays.>
+- Clean restart (v2) under software-factory-kit (D1). The v1 one-shot build lives in `main@9c3bf48`; cite it only as a labelled prior experiment ("v1, one-shot"), re-verify its facts, never quote its numbers for v2, never copy its code or design forward without a gate choosing it (D3).
+- `main` is updated only when v2's `make check` is green and covers every REQ; until then milestone MRs stack on the restart branch (D4).
+- Stack: undecided until the design gate. Go and GCP are the partner's preference; don't assume Go because v1 used it. Go 1.27.1 is installed.
+- This Mac's outbound firewall (Little Snitch) blocks newly built local binaries from the internet: run live venue calls in a container.
+- Partner documents are uncleared for this public repo: paraphrase them with page/section refs, never quote them.
+- Local v1 leftovers (`/DECISION_JOURNAL.md`, `/bin/`, `/data/`, `/research/`) are gitignored; never commit them.
