@@ -9,16 +9,25 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 
 ## By topic
 
-### Product (1)
+### Product (5)
 
+- ●●● D7 — Same payout in every outcome over same-event matching; fewer routable pairs.
 - ●●○ D2 — Feasibility verdict leads over an AI showcase; no AI features for show.
+- ●●○ D8 — Kalshi plus polymarket.com with eligibility data; maintain a dated list.
+- ●●○ D9 — Blind sampled precision with recall and kappa guards; costs 30 human labels.
+- ●●○ D10 — Offline AI adjudication over runtime AI or none; adds a review step.
 
-### Process (5)
+### Data (1)
+
+- ●○○ D11 — Active markets only over the full catalog; quiet markets go unmatched.
+
+### Process (6)
 
 - ●●○ D1 — Restart via the kit on a branch over keeping v1; costs a rebuild.
 - ●●○ D3 — Cite v1 as evidence over reusing its code; costs re-checking facts.
 - ●●○ D4 — Finish v2 today over submitting v1; main keeps v1 until green.
 - ●●○ D6 — Full track over Standard; about a dozen gates in one day.
+- ●●○ D12 — PRD approved with both open items as recommended; terms of use unread.
 - ●○○ D5 — Docs-only checks until design over Go checks now; checks prove little early.
 
 ## How the workflow improved
@@ -31,6 +40,12 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D12 · Process · ●●○ — PRD approved with both open items as recommended; terms of use unread.
+- D11 · Data · ●○○ — Active markets only over the full catalog; quiet markets go unmatched.
+- D10 · Product · ●●○ — Offline AI adjudication over runtime AI or none; adds a review step.
+- D9 · Product · ●●○ — Blind sampled precision with recall and kappa guards; costs 30 human labels.
+- D8 · Product · ●●○ — Kalshi plus polymarket.com with eligibility data; maintain a dated list.
+- D7 · Product · ●●● — Same payout in every outcome over same-event matching; fewer routable pairs.
 - D6 · Process · ●●○ — Full track over Standard; about a dozen gates in one day.
 - D5 · Process · ●○○ — Docs-only checks until design over Go checks now; checks prove little early.
 - D4 · Process · ●●○ — Finish v2 today over submitting v1; main keeps v1 until green.

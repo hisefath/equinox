@@ -7,11 +7,11 @@ several harnesses read it and the repo is public.
 ## Resume
 
 <!-- Rewritten as the LAST edit of every supervisor move. Times come from `date`. -->
-- **As of:** 2026-10-11 15:25 CDT
-- **In flight:** none: M1-S04 research done (R03 answered/high; R01, R02, R04-R08 partial/medium; 0 LB refuted in R01, R03-R06; 3 in R02, 2 in R07, 3 in R08 moved to Gaps by verifiers)
-- **Next:** the human reviews the research (gather-evidence STOP: Approve / Revise / Stop) → /write-prd (G1)
-- **Waiting on:** the human: research review
-- **Verified:** gather-evidence Done-when on R01-R08: sections, brief ids, S-id rows, one S-id per URL, no inbox cites, no recommendation phrases, handoffs as questions, LB findings Tier A, market/load working shown
+- **As of:** 2026-10-11 16:07 CDT
+- **In flight:** M3 /design-hld starting (human typed it with the G1 approval)
+- **Next:** design-hld draft → commit → draw-diagrams fan-out (hld-context, hld-container, deployment) → G2
+- **Waiting on:** nothing; U-steps open: download the US-regulated venue's fee-schedule PDF by hand (D12, FR-009), record the demo video, submit
+- **Verified:** write-prd Done-when script: every command prints nothing (sections, EARS shapes, AE coverage, one milestone per FR, ⚠ form, REQ trace, constraint mandates, tech and context names)
 
 ## Tasks
 
@@ -24,6 +24,7 @@ several harnesses read it and the repo is public.
 | M1-S02 | /decode-prompt on the Equinox prompt (company panel, portal brief v1, 2-page PDF) | Full / phase 0.5 decode-prompt | supervisor (claude-opus-5-5) | done | 2026-10-11 13:45 CDT | specs/M1-cross-venue-equivalence-routing/decode.md | d20fb08 (G-decode); D1-D4 |
 | M1-S03 | /sharpen-brief (human typed it 2026-10-11 14:30 CDT) | Full / phase 1 sharpen-brief | supervisor (claude-opus-5-5) | done | 2026-10-11 14:30 CDT | specs/M1-cross-venue-equivalence-routing/brief.md | c0e0111 (G0); D6 |
 | M1-S04 | /gather-evidence R01-R08 (human: "approve and /gather-evidence") | Full / phase 2 gather-evidence | supervisor + workflow (claude-opus-5-5 subagents) | done | 2026-10-11 14:35 CDT | docs/research/R01-R08, docs/research/sources.md | R01-R08 + sources.md (118 rows) |
+| M2-S01 | /write-prd (human: "approve and /write-prd") | Full / phase 3 write-prd | supervisor (claude-opus-5-5) | done | 2026-10-11 16:01 CDT | docs/product/prd.md | 40eb5d5 (G1); D7-D12 |
 
 ## Approvals
 
@@ -37,6 +38,8 @@ several harnesses read it and the repo is public.
 | 2026-10-11 14:26 CDT | G-init | scaffold@82e0ef7 (AGENTS.md, Makefile; option 1 = docs-only make check until the design gate, AGENTS.md Commands + Project specifics as listed in the G-init card) | "1" |
 | 2026-10-11 14:35 CDT | G0 | specs/M1-cross-venue-equivalence-routing/brief.md@c0e0111 (track recommended: Full; U-01..U-03 left at the default: paraphrase only, no copies committed) | "approve and /gather-evidence" |
 | 2026-10-11 14:40 CDT | human-only: push milestone/m1-research to origin (GitLab + GitHub mirror), open its draft MR (WORKFLOW §8), enable runner 299 (standing CI habit) | milestone/m1-research@3235f24 | "go ahead, also push the branch" |
+| 2026-10-11 15:27 CDT | research review (no gate; gather-evidence STOP) | docs/research/R01-R08@c1c023e | "approve and /write-prd" |
+| 2026-10-11 16:06 CDT | G1 | docs/product/prd.md@40eb5d5 (both open ⚠ taken as recommended per the STOP's recommendation; agent assumptions A-1..A-3, A-5..A-8 confirmed; also covers: push milestone/m2-product + draft MR !2) | "approve, also push and /design-hld" |
 
 ## Log
 
@@ -54,3 +57,4 @@ several harnesses read it and the repo is public.
 2026-10-11 14:48 CDT VERIFY U-05 harness=supervisor why=human said "made gitlab public"; anonymous GET of the project page checked evidence=anonymous HTTP 200 on the project page; API visibility = public
 2026-10-11 15:25 CDT RESULT M1-S04 harness=workflow wf_8c0dae32-357 why=16 agents (8 gather-evidence researchers + 8 adversarial verifiers), 0 errors, about 2.57M subagent tokens, 47 min evidence=docs/research/R01-R08; verifiers moved 8 unconfirmed LB findings to Gaps (R02 3, R07 2, R08 3)
 2026-10-11 15:25 CDT FAIL kit harness=supervisor why=gather-evidence says parallel runs conflict on docs/research/sources.md, yet CLAUDE.md routes Evidence as 'may dispatch per question'; worked around with per-question fragments merged by URL (10 S-ids remapped) evidence=merge output 2026-10-11; route-failure candidate at M1 close (fragment + merge script in the skill)
+2026-10-11 16:01 CDT ROUTE M2-S01 harness=supervisor why=human approved the research and typed /write-prd; new milestone branch milestone/m2-product from milestone/m1-research (M2 Product, WORKFLOW §8), MRs stack until v2 is green (D4) evidence=Approvals 2026-10-11 15:27 CDT
