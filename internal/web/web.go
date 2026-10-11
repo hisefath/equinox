@@ -138,6 +138,7 @@ func (s *Server) Index(w http.ResponseWriter, r *http.Request) {
 			near = append(near, map[string]any{"A": snap.Markets[n.Pair.AKey].Question, "B": snap.Markets[n.Pair.BKey].Question, "Reason": n.Reason})
 		}
 		data["Near"] = near
+		data["NearCount"] = len(snap.Pairs.NearMisses)
 	}
 	pageTmpl.ExecuteTemplate(w, "index", data)
 }
@@ -448,7 +449,21 @@ func (l *RateLimiter) Allow(client string) (int, bool) {
 	return 0, true
 }
 
-var pageTmpl = template.Must(template.New("page").Funcs(template.FuncMap{"money": func(a any) string {
+var pageTmpl = template.Must(template.New("page").Funcs(template.FuncMap{"num": func(n any) string {
+	d := fmt.Sprint(n)
+	for i := len(d) - 3; i > 0 && d[i-1] != '-'; i -= 3 {
+		d = d[:i] + "," + d[i:]
+	}
+	return d
+}, "venue": func(v string) string {
+	switch v {
+	case "kalshi":
+		return "Kalshi"
+	case "polymarket":
+		return "Polymarket"
+	}
+	return v
+}, "money": func(a any) string {
 	switch v := a.(type) {
 	case market.Amount:
 		return "$" + v.String()
@@ -459,33 +474,91 @@ var pageTmpl = template.Must(template.New("page").Funcs(template.FuncMap{"money"
 		return "$" + v.String()
 	}
 	return fmt.Sprint(a)
-}}).Parse(`{{define "head"}}<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Equinox</title>
-<style>body{font:14px/1.45 system-ui,sans-serif;margin:24px;max-width:1100px;color:#222}table{border-collapse:collapse;width:100%;margin:8px 0 20px}td,th{border-bottom:1px solid #ddd;padding:4px 6px;text-align:left;vertical-align:top}th{background:#f5f5f5}.bad{color:#b00}.ok{color:#070}code{font-size:12px}form label{display:inline-block;margin:4px 12px 4px 0}</style></head><body>
-<h1>Equinox <small style="font-weight:normal;color:#777">cross-venue prediction-market matching and routing · {{.Version}}</small></h1>{{end}}
+}}).Parse(`{{define "head"}}<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Equinox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--panel:#110e08;--line:#2a2722;--text:#fff;--muted:#9b978f;--neon:#ccff00;--ink:#110e08;--up:#ccff00;--down:#ff5a3c}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--text)}code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.brand{font:500 20px Inter,sans-serif;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:8px}
+.brand i{width:18px;height:18px;border-radius:50%;background:conic-gradient(var(--neon) 0 50%,#fff 0)}
+nav .links{display:flex;gap:18px;margin-left:auto;font-size:14px}nav .links a{text-decoration:none;color:var(--muted)}nav .links a:hover{color:var(--text)}
+.pill{display:inline-block;white-space:nowrap;border:0;border-radius:36px;padding:10px 20px;font:500 14px Inter,sans-serif;cursor:pointer;text-decoration:none}
+.pill.neon{background:var(--neon);color:var(--ink)}.pill.neon:hover{filter:brightness(.92)}.pill.ghost{background:transparent;color:var(--text);border:1px solid var(--text)}
+.banner{background:var(--neon);color:var(--ink);text-align:center;font-size:13px;padding:8px 16px}
+h1,h2,.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.01em}
+.hero{text-align:center;padding-top:72px;padding-bottom:40px}.hero h1{font-size:clamp(48px,9vw,104px);line-height:1;margin:0 0 20px}
+.hero p{color:var(--muted);max-width:620px;margin:0 auto 28px;font-size:17px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0 0 48px}
+.stat{background:var(--bg);padding:20px}.stat b{display:block;font:400 40px "Instrument Serif",serif}.stat span{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:40px;align-items:start;padding-bottom:64px}
+h2{font-size:36px;margin:0 0 6px}.sub{color:var(--muted);font-size:14px;margin:0 0 20px}
+.row{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+.row .q{flex:1;min-width:0}.row .q div{margin-bottom:6px}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:6px;padding:2px 7px;margin-right:6px;vertical-align:1px}
+.tag.k{background:#1d2a00;color:var(--neon)}.tag.p{background:#1f1f1f;color:#fff}.tag.bad{background:#2b0f0a;color:var(--down)}
+.chips{margin-top:8px}.chip{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:36px;padding:2px 10px;margin:0 6px 6px 0}
+.chip.warn{border-color:#5a4a00;color:#e8d36a}
+.ticket{position:sticky;top:88px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+.ticket h3{font:500 18px Inter,sans-serif;margin:0 0 18px}
+.ticket label{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.ticket select,.ticket input{background:#000;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:14px Inter,sans-serif;max-width:190px;width:100%}
+.ticket input{text-align:right}.ticket .pill{width:100%;margin-top:20px;padding:14px}
+.seg{display:flex;background:#000;border-radius:36px;padding:4px;margin-bottom:8px}.seg input{display:none}
+.seg label{flex:1;justify-content:center;border:0;padding:8px;border-radius:36px;cursor:pointer;color:var(--muted)}
+.seg input:checked+label{background:var(--neon);color:var(--ink);font-weight:600}
+.health{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--muted)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--up)}.dot.off{background:var(--down)}
+.note{color:var(--muted);font-size:12px;margin-top:14px}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;padding:28px 0 48px}footer a{color:var(--muted);margin-right:16px}
+.big{font:400 clamp(56px,10vw,96px)/1 "Instrument Serif",serif;margin:8px 0}.up{color:var(--up)}.down{color:var(--down)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:24px}
+table{width:100%;border-collapse:collapse;font-size:14px}th{text-align:left;color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.04em;padding:10px 8px;border-bottom:1px solid var(--line)}
+td{padding:14px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+@media(max-width:860px){.grid{grid-template-columns:1fr}.ticket{position:static}.stats{grid-template-columns:repeat(2,1fr)}nav .links a.hide{display:none}}
+</style></head><body>
+<div class="banner">Simulation only: no real orders are placed. Prices come from the venues' public data.</div>
+<nav><div class="wrap"><a class="brand" href="/"><i></i>Equinox</a><div class="links"><a class="hide" href="/#pairs">Pairs</a><a class="hide" href="/#rejected">Rejected</a><a href="/decisions">Decisions</a><a class="hide" href="/health">Health</a></div><a class="pill neon" href="/#ticket">Route an order</a></div></nav>{{end}}
+{{define "foot"}}<footer><div class="wrap"><a href="/health">Health</a><a href="/decisions">Decision log</a><a href="/pairs">Pairs API</a><a href="/version">Version {{.Version}}</a><p>Equinox is a feasibility prototype: it matches equivalent prediction markets across Kalshi and Polymarket and simulates where an order should go, explaining every decision.</p></div></footer></body></html>{{end}}
 {{define "index"}}{{template "head" .}}
-{{if .Warming}}<p class="bad">Still collecting market data. Refresh in a minute.</p>{{else}}
-<h2>Venue health <small>snapshot {{.Snap.AsOf.Format "2006-01-02 15:04:05 UTC"}}</small></h2>
-<table><tr><th>Venue</th><th>State</th><th>Last good data</th><th>Last error</th></tr>
-{{range $name, $h := .Snap.Health}}<tr><td>{{$name}}</td><td class="{{if eq $h.State "healthy"}}ok{{else}}bad{{end}}">{{$h.State}}</td><td>{{$h.LastGoodAt.Format "15:04:05 UTC"}}</td><td>{{$h.LastError}}</td></tr>{{end}}</table>
-<h2>Route a hypothetical order</h2>
-<form method="post" action="/route"><label>Pair <select name="pair_id">{{range .Pairs}}<option value="{{.PairID}}">{{.AQuestion}} ⇄ {{.BQuestion}}</option>{{end}}</select></label><br>
-<label>Side <select name="side"><option>yes</option><option>no</option></select></label>
-<label>Quantity <input name="quantity" type="number" min="1" value="100"></label>
-<label>Limit (0-1, optional) <input name="limit" size="6"></label>
-<label>Customer region <select name="customer_region"><option>US</option><option>non-US</option></select></label>
-<button>Route</button></form>
-<h2>Equivalent pairs ({{len .Pairs}} shown)</h2>
-<table><tr><th>Market A</th><th>Market B</th><th>Evidence</th><th>Caveats</th></tr>
-{{range .Pairs}}<tr><td>{{.AQuestion}}<br><code>{{.AKey}}</code></td><td>{{.BQuestion}}<br><code>{{.BKey}}</code></td><td>{{range .Evidence}}{{.}}<br>{{end}}</td><td>{{range .Caveats}}{{.}}<br>{{end}}</td></tr>{{end}}</table>
-<h2>Closest rejected look-alikes</h2>
-<table><tr><th>Market A</th><th>Market B</th><th>Why rejected</th></tr>{{range .Near}}<tr><td>{{.A}}</td><td>{{.B}}</td><td>{{.Reason}}</td></tr>{{end}}</table>
-{{end}}<p><a href="/health">health</a> · <a href="/decisions">decision log</a> · <a href="/pairs">pairs (JSON)</a> · <a href="/version">version</a></p></body></html>{{end}}
-{{define "decision"}}{{template "head" .}}
-{{with .Problem}}<h2 class="bad">{{.Title}}</h2><p>{{.Detail}}</p>{{range .Errors}}<p>{{.Pointer}}: {{.Detail}}</p>{{end}}{{end}}
-{{with .D}}<h2>Decision <code>{{.DecisionID}}</code>: {{.Outcome}}</h2>
-<p>{{$.A}} ⇄ {{$.B}}</p>
-{{if .Venue}}<p>Route <b>{{.FilledQty}}</b> to <b>{{.Venue}}</b> ({{.MarketKey}}) at avg {{money .AvgPrice}}; fees {{money .Fees}}; all-in {{money .AllIn}}{{if .UnfilledQty}}; {{.UnfilledQty}} unfilled{{end}}.</p>
-<p>Deciding rule: <b>{{.DecidingRule}}</b>{{if .Saving}}, saving {{money .Saving}} against the next-best venue{{end}}.</p>{{end}}
-<table><tr><th>Venue</th><th>Market</th><th>Eligible</th><th>Filled</th><th>All-in</th><th>Reason</th></tr>{{range .Venues}}<tr><td>{{.Venue}}</td><td><code>{{.MarketKey}}</code></td><td>{{.Eligible}}</td><td>{{.Filled}}</td><td>{{money .AllIn}}</td><td>{{.Reason}}</td></tr>{{end}}</table>
-<p><b>Match evidence:</b> {{range .Evidence}}{{.}}; {{end}}</p><p><b>Caveats:</b> {{range .Caveats}}{{.}}; {{end}}</p>{{end}}
-<p><a href="/">back</a></p></body></html>{{end}}`))
+{{if .Warming}}<section class="hero wrap"><h1>Warming up</h1><p>Still collecting market data. Refresh in a minute.</p></section>{{else}}
+<section class="hero wrap"><h1>Same bet.<br>Best venue.</h1>
+<p>Equinox finds prediction markets on Kalshi and Polymarket that pay out in exactly the same situations, then routes a hypothetical order to the cheapest venue you're allowed to use, and shows its reasoning.</p>
+<a class="pill neon" href="#ticket">Route an order</a></section>
+<div class="wrap"><div class="stats">
+{{range $name, $r := .Snap.Reports}}<div class="stat"><b>{{num $r.Considered}}</b><span>active markets on {{venue $name}} ({{num $r.Listed}} listed)</span></div>{{end}}
+<div class="stat"><b class="up">{{len .Pairs}}</b><span>equivalent pairs, routable</span></div>
+<div class="stat"><b class="down">{{num .NearCount}}</b><span>look-alikes rejected, never routed</span></div></div>
+<div class="grid"><main>
+<section id="pairs"><h2>Equivalent pairs</h2><p class="sub">Every settlement part agrees: same outcome, threshold, statistic and edge rules. Only payout timing may differ.</p>
+{{range .Pairs}}<div class="row"><div class="q"><div><span class="tag k">Kalshi</span>{{.AQuestion}}</div><div><span class="tag p">Poly</span>{{.BQuestion}}</div>
+<div class="chips">{{range .Evidence}}<span class="chip">{{.}}</span>{{end}}{{range .Caveats}}<span class="chip warn">{{.}}</span>{{end}}</div></div><code>{{.PairID}}</code></div>{{end}}</section>
+<section id="rejected" style="margin-top:56px"><h2>Closest rejected look-alikes</h2><p class="sub">They look like the same bet but could pay differently, so they are never routed. Top {{len .Near}} of {{num .NearCount}}.</p>
+{{range .Near}}<div class="row"><div class="q"><div><span class="tag k">Kalshi</span>{{.A}}</div><div><span class="tag p">Poly</span>{{.B}}</div></div><span class="tag bad">{{.Reason}}</span></div>{{end}}</section>
+</main>
+<aside class="ticket" id="ticket"><h3>Route a hypothetical order</h3>
+<form method="post" action="/route">
+<div class="seg"><input type="radio" name="side" id="s-yes" value="yes" checked><label for="s-yes">Buy YES</label><input type="radio" name="side" id="s-no" value="no"><label for="s-no">Buy NO</label></div>
+<label>Market<select name="pair_id">{{range .Pairs}}<option value="{{.PairID}}">{{.BQuestion}}</option>{{end}}</select></label>
+<label>Contracts<input name="quantity" type="number" min="1" value="500"></label>
+<label>Limit price<input name="limit" placeholder="optional, 0–1" inputmode="decimal"></label>
+<label>Customer<select name="customer_region"><option value="non-US">Outside the US</option><option value="US">In the US</option></select></label>
+<button class="pill neon">Route order</button></form>
+<div class="health">{{range $name, $h := .Snap.Health}}<span><span class="dot{{if ne $h.State "healthy"}} off{{end}}"></span>{{venue $name}} {{$h.State}}</span>{{end}}</div>
+<p class="note">Snapshot {{.Snap.AsOf.Format "Jan 2, 15:04:05 UTC"}}. US customers are never routed to Polymarket.</p></aside>
+</div></div>{{end}}{{template "foot" .}}{{end}}
+{{define "decision"}}{{template "head" .}}<div class="wrap" style="padding:56px 20px 64px;max-width:900px">
+{{with .Problem}}<p class="sub">Order not routed</p><div class="big down">{{.Title}}</div><p>{{.Detail}}</p>{{range .Errors}}<p class="sub">{{.Pointer}}: {{.Detail}}</p>{{end}}{{end}}
+{{with .D}}<p class="sub">Decision <code>{{.DecisionID}}</code> · {{.Outcome}}</p>
+<p>{{$.B}}</p>
+{{if .Venue}}<div class="big">{{money .AllIn}}</div>
+<p style="font-size:18px">Buy <b>{{.FilledQty}}</b> {{.Order.Side}} on <b>{{venue .Venue}}</b> at avg {{money .AvgPrice}} + {{money .Fees}} fees{{if .UnfilledQty}} · <span class="down">{{.UnfilledQty}} unfilled</span>{{end}}</p>
+<p>{{if .Saving}}<span class="up">▲ {{money .Saving}} saved</span> vs the next-best venue · {{end}}rule: <b>{{.DecidingRule}}</b></p>{{end}}
+<div class="card" style="margin-top:32px"><table><tr><th>Venue</th><th>Eligible</th><th>Filled</th><th>All-in</th><th>Why</th></tr>{{range .Venues}}<tr><td><b>{{venue .Venue}}</b><br><code>{{.MarketKey}}</code></td><td>{{if .Eligible}}<span class="up">yes</span>{{else}}<span class="down">no</span>{{end}}</td><td>{{.Filled}}</td><td>{{money .AllIn}}</td><td>{{.Reason}}</td></tr>{{end}}</table></div>
+<div class="card"><p class="sub" style="margin:0 0 8px">Why these are the same bet</p><div class="chips">{{range .Evidence}}<span class="chip">{{.}}</span>{{end}}{{range .Caveats}}<span class="chip warn">{{.}}</span>{{end}}</div>
+<p class="note">Kalshi: {{$.A}}<br>Polymarket: {{$.B}}</p></div>{{end}}
+<a class="pill ghost" href="/#ticket">Route another order</a></div>{{template "foot" .}}{{end}}`))
