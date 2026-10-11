@@ -48,7 +48,7 @@ curl -s -X POST localhost:8080/route -H 'Content-Type: application/json' \
 
 ## Demo deploy (Railway)
 
-A hosted demo for clicking around. The live app makes **no venue calls**: it replays the recorded
+Live: **https://equinox-production-92b0.up.railway.app** — a hosted demo for clicking around. The live app makes **no venue calls**: it replays the recorded
 2026-10-11 responses in `testdata/live-20261011` (plain gzipped JSON files) exactly like the local default, so its
 numbers match this README and `docs/TEST_RESULTS.md`. The decision log lives in the container and resets on redeploy.
 
