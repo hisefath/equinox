@@ -25,14 +25,15 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 - ●○○ D11 — Active markets only over the full catalog; quiet markets go unmatched.
 - ●○○ D17 — Recorded real responses with a live switch over invented mocks; recordings age.
 
-### Infrastructure (4)
+### Infrastructure (5)
 
 - ●●● D13 — Go standard library over Python or TypeScript; more hand-written matching.
 - ●●○ D14 — One service with snapshots over a split ingest; a restart warm-up.
 - ●●○ D16 — AI via exported files and a harness over an API key; manual rounds.
 - ●○○ D21 — Local first over an early deploy; no live URL yet.
+- ●○○ D25 — Recorded full read by default over live calls; costs 34 MB.
 
-### Process (9)
+### Process (10)
 
 - ●●○ D1 — Restart via the kit on a branch over keeping v1; costs a rebuild.
 - ●●○ D3 — Cite v1 as evidence over reusing its code; costs re-checking facts.
@@ -42,6 +43,7 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 - ●●○ D18 — HLD approved after a trust-zone fix; open questions measured in M4.
 - ●●○ D22 — Batched gates over per-step gates to meet the deadline.
 - ●●○ D23 — LLD approved after a diagram-driven revision; build starts.
+- ●●○ D24 — Three-model blind quorum over a human rater; one-vendor blind spot remains.
 - ●○○ D5 — Docs-only checks until design over Go checks now; checks prove little early.
 
 ## How the workflow improved
@@ -54,6 +56,8 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D25 · Infrastructure · ●○○ — Recorded full read by default over live calls; costs 34 MB.
+- D24 · Process · ●●○ — Three-model blind quorum over a human rater; one-vendor blind spot remains.
 - D23 · Process · ●●○ — LLD approved after a diagram-driven revision; build starts.
 - D22 · Process · ●●○ — Batched gates over per-step gates to meet the deadline.
 - D21 · Infrastructure · ●○○ — Local first over an early deploy; no live URL yet.
