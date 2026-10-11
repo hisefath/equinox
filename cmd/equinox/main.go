@@ -81,7 +81,11 @@ func (c *common) venues() []venue.Venue {
 		case !c.live:
 			t = fetch.NewRecorder(filepath.Join(c.replay, name), fetch.Replay, nil)
 		}
-		return fetch.New(t, 2, 30*time.Second, 3, now) // NFR-003: at most 2 requests per second per venue
+		rate := 2.0 // NFR-003: at most 2 requests per second per venue
+		if !c.live && c.record == "" {
+			rate = 10_000 // replay never leaves the machine, so no pacing
+		}
+		return fetch.New(t, rate, 30*time.Second, 3, now)
 	}
 	k := kalshi.New(client(kalshi.Name), "https://api.elections.kalshi.com/trade-api/v2", now)
 	k.MaxPages = c.kalshiPages
@@ -279,6 +283,9 @@ func printSnapshot(s *ingest.Snapshot, top int) {
 		h, rep := s.Health[name], s.Reports[name]
 		fmt.Printf("%-11s %-9s listed %d · considered %d · inactive %d · too short %d · unreadable %d\n",
 			name, h.State, rep.Listed, rep.Considered, rep.Inactive, rep.TooShort, rep.Unreadable)
+		if h.LastError != "" {
+			fmt.Printf("            last error: %s\n", h.LastError)
+		}
 	}
 	var eq, rel, und int
 	for _, p := range s.Pairs.Pairs {

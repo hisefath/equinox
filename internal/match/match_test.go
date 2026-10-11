@@ -116,8 +116,9 @@ func TestCompareEdgeRuleOrderIrrelevant(t *testing.T) {
 	if v := Compare(mk(t, "a:1", "Fed cut", x), mk(t, "b:1", "Fed cut", y)); v.Verdict != Equivalent {
 		t.Fatalf("got %+v", v)
 	}
+	// A differing carve-out is wording only a reader can weigh: undecided, sent to the reviewed AI pass.
 	y.EdgeRules = []string{"death"}
-	if v := Compare(mk(t, "a:1", "Fed cut", x), mk(t, "b:1", "Fed cut", y)); v.DifferingPart != "edge rule" {
+	if v := Compare(mk(t, "a:1", "Fed cut", x), mk(t, "b:1", "Fed cut", y)); v.Verdict != Undecided || v.Caveats[0] != "to check: edge rule" {
 		t.Fatalf("got %+v", v)
 	}
 }

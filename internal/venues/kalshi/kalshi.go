@@ -60,6 +60,7 @@ type rawMarket struct {
 }
 
 type series struct {
+	Ticker        string      `json:"ticker"`
 	Category      string      `json:"category"`
 	FeeType       string      `json:"fee_type"`
 	FeeMultiplier json.Number `json:"fee_multiplier"`
@@ -77,6 +78,23 @@ func (a *Adapter) Catalog(ctx context.Context) ([]market.Market, venue.CatalogSt
 		cache  = map[string]*series{}
 		cursor string
 	)
+	// One request lists every series with its fee terms (about 15,000), instead of one request per series.
+	// ponytail: refetched every refresh; cache with a TTL if refreshes get frequent.
+	if a.MaxPages == 0 {
+		var all struct {
+			Series []*series `json:"series"`
+		}
+		if err := a.c.GetJSON(ctx, a.base+"/series", &all); err != nil {
+			var refused fetch.ErrRefused
+			if ctx.Err() != nil || errors.As(err, &refused) {
+				return nil, stats, err
+			}
+			// otherwise fall back to one request per series below
+		}
+		for _, s := range all.Series {
+			cache[s.Ticker] = s
+		}
+	}
 	for page := 0; a.MaxPages == 0 || page < a.MaxPages; page++ {
 		q := url.Values{"status": {"open"}, "mve_filter": {"exclude"}, "limit": {fmt.Sprint(a.PageSize)}}
 		if cursor != "" {
@@ -113,7 +131,13 @@ func (a *Adapter) Catalog(ctx context.Context) ([]market.Market, venue.CatalogSt
 				if err := a.c.GetJSON(ctx, a.base+"/series/"+url.PathEscape(sTicker), &struct {
 					Series *series `json:"series"`
 				}{s}); err != nil {
-					return nil, stats, err
+					// A refusal or a cancelled refresh is the venue's problem; anything else (e.g. a 404 for one
+					// series) only costs that series its fee terms, so its markets become untradable (FR-024).
+					var refused fetch.ErrRefused
+					if ctx.Err() != nil || errors.As(err, &refused) {
+						return nil, stats, err
+					}
+					s = &series{}
 				}
 				cache[sTicker] = s
 			}

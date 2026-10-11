@@ -27,8 +27,16 @@ const (
 // Parts are the settlement parts Compare checks, in the order evidence is written (FR-004, FR-006).
 var Parts = []string{"question", "source", "statistic", "window", "threshold", "edge rule"}
 
+// numericParts index Parts whose values are numbers or fixed vocabulary, so a difference is certain (statistic,
+// threshold with its comparator).
+var numericParts = []int{2, 4}
+
 // Window is how far apart two markets' close times may be and still be candidates (Q-3 default).
 const Window = 7 * 24 * time.Hour
+
+// MinUndecided is the similarity (parts per thousand) an undecided candidate needs to be kept for review; each
+// market keeps only its best one (Q-3 default).
+const MinUndecided = 700
 
 // maxDF is the most markets a token may appear in and still count as rare.
 // ponytail: fixed cut-off; tune from the M5 measurement (Q-3) and freeze into the rules version.
@@ -144,6 +152,7 @@ func (m *Matcher) Match(a, b []market.Market, ref refdata.Set) PairSet {
 	})
 	var ps PairSet
 	taken := map[market.Key]string{}
+	undecided := map[market.Key]bool{}
 	for _, p := range pairs {
 		switch {
 		case p.Verdict == Equivalent && (taken[p.AKey] != "" || taken[p.BKey] != ""):
@@ -158,7 +167,11 @@ func (m *Matcher) Match(a, b []market.Market, ref refdata.Set) PairSet {
 		case p.Verdict == Related:
 			ps.NearMisses = append(ps.NearMisses, NearMiss{p, reason(p.DifferingPart)})
 			ps.Pairs = append(ps.Pairs, p)
+		case p.Score < MinUndecided || taken[p.AKey] != "" || taken[p.BKey] != "" || undecided[p.AKey] || undecided[p.BKey]:
+			// ponytail: weak or second-best undecided candidates are dropped, not reviewed; raise MinUndecided's
+			// reach (or review more) if recall (SC-002) shows true pairs lost here.
 		default:
+			undecided[p.AKey], undecided[p.BKey] = true, true
 			ps.Pairs = append(ps.Pairs, p)
 		}
 	}
@@ -225,18 +238,29 @@ func Compare(x, y market.Market) Verdict {
 	}
 	v := Verdict{Score: score(x, y)}
 	px, py := parts(x.Terms), parts(y.Terms)
-	for i := range Parts {
-		if px[i] == market.Unknown || py[i] == market.Unknown {
-			v.Verdict = Undecided
+	// A numeric part that both venues state and that differs is a different bet for certain (FR-006): related.
+	for _, i := range numericParts {
+		stated := func(v string) bool { return v != market.Unknown && v != "none" }
+		if stated(px[i]) && stated(py[i]) && px[i] != py[i] {
+			v.Verdict, v.DifferingPart = Related, Parts[i]
 			return v
 		}
 	}
+	// Any other unknown or differently phrased part (question wording, source naming, decision date, edge rules)
+	// cannot be settled by string comparison across venues: undecided, for the reviewed offline AI pass
+	// (LINV-2, D10, D20). The parts still to check are named as caveats.
+	var check []string
 	for i, name := range Parts {
-		if px[i] != py[i] {
-			v.Verdict, v.DifferingPart = Related, name
-			return v
+		if px[i] == market.Unknown || py[i] == market.Unknown || px[i] != py[i] {
+			check = append(check, name)
+			continue
 		}
 		v.Evidence = append(v.Evidence, fmt.Sprintf("%s agrees: %s", name, px[i]))
+	}
+	if len(check) > 0 {
+		v.Verdict = Undecided
+		v.Caveats = []string{"to check: " + strings.Join(check, ", ")}
+		return v
 	}
 	v.Verdict = Equivalent
 	if !x.ResolvesAt.IsZero() && !y.ResolvesAt.IsZero() && !x.ResolvesAt.Equal(y.ResolvesAt) {
