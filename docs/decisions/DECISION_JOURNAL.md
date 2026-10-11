@@ -269,3 +269,37 @@ Copy this block for each new entry (D-ids increase by one, starting at D1):
 - Cost accepted: more rows to compare (each outcome of a named-outcome market is its own row). · Reversibility: Type 2 two-way — event grouping can be added on top later as a candidate filter · Confidence: high
 - Revisit if: matching time per refresh nears the 4-minute budget (HLD §8) · Evidence: docs/architecture/lld.md:912; brief P-03; R02; approval G3 D19 2026-10-11 17:14 CDT · Interview line: "I matched individual yes/no propositions, because that is what an order buys, and the venues group events differently."
 - Review: Topic Data · Weight ●●○ · One-liner: Proposition-level matching over event-level; more rows to compare.
+
+### D20 Rare-word candidates, decide by settlement parts  [status: accepted]
+- Date 2026-10-11 17:16 CDT · phase 6 design-lld · milestone M3 · Decided by: human, G3 D20 2026-10-11 17:16 CDT: "approve for D20" · Proposed by: design-lld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/lld.md@d7cc8b2
+- Context and forces: About 42,000 active markets; a refresh within 15 minutes (NFR-004); one venue states terms in fields, the other in free text (R03); unreadable terms go to the offline AI (D10). Proposed as docs/architecture/lld.md D20.
+- Options:
+  - Do nothing / simplest: compare every market with every other — cost: about 443 million comparisons per refresh, over budget — rejected: fails NFR-004
+  - Rare-word candidate search in a close-date window, compare settlement parts, unknown parts become undecided for the AI, one-to-one assignment (brief P-05) (agent's recommendation) (agent's first proposal) — cost: about 1.5 build-days; more pairs wait for AI review — chosen
+  - Text similarity with a threshold — cost: about 0.5 build-day; similar titles are not the same bet — rejected: the human chose the recommendation
+- Choice: rare-word candidates, settlement-part comparison · Why: In the context of equivalence by settlement and a 15-minute refresh, facing free-text terms on one venue, we chose rare-word candidates plus part-by-part comparison with unknowns sent to the AI over brute force or text similarity to get explainable verdicts in time, accepting more undecided pairs.
+- Cost accepted: a hand-written terms parser that misses some parts; those pairs wait for AI review. · Reversibility: Type 2 two-way · Confidence: med
+- Revisit if: recall (SC-002) falls below 0.84 with candidate search as the cause · Evidence: docs/architecture/lld.md:932; approval G3 D20 2026-10-11 17:16 CDT · Interview line: "Candidates come from rare shared words, verdicts from comparing each settlement part, and anything unreadable goes to a reviewed AI pass instead of being guessed."
+- Review: Topic Data · Weight ●●○ · One-liner: Rare-word candidates and part checks over text similarity; more undecided pairs.
+
+### D21 Run locally first, deploy to Railway later  [status: accepted]
+- Date 2026-10-11 17:16 CDT · phase 6 design-lld · milestone M3 · Decided by: human, decision: run locally first 2026-10-11 17:10 CDT: "/design-lld revise per the 8 diagram findings, also we can deploy things later, lets just run things locally for now, and also give instructions in the repo for anyone that wants to run locally" · Proposed by: human (no options card) · artifact: docs/architecture/hld.md@e74350c
+- Context and forces: Same-day deadline (D4); C-2 names Railway; REQ-25 needs setup instructions.
+- Options:
+  - Do nothing — ⚠ not offered at the gate (deploy to Railway as planned before the local build is done)
+  - Run locally first, deploy later; local-run instructions in README and AGENTS.md (the human's instruction; agent's first proposal — none recorded) — cost: no live URL until later — chosen
+- Choice: local first · Why: In the context of a deadline tonight, facing deploy work that adds no graded evidence before the code runs, we chose to run locally and document it over deploying now, accepting no live URL until later.
+- Cost accepted: reviewers run it locally until the Railway deploy happens. · Reversibility: Type 2 two-way · Confidence: ⚠ not stated
+- Revisit if: time remains after the build and docs · Evidence: TRACKER Approvals 17:10 CDT · Interview line: "I ran it locally first and wrote run instructions, because a live URL adds nothing until the core works."
+- Review: Topic Infrastructure · Weight ●○○ · One-liner: Local first over an early deploy; no live URL yet.
+
+### D22 Fast flow for the rest of Equinox  [status: accepted]
+- Date 2026-10-11 17:16 CDT · phase 6 design-lld · milestone M3 · Decided by: human, standing: fast flow 2026-10-11 17:16 CDT: "for this project, lets tighten up the flow so that we can reduce a lot of time between human  gates, as we have to deliver this soon. lets not run tests and builds everytime, lets iterate faster, so wherever we can cut time. in the future, we'll deploy an observability tool for you to read from to see what to do better, but for now, take your best route at making the time to finihsh this project shorter, as its due at 11pm tonight approve for D20" · Proposed by: human (no options card) · artifact: process
+- Context and forces: Due 23:00 CDT; M4-M6 build, acceptance, tasks, review and deliverables remain.
+- Options:
+  - Do nothing — ⚠ not offered at the gate (one gate per phase, checks every step)
+  - Supervisor takes its recommended defaults, batches gates into one check-in per phase, runs make check at milestone ends, builds M4-M6 as one implementation milestone (the human's instruction; agent's first proposal — none recorded) — cost: fewer chances for the human to steer each step — chosen
+- Choice: fast flow · Why: In the context of a deadline in under six hours, facing a dozen remaining gates, we chose batched check-ins and fewer intermediate checks over the full cadence to finish on time, accepting less per-step steering.
+- Cost accepted: fewer human checkpoints; problems surface at milestone ends. · Reversibility: Type 2 two-way · Confidence: ⚠ not stated
+- Revisit if: a milestone-end check fails badly · Evidence: TRACKER Approvals 2026-10-11 17:16 CDT · Interview line: "Near the deadline I batched the gates and kept the checks at milestone ends, trading step-by-step steering for delivery."
+- Review: Topic Process · Weight ●●○ · One-liner: Batched gates over per-step gates to meet the deadline.
