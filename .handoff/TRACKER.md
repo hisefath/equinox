@@ -7,11 +7,11 @@ several harnesses read it and the repo is public.
 ## Resume
 
 <!-- Rewritten as the LAST edit of every supervisor move. Times come from `date`. -->
-- **As of:** 2026-10-11 14:35 CDT
-- **In flight:** M1-S04 /gather-evidence: 8 parallel researchers (one per R id) + a skeptic pass on load-bearing claims; each writes only its R file and a sources fragment in the scratchpad; the supervisor merges sources.md
-- **Next:** verify R files (Done-when), merge sources.md, commit → human reviews research → /write-prd (G1)
-- **Waiting on:** the research workflow
-- **Verified:** sharpen-brief Done-when checks pass (sections match, no placeholders, ids unique, Problem/Job stories tech-free, market + usage R rows, NS-01 present, no personal data)
+- **As of:** 2026-10-11 15:25 CDT
+- **In flight:** none: M1-S04 research done (R03 answered/high; R01, R02, R04-R08 partial/medium; 0 LB refuted in R01, R03-R06; 3 in R02, 2 in R07, 3 in R08 moved to Gaps by verifiers)
+- **Next:** the human reviews the research (gather-evidence STOP: Approve / Revise / Stop) → /write-prd (G1)
+- **Waiting on:** the human: research review
+- **Verified:** gather-evidence Done-when on R01-R08: sections, brief ids, S-id rows, one S-id per URL, no inbox cites, no recommendation phrases, handoffs as questions, LB findings Tier A, market/load working shown
 
 ## Tasks
 
@@ -23,7 +23,7 @@ several harnesses read it and the repo is public.
 | M1-S01 | restart Equinox with the kit: branch from main, retire v1 on the branch, init-repo scaffold (human's message 2026-10-11 13:4x CDT) | Full / phase 0 (G-init) | supervisor (claude-opus-5-5) | done | 2026-10-11 13:45 CDT | .gitignore, scaffold paths, AGENTS.md, Makefile | 59ff700 (v1 retired); G-init@82e0ef7; D5 |
 | M1-S02 | /decode-prompt on the Equinox prompt (company panel, portal brief v1, 2-page PDF) | Full / phase 0.5 decode-prompt | supervisor (claude-opus-5-5) | done | 2026-10-11 13:45 CDT | specs/M1-cross-venue-equivalence-routing/decode.md | d20fb08 (G-decode); D1-D4 |
 | M1-S03 | /sharpen-brief (human typed it 2026-10-11 14:30 CDT) | Full / phase 1 sharpen-brief | supervisor (claude-opus-5-5) | done | 2026-10-11 14:30 CDT | specs/M1-cross-venue-equivalence-routing/brief.md | c0e0111 (G0); D6 |
-| M1-S04 | /gather-evidence R01-R08 (human: "approve and /gather-evidence") | Full / phase 2 gather-evidence | supervisor + workflow (claude-opus-5-5 subagents) | working | 2026-10-11 14:35 CDT | docs/research/R01-R08, docs/research/sources.md | — |
+| M1-S04 | /gather-evidence R01-R08 (human: "approve and /gather-evidence") | Full / phase 2 gather-evidence | supervisor + workflow (claude-opus-5-5 subagents) | done | 2026-10-11 14:35 CDT | docs/research/R01-R08, docs/research/sources.md | R01-R08 + sources.md (118 rows) |
 
 ## Approvals
 
@@ -50,3 +50,7 @@ several harnesses read it and the repo is public.
 2026-10-11 14:04 CDT VERIFY M1-S02 harness=supervisor why=G-decode approved; log-decision wrote D1-D4 evidence=Approvals 2026-10-11 14:02 CDT; decision-views --check current
 2026-10-11 14:26 CDT VERIFY M1-S01 harness=supervisor why=G-init approved (option 1); AGENTS.md + Makefile edited; log-decision wrote D5 evidence=make check exit 0
 2026-10-11 14:35 CDT ROUTE M1-S04 harness=workflow why=8 independent research questions, one skill, disjoint R files: parallel per WORKFLOW §6; gather-evidence warns parallel runs conflict on sources.md, so each worker writes a sources fragment and the supervisor merges (dedupe by URL) evidence=brief R01-R08@c0e0111; interview step 4 defaults taken (all 8 questions, cap 15, Tier-A sources first)
+2026-10-11 14:42 CDT VERIFY M1 harness=supervisor why=pushed milestone/m1-research@24ba32c to GitLab + GitHub (pre-push make check OK; gitleaks not installed, diff key-grep clean); runner 299 enabled; draft MR !1 opened evidence=pipeline 50369 (merge_request_event) success, job 204882 check success
+2026-10-11 14:48 CDT VERIFY U-05 harness=supervisor why=human said "made gitlab public"; anonymous GET of the project page checked evidence=anonymous HTTP 200 on the project page; API visibility = public
+2026-10-11 15:25 CDT RESULT M1-S04 harness=workflow wf_8c0dae32-357 why=16 agents (8 gather-evidence researchers + 8 adversarial verifiers), 0 errors, about 2.57M subagent tokens, 47 min evidence=docs/research/R01-R08; verifiers moved 8 unconfirmed LB findings to Gaps (R02 3, R07 2, R08 3)
+2026-10-11 15:25 CDT FAIL kit harness=supervisor why=gather-evidence says parallel runs conflict on docs/research/sources.md, yet CLAUDE.md routes Evidence as 'may dispatch per question'; worked around with per-question fragments merged by URL (10 S-ids remapped) evidence=merge output 2026-10-11; route-failure candidate at M1 close (fragment + merge script in the skill)
