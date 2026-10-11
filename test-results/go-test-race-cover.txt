@@ -1,0 +1,14 @@
+	github.com/hisefath/equinox/cmd/equinox		coverage: 0.0% of statements
+	github.com/hisefath/equinox/internal/adjudicate		coverage: 0.0% of statements
+ok  	github.com/hisefath/equinox/internal/decisionlog	1.781s	coverage: 84.1% of statements
+ok  	github.com/hisefath/equinox/internal/fetch	2.032s	coverage: 72.7% of statements
+	github.com/hisefath/equinox/internal/ingest		coverage: 0.0% of statements
+ok  	github.com/hisefath/equinox/internal/market	2.103s	coverage: 78.5% of statements
+ok  	github.com/hisefath/equinox/internal/match	1.737s	coverage: 95.1% of statements
+ok  	github.com/hisefath/equinox/internal/measure	2.278s	coverage: 76.3% of statements
+ok  	github.com/hisefath/equinox/internal/refdata	2.470s	coverage: 88.3% of statements
+ok  	github.com/hisefath/equinox/internal/route	2.738s	coverage: 94.3% of statements
+ok  	github.com/hisefath/equinox/internal/venue	1.659s	coverage: 85.3% of statements
+ok  	github.com/hisefath/equinox/internal/venues/kalshi	3.076s	coverage: 79.6% of statements
+ok  	github.com/hisefath/equinox/internal/venues/polymarket	2.461s	coverage: 87.2% of statements
+ok  	github.com/hisefath/equinox/internal/web	1.924s	coverage: 53.9% of statements

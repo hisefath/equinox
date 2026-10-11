@@ -6,9 +6,15 @@ per merge request). Every harness (Claude Code, Codex, Cursor, Antigravity) read
 ## Commands
 | Purpose | Command |
 |---|---|
-| Setup / run / tests | not yet: the stack is decided at the design gate (G2/G3); this table is filled then |
-| **All checks (the one green/red gate)** | `make check` (docs-only until the stack exists: script syntax, diagram embeds in sync, decision review current) |
-| Deploy | see `docs/runbooks/deploy.md` (human-only) |
+| Setup | Go 1.27 (`brew install go`); no other dependencies (standard library only, D13) |
+| Build | `go build -o bin/equinox ./cmd/equinox` |
+| Run locally (recorded venue data) | `./bin/equinox serve` then open http://localhost:8080 |
+| Run locally (live venue data) | `./bin/equinox serve -live` (live calls go through the system curl, see Project specifics) |
+| One refresh / one order | `./bin/equinox refresh`, `./bin/equinox route -pair <id> -side yes -qty 100 -region US` |
+| **All checks (the one green/red gate)** | `make check` (gofmt, go vet, go test, diagram embeds, decision review) |
+| Tests only | `go test ./...` |
+| Lint / format | `gofmt -l cmd internal` |
+| Deploy | later (D21: run locally first); see `docs/runbooks/deploy.md` when it exists (human-only) |
 
 ## Where things live
 | What | Path |
@@ -54,7 +60,7 @@ test output, questions). Templates: `specs/_templates/task.md`, `specs/_template
 ## Project specifics
 - Clean restart (v2) under software-factory-kit (D1). The v1 one-shot build lives in `main@9c3bf48`; cite it only as a labelled prior experiment ("v1, one-shot"), re-verify its facts, never quote its numbers for v2, never copy its code or design forward without a gate choosing it (D3).
 - `main` is updated only when v2's `make check` is green and covers every REQ; until then milestone MRs stack on the restart branch (D4).
-- Stack: undecided until the design gate. Go and GCP are the partner's preference; don't assume Go because v1 used it. Go 1.27.1 is installed.
-- This Mac's outbound firewall (Little Snitch) blocks newly built local binaries from the internet: run live venue calls in a container.
+- Stack: Go 1.27 standard library only (D13); no database (D15); one service + command line in `cmd/equinox` (D14).
+- This Mac's outbound firewall (Little Snitch) blocks newly built binaries from the internet, so live venue calls go through the system `curl` (`fetch.Curl`); set `EQUINOX_NATIVE_HTTP=1` elsewhere. Tests never touch the network: they replay `testdata/recordings` (D17).
 - Partner documents are uncleared for this public repo: paraphrase them with page/section refs, never quote them.
 - Local v1 leftovers (`/DECISION_JOURNAL.md`, `/bin/`, `/data/`, `/research/`) are gitignored; never commit them.
