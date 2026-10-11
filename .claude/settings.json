@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": false,
+    "ponytail@ponytail": false,
+    "hf-cli@huggingface-skills": false
+  },
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(**/*.pem)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "test -f .handoff/TRACKER.md && awk '/^## Resume/{f=1} /^## /&&!/^## Resume/{f=0} f' .handoff/TRACKER.md || true"
+          }
+        ]
+      }
+    ]
+  }
+}
