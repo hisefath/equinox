@@ -46,6 +46,19 @@ curl -s -X POST localhost:8080/route -H 'Content-Type: application/json' \
   -d '{"pair_id":"<pair_id>","side":"yes","quantity":100,"customer_region":"US"}'
 ```
 
+## Demo deploy (Railway)
+
+A hosted demo for clicking around. The live app makes **no venue calls**: it replays the recorded
+2026-10-11 responses in `testdata/live-20261011` (plain gzipped JSON files) exactly like the local default, so its
+numbers match this README and `docs/TEST_RESULTS.md`. The decision log lives in the container and resets on redeploy.
+
+```bash
+railway init -n equinox            # once: create the project
+railway up --detach                # build the Dockerfile and deploy (railway.json sets the /version health check)
+railway variables --set EQUINOX_VERSION=$(git rev-parse --short HEAD)
+railway domain                     # print or create the public URL
+```
+
 ## How it works
 
 ```
@@ -95,7 +108,7 @@ venues (Kalshi, Polymarket) ──► adapters ──► one venue-neutral marke
 | Equivalence and routing logic, written | `docs/product/prd.md` (definition), `docs/architecture/lld.md` (method) |
 | Test results | `docs/TEST_RESULTS.md` |
 | AI usage log / disclosure | `docs/AI_USAGE.md` |
-| Deployment guide | this README (local); a hosted deploy comes later (D21) |
+| Deployment guide | this README: "Run it locally" and "Demo deploy (Railway)" |
 | Demo video | linked from `docs/demo/` |
 
 ## Limits
