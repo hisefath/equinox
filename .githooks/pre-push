@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+# .githooks/pre-push — the last local wall before commits leave this machine (WORKFLOW.md §2 rule 4).
+# Enabled by `git config core.hooksPath .githooks` (software-factory-kit scripts/init-repo.sh sets it).
+#
+#   1. secret scan of exactly the commits being pushed (gitleaks; a loud warning when it is not installed)
+#   2. make check — the project's single green/red command (runs on the checked-out tree)
+#   3. scripts/scope-guard.sh for every pushed delegated branch, with the task file resolved from the branch
+#      name and Owns: read from its milestone branch:
+#        task branch m<N>/t###-<slug>        -> specs/M<N>-*/tasks/T###.md
+#        job branch  m<N>/<letters><nn>-<slug> (e.g. m0/d01-…, a supervisor job such as draw-diagrams)
+#                                            -> .handoff/runs/M<N>-<LETTERS><nn>/task.md (scripts/delegate.sh)
+#
+# Why local and not only CI: origin pushes to GitLab AND the GitHub mirror at once, before any CI runs.
+# All three checks run even after one fails, so you see every problem at once.
+# Bypass: `git push --no-verify` is a human-only action — record the yes in .handoff/TRACKER.md first.
+# Run by hand (no stdin): checks the current branch.
+set -euo pipefail
+set -f # branch names and refs are data, never globs
+
+remote=${1:-origin}
+top=$(git rev-parse --show-toplevel)
+cd "$top"
+fail=0
+pushes=() # "<branch> <local sha> <remote sha>"
+
+if [ -t 0 ]; then
+  b=$(git symbolic-ref --short -q HEAD || true)
+  [ -z "$b" ] || pushes+=("$b $(git rev-parse HEAD) 0")
+else
+  while read -r lref lsha _rref rsha; do
+    case $lsha in *[!0]*) ;; *) continue ;; esac # all zeros = branch deletion
+    pushes+=("${lref#refs/heads/} $lsha $rsha")
+  done
+fi
+
+# ---- 1. secrets ------------------------------------------------------------------------------------------
+# Scans the pushed commit range (not the working tree: a gitignored .env there is expected and fine).
+if command -v gitleaks >/dev/null 2>&1; then
+  if gitleaks git --help >/dev/null 2>&1; then sub=git; else sub=detect; fi # v8.19+ renamed detect -> git
+  for p in ${pushes[@]+"${pushes[@]}"}; do
+    set -- $p
+    if [ "${3//0/}" != "" ] && git cat-file -e "$3^{commit}" 2>/dev/null; then
+      range="$3..$2"
+    else
+      range="$2 --not --remotes=$remote"
+    fi
+    echo "pre-push: gitleaks $sub ($1: $range)"
+    gitleaks "$sub" --no-banner --redact --log-opts="$range" || { echo "pre-push: BLOCKED — gitleaks found a secret in $1" >&2; fail=1; }
+  done
+else
+  cat >&2 <<'EOF'
+
+  ##########################################################################################
+  ##  WARNING: gitleaks is NOT installed — this push was NOT scanned for secrets.          ##
+  ##  origin pushes to GitLab and the public GitHub mirror at once. Installing gitleaks    ##
+  ##  is the human's call (it is a new tool); until then, check the diff for keys by eye. ##
+  ##########################################################################################
+
+EOF
+fi
+
+# ---- 2. make check ---------------------------------------------------------------------------------------
+echo "pre-push: make check"
+if ! make check; then
+  echo "pre-push: BLOCKED — make check failed (no Makefile or check target? see Makefile.example)" >&2
+  fail=1
+fi
+
+# ---- 3. scope-guard per task branch ----------------------------------------------------------------------
+# Same shape scripts/delegate.sh derives: m<N>/<id letters lowercased><id digits>-<slug>.
+re='^m([0-9]+)/([a-z]+)([0-9]+)-'
+for p in ${pushes[@]+"${pushes[@]}"}; do
+  set -- $p
+  [[ $1 =~ $re ]] || continue
+  n=${BASH_REMATCH[1]} l=${BASH_REMATCH[2]} d=${BASH_REMATCH[3]}
+  task= want=
+  if [ "$l" = t ] && [[ $d =~ ^[0-9]{3}$ ]]; then
+    want="specs/M${n}-*/tasks/T${d}.md"
+    task=$(git ls-tree -r --name-only "$2" -- specs/ | grep -E "^specs/M${n}-[^/]+/tasks/T${d}\.md$" | head -1 || true)
+  fi
+  if [ -z "$task" ]; then # supervisor job file (M0-D01 -> .handoff/runs/M0-D01/task.md)
+    jid="M${n}-$(printf '%s' "$l" | tr '[:lower:]' '[:upper:]')${d}"
+    want="${want:+$want or }.handoff/runs/${jid}/task.md"
+    git cat-file -e "$2:.handoff/runs/${jid}/task.md" 2>/dev/null && task=".handoff/runs/${jid}/task.md"
+  fi
+  if [ -z "$task" ]; then
+    echo "pre-push: note: no ${want} on $1 — scope-guard skipped" >&2
+    continue
+  fi
+  base=$(git show "$2:$task" | sed -nE 's/^(.*[[:space:]])?milestone_branch:[[:space:]]*([^[:space:]]+).*$/\2/p' | head -1)
+  if [ -z "$base" ]; then
+    cands=$(git for-each-ref --format='%(refname:short)' "refs/heads/milestone/m${n}-*")
+    [ "$(printf '%s\n' "$cands" | grep -c .)" = 1 ] && base=$cands
+  fi
+  if [ -z "$base" ]; then
+    echo "pre-push: BLOCKED — cannot resolve the milestone branch for $1 (set milestone_branch: in $task)" >&2
+    fail=1
+    continue
+  fi
+  if [ ! -x scripts/scope-guard.sh ]; then
+    echo "pre-push: BLOCKED — scripts/scope-guard.sh missing (re-run software-factory-kit init-repo.sh)" >&2
+    fail=1
+    continue
+  fi
+  echo "pre-push: scope-guard $task $base ($1)"
+  scripts/scope-guard.sh "$task" "$base" "$2" || fail=1
+done
+
+[ "$fail" = 0 ] || { echo "pre-push: push blocked — fix the above (or a human records a yes and uses --no-verify)" >&2; exit 1; }
+echo "pre-push: all checks passed"

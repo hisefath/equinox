@@ -1,0 +1,23 @@
+# GitLab CI: one job, the same gate as local and the pre-push hook (`make check`), on the human's own shell runner
+# (tag `macbook-shell`, software-factory-kit WORKFLOW.md §8). Jobs run straight on that machine, not in Docker, and
+# reuse services `make` starts (e.g. a test database via docker compose). If a job sits at "pending", the runner is
+# offline or not yet enabled for this project.
+#
+# ADAPT PER STACK: add the setup steps make check needs before it (e.g. `make db-test-up`, `npm ci`). Until the
+# Makefile is adapted, make check fails on purpose, so an unconfigured repo never looks green.
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never # the merge request pipeline covers this push
+    - if: $CI_COMMIT_BRANCH
+
+stages: [check]
+
+check:
+  stage: check
+  tags: [macbook-shell]
+  script:
+    - export PATH="/opt/homebrew/bin:$PATH" # Homebrew tools; the runner service starts with a short PATH
+    - make check
