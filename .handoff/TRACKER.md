@@ -10,7 +10,7 @@ several harnesses read it and the repo is public.
 - **As of:** 2026-10-11 16:14 CDT
 - **In flight:** M3 G2: hld.md committed (4 decisions D13-D16, 7 open Q); diagram jobs M3-D01..D03 dispatched to Claude subagents in worktrees from milestone/m3-design
 - **Next:** G2 decisions one per reply (D13 → D16), verify + squash diagram jobs, embed, closing G2 → log-decision → /design-lld
-- **Waiting on:** the human: D13; diagram jobs
+- **Waiting on:** the human: D14; then a G2 Revise of hld.md §5 for the M3-D02 gaps (re-dispatch hld-container after)
 - **Verified:** design-hld Done-when checks all pass (CN=4 L=11 TB=4 INV=9 D=4 open=7)
 
 ## Tasks
@@ -27,7 +27,7 @@ several harnesses read it and the repo is public.
 | M2-S01 | /write-prd (human: "approve and /write-prd") | Full / phase 3 write-prd | supervisor (claude-opus-5-5) | done | 2026-10-11 16:01 CDT | docs/product/prd.md | 40eb5d5 (G1); D7-D12 |
 | M3-S01 | /design-hld (human: "approve, also push and /design-hld") | Full / phase 5 design-hld | supervisor (claude-opus-5-5) | done | 2026-10-11 16:14 CDT | docs/architecture/hld.md | — (awaiting G2) |
 | M3-D01 | draw-diagrams hld-context | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-context.mmd | cb8c797 (m3/d01-hld-context) |
-| M3-D02 | draw-diagrams hld-container | Full / phase 6b | claude-subagent | working | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-container.mmd | — |
+| M3-D02 | draw-diagrams hld-container | Full / phase 6b | claude-subagent | human_review | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-container.mmd | adcc25b (m3/d02-hld-container), 3 ⚠ in hld.md §5 |
 | M3-D03 | draw-diagrams deployment | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/deployment.mmd | 5328a88 (m3/d03-deployment) |
 
 ## Approvals
@@ -45,6 +45,7 @@ several harnesses read it and the repo is public.
 | 2026-10-11 15:27 CDT | research review (no gate; gather-evidence STOP) | docs/research/R01-R08@c1c023e | "approve and /write-prd" |
 | 2026-10-11 16:06 CDT | G1 | docs/product/prd.md@40eb5d5 (both open ⚠ taken as recommended per the STOP's recommendation; agent assumptions A-1..A-3, A-5..A-8 confirmed; also covers: push milestone/m2-product + draft MR !2) | "approve, also push and /design-hld" |
 | 2026-10-11 16:17 CDT | G2 D13 | docs/architecture/hld.md@5d35114 ### D13 (journal id D13) | "yes, use go" (quoting option b "Go, standard library only (brief P-01).") |
+| 2026-10-11 16:19 CDT | G2 D14 | docs/architecture/hld.md@5d35114 ### D14 (journal id D14) | "approved for the recc," |
 
 ## Log
 
@@ -71,3 +72,5 @@ several harnesses read it and the repo is public.
 2026-10-11 16:16 CDT FAIL kit harness=supervisor why=committing hld.md with diagram placeholders turns make check red (embed-diagrams --check: .mmd missing) until every draw-diagrams job is back and embedded, so the milestone branch cannot be pushed mid-G2 evidence=make check on milestone/m3-design@5d35114; route-failure candidate
 2026-10-11 16:16 CDT RESULT M3-D01 harness=claude-subagent status=done evidence=result.md parses; head cb8c797
 2026-10-11 16:16 CDT VERIFY M3-D01 harness=supervisor why=scope-guard OK (1 path in Owns); diff = hld-context.mmd only; 10 nodes = the 10 §2 rows, 9 edges labelled with each row's interaction evidence=scope-guard exit 0
+2026-10-11 16:18 CDT RESULT M3-D02 harness=claude-subagent status=human_review evidence=result.md: 3 gaps in hld.md §5 (CN-2's trust zone unstated; TB-2 and TB-3 overlap at CN-3 without nesting; TB-4's trusted side vs its crossing connections disagree)
+2026-10-11 16:18 CDT VERIFY M3-D02 harness=supervisor why=scope-guard OK; the three gaps are real defects in hld.md §5 (design-hld's section), not the drawing; fix = /design-hld revision mode restating §5 as nested zones, then re-dispatch M3-D02 evidence=hld.md@5d35114 §5 rows TB-1..TB-4

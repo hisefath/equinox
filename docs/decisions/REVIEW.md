@@ -21,9 +21,10 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 
 - ●○○ D11 — Active markets only over the full catalog; quiet markets go unmatched.
 
-### Infrastructure (1)
+### Infrastructure (2)
 
 - ●●● D13 — Go standard library over Python or TypeScript; more hand-written matching.
+- ●●○ D14 — One service with snapshots over a split ingest; a restart warm-up.
 
 ### Process (6)
 
@@ -44,6 +45,7 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D14 · Infrastructure · ●●○ — One service with snapshots over a split ingest; a restart warm-up.
 - D13 · Infrastructure · ●●● — Go standard library over Python or TypeScript; more hand-written matching.
 - D12 · Process · ●●○ — PRD approved with both open items as recommended; terms of use unread.
 - D11 · Data · ●○○ — Active markets only over the full catalog; quiet markets go unmatched.
