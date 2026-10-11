@@ -1,0 +1,20 @@
+%% diagram: state-pair
+%% source: docs/architecture/lld.md#sm-1-pair-verdict-lifecycle-pairsverdict-state-pair @ d7cc8b2
+%% drawn: 2026-10-11T22:13:41Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 1
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams state-pair`.
+stateDiagram-v2
+    [*] --> undecided
+    undecided --> equivalent : rules compare (BE-7.Compare in SEQ-1) [every part agrees]
+    undecided --> related : rules compare [a known part differs]
+    undecided --> equivalent : AI verdict #quot;equivalent#quot; applied (BE-7 with BE-10 Set) [the verdict's fingerprints match]
+    undecided --> related : AI verdict #quot;related#quot; applied [the verdict's fingerprints match]
+    equivalent --> equivalent : human override #quot;equivalent#quot; (a person confirms the pair) [fingerprints match]
+    equivalent --> related : human override #quot;not equivalent#quot; [fingerprints match]
+    related --> equivalent : human override #quot;equivalent#quot; [fingerprints match]
+    related --> related : human override #quot;not equivalent#quot; (a person confirms the pair) [fingerprints match]
+    equivalent --> stale : rules text changes (BE-11 check in SEQ-2, or the next refresh) [fingerprint differs]
+    stale --> undecided : next refresh re-matches
+    %% ⚠ missing: terminal state (the section says Terminal is none by design, so no end arrow is drawn) — docs/architecture/lld.md#sm-1-pair-verdict-lifecycle-pairsverdict-state-pair does not state it
