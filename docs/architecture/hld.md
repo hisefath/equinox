@@ -98,6 +98,36 @@ to the outside world, or to an AI model, happens before routing reads its inputs
 ## 2. System context (C4 level 1)
 
 <!-- diagram: hld-context -->
+```mermaid
+%% diagram: hld-context
+%% source: docs/architecture/hld.md#2-system-context-c4-level-1 @ 5d35114
+%% drawn: 2026-10-11T21:14:44Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams hld-context`.
+flowchart LR
+    P1(["Labs engineer<br/>person"])
+    P2(["Reviewer (Labs lead, graders)<br/>person"])
+    P3(["Human rater<br/>person"])
+    SYS["Equinox<br/>our system"]
+    X1[["US-regulated venue<br/>external system · the venue"]]
+    X2[["Offshore venue<br/>external system · the venue"]]
+    X3[["AI adjudicator<br/>external system · AI model provider, run by an agent harness (D16)"]]
+    X4[["AI rater<br/>external system · AI model provider, run by an agent harness (D16)"]]
+    X5[["Railway<br/>external system (host) · Railway"]]
+    X6[["GitLab and its CI runner<br/>external system · Gauntlet GitLab#59; the human's laptop runner"]]
+    P1 -->|"runs refreshes and measurements, submits hypothetical orders, reads decisions and health: orders, decisions, pairs, health, measurement reports"| SYS
+    P2 -->|"opens the public page, tries a hypothetical order, checks the running version: pairs, health, orders, decisions, version"| SYS
+    P3 -->|"labels a blind sample of pairs offline: blind pair cards, labels"| SYS
+    SYS -->|"we read its open markets, series fee terms and order books: markets, events, fee terms, order books"| X1
+    SYS -->|"we read its open markets (catalog service) and order books and fee schedules (book service): markets, fee schedules, order books"| X2
+    X3 -->|"offline: reads exported pairs the rules cannot settle and returns verdicts with reasons: both venues' questions and rules text#59; verdicts"| SYS
+    X4 -->|"offline: labels the measurement sample blind: blind pair cards#59; labels"| SYS
+    X5 -->|"builds the image from the repository, runs the service, gives it a public address and a volume: image, logs"| SYS
+    X6 -->|"runs make check on every push#59; holds the repository Railway builds from: source, check results"| SYS
+```
+<!-- /diagram -->
 
 | Element | Kind | Interaction with our system | Data exchanged | Owner | Basis |
 |---|---|---|---|---|---|
@@ -118,6 +148,52 @@ A container is a separately running or deployable runtime boundary that runs cod
 API, a background worker, a database, a queue, a cache, an object store. It is not a Docker container.
 
 <!-- diagram: hld-container -->
+```mermaid
+%% diagram: hld-container
+%% source: docs/architecture/hld.md#3-containers-c4-level-2 @ 5842e20
+%% source: docs/architecture/hld.md#4-connections @ 5842e20
+%% source: docs/architecture/hld.md#5-trust-boundaries-threats @ 5842e20
+%% drawn: 2026-10-11T21:24:32Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams hld-container`.
+flowchart LR
+    P1(["Labs engineer, Reviewer<br/>person"])
+    subgraph N1 ["Host zone (Railway)"]
+        CN1["CN-1 Equinox service<br/>Go 1.27 standard library, one binary (D13)#59; runs on Railway (C-2)"]
+        CN2[("CN-2 Decision log<br/>append-only file on a Railway volume (D15)")]
+    end
+    subgraph N2 ["Developer zone (the human's machine and the CI runner)"]
+        P2(["Labs engineer<br/>person"])
+        P3(["Human rater<br/>person"])
+        CN3["CN-3 Equinox command line (offline jobs)<br/>the same Go binary, run by a person in a container on the laptop or in CI (D13, AGENTS.md:58)"]
+    end
+    subgraph N3 ["Repository zone (GitLab)"]
+        CN4[("CN-4 Reviewed reference data<br/>versioned files in the git repository, shipped inside the service image")]
+    end
+    X1[["US-regulated venue<br/>external system"]]
+    X2[["Offshore venue<br/>external system"]]
+    X3[["AI adjudicator<br/>external system"]]
+    X4[["AI rater<br/>external system"]]
+    P1 -->|"L-1 HTTPS (Railway public domain), sync<br/>crosses TB-1"| CN1
+    CN1 -.->|"L-2 HTTPS, public REST, TLS verified, async<br/>crosses TB-2"| X1
+    CN1 -.->|"L-3 HTTPS, public REST (catalog service and book service), TLS verified, async<br/>crosses TB-2"| X2
+    CN1 -->|"L-4 file append on the mounted volume, sync"| CN2
+    CN4 -->|"L-5 files read once at start (inside the image), sync<br/>crosses TB-4"| CN1
+    P2 -->|"L-6 local shell in a container, sync"| CN3
+    CN3 -->|"L-7 HTTPS, public REST, TLS verified, sync<br/>crosses TB-2"| X1
+    CN3 -->|"L-7 HTTPS, public REST, TLS verified, sync<br/>crosses TB-2"| X2
+    CN3 -.->|"L-8 files: an export of pair cards in, a verdict or label file out#59; an agent harness carries them to the model (D16), async<br/>crosses TB-3"| X3
+    CN3 -.->|"L-8 files: an export of pair cards in, a verdict or label file out#59; an agent harness carries them to the model (D16), async<br/>crosses TB-3"| X4
+    CN3 -.->|"L-9 file write, then a reviewed merge request by a person, async<br/>crosses TB-4"| CN4
+    P3 -.->|"L-10 local files, async"| CN3
+    N3 -.->|"L-11 Railway build from the repository at a named commit, async<br/>crosses TB-4"| N1
+    style N1 stroke-dasharray: 5 5
+    style N2 stroke-dasharray: 5 5
+    style N3 stroke-dasharray: 5 5
+```
+<!-- /diagram -->
 
 | Id | Container | Technology | Responsibility | Data owned | Scaling unit | Basis |
 |---|---|---|---|---|---|---|
@@ -349,6 +425,38 @@ crosses between zones (or from an outside party into a zone).
 ## 11. Deployment view
 
 <!-- diagram: deployment -->
+```mermaid
+%% diagram: deployment
+%% source: docs/architecture/hld.md#11-deployment-view @ 5d35114
+%% drawn: 2026-10-11T21:14:40Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams deployment`.
+flowchart TB
+    subgraph ENV_local ["local · a container on the human's Mac (newly built local binaries are blocked from the internet, AGENTS.md:58)"]
+        local_CN1["CN-1"]
+        local_CN3["CN-3"]
+        local_CN4["CN-4"]
+    end
+    subgraph ENV_CI ["CI · GitLab runner 299 (the human's MacBook, shell executor) running make check"]
+        CI_CN3["CN-3"]
+        CI_CN4["CN-4"]
+    end
+    staging_none["staging: none · one prototype environment#59; tests on recorded venue responses stand in for it"]
+    subgraph ENV_production ["production · Railway: one service built from the repository's image, with one volume mounted"]
+        production_CN1["CN-1"]
+        production_CN2["CN-2"]
+        production_CN4["CN-4"]
+    end
+    DEP_local(["the developer, with commands set in AGENTS.md at design-lld"]) -.->|"deployed by"| ENV_local
+    SEC_local[/"secrets from: none"/] -.->|"secrets from"| ENV_local
+    DEP_CI(["every push"]) -.->|"deployed by"| ENV_CI
+    SEC_CI[/"secrets from: none"/] -.->|"secrets from"| ENV_CI
+    DEP_production(["the human only, naming a commit"]) -.->|"deployed by"| ENV_production
+    SEC_production[/"secrets from: none"/] -.->|"secrets from"| ENV_production
+```
+<!-- /diagram -->
 
 | Environment | Runs on | Containers | Deployed by | Secrets from | Data | Basis |
 |---|---|---|---|---|---|---|

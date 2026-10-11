@@ -7,11 +7,11 @@ several harnesses read it and the repo is public.
 ## Resume
 
 <!-- Rewritten as the LAST edit of every supervisor move. Times come from `date`. -->
-- **As of:** 2026-10-11 16:23 CDT
-- **In flight:** M3 G2: D13-D17 accepted; hld.md §5 revised (zones); M3-D02 re-dispatched from the revised milestone head
-- **Next:** verify M3-D02 → squash D01-D03 onto milestone/m3-design → embed-diagrams → commit → closing G2 → log-decision → push → /design-lld
-- **Waiting on:** M3-D02 redraw
-- **Verified:** design-hld Done-when checks all pass (CN=4 L=11 TB=4 INV=9 D=4 open=7)
+- **As of:** 2026-10-11 16:29 CDT
+- **In flight:** M3 closing G2: hld.md with 3 embedded diagrams
+- **Next:** closing G2 → log-decision → push milestone/m3-design + draft MR !3 (human already asked: "also push") → /design-lld (human already typed it with an early approve)
+- **Waiting on:** the human: closing G2 on the embedded hld.md
+- **Verified:** make check OK after embedding; 3 diagrams render (mermaid 11.4.1, browser pane)
 
 ## Tasks
 
@@ -26,9 +26,9 @@ several harnesses read it and the repo is public.
 | M1-S04 | /gather-evidence R01-R08 (human: "approve and /gather-evidence") | Full / phase 2 gather-evidence | supervisor + workflow (claude-opus-5-5 subagents) | done | 2026-10-11 14:35 CDT | docs/research/R01-R08, docs/research/sources.md | R01-R08 + sources.md (118 rows) |
 | M2-S01 | /write-prd (human: "approve and /write-prd") | Full / phase 3 write-prd | supervisor (claude-opus-5-5) | done | 2026-10-11 16:01 CDT | docs/product/prd.md | 40eb5d5 (G1); D7-D12 |
 | M3-S01 | /design-hld (human: "approve, also push and /design-hld") | Full / phase 5 design-hld | supervisor (claude-opus-5-5) | done | 2026-10-11 16:14 CDT | docs/architecture/hld.md | — (awaiting G2) |
-| M3-D01 | draw-diagrams hld-context | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-context.mmd | cb8c797 (m3/d01-hld-context) |
-| M3-D02 | draw-diagrams hld-container | Full / phase 6b | claude-subagent | working | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-container.mmd | re-dispatched after G2 Revise of §5 (attempt 1 archived: adcc25b) |
-| M3-D03 | draw-diagrams deployment | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/deployment.mmd | 5328a88 (m3/d03-deployment) |
+| M3-D01 | draw-diagrams hld-context | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-context.mmd | cb8c797 → squashed cb87c3c |
+| M3-D02 | draw-diagrams hld-container | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-container.mmd | 90cbf0e → squashed 153a8af (attempt 1 archived) |
+| M3-D03 | draw-diagrams deployment | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/deployment.mmd | 5328a88 → squashed 7652384 |
 
 ## Approvals
 
@@ -79,3 +79,6 @@ several harnesses read it and the repo is public.
 2026-10-11 16:18 CDT RESULT M3-D02 harness=claude-subagent status=human_review evidence=result.md: 3 gaps in hld.md §5 (CN-2's trust zone unstated; TB-2 and TB-3 overlap at CN-3 without nesting; TB-4's trusted side vs its crossing connections disagree)
 2026-10-11 16:18 CDT VERIFY M3-D02 harness=supervisor why=scope-guard OK; the three gaps are real defects in hld.md §5 (design-hld's section), not the drawing; fix = /design-hld revision mode restating §5 as nested zones, then re-dispatch M3-D02 evidence=hld.md@5d35114 §5 rows TB-1..TB-4
 2026-10-11 16:23 CDT ROUTE M3-D02 harness=supervisor why=G2 Revise of §5 (Approvals 16:23 CDT) fixed the three gaps M3-D02 reported; attempt 1 archived to .handoff/runs/M3-D02.attempt-20261011T1623/ evidence=hld.md Change log row 16:24 CDT
+2026-10-11 16:24 CDT DISPATCH M3-D02 harness=claude-subagent why=redraw after the §5 revision evidence=.handoff/runs/M3-D02/task.md from milestone/m3-design@5842e20
+2026-10-11 16:29 CDT RESULT M3-D02 harness=claude-subagent status=done evidence=result.md parses; head 90cbf0e; 0 gaps
+2026-10-11 16:29 CDT VERIFY M3 harness=supervisor why=scope-guard OK for M3-D02; squashed D01 cb87c3c, D02 153a8af, D03 7652384; embed-diagrams embedded 3; make check OK; all three .mmd parsed and rendered to SVG by mermaid 11.4.1 in the browser pane (Docker mermaid-cli failed: the Colima VM disk is full, left alone per the human's earlier choice) evidence=browser render check 2026-10-11 16:29 CDT
