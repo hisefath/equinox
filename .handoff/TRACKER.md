@@ -48,6 +48,7 @@ several harnesses read it and the repo is public.
 | 2026-10-11 16:19 CDT | G2 D14 | docs/architecture/hld.md@5d35114 ### D14 (journal id D14) | "approved for the recc," |
 | 2026-10-11 16:20 CDT | G2 D15 | docs/architecture/hld.md@5d35114 ### D15 (journal id D15) | "approved for the recc" |
 | 2026-10-11 16:22 CDT | G2 D16 | docs/architecture/hld.md@5d35114 ### D16 (journal id D16) | "yes lets do it" (quoting the original recommendation: "b) exported files plus an agent harness"; the earlier venue-mock question stays unanswered, so the design's recorded-responses-plus-live path is unchanged) |
+| 2026-10-11 16:22 CDT | decision: venue mocks (chat options card a/b/c, after the human asked for mock venue APIs to save time) | docs/architecture/hld.md@5d35114 (CN-3 recording, §11 CI row: unchanged) | "yes i agree" (quoting option a "Recorded real responses as the mock, plus a live switch (recommended).") |
 
 ## Log
 
