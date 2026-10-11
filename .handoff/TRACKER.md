@@ -36,6 +36,7 @@ several harnesses read it and the repo is public.
 | 2026-10-11 14:02 CDT | G-decode | specs/M1-cross-venue-equivalence-routing/decode.md@d20fb08 (interview answers: Q1 "A", Q2 "A", Q3 "yeah deadlines tonight at 11:30pm", Q4 "i dont want you t really be concerned about the deadline, lets get it done today") | "approve" |
 | 2026-10-11 14:26 CDT | G-init | scaffold@82e0ef7 (AGENTS.md, Makefile; option 1 = docs-only make check until the design gate, AGENTS.md Commands + Project specifics as listed in the G-init card) | "1" |
 | 2026-10-11 14:35 CDT | G0 | specs/M1-cross-venue-equivalence-routing/brief.md@c0e0111 (track recommended: Full; U-01..U-03 left at the default: paraphrase only, no copies committed) | "approve and /gather-evidence" |
+| 2026-10-11 14:40 CDT | human-only: push milestone/m1-research to origin (GitLab + GitHub mirror), open its draft MR (WORKFLOW §8), enable runner 299 (standing CI habit) | milestone/m1-research@3235f24 | "go ahead, also push the branch" |
 
 ## Log
 
