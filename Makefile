@@ -12,16 +12,18 @@
 check: lint types test decisions
 	@echo "make check: OK"
 
-## lint: workflow scripts must parse (docs-only phase: no product code yet; stack tools are added at the design gate)
+## lint: Go formatting (check only) + workflow scripts parse
 lint:
+	@test -z "$$(gofmt -l cmd internal)" || { echo "gofmt needed:"; gofmt -l cmd internal; exit 1; }
 	@for f in scripts/*.sh .githooks/pre-push; do bash -n "$$f" || exit 1; done
 
-## types: none until a stack exists
+## types: go vet (Go 1.27 standard library only, D13)
 types:
-	@true
+	go vet ./...
 
-## test: design docs' embedded diagrams must match their .mmd sources (once docs/architecture/*.md exist)
+## test: every Go test (recorded venue responses only, no network) + design diagrams in sync
 test:
+	go test -count=1 ./...
 	@set -- docs/architecture/*.md; if [ -e "$$1" ]; then bash scripts/embed-diagrams.sh --check "$$@"; fi
 
 ## decisions: docs/decisions/REVIEW.md matches the decision journal (works as is; no adapting needed)
