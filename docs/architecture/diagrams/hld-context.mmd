@@ -1,0 +1,27 @@
+%% diagram: hld-context
+%% source: docs/architecture/hld.md#2-system-context-c4-level-1 @ 5d35114
+%% drawn: 2026-10-11T21:14:44Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams hld-context`.
+flowchart LR
+    P1(["Labs engineer<br/>person"])
+    P2(["Reviewer (Labs lead, graders)<br/>person"])
+    P3(["Human rater<br/>person"])
+    SYS["Equinox<br/>our system"]
+    X1[["US-regulated venue<br/>external system · the venue"]]
+    X2[["Offshore venue<br/>external system · the venue"]]
+    X3[["AI adjudicator<br/>external system · AI model provider, run by an agent harness (D16)"]]
+    X4[["AI rater<br/>external system · AI model provider, run by an agent harness (D16)"]]
+    X5[["Railway<br/>external system (host) · Railway"]]
+    X6[["GitLab and its CI runner<br/>external system · Gauntlet GitLab#59; the human's laptop runner"]]
+    P1 -->|"runs refreshes and measurements, submits hypothetical orders, reads decisions and health: orders, decisions, pairs, health, measurement reports"| SYS
+    P2 -->|"opens the public page, tries a hypothetical order, checks the running version: pairs, health, orders, decisions, version"| SYS
+    P3 -->|"labels a blind sample of pairs offline: blind pair cards, labels"| SYS
+    SYS -->|"we read its open markets, series fee terms and order books: markets, events, fee terms, order books"| X1
+    SYS -->|"we read its open markets (catalog service) and order books and fee schedules (book service): markets, fee schedules, order books"| X2
+    X3 -->|"offline: reads exported pairs the rules cannot settle and returns verdicts with reasons: both venues' questions and rules text#59; verdicts"| SYS
+    X4 -->|"offline: labels the measurement sample blind: blind pair cards#59; labels"| SYS
+    X5 -->|"builds the image from the repository, runs the service, gives it a public address and a volume: image, logs"| SYS
+    X6 -->|"runs make check on every push#59; holds the repository Railway builds from: source, check results"| SYS

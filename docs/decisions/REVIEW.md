@@ -17,17 +17,31 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 - ●●○ D9 — Blind sampled precision with recall and kappa guards; costs 30 human labels.
 - ●●○ D10 — Offline AI adjudication over runtime AI or none; adds a review step.
 
-### Data (1)
+### Data (5)
 
+- ●●○ D15 — Log file plus git-reviewed data over Postgres; reads scan a file.
+- ●●○ D19 — Proposition-level matching over event-level; more rows to compare.
+- ●●○ D20 — Rare-word candidates and part checks over text similarity; more undecided pairs.
 - ●○○ D11 — Active markets only over the full catalog; quiet markets go unmatched.
+- ●○○ D17 — Recorded real responses with a live switch over invented mocks; recordings age.
 
-### Process (6)
+### Infrastructure (4)
+
+- ●●● D13 — Go standard library over Python or TypeScript; more hand-written matching.
+- ●●○ D14 — One service with snapshots over a split ingest; a restart warm-up.
+- ●●○ D16 — AI via exported files and a harness over an API key; manual rounds.
+- ●○○ D21 — Local first over an early deploy; no live URL yet.
+
+### Process (9)
 
 - ●●○ D1 — Restart via the kit on a branch over keeping v1; costs a rebuild.
 - ●●○ D3 — Cite v1 as evidence over reusing its code; costs re-checking facts.
 - ●●○ D4 — Finish v2 today over submitting v1; main keeps v1 until green.
 - ●●○ D6 — Full track over Standard; about a dozen gates in one day.
 - ●●○ D12 — PRD approved with both open items as recommended; terms of use unread.
+- ●●○ D18 — HLD approved after a trust-zone fix; open questions measured in M4.
+- ●●○ D22 — Batched gates over per-step gates to meet the deadline.
+- ●●○ D23 — LLD approved after a diagram-driven revision; build starts.
 - ●○○ D5 — Docs-only checks until design over Go checks now; checks prove little early.
 
 ## How the workflow improved
@@ -40,6 +54,17 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D23 · Process · ●●○ — LLD approved after a diagram-driven revision; build starts.
+- D22 · Process · ●●○ — Batched gates over per-step gates to meet the deadline.
+- D21 · Infrastructure · ●○○ — Local first over an early deploy; no live URL yet.
+- D20 · Data · ●●○ — Rare-word candidates and part checks over text similarity; more undecided pairs.
+- D19 · Data · ●●○ — Proposition-level matching over event-level; more rows to compare.
+- D18 · Process · ●●○ — HLD approved after a trust-zone fix; open questions measured in M4.
+- D17 · Data · ●○○ — Recorded real responses with a live switch over invented mocks; recordings age.
+- D16 · Infrastructure · ●●○ — AI via exported files and a harness over an API key; manual rounds.
+- D15 · Data · ●●○ — Log file plus git-reviewed data over Postgres; reads scan a file.
+- D14 · Infrastructure · ●●○ — One service with snapshots over a split ingest; a restart warm-up.
+- D13 · Infrastructure · ●●● — Go standard library over Python or TypeScript; more hand-written matching.
 - D12 · Process · ●●○ — PRD approved with both open items as recommended; terms of use unread.
 - D11 · Data · ●○○ — Active markets only over the full catalog; quiet markets go unmatched.
 - D10 · Product · ●●○ — Offline AI adjudication over runtime AI or none; adds a review step.

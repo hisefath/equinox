@@ -1,0 +1,29 @@
+%% diagram: deployment
+%% source: docs/architecture/hld.md#11-deployment-view @ 5d35114
+%% drawn: 2026-10-11T21:14:40Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams deployment`.
+flowchart TB
+    subgraph ENV_local ["local · a container on the human's Mac (newly built local binaries are blocked from the internet, AGENTS.md:58)"]
+        local_CN1["CN-1"]
+        local_CN3["CN-3"]
+        local_CN4["CN-4"]
+    end
+    subgraph ENV_CI ["CI · GitLab runner 299 (the human's MacBook, shell executor) running make check"]
+        CI_CN3["CN-3"]
+        CI_CN4["CN-4"]
+    end
+    staging_none["staging: none · one prototype environment#59; tests on recorded venue responses stand in for it"]
+    subgraph ENV_production ["production · Railway: one service built from the repository's image, with one volume mounted"]
+        production_CN1["CN-1"]
+        production_CN2["CN-2"]
+        production_CN4["CN-4"]
+    end
+    DEP_local(["the developer, with commands set in AGENTS.md at design-lld"]) -.->|"deployed by"| ENV_local
+    SEC_local[/"secrets from: none"/] -.->|"secrets from"| ENV_local
+    DEP_CI(["every push"]) -.->|"deployed by"| ENV_CI
+    SEC_CI[/"secrets from: none"/] -.->|"secrets from"| ENV_CI
+    DEP_production(["the human only, naming a commit"]) -.->|"deployed by"| ENV_production
+    SEC_production[/"secrets from: none"/] -.->|"secrets from"| ENV_production

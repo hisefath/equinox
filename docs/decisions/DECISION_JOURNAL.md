@@ -185,3 +185,133 @@ Copy this block for each new entry (D-ids increase by one, starting at D1):
 - Cost accepted: the venues' terms of use stay unread for now; FR-009's fee formula for the US-regulated venue waits on the human's download. · Reversibility: Type 2 two-way — a clarify-spec pass and a fresh G1 can change any requirement · Confidence: ⚠ not stated in the PRD
 - Revisit if: the venues' terms forbid the prototype's reads, or the fee schedule changes the routing rules · Evidence: docs/product/prd.md:280; approval G1 2026-10-11 16:06 CDT · Interview line: "I froze the requirements only after five decisions of my own, each traced to research, so design starts from what I chose, not what the AI guessed."
 - Review: Topic Process · Weight ●●○ · One-liner: PRD approved with both open items as recommended; terms of use unread.
+
+### D13 Build Equinox in Go, standard library only  [status: accepted]
+- Date 2026-10-11 16:18 CDT · phase 5 design-hld · milestone M3 · Decided by: human, G2 D13 2026-10-11 16:17 CDT: "yes, use go" (quoting option b "Go, standard library only (brief P-01).") · Proposed by: design-hld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/hld.md@5d35114
+- Context and forces: The partner prefers Go and accepts Python (REQ-13); the router must replay exactly (FR-013, NFR-001), money must never be held in floating point (INV-3), and a background refresher must run beside routing (FR-020); the stack was left open until this gate (AGENTS.md:57). Proposed as docs/architecture/hld.md D13.
+- Options:
+  - Do nothing / simplest: Python 3 scripts with the standard library — cost: about the same build and run; floats by default, extra structure for a long-running service, not the preferred language — rejected: the human chose Go
+  - Go 1.27, standard library only (brief P-01) (agent's recommendation) (agent's first proposal) — cost: about 1 extra build-day of text tooling; same run cost; live runs on this Mac go through a container — chosen
+  - TypeScript on Bun or Node — cost: about the same; floating-point numbers by default put INV-3 at risk; not the stated preference — rejected: the human chose Go
+- Choice: Go, standard library only · Why: In the context of a partner whose stack prefers Go and a router that must be exactly reproducible, facing a same-day build, we chose Go with only its standard library over Python or TypeScript to get one static binary, safe concurrency between refresh and routing, and exact integer money, accepting more hand-written text matching and container-only live runs on this Mac.
+- Cost accepted: text matching written by hand with no third-party libraries; live venue calls on this Mac only from a container (AGENTS.md:58). · Reversibility: Type 1 one-way — a language is on the Type 1 list; changing it later means a rewrite · Confidence: high
+- Revisit if: matching quality needs a text library Go lacks (SC-001 below its gate with rules-text misses as the cause) · Evidence: docs/architecture/hld.md:249; `go version` → go1.27.1 checked 2026-10-11; approval G2 D13 2026-10-11 16:17 CDT; ADR: docs/decisions/0013-build-equinox-in-go-standard-library-only.md · Interview line: "I picked Go because PEAK6 runs Go, and its integers and goroutines made deterministic routing beside a live refresher easy to prove."
+- Review: Topic Infrastructure · Weight ●●● · One-liner: Go standard library over Python or TypeScript; more hand-written matching.
+
+### D14 One service: background refresher, immutable snapshots  [status: accepted]
+- Date 2026-10-11 16:19 CDT · phase 5 design-hld · milestone M3 · Decided by: human, G2 D14 2026-10-11 16:19 CDT: "approved for the recc," · Proposed by: design-hld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/hld.md@5d35114
+- Context and forces: Routing must never contact a venue (FR-020, NFR-002) and must replay exactly (FR-013); a failing venue keeps its last good data (FR-021); reviewers need a live page (FR-042, C-2); about 10 people use it and a full refresh takes about 4 min (hld §8). Proposed as docs/architecture/hld.md D14.
+- Options:
+  - Do nothing / simplest: the command line fetches venue data for each run, then routes — cost: least build; each order waits on the venues (breaks FR-020) and there is no live page (breaks FR-042) — rejected: fails two requirements
+  - One service process: a background refresher polls both venues, matches after each catalog refresh and publishes an immutable snapshot; routing reads only the current snapshot; the same binary is the command line (brief P-04) (agent's recommendation) (agent's first proposal) — cost: about 1 build-day, about $7 a month; about 4 min of warming up after a restart — chosen
+  - Two processes: an ingest worker writes snapshots to a shared store; a routing service reads it — cost: about 2 extra build-days, about $15-20 a month; a third container and a sync protocol — rejected: the human chose the recommendation
+- Choice: one service with a background refresher and immutable snapshots · Why: In the context of routing that must never wait on a venue and must replay exactly, facing a 10-person audience and a one-day appetite, we chose one service that refreshes in the background and publishes immutable snapshots over per-order fetching or a split ingest service to get non-blocking, reproducible routing with one thing to run, accepting a short warm-up after each restart.
+- Cost accepted: one instance, so a restart means about 4 min of "warming up" with no decisions; refresher and router share one machine's memory. · Reversibility: Type 2 two-way — splitting ingest from routing later is the documented 10K-user step (hld §12) · Confidence: med
+- Revisit if: refresh duration nears 12 min, or reviewers need the page during restarts (hld §8 signals) · Evidence: docs/architecture/hld.md:268; approval G2 D14 2026-10-11 16:19 CDT · Interview line: "Routing reads an immutable snapshot that a background refresher swaps in, so it never blocks on a venue and the same snapshot always gives the same answer."
+- Review: Topic Infrastructure · Weight ●●○ · One-liner: One service with snapshots over a split ingest; a restart warm-up.
+
+### D15 Decision log on a volume, reviewed data in git  [status: accepted]
+- Date 2026-10-11 16:20 CDT · phase 5 design-hld · milestone M3 · Decided by: human, G2 D15 2026-10-11 16:20 CDT: "approved for the recc" · Proposed by: design-hld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/hld.md@5d35114
+- Context and forces: Every decided or refused order must be readable later, across restarts (FR-012, NFR-006); the router's trusted inputs must be frozen and reviewable (FR-033, FR-035, FR-039, FR-041) and decisions must replay (FR-013); about 90 decisions a day ≈ 66 MB a year; cost ceiling about $10 a month (hld §8, Q-5). Proposed as docs/architecture/hld.md D15.
+- Options:
+  - Do nothing / simplest: keep everything in memory — cost: none; the decision log is lost on every restart (breaks NFR-006) and reviewed inputs have no history — rejected: fails NFR-006
+  - An append-only decision log file on a Railway volume, plus reviewed reference data as versioned files in the repository, shipped in the image (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: about 0.5 build-day; volume about $0.15 per GB-month — chosen
+  - A managed Postgres database on Railway — cost: about 1 extra build-day; about $5-8 a month; reviewed inputs lose their merge-request review trail — rejected: the human chose the recommendation
+- Choice: append-only log file on a volume, reviewed data in git · Why: In the context of a decision log of about 66 MB a year and inputs that must be frozen and reviewed, facing a cost ceiling around $10 a month, we chose an append-only file on a volume plus versioned files in git over a database or memory only to keep every input reviewable and tied to a commit with nothing extra to run, accepting file scans for reads and a redeploy to change reference data.
+- Cost accepted: decisions are read by scanning a file; changing eligibility, verdicts or labels needs a reviewed merge request and a redeploy. · Reversibility: Type 2 two-way — the append-only log can be loaded into a database later (hld §12, 100K tier) · Confidence: med
+- Revisit if: someone needs to query decisions by field, or the log exceeds 1 GB · Evidence: docs/architecture/hld.md:287; railway.com/pricing checked 2026-10-11; approval G2 D15 2026-10-11 16:20 CDT · Interview line: "Every input the router trusts is a reviewed file in git, and every decision is appended to a log before the answer goes out, so any decision can be replayed."
+- Review: Topic Data · Weight ●●○ · One-liner: Log file plus git-reviewed data over Postgres; reads scan a file.
+
+### D16 Offline AI through exported files and a harness  [status: accepted]
+- Date 2026-10-11 16:22 CDT · phase 5 design-hld · milestone M3 · Decided by: human, G2 D16 2026-10-11 16:22 CDT: "yes lets do it" (quoting option b "exported files plus an agent harness") · Proposed by: design-hld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/hld.md@5d35114
+- Context and forces: D10 allows AI only offline with stored, reviewable, frozen verdicts and no model call while routing (FR-038 to FR-041); the AI rater labels the sample blind (FR-031); the product holds no secrets (NFR-007); there is no budget or key for a model API. Between the gate card and this answer the human asked about mocking the venue APIs to save time, and the supervisor re-recommended option a for time; the human then chose the original recommendation. Proposed as docs/architecture/hld.md D16.
+- Options:
+  - Do nothing / simplest: no AI adjudicator; pairs the rules cannot settle stay not routable (FR-040) — cost: none; fewer routable pairs; US-6 cut — rejected: "yes lets do it" for option b (it was the supervisor's revised recommendation for time)
+  - Exported files plus an agent harness: the command line exports pair cards, an agent harness (Claude Code on the human's plan) writes a verdict file with model, prompt version, time and reason, the command line imports it after checks, and the file is reviewed in a merge request (agent's first proposal — no instead-of recorded; the original recommendation) — cost: about 0.5 build-day; $0 new spend; a person starts each round — chosen
+  - The command line calls a model provider's API with a key during an offline job — cost: about 0.5 build-day plus per-pair model cost; a secret and a new monthly spend — rejected: the human chose option b
+- Choice: exported files plus an agent harness · Why: In the context of AI that may only work offline and verdicts that must be frozen and reviewable, facing no budget or key for a model API, we chose an export → agent harness → reviewed import path over an in-product API call or no AI to get reviewable AI verdicts with no secret and no new spend, accepting that a person starts each round.
+- Cost accepted: a person starts each adjudication and rating round; verdicts reach routing only after a reviewed merge request and a redeploy. · Reversibility: Type 2 two-way — an API call can replace the harness later without changing the verdict file · Confidence: med
+- Revisit if: adjudication rounds become frequent enough that a person starting each one is the bottleneck · Evidence: docs/architecture/hld.md:306; brief P-06; approval G2 D16 2026-10-11 16:22 CDT · Interview line: "The AI never runs inside the product: it gets an export, returns a verdict file with its reasons, and a person reviews that file before the router can use it."
+- Review: Topic Infrastructure · Weight ●●○ · One-liner: AI via exported files and a harness over an API key; manual rounds.
+
+### D17 Recorded real venue responses as mocks, live switch  [status: accepted]
+- Date 2026-10-11 16:22 CDT · phase 5 design-hld · milestone M3 · Decided by: human, decision: venue mocks 2026-10-11 16:22 CDT: "yes i agree" (quoting option a "Recorded real responses as the mock, plus a live switch (recommended).") · Proposed by: supervisor (Claude Code, claude-opus-5-5), chat options card · artifact: docs/architecture/hld.md@5d35114
+- Context and forces: The human asked for mock venue APIs modeled on the two venues to save time; the assignment requires live market data from two venues (REQ-01, C-1); the HLD already records real venue responses for tests and CI (CN-3, §11 CI row) and reads the public, keyless APIs live (L-2, L-3).
+- Options:
+  - Do nothing / simplest (shown as "c) Mocks only, no live data") — cost: fails REQ-01 and needs a PRD change plus a fresh G1 — rejected: the human chose option a
+  - a) Recorded real responses as the mock, plus a live switch (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: no extra build time; the reader is pointed at recordings or the real address — chosen
+  - b) Hand-written fake APIs modeled on the two venues, live added later — cost: more build time to invent shapes and data; REQ-01 fails if live never lands — rejected: the human chose option a
+- Choice: recorded real responses as the mock, plus a live switch · Why: In the context of a same-day appetite and an assignment that requires live data, facing a request to mock the venues, we chose recorded real responses with a live switch over invented fake APIs or mocks only to get fast, offline development and tests with exact venue shapes, accepting that recordings age and must be re-recorded.
+- Cost accepted: recordings are a dated snapshot of each venue's responses and must be re-recorded when a venue changes its format; live runs on this Mac still go through a container. · Reversibility: Type 2 two-way — the switch is a setting · Confidence: high
+- Revisit if: a venue changes its response format, or tests start failing only against live data · Evidence: docs/architecture/hld.md:126, :346; brief P-07; approval decision: venue mocks 2026-10-11 16:22 CDT · Interview line: "Tests and development run on recorded real venue responses, so they are fast and exact, and the same reader goes live with one switch, because the assignment demands live data."
+- Review: Topic Data · Weight ●○○ · One-liner: Recorded real responses with a live switch over invented mocks; recordings age.
+
+### D18 Approve the Equinox HLD at G2  [status: accepted]
+- Date 2026-10-11 16:30 CDT · phase 5 design-hld · milestone M3 · Decided by: human, G2 (closing) 2026-10-11 16:30 CDT: "approve, also push and /design-lld" · Proposed by: design-hld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/hld.md@e74350c
+- Context and forces: The HLD sets 4 containers, 11 connections, 4 trust boundaries in three non-overlapping zones (revised at a G2 Revise), 9 invariants and 7 open questions, with D13-D16 answered on 5d35114 and the diagrams embedded afterwards; the closing answer binds every earlier G2 answer to the final file (FR-001 to FR-043, NFR-001 to NFR-007). The human had sent the same words once before the diagrams were embedded; that early answer was not recorded because the artifact did not exist yet.
+- Options:
+  - Do nothing / simplest (shown as "Stop"): nothing proceeds — cost: no low-level design starts — rejected: the human approved
+  - Approve the embedded HLD with D13-D16 as answered (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: later architecture changes need an HLD revision and a fresh G2 — chosen
+  - Revise — cost: time now — rejected: the human approved
+- Choice: Approve · Why: In the context of a same-day appetite, facing an HLD whose decisions were each answered and whose trust zones were already revised once, we chose to approve the embedded file over another revision to start low-level design now, accepting that the seven open questions are settled by measurement in M4 or by their recommended answers.
+- Cost accepted: the open questions (usage, memory, latency target, availability, cost ceiling, model API cost, the US-regulated venue's fee formula) stay open until M4 measurement or the human's answer. · Reversibility: Type 2 two-way — a design-hld revision and a fresh G2 can change any part · Confidence: ⚠ not stated in the HLD
+- Revisit if: the M4 tracer bullet measures memory, refresh time or paging stability outside the §8 budget · Evidence: docs/architecture/hld.md@e74350c; approval G2 (closing) 2026-10-11 16:30 CDT · Interview line: "I approved the architecture only after every decision was answered and the diagrams found and fixed a gap in my own trust boundaries."
+- Review: Topic Process · Weight ●●○ · One-liner: HLD approved after a trust-zone fix; open questions measured in M4.
+
+### D19 Match at the grain of one binary proposition  [status: accepted]
+- Date 2026-10-11 17:14 CDT · phase 6 design-lld · milestone M3 · Decided by: human, G3 D19 2026-10-11 17:14 CDT: "approve D19" · Proposed by: design-lld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/lld.md@d7cc8b2
+- Context and forces: An order buys one YES/NO contract and D7 defines equivalence by payout (FR-004, FR-006); R02 found the venues group events differently (one splits a game into several sub-events, the other splits a race into winner, margin and turnout events). Proposed as docs/architecture/lld.md D19.
+- Options:
+  - Do nothing / simplest: match whole events by title — cost: least build; an event holds many different bets, so routing cannot say which contract to buy (breaks D7) — rejected: the human chose the recommendation
+  - One binary proposition per row: each market, and each outcome of a named-outcome market, becomes one row (brief P-03) (agent's recommendation) (agent's first proposal) — cost: about 0.5 build-day; more rows to compare — chosen
+  - Event first, then propositions inside matched events — cost: about 1 build-day; one wrong event match hides every correct proposition inside it — rejected: the human chose the recommendation
+- Choice: one binary proposition per row · Why: In the context of a router that buys one YES/NO contract and a definition of equivalence by payout, facing venues that group events differently, we chose matching at the grain of one binary proposition over event-level matching to compare exactly what gets bought, accepting more rows to compare.
+- Cost accepted: more rows to compare (each outcome of a named-outcome market is its own row). · Reversibility: Type 2 two-way — event grouping can be added on top later as a candidate filter · Confidence: high
+- Revisit if: matching time per refresh nears the 4-minute budget (HLD §8) · Evidence: docs/architecture/lld.md:912; brief P-03; R02; approval G3 D19 2026-10-11 17:14 CDT · Interview line: "I matched individual yes/no propositions, because that is what an order buys, and the venues group events differently."
+- Review: Topic Data · Weight ●●○ · One-liner: Proposition-level matching over event-level; more rows to compare.
+
+### D20 Rare-word candidates, decide by settlement parts  [status: accepted]
+- Date 2026-10-11 17:16 CDT · phase 6 design-lld · milestone M3 · Decided by: human, G3 D20 2026-10-11 17:16 CDT: "approve for D20" · Proposed by: design-lld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/lld.md@d7cc8b2
+- Context and forces: About 42,000 active markets; a refresh within 15 minutes (NFR-004); one venue states terms in fields, the other in free text (R03); unreadable terms go to the offline AI (D10). Proposed as docs/architecture/lld.md D20.
+- Options:
+  - Do nothing / simplest: compare every market with every other — cost: about 443 million comparisons per refresh, over budget — rejected: fails NFR-004
+  - Rare-word candidate search in a close-date window, compare settlement parts, unknown parts become undecided for the AI, one-to-one assignment (brief P-05) (agent's recommendation) (agent's first proposal) — cost: about 1.5 build-days; more pairs wait for AI review — chosen
+  - Text similarity with a threshold — cost: about 0.5 build-day; similar titles are not the same bet — rejected: the human chose the recommendation
+- Choice: rare-word candidates, settlement-part comparison · Why: In the context of equivalence by settlement and a 15-minute refresh, facing free-text terms on one venue, we chose rare-word candidates plus part-by-part comparison with unknowns sent to the AI over brute force or text similarity to get explainable verdicts in time, accepting more undecided pairs.
+- Cost accepted: a hand-written terms parser that misses some parts; those pairs wait for AI review. · Reversibility: Type 2 two-way · Confidence: med
+- Revisit if: recall (SC-002) falls below 0.84 with candidate search as the cause · Evidence: docs/architecture/lld.md:932; approval G3 D20 2026-10-11 17:16 CDT · Interview line: "Candidates come from rare shared words, verdicts from comparing each settlement part, and anything unreadable goes to a reviewed AI pass instead of being guessed."
+- Review: Topic Data · Weight ●●○ · One-liner: Rare-word candidates and part checks over text similarity; more undecided pairs.
+
+### D21 Run locally first, deploy to Railway later  [status: accepted]
+- Date 2026-10-11 17:16 CDT · phase 6 design-lld · milestone M3 · Decided by: human, decision: run locally first 2026-10-11 17:10 CDT: "/design-lld revise per the 8 diagram findings, also we can deploy things later, lets just run things locally for now, and also give instructions in the repo for anyone that wants to run locally" · Proposed by: human (no options card) · artifact: docs/architecture/hld.md@e74350c
+- Context and forces: Same-day deadline (D4); C-2 names Railway; REQ-25 needs setup instructions.
+- Options:
+  - Do nothing — ⚠ not offered at the gate (deploy to Railway as planned before the local build is done)
+  - Run locally first, deploy later; local-run instructions in README and AGENTS.md (the human's instruction; agent's first proposal — none recorded) — cost: no live URL until later — chosen
+- Choice: local first · Why: In the context of a deadline tonight, facing deploy work that adds no graded evidence before the code runs, we chose to run locally and document it over deploying now, accepting no live URL until later.
+- Cost accepted: reviewers run it locally until the Railway deploy happens. · Reversibility: Type 2 two-way · Confidence: ⚠ not stated
+- Revisit if: time remains after the build and docs · Evidence: TRACKER Approvals 17:10 CDT · Interview line: "I ran it locally first and wrote run instructions, because a live URL adds nothing until the core works."
+- Review: Topic Infrastructure · Weight ●○○ · One-liner: Local first over an early deploy; no live URL yet.
+
+### D22 Fast flow for the rest of Equinox  [status: accepted]
+- Date 2026-10-11 17:16 CDT · phase 6 design-lld · milestone M3 · Decided by: human, standing: fast flow 2026-10-11 17:16 CDT: "for this project, lets tighten up the flow so that we can reduce a lot of time between human  gates, as we have to deliver this soon. lets not run tests and builds everytime, lets iterate faster, so wherever we can cut time. in the future, we'll deploy an observability tool for you to read from to see what to do better, but for now, take your best route at making the time to finihsh this project shorter, as its due at 11pm tonight approve for D20" · Proposed by: human (no options card) · artifact: process
+- Context and forces: Due 23:00 CDT; M4-M6 build, acceptance, tasks, review and deliverables remain.
+- Options:
+  - Do nothing — ⚠ not offered at the gate (one gate per phase, checks every step)
+  - Supervisor takes its recommended defaults, batches gates into one check-in per phase, runs make check at milestone ends, builds M4-M6 as one implementation milestone (the human's instruction; agent's first proposal — none recorded) — cost: fewer chances for the human to steer each step — chosen
+- Choice: fast flow · Why: In the context of a deadline in under six hours, facing a dozen remaining gates, we chose batched check-ins and fewer intermediate checks over the full cadence to finish on time, accepting less per-step steering.
+- Cost accepted: fewer human checkpoints; problems surface at milestone ends. · Reversibility: Type 2 two-way · Confidence: ⚠ not stated
+- Revisit if: a milestone-end check fails badly · Evidence: TRACKER Approvals 2026-10-11 17:16 CDT · Interview line: "Near the deadline I batched the gates and kept the checks at milestone ends, trading step-by-step steering for delivery."
+- Review: Topic Process · Weight ●●○ · One-liner: Batched gates over per-step gates to meet the deadline.
+
+### D23 Approve the Equinox LLD at G3  [status: accepted]
+- Date 2026-10-11 17:21 CDT · phase 6 design-lld · milestone M3 · Decided by: human, G3 (closing) 2026-10-11 17:21 CDT: "approve, let me know when the build is done" · Proposed by: design-lld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/lld.md@4f9a72d
+- Context and forces: LLD for M4-M6 in one pass: 11 record shapes, 14 components, 6 endpoints, 5 journeys, 2 state machines, revised once for eight diagram findings; D19 and D20 answered on d7cc8b2; 10 diagrams embedded (FR-001 to FR-043).
+- Options:
+  - Do nothing / simplest (shown as "Stop"): nothing downstream starts — rejected: the human approved
+  - Approve the embedded LLD (agent's recommendation) (agent's first proposal — no instead-of recorded) — cost: later shape changes need an LLD revision — chosen
+  - Revise — cost: time now — rejected: the human approved
+- Choice: Approve · Why: In the context of a deadline tonight, facing an LLD already revised once from its own diagrams, we chose to approve over another revision to build now, accepting three diagrams with small kit-reported notes.
+- Cost accepted: three diagrams carry small notes (adapter methods "as BE-2", the US venue's alt "the same way", kit counter false positives). · Reversibility: Type 2 two-way · Confidence: ⚠ not stated
+- Revisit if: the build finds a shape the LLD cannot hold · Evidence: approval G3 (closing) 2026-10-11 17:21 CDT · Interview line: "The low-level design was redrawn from its own text, which caught eight inconsistencies before any code existed."
+- Review: Topic Process · Weight ●●○ · One-liner: LLD approved after a diagram-driven revision; build starts.

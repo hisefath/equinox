@@ -1,0 +1,35 @@
+%% diagram: sequence-measure-precision
+%% source: docs/architecture/lld.md#seq-4-measure-matching-precision-sequence-measure-precision-covers-us-4-fr-028fr-034-ae-023ae-028-sc-001sc-003 @ d7cc8b2
+%% drawn: 2026-10-11T22:13:43Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams sequence-measure-precision`.
+sequenceDiagram
+    autonumber
+    actor P1 as Labs lead
+    participant BE12 as BE-12 cmd.Main
+    participant BE6 as BE-6 Refresher
+    participant BE13 as BE-13 Measurer
+    participant X1 as AI rater (external)
+    actor P2 as Human rater
+    participant CN4 as CN-4 reviewed files
+    P1->>BE12: sample -seed 20261011
+    BE12->>BE6: RefreshOnce(ctx) → snapshot
+    BE12->>BE13: Draw(pairs, snapshot, seed, 100, rulesVersion) → sample with a recall pool#59; written to refdata/samples/
+    BE12->>BE13: Cards(sample) → blind cards (no verdict, no score) for the AI rater and the human rater (INV-8)
+    X1->>BE12: an AI labels file for every card, carried by the agent harness to the Labs lead's command line (L-8)
+    P2->>BE12: a human labels file for 30 of the same cards, saved on the Labs lead's machine (L-10)
+    P1->>BE12: import-labels#59; BE-13 ImportLabels validates each line (FR-033)
+    alt main path (steps 8-9)
+        P1->>BE12: score#59; BE-13 Score(...) → precision with counts and 95% interval, recall, kappa (FR-030, FR-031)
+        alt main path (step 9)
+            BE12-->>P1: the report#59; a merge request carries the sample and labels into CN-4 (L-9)
+        else precision is below 0.90
+            BE13-->>BE12: the report with the statement that routing needs a human-reviewed pair list (FR-034)
+            BE12-->>P1: that report#59; the merge request still carries the sample and labels into CN-4 (L-9)
+        end
+    else the rules version changed since the sample was drawn
+        BE13-->>BE12: error #quot;labels drawn under rules v#lt;x#gt;, current is v#lt;y#gt;#quot; (INV-9)
+        BE12-->>P1: exit 1#59; a new sample must be drawn and labelled
+    end

@@ -1,0 +1,17 @@
+%% diagram: state-venue-health
+%% source: docs/architecture/lld.md#sm-2-venue-health-venue_healthstate-state-venue-health @ d7cc8b2
+%% drawn: 2026-10-11T22:13:45Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams state-venue-health`.
+stateDiagram-v2
+    [*] --> warming
+    warming --> healthy : refresh succeeds (SEQ-1)
+    warming --> unhealthy : refresh fails after retries
+    warming --> backing_off : venue refuses (ErrRefused)
+    healthy --> unhealthy : refresh fails after retries
+    healthy --> backing_off : venue refuses (ErrRefused)
+    unhealthy --> backing_off : venue refuses (ErrRefused)
+    unhealthy --> healthy : refresh succeeds
+    backing_off --> unhealthy : timer reaches wait_until

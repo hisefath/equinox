@@ -1,0 +1,44 @@
+%% diagram: sequence-route-order
+%% source: docs/architecture/lld.md#seq-2-route-a-hypothetical-order-sequence-route-order-covers-us-2-us-5-us-7-fr-008fr-019-fr-022-fr-023-fr-027-fr-035fr-037-ae-006ae-014-ae-017ae-019-ae-022-ae-029ae-031-ae-036 @ 5f07d6d
+%% drawn: 2026-10-11T21:39:45Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams sequence-route-order`.
+sequenceDiagram
+    autonumber
+    actor Reviewer
+    participant FE4 as FE-4 OrderForm
+    participant BE11 as BE-11 web.Server
+    participant BE6 as BE-6 Store
+    participant BE7 as BE-7 PairSet
+    participant BE10 as BE-10 refdata Set
+    participant BE8 as BE-8 Router
+    participant BE9 as BE-9 Log
+    participant FE5 as FE-5 DecisionView
+    Reviewer->>FE4: enters pair, side, quantity, optional limit, customer region#59; submits
+    FE4->>BE11: POST /route (EP-3)
+    Note over BE11: checks the per-IP limit, then Order.Validate() (FR-016, FR-037)
+    alt main path (steps 4-10)
+        BE11->>BE6: Store.Current() — no venue is contacted from here on (INV-1)
+        BE11->>BE7: PairSet.Routable(pair_id, current fingerprints) (FR-015, FR-027)
+        alt main path (steps 6-10)
+            BE11->>BE10: Eligible(venue, region) for both venues#59; builds venue-neutral quotes (asks for the side, fee terms, min size, health, book age, tradability, eligibility)
+            BE11->>BE8: Route(order, quotes, policy, snapshot.as_of) → decision (pure)
+            BE11->>BE9: Append(decision) — synced before replying (INV-6)
+            alt main path (steps 9-10)
+                BE11->>FE5: 200 decision (HTML) or 200 JSON
+                FE5->>Reviewer: shows the chosen venue, fill, fees, all-in, the deciding rule and saving, each other venue's reason, the pair's evidence and caveats
+            else the decision log cannot be written
+                BE9-->>BE11: append error
+                BE11->>FE5: 503 /problems/decision-log-unavailable#59; no decision is shown as made
+            end
+        else the pair is unknown, not routable, or its rules changed
+            BE7-->>BE11: ErrUnknownPair, ErrNotRoutable or ErrRulesChanged
+            BE11->>BE9: Append(refused decision) with the problem type
+            BE11->>FE5: 404 /problems/unknown-pair, or 409 /problems/pair-not-routable / /problems/rules-changed
+            FE5->>Reviewer: shows the refusal reason (e.g. #quot;pair is not routable: statistic differs#quot;)
+        end
+    else the order is malformed
+        BE11-->>FE4: 422 /problems/validation with each field named#59; nothing is logged (FR-016)
+    end
