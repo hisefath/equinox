@@ -47,7 +47,7 @@ Commands:
   export-adjudication   write cards for undecided pairs for the offline AI
   import-verdicts       validate the AI's verdict file and add it to refdata/verdicts.jsonl
 
-Data source flags (every command): -replay DIR (default testdata/recordings) | -live | -record DIR
+Data source flags (every command): -replay DIR (default testdata/live-20261011) | -live | -record DIR
 Run "equinox <command> -h" for a command's flags.
 `
 
@@ -58,7 +58,7 @@ type common struct {
 }
 
 func (c *common) register(fs *flag.FlagSet) {
-	fs.StringVar(&c.replay, "replay", "testdata/recordings", "answer venue requests from recorded real responses in DIR")
+	fs.StringVar(&c.replay, "replay", "testdata/live-20261011", "answer venue requests from recorded real responses in DIR")
 	fs.BoolVar(&c.live, "live", false, "call the venues' public APIs live")
 	fs.StringVar(&c.record, "record", "", "call the venues live and record every response into DIR")
 	fs.StringVar(&c.refdir, "refdata", "refdata", "reviewed reference data directory")

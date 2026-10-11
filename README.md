@@ -31,7 +31,7 @@ From the command line:
 make check                                                      # gofmt, go vet, every test, diagrams in sync
 ```
 
-- **Data source:** `-replay testdata/recordings` (default, offline and deterministic), `-live`, or `-record DIR`
+- **Data source:** `-replay testdata/live-20261011` (default: a full live read of both venues on 2026-10-11, offline and deterministic; the small `testdata/recordings` is for tests), `-live`, or `-record DIR`
   (live, saving every response for later replay).
 - **Live calls go through the system `curl`.** The development Mac's firewall blocks newly built binaries but
   allows curl. Elsewhere set `EQUINOX_NATIVE_HTTP=1` to use Go's own HTTP client.
