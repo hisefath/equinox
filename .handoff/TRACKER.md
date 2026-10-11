@@ -65,6 +65,7 @@ several harnesses read it and the repo is public.
 | 2026-10-11 16:31 CDT | decision: LLD scope (design-lld Input 6 question, options a M4 only / b M4-M6 in one pass / do nothing) | docs/product/prd.md@40eb5d5 ## Milestone cut | "b, all three in one pass" |
 | 2026-10-11 17:10 CDT | G3 Revise | docs/architecture/lld.md@5f07d6d (the 8 findings from M3-D04..D13 listed in the supervisor's message) | "/design-lld revise per the 8 diagram findings, also we can deploy things later, lets just run things locally for now, and also give instructions in the repo for anyone that wants to run locally" |
 | 2026-10-11 17:10 CDT | decision: run locally first, deploy to Railway later; local-run instructions in the repo (same words as the G3 Revise row) | PRD C-2 / US-7 sequencing; REQ-25 setup instructions | "/design-lld revise per the 8 diagram findings, also we can deploy things later, lets just run things locally for now, and also give instructions in the repo for anyone that wants to run locally" |
+| 2026-10-11 17:14 CDT | G3 D19 | docs/architecture/lld.md@d7cc8b2 ### D19 (journal id D19; provisional until the closing G3 binds it to the embedded sha) | "approve D19" |
 
 ## Log
 
@@ -119,3 +120,11 @@ several harnesses read it and the repo is public.
 2026-10-11 16:44 CDT RESULT M3-D07 harness=claude-subagent status=human_review evidence=SEQ-1: the refusal alt names no replaced range; steps 3, 4, 8 hold two arrows; a1/b1 target 'BE-3 or BE-4'; BE-6 names both Refresher and Store
 2026-10-11 17:12 CDT VERIFY M3-D08 harness=supervisor why=diagram complete (17 steps, 0 gaps); human_review only from the kit step counter (b/c alt steps) — accepted as a kit false positive evidence=.handoff/runs/M3-D08/result.md
 2026-10-11 17:12 CDT ROUTE M3 harness=supervisor why=G3 Revise 17:10 fixed the 8 findings; attempts archived to .handoff/runs/M3-D{04,05,06,07,09,10,12,13}.attempt-20261011T1712/ evidence=lld.md Change log row 17:12 CDT
+2026-10-11 17:12 CDT DISPATCH M3-D04 harness=claude-subagent why=redraw after G3 Revise evidence=.handoff/runs/M3-D04/task.md from milestone/m3-design@d7cc8b2
+2026-10-11 17:12 CDT DISPATCH M3-D05 harness=claude-subagent why=redraw after G3 Revise evidence=.handoff/runs/M3-D05/task.md from milestone/m3-design@d7cc8b2
+2026-10-11 17:12 CDT DISPATCH M3-D06 harness=claude-subagent why=redraw after G3 Revise evidence=.handoff/runs/M3-D06/task.md from milestone/m3-design@d7cc8b2
+2026-10-11 17:12 CDT DISPATCH M3-D07 harness=claude-subagent why=redraw after G3 Revise evidence=.handoff/runs/M3-D07/task.md from milestone/m3-design@d7cc8b2
+2026-10-11 17:12 CDT DISPATCH M3-D09 harness=claude-subagent why=redraw after G3 Revise evidence=.handoff/runs/M3-D09/task.md from milestone/m3-design@d7cc8b2
+2026-10-11 17:12 CDT DISPATCH M3-D10 harness=claude-subagent why=redraw after G3 Revise evidence=.handoff/runs/M3-D10/task.md from milestone/m3-design@d7cc8b2
+2026-10-11 17:12 CDT DISPATCH M3-D12 harness=claude-subagent why=redraw after G3 Revise evidence=.handoff/runs/M3-D12/task.md from milestone/m3-design@d7cc8b2
+2026-10-11 17:12 CDT DISPATCH M3-D13 harness=claude-subagent why=redraw after G3 Revise evidence=.handoff/runs/M3-D13/task.md from milestone/m3-design@d7cc8b2

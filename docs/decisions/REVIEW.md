@@ -17,9 +17,10 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 - ●●○ D9 — Blind sampled precision with recall and kappa guards; costs 30 human labels.
 - ●●○ D10 — Offline AI adjudication over runtime AI or none; adds a review step.
 
-### Data (3)
+### Data (4)
 
 - ●●○ D15 — Log file plus git-reviewed data over Postgres; reads scan a file.
+- ●●○ D19 — Proposition-level matching over event-level; more rows to compare.
 - ●○○ D11 — Active markets only over the full catalog; quiet markets go unmatched.
 - ●○○ D17 — Recorded real responses with a live switch over invented mocks; recordings age.
 
@@ -49,6 +50,7 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D19 · Data · ●●○ — Proposition-level matching over event-level; more rows to compare.
 - D18 · Process · ●●○ — HLD approved after a trust-zone fix; open questions measured in M4.
 - D17 · Data · ●○○ — Recorded real responses with a live switch over invented mocks; recordings age.
 - D16 · Infrastructure · ●●○ — AI via exported files and a harness over an API key; manual rounds.

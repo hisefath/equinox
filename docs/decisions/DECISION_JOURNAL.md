@@ -257,3 +257,15 @@ Copy this block for each new entry (D-ids increase by one, starting at D1):
 - Cost accepted: the open questions (usage, memory, latency target, availability, cost ceiling, model API cost, the US-regulated venue's fee formula) stay open until M4 measurement or the human's answer. · Reversibility: Type 2 two-way — a design-hld revision and a fresh G2 can change any part · Confidence: ⚠ not stated in the HLD
 - Revisit if: the M4 tracer bullet measures memory, refresh time or paging stability outside the §8 budget · Evidence: docs/architecture/hld.md@e74350c; approval G2 (closing) 2026-10-11 16:30 CDT · Interview line: "I approved the architecture only after every decision was answered and the diagrams found and fixed a gap in my own trust boundaries."
 - Review: Topic Process · Weight ●●○ · One-liner: HLD approved after a trust-zone fix; open questions measured in M4.
+
+### D19 Match at the grain of one binary proposition  [status: accepted]
+- Date 2026-10-11 17:14 CDT · phase 6 design-lld · milestone M3 · Decided by: human, G3 D19 2026-10-11 17:14 CDT: "approve D19" · Proposed by: design-lld (Claude Code, claude-opus-5-5) · artifact: docs/architecture/lld.md@d7cc8b2
+- Context and forces: An order buys one YES/NO contract and D7 defines equivalence by payout (FR-004, FR-006); R02 found the venues group events differently (one splits a game into several sub-events, the other splits a race into winner, margin and turnout events). Proposed as docs/architecture/lld.md D19.
+- Options:
+  - Do nothing / simplest: match whole events by title — cost: least build; an event holds many different bets, so routing cannot say which contract to buy (breaks D7) — rejected: the human chose the recommendation
+  - One binary proposition per row: each market, and each outcome of a named-outcome market, becomes one row (brief P-03) (agent's recommendation) (agent's first proposal) — cost: about 0.5 build-day; more rows to compare — chosen
+  - Event first, then propositions inside matched events — cost: about 1 build-day; one wrong event match hides every correct proposition inside it — rejected: the human chose the recommendation
+- Choice: one binary proposition per row · Why: In the context of a router that buys one YES/NO contract and a definition of equivalence by payout, facing venues that group events differently, we chose matching at the grain of one binary proposition over event-level matching to compare exactly what gets bought, accepting more rows to compare.
+- Cost accepted: more rows to compare (each outcome of a named-outcome market is its own row). · Reversibility: Type 2 two-way — event grouping can be added on top later as a candidate filter · Confidence: high
+- Revisit if: matching time per refresh nears the 4-minute budget (HLD §8) · Evidence: docs/architecture/lld.md:912; brief P-03; R02; approval G3 D19 2026-10-11 17:14 CDT · Interview line: "I matched individual yes/no propositions, because that is what an order buys, and the venues group events differently."
+- Review: Topic Data · Weight ●●○ · One-liner: Proposition-level matching over event-level; more rows to compare.
