@@ -8,6 +8,9 @@
 
 .PHONY: check lint types test decisions
 
+# git sets GIT_DIR during hooks; Go's VCS stamping then fails inside a worktree, so checks skip it.
+export GOFLAGS := -buildvcs=false
+
 ## check: lint + types + tests + decision review in sync — the gate
 check: lint types test decisions
 	@echo "make check: OK"
