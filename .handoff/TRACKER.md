@@ -26,9 +26,9 @@ several harnesses read it and the repo is public.
 | M1-S04 | /gather-evidence R01-R08 (human: "approve and /gather-evidence") | Full / phase 2 gather-evidence | supervisor + workflow (claude-opus-5-5 subagents) | done | 2026-10-11 14:35 CDT | docs/research/R01-R08, docs/research/sources.md | R01-R08 + sources.md (118 rows) |
 | M2-S01 | /write-prd (human: "approve and /write-prd") | Full / phase 3 write-prd | supervisor (claude-opus-5-5) | done | 2026-10-11 16:01 CDT | docs/product/prd.md | 40eb5d5 (G1); D7-D12 |
 | M3-S01 | /design-hld (human: "approve, also push and /design-hld") | Full / phase 5 design-hld | supervisor (claude-opus-5-5) | done | 2026-10-11 16:14 CDT | docs/architecture/hld.md | — (awaiting G2) |
-| M3-D01 | draw-diagrams hld-context | Full / phase 6b | claude-subagent | working | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-context.mmd | — |
+| M3-D01 | draw-diagrams hld-context | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-context.mmd | cb8c797 (m3/d01-hld-context) |
 | M3-D02 | draw-diagrams hld-container | Full / phase 6b | claude-subagent | working | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-container.mmd | — |
-| M3-D03 | draw-diagrams deployment | Full / phase 6b | claude-subagent | working | 2026-10-11 16:14 CDT | docs/architecture/diagrams/deployment.mmd | — |
+| M3-D03 | draw-diagrams deployment | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/deployment.mmd | 5328a88 (m3/d03-deployment) |
 
 ## Approvals
 
@@ -44,6 +44,7 @@ several harnesses read it and the repo is public.
 | 2026-10-11 14:40 CDT | human-only: push milestone/m1-research to origin (GitLab + GitHub mirror), open its draft MR (WORKFLOW §8), enable runner 299 (standing CI habit) | milestone/m1-research@3235f24 | "go ahead, also push the branch" |
 | 2026-10-11 15:27 CDT | research review (no gate; gather-evidence STOP) | docs/research/R01-R08@c1c023e | "approve and /write-prd" |
 | 2026-10-11 16:06 CDT | G1 | docs/product/prd.md@40eb5d5 (both open ⚠ taken as recommended per the STOP's recommendation; agent assumptions A-1..A-3, A-5..A-8 confirmed; also covers: push milestone/m2-product + draft MR !2) | "approve, also push and /design-hld" |
+| 2026-10-11 16:17 CDT | G2 D13 | docs/architecture/hld.md@5d35114 ### D13 (journal id D13) | "yes, use go" (quoting option b "Go, standard library only (brief P-01).") |
 
 ## Log
 
@@ -65,3 +66,8 @@ several harnesses read it and the repo is public.
 2026-10-11 16:14 CDT DISPATCH M3-D01 harness=claude-subagent why=draw-diagrams is one skill, isolated (one .mmd), parallel with G2 decisions; Codex not on PATH evidence=.handoff/runs/M3-D01/task.md from milestone/m3-design
 2026-10-11 16:14 CDT DISPATCH M3-D02 harness=claude-subagent why=same as M3-D01 evidence=.handoff/runs/M3-D02/task.md from milestone/m3-design
 2026-10-11 16:14 CDT DISPATCH M3-D03 harness=claude-subagent why=same as M3-D01 evidence=.handoff/runs/M3-D03/task.md from milestone/m3-design
+2026-10-11 16:16 CDT RESULT M3-D03 harness=claude-subagent status=done evidence=result.md parses; head 5328a88
+2026-10-11 16:16 CDT VERIFY M3-D03 harness=supervisor why=scope-guard OK (1 path in Owns); diff = deployment.mmd only, every node traces to §11; make check red in the worktree only because the other two .mmd files are not back and nothing is embedded yet (expected until embed) evidence=scope-guard exit 0
+2026-10-11 16:16 CDT FAIL kit harness=supervisor why=committing hld.md with diagram placeholders turns make check red (embed-diagrams --check: .mmd missing) until every draw-diagrams job is back and embedded, so the milestone branch cannot be pushed mid-G2 evidence=make check on milestone/m3-design@5d35114; route-failure candidate
+2026-10-11 16:16 CDT RESULT M3-D01 harness=claude-subagent status=done evidence=result.md parses; head cb8c797
+2026-10-11 16:16 CDT VERIFY M3-D01 harness=supervisor why=scope-guard OK (1 path in Owns); diff = hld-context.mmd only; 10 nodes = the 10 §2 rows, 9 edges labelled with each row's interaction evidence=scope-guard exit 0

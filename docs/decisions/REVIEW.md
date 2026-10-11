@@ -21,6 +21,10 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 
 - ●○○ D11 — Active markets only over the full catalog; quiet markets go unmatched.
 
+### Infrastructure (1)
+
+- ●●● D13 — Go standard library over Python or TypeScript; more hand-written matching.
+
 ### Process (6)
 
 - ●●○ D1 — Restart via the kit on a branch over keeping v1; costs a rebuild.
@@ -40,6 +44,7 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D13 · Infrastructure · ●●● — Go standard library over Python or TypeScript; more hand-written matching.
 - D12 · Process · ●●○ — PRD approved with both open items as recommended; terms of use unread.
 - D11 · Data · ●○○ — Active markets only over the full catalog; quiet markets go unmatched.
 - D10 · Product · ●●○ — Offline AI adjudication over runtime AI or none; adds a review step.
