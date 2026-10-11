@@ -7,11 +7,11 @@ several harnesses read it and the repo is public.
 ## Resume
 
 <!-- Rewritten as the LAST edit of every supervisor move. Times come from `date`. -->
-- **As of:** 2026-10-11 14:26 CDT
-- **In flight:** none (phase 0 and 0.5 closed: G-init D5, G-decode D2-D4)
-- **Next:** the human types /sharpen-brief → specs/M1-cross-venue-equivalence-routing/brief.md → G0
-- **Waiting on:** the human: /sharpen-brief
-- **Verified:** `make check` → exit 0 (scripts parse, no design docs yet, REVIEW.md current) on the G-init commit
+- **As of:** 2026-10-11 14:34 CDT
+- **In flight:** M1-S03 /sharpen-brief: brief.md committed for G0 (Q1 yes: public GitLab + video link; Q2 "no, we're deploying to railway" → P-10, U-09, REQ-14 justification at G2)
+- **Next:** G0 → log-decision → /gather-evidence (R01-R08; dispatch per question) → /write-prd (G1)
+- **Waiting on:** the human: G0
+- **Verified:** sharpen-brief Done-when checks pass (sections match, no placeholders, ids unique, Problem/Job stories tech-free, market + usage R rows, NS-01 present, no personal data)
 
 ## Tasks
 
@@ -22,6 +22,7 @@ several harnesses read it and the repo is public.
 |---|---|---|---|---|---|---|---|
 | M1-S01 | restart Equinox with the kit: branch from main, retire v1 on the branch, init-repo scaffold (human's message 2026-10-11 13:4x CDT) | Full / phase 0 (G-init) | supervisor (claude-opus-5-5) | done | 2026-10-11 13:45 CDT | .gitignore, scaffold paths, AGENTS.md, Makefile | 59ff700 (v1 retired); G-init@82e0ef7; D5 |
 | M1-S02 | /decode-prompt on the Equinox prompt (company panel, portal brief v1, 2-page PDF) | Full / phase 0.5 decode-prompt | supervisor (claude-opus-5-5) | done | 2026-10-11 13:45 CDT | specs/M1-cross-venue-equivalence-routing/decode.md | d20fb08 (G-decode); D1-D4 |
+| M1-S03 | /sharpen-brief (human typed it 2026-10-11 14:30 CDT) | Full / phase 1 sharpen-brief | supervisor (claude-opus-5-5) | working | 2026-10-11 14:30 CDT | specs/M1-cross-venue-equivalence-routing/brief.md | — |
 
 ## Approvals
 
