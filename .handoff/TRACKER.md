@@ -7,11 +7,11 @@ several harnesses read it and the repo is public.
 ## Resume
 
 <!-- Rewritten as the LAST edit of every supervisor move. Times come from `date`. -->
-- **As of:** 2026-10-11 16:29 CDT
-- **In flight:** M3 closing G2: hld.md with 3 embedded diagrams
-- **Next:** closing G2 → log-decision → push milestone/m3-design + draft MR !3 (human already asked: "also push") → /design-lld (human already typed it with an early approve)
-- **Waiting on:** the human: closing G2 on the embedded hld.md
-- **Verified:** make check OK after embedding; 3 diagrams render (mermaid 11.4.1, browser pane)
+- **As of:** 2026-10-11 16:38 CDT
+- **In flight:** M3 G3: lld.md + openapi.yaml committed (11 record shapes, 14 BE, 5 FE, 6 EP, 5 SEQ, 2 SM, D19-D20 proposed, 5 open Q); 10 diagram jobs M3-D04..D13 dispatched
+- **Next:** verify + squash diagram jobs → embed into lld.md → G3 (D19, D20, closing) → log-decision → push → /define-acceptance
+- **Waiting on:** diagram jobs; then the human: G3
+- **Verified:** design-lld Done-when checks all pass; openapi.yaml parses (ruby YAML); not machine-validated as OpenAPI (no lint command in AGENTS.md)
 
 ## Tasks
 
@@ -29,6 +29,17 @@ several harnesses read it and the repo is public.
 | M3-D01 | draw-diagrams hld-context | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-context.mmd | cb8c797 → squashed cb87c3c |
 | M3-D02 | draw-diagrams hld-container | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-container.mmd | 90cbf0e → squashed 153a8af (attempt 1 archived) |
 | M3-D03 | draw-diagrams deployment | Full / phase 6b | claude-subagent | done | 2026-10-11 16:14 CDT | docs/architecture/diagrams/deployment.mmd | 5328a88 → squashed 7652384 |
+| M3-S02 | /design-lld (human: "approve, also push and /design-lld"; scope M4-M6 per "b, all three in one pass") | Full / phase 6 design-lld | supervisor (claude-opus-5-5) | done | 2026-10-11 16:38 CDT | docs/architecture/lld.md, docs/architecture/contracts/openapi.yaml | — (awaiting G3) |
+| M3-D04 | draw-diagrams erd | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/erd.mmd | — |
+| M3-D05 | draw-diagrams be-class | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/be-class.mmd | — |
+| M3-D06 | draw-diagrams fe-components | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/fe-components.mmd | — |
+| M3-D07 | draw-diagrams sequence-refresh-and-match | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-refresh-and-match.mmd | — |
+| M3-D08 | draw-diagrams sequence-route-order | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-route-order.mmd | — |
+| M3-D09 | draw-diagrams sequence-venue-down | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-venue-down.mmd | — |
+| M3-D10 | draw-diagrams sequence-measure-precision | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-measure-precision.mmd | — |
+| M3-D11 | draw-diagrams sequence-adjudicate-offline | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/sequence-adjudicate-offline.mmd | — |
+| M3-D12 | draw-diagrams state-pair | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/state-pair.mmd | — |
+| M3-D13 | draw-diagrams state-venue-health | Full / phase 6b | claude-subagent | working | 2026-10-11 16:38 CDT | docs/architecture/diagrams/state-venue-health.mmd | — |
 
 ## Approvals
 
@@ -51,6 +62,7 @@ several harnesses read it and the repo is public.
 | 2026-10-11 16:22 CDT | decision: venue mocks (chat options card a/b/c, after the human asked for mock venue APIs to save time) | docs/architecture/hld.md@5d35114 (CN-3 recording, §11 CI row: unchanged) | "yes i agree" (quoting option a "Recorded real responses as the mock, plus a live switch (recommended).") |
 | 2026-10-11 16:23 CDT | G2 Revise | docs/architecture/hld.md@5d35114 §5 (M3-D02's three gaps; proposal in the supervisor's message: host zone CN-1+CN-2, developer zone CN-3, repository zone CN-4, TB-1..TB-4 restated) | "/design-hld revise §5 trust zones as proposed" |
 | 2026-10-11 16:30 CDT | G2 (closing) | docs/architecture/hld.md@e74350c (diagrams embedded; binds D13-D16 and the §5 revision; also covers: push milestone/m3-design + draft MR !3) | "approve, also push and /design-lld" |
+| 2026-10-11 16:31 CDT | decision: LLD scope (design-lld Input 6 question, options a M4 only / b M4-M6 in one pass / do nothing) | docs/product/prd.md@40eb5d5 ## Milestone cut | "b, all three in one pass" |
 
 ## Log
 
@@ -83,3 +95,14 @@ several harnesses read it and the repo is public.
 2026-10-11 16:24 CDT DISPATCH M3-D02 harness=claude-subagent why=redraw after the §5 revision evidence=.handoff/runs/M3-D02/task.md from milestone/m3-design@5842e20
 2026-10-11 16:29 CDT RESULT M3-D02 harness=claude-subagent status=done evidence=result.md parses; head 90cbf0e; 0 gaps
 2026-10-11 16:29 CDT VERIFY M3 harness=supervisor why=scope-guard OK for M3-D02; squashed D01 cb87c3c, D02 153a8af, D03 7652384; embed-diagrams embedded 3; make check OK; all three .mmd parsed and rendered to SVG by mermaid 11.4.1 in the browser pane (Docker mermaid-cli failed: the Colima VM disk is full, left alone per the human's earlier choice) evidence=browser render check 2026-10-11 16:29 CDT
+2026-10-11 16:31 CDT ROUTE M3-S02 harness=supervisor why=design-lld first pass scoped to M4-M6 (FR-001..FR-043) by the human's choice; deviates from design-lld's one-milestone rule — route-failure candidate (allow a multi-milestone first pass when the HLD already fixes every box) evidence=Approvals 2026-10-11 16:31 CDT
+2026-10-11 16:38 CDT DISPATCH M3-D04 harness=claude-subagent why=draw-diagrams erd: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D04/task.md
+2026-10-11 16:38 CDT DISPATCH M3-D05 harness=claude-subagent why=draw-diagrams be-class: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D05/task.md
+2026-10-11 16:38 CDT DISPATCH M3-D06 harness=claude-subagent why=draw-diagrams fe-components: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D06/task.md
+2026-10-11 16:38 CDT DISPATCH M3-D07 harness=claude-subagent why=draw-diagrams sequence-refresh-and-match: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D07/task.md
+2026-10-11 16:38 CDT DISPATCH M3-D08 harness=claude-subagent why=draw-diagrams sequence-route-order: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D08/task.md
+2026-10-11 16:38 CDT DISPATCH M3-D09 harness=claude-subagent why=draw-diagrams sequence-venue-down: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D09/task.md
+2026-10-11 16:38 CDT DISPATCH M3-D10 harness=claude-subagent why=draw-diagrams sequence-measure-precision: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D10/task.md
+2026-10-11 16:38 CDT DISPATCH M3-D11 harness=claude-subagent why=draw-diagrams sequence-adjudicate-offline: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D11/task.md
+2026-10-11 16:38 CDT DISPATCH M3-D12 harness=claude-subagent why=draw-diagrams state-pair: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D12/task.md
+2026-10-11 16:38 CDT DISPATCH M3-D13 harness=claude-subagent why=draw-diagrams state-venue-health: one skill, isolated, parallel with G3 prep; Codex not on PATH evidence=.handoff/runs/M3-D13/task.md

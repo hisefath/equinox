@@ -1,0 +1,426 @@
+openapi: 3.1.0
+info:
+  title: "Equinox API"
+  version: "0.1.0"
+  description: "Contract for M4-M6 (tracer bullet, trust, reach). Shapes are designed in docs/architecture/lld.md section 4. Public data and simulated orders only: no authentication."
+servers:
+  - url: "http://localhost:8080"
+    description: local
+security: []
+tags:
+  - name: pairs
+  - name: routing
+  - name: operations
+paths:
+  "/":
+    get:
+      x-lld-id: "EP-1"
+      operationId: "index"
+      summary: "Index page: current pairs, venue health and an order form"
+      tags: ["pairs"]
+      responses:
+        "200":
+          description: "Server-rendered page"
+          content:
+            text/html:
+              schema:
+                type: string
+        "503":
+          description: "No snapshot yet after a start (shown as a page state)"
+          content:
+            text/html:
+              schema:
+                type: string
+  "/pairs":
+    get:
+      x-lld-id: "EP-2"
+      operationId: "listPairs"
+      summary: "One page of pairs of one kind from the current snapshot, highest score first"
+      tags: ["pairs"]
+      parameters:
+        - name: kind
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: ["equivalent", "related", "undecided"]
+            default: "equivalent"
+        - $ref: "#/components/parameters/Cursor"
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 50
+      responses:
+        "200":
+          description: "One page of pairs"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PairPage"
+        "422":
+          $ref: "#/components/responses/UnprocessableProblem"
+        "503":
+          $ref: "#/components/responses/Problem"
+  "/route":
+    post:
+      x-lld-id: "EP-3"
+      operationId: "routeOrder"
+      summary: "Decide one hypothetical order from the current snapshot and log the decision"
+      description: "Deterministic: the same order on the same snapshot returns the same decision (same decision_id) and is logged again. No idempotency key is needed."
+      tags: ["routing"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RouteRequest"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/RouteRequest"
+      responses:
+        "200":
+          description: "A decision: filled, partial or not filled"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Decision"
+            text/html:
+              schema:
+                type: string
+        "404":
+          $ref: "#/components/responses/Problem"
+        "409":
+          $ref: "#/components/responses/Problem"
+        "422":
+          $ref: "#/components/responses/UnprocessableProblem"
+        "429":
+          $ref: "#/components/responses/Problem"
+        "503":
+          $ref: "#/components/responses/Problem"
+  "/decisions":
+    get:
+      x-lld-id: "EP-4"
+      operationId: "listDecisions"
+      summary: "One page of logged decisions, newest first"
+      tags: ["routing"]
+      parameters:
+        - $ref: "#/components/parameters/Cursor"
+        - $ref: "#/components/parameters/Limit"
+      responses:
+        "200":
+          description: "One page of decisions"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DecisionPage"
+        "422":
+          $ref: "#/components/responses/UnprocessableProblem"
+  "/health":
+    get:
+      x-lld-id: "EP-5"
+      operationId: "health"
+      summary: "Per-venue health, the latest refresh counts, eligibility and the decision-log status"
+      tags: ["operations"]
+      responses:
+        "200":
+          description: "Health"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Health"
+  "/version":
+    get:
+      x-lld-id: "EP-6"
+      operationId: "version"
+      summary: "The running build's version identifier"
+      tags: ["operations"]
+      responses:
+        "200":
+          description: "Version"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Version"
+components:
+  parameters:
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      description: "Opaque cursor from the previous page's next_cursor."
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
+  responses:
+    Problem:
+      description: "Error as RFC 9457 problem details."
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+    UnprocessableProblem:
+      description: "422: validation failed (errors[] lists each invalid field)."
+      content:
+        application/problem+json:
+          schema:
+            anyOf:
+              - $ref: "#/components/schemas/ValidationProblem"
+              - $ref: "#/components/schemas/Problem"
+  schemas:
+    Problem:
+      type: object
+      description: "RFC 9457 problem details. `type` identifies the problem; see lld.md section 4 Problem types."
+      properties:
+        type:
+          type: string
+          format: uri-reference
+          default: about:blank
+          examples: ["/problems/pair-not-routable"]
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri-reference
+        pair_id:
+          type: string
+        verdict:
+          type: string
+        differing_part:
+          type: string
+        retry_after_seconds:
+          type: integer
+      required: [type, title, status]
+    ValidationProblem:
+      allOf:
+        - $ref: "#/components/schemas/Problem"
+        - type: object
+          properties:
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  pointer:
+                    type: string
+                    description: "JSON Pointer to the invalid field, e.g. #/quantity"
+                  detail:
+                    type: string
+                required: [pointer, detail]
+          required: [errors]
+    RouteRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        pair_id:
+          type: string
+          examples: ["3f9a1c2b7d4e8a01"]
+        side:
+          type: string
+          enum: ["yes", "no"]
+        quantity:
+          type: integer
+          minimum: 1
+        limit:
+          type: ["string", "null"]
+          description: "Optional price limit in dollars between 0 and 1, as a decimal string (e.g. \"0.62\"), kept exact."
+          pattern: "^0(\\.[0-9]{1,6})?$|^1(\\.0{1,6})?$"
+        customer_region:
+          type: string
+          enum: ["US", "non-US"]
+      required: [pair_id, side, quantity, customer_region]
+    VenueResult:
+      type: object
+      properties:
+        venue:
+          type: string
+        market_key:
+          type: string
+        eligible:
+          type: boolean
+        reason:
+          type: string
+          examples: ["data 95 s old", "not open to US customers", "lowest all-in cost"]
+        filled:
+          type: integer
+        all_in:
+          type: string
+          description: "Dollars as an exact decimal string (micro-dollar precision)."
+      required: [venue, market_key, eligible, reason, filled]
+    Decision:
+      type: object
+      properties:
+        decision_id:
+          type: string
+        logged_at:
+          type: string
+          format: date-time
+        snapshot_as_of:
+          type: string
+          format: date-time
+        outcome:
+          type: string
+          enum: ["filled", "partial", "not_filled", "refused"]
+        venue:
+          type: ["string", "null"]
+        filled_qty:
+          type: integer
+        unfilled_qty:
+          type: integer
+        avg_price:
+          type: ["string", "null"]
+        fees:
+          type: string
+        all_in:
+          type: string
+        deciding_rule:
+          type: ["string", "null"]
+          enum: ["most_filled", "lowest_all_in", "tie_break", "only_eligible", null]
+        saving:
+          type: ["string", "null"]
+        venues:
+          type: array
+          items:
+            $ref: "#/components/schemas/VenueResult"
+        evidence:
+          type: array
+          items:
+            type: string
+        caveats:
+          type: array
+          items:
+            type: string
+        problem_type:
+          type: ["string", "null"]
+      required: [decision_id, logged_at, snapshot_as_of, outcome, filled_qty, unfilled_qty, fees, all_in, venues, evidence, caveats]
+    DecisionPage:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Decision"
+        next_cursor:
+          type: ["string", "null"]
+      required: [data, next_cursor]
+    Pair:
+      type: object
+      properties:
+        pair_id:
+          type: string
+        a_key:
+          type: string
+        b_key:
+          type: string
+        a_question:
+          type: string
+        b_question:
+          type: string
+        verdict:
+          type: string
+          enum: ["undecided", "equivalent", "related", "stale"]
+        decided_by:
+          type: string
+          enum: ["rules", "ai", "human"]
+        differing_part:
+          type: ["string", "null"]
+        evidence:
+          type: array
+          items:
+            type: string
+        caveats:
+          type: array
+          items:
+            type: string
+        score:
+          type: integer
+          minimum: 0
+          maximum: 1000
+      required: [pair_id, a_key, b_key, verdict, decided_by, evidence, caveats, score]
+    PairPage:
+      type: object
+      properties:
+        snapshot_as_of:
+          type: string
+          format: date-time
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Pair"
+        next_cursor:
+          type: ["string", "null"]
+      required: [snapshot_as_of, data, next_cursor]
+    VenueHealth:
+      type: object
+      properties:
+        venue:
+          type: string
+        state:
+          type: string
+          enum: ["warming", "healthy", "backing_off", "unhealthy"]
+        last_good_at:
+          type: ["string", "null"]
+          format: date-time
+        last_error:
+          type: ["string", "null"]
+        wait_until:
+          type: ["string", "null"]
+          format: date-time
+        listed:
+          type: integer
+        considered:
+          type: integer
+        inactive:
+          type: integer
+        too_short:
+          type: integer
+        unreadable:
+          type: integer
+        regions:
+          type: array
+          items:
+            type: string
+      required: [venue, state, listed, considered, inactive, too_short, unreadable, regions]
+    Health:
+      type: object
+      properties:
+        snapshot_as_of:
+          type: ["string", "null"]
+          format: date-time
+        undecided_pairs:
+          type: integer
+        decision_log:
+          type: string
+          enum: ["ok", "error"]
+        venues:
+          type: array
+          items:
+            $ref: "#/components/schemas/VenueHealth"
+        version:
+          type: string
+      required: [snapshot_as_of, undecided_pairs, decision_log, venues, version]
+    Version:
+      type: object
+      properties:
+        version:
+          type: string
+          examples: ["7924a39"]
+        started_at:
+          type: string
+          format: date-time
+      required: [version, started_at]
