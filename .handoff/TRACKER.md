@@ -7,11 +7,11 @@ several harnesses read it and the repo is public.
 ## Resume
 
 <!-- Rewritten as the LAST edit of every supervisor move. Times come from `date`. -->
-- **As of:** 2026-10-11 16:07 CDT
-- **In flight:** M3 /design-hld starting (human typed it with the G1 approval)
-- **Next:** design-hld draft → commit → draw-diagrams fan-out (hld-context, hld-container, deployment) → G2
-- **Waiting on:** nothing; U-steps open: download the US-regulated venue's fee-schedule PDF by hand (D12, FR-009), record the demo video, submit
-- **Verified:** write-prd Done-when script: every command prints nothing (sections, EARS shapes, AE coverage, one milestone per FR, ⚠ form, REQ trace, constraint mandates, tech and context names)
+- **As of:** 2026-10-11 16:14 CDT
+- **In flight:** M3 G2: hld.md committed (4 decisions D13-D16, 7 open Q); diagram jobs M3-D01..D03 dispatched to Claude subagents in worktrees from milestone/m3-design
+- **Next:** G2 decisions one per reply (D13 → D16), verify + squash diagram jobs, embed, closing G2 → log-decision → /design-lld
+- **Waiting on:** the human: D13; diagram jobs
+- **Verified:** design-hld Done-when checks all pass (CN=4 L=11 TB=4 INV=9 D=4 open=7)
 
 ## Tasks
 
@@ -25,6 +25,10 @@ several harnesses read it and the repo is public.
 | M1-S03 | /sharpen-brief (human typed it 2026-10-11 14:30 CDT) | Full / phase 1 sharpen-brief | supervisor (claude-opus-5-5) | done | 2026-10-11 14:30 CDT | specs/M1-cross-venue-equivalence-routing/brief.md | c0e0111 (G0); D6 |
 | M1-S04 | /gather-evidence R01-R08 (human: "approve and /gather-evidence") | Full / phase 2 gather-evidence | supervisor + workflow (claude-opus-5-5 subagents) | done | 2026-10-11 14:35 CDT | docs/research/R01-R08, docs/research/sources.md | R01-R08 + sources.md (118 rows) |
 | M2-S01 | /write-prd (human: "approve and /write-prd") | Full / phase 3 write-prd | supervisor (claude-opus-5-5) | done | 2026-10-11 16:01 CDT | docs/product/prd.md | 40eb5d5 (G1); D7-D12 |
+| M3-S01 | /design-hld (human: "approve, also push and /design-hld") | Full / phase 5 design-hld | supervisor (claude-opus-5-5) | done | 2026-10-11 16:14 CDT | docs/architecture/hld.md | — (awaiting G2) |
+| M3-D01 | draw-diagrams hld-context | Full / phase 6b | claude-subagent | working | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-context.mmd | — |
+| M3-D02 | draw-diagrams hld-container | Full / phase 6b | claude-subagent | working | 2026-10-11 16:14 CDT | docs/architecture/diagrams/hld-container.mmd | — |
+| M3-D03 | draw-diagrams deployment | Full / phase 6b | claude-subagent | working | 2026-10-11 16:14 CDT | docs/architecture/diagrams/deployment.mmd | — |
 
 ## Approvals
 
@@ -58,3 +62,6 @@ several harnesses read it and the repo is public.
 2026-10-11 15:25 CDT RESULT M1-S04 harness=workflow wf_8c0dae32-357 why=16 agents (8 gather-evidence researchers + 8 adversarial verifiers), 0 errors, about 2.57M subagent tokens, 47 min evidence=docs/research/R01-R08; verifiers moved 8 unconfirmed LB findings to Gaps (R02 3, R07 2, R08 3)
 2026-10-11 15:25 CDT FAIL kit harness=supervisor why=gather-evidence says parallel runs conflict on docs/research/sources.md, yet CLAUDE.md routes Evidence as 'may dispatch per question'; worked around with per-question fragments merged by URL (10 S-ids remapped) evidence=merge output 2026-10-11; route-failure candidate at M1 close (fragment + merge script in the skill)
 2026-10-11 16:01 CDT ROUTE M2-S01 harness=supervisor why=human approved the research and typed /write-prd; new milestone branch milestone/m2-product from milestone/m1-research (M2 Product, WORKFLOW §8), MRs stack until v2 is green (D4) evidence=Approvals 2026-10-11 15:27 CDT
+2026-10-11 16:14 CDT DISPATCH M3-D01 harness=claude-subagent why=draw-diagrams is one skill, isolated (one .mmd), parallel with G2 decisions; Codex not on PATH evidence=.handoff/runs/M3-D01/task.md from milestone/m3-design
+2026-10-11 16:14 CDT DISPATCH M3-D02 harness=claude-subagent why=same as M3-D01 evidence=.handoff/runs/M3-D02/task.md from milestone/m3-design
+2026-10-11 16:14 CDT DISPATCH M3-D03 harness=claude-subagent why=same as M3-D01 evidence=.handoff/runs/M3-D03/task.md from milestone/m3-design

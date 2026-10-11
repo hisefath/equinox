@@ -10,3 +10,6 @@ core.*
 .handoff/runs/*/events.jsonl
 .handoff/runs/*/stderr.log
 docs/demo/raw/
+
+# helper-agent worktrees
+/.claude/worktrees/
