@@ -91,6 +91,149 @@ currency column because one winning contract pays $1 on either venue and payouts
 All times are `time.Time` in UTC (HLD §10 Time).
 
 <!-- diagram: erd -->
+```mermaid
+%% diagram: erd
+%% source: docs/architecture/lld.md#1-data-model @ d7cc8b2
+%% drawn: 2026-10-11T22:13:40Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams erd`.
+%% Types: Go "pkg.Type" is drawn "pkg-Type" and "[]T" is drawn "T[]", because a Mermaid attribute type cannot hold "." or start with "[".
+erDiagram
+    markets ||--o| books : "market_key"
+    markets ||..o{ pairs : "a_key"
+    markets ||..o{ pairs : "b_key"
+    pairs |o..o| verdicts : "pair_id + fingerprints"
+    pairs |o..o| overrides : "pair_id + fingerprints"
+    samples ||--o{ labels : "sample_id"
+    pairs |o..o{ decisions : "order.pair_id (copied, not linked)"
+    markets {
+        market-Key key PK "not null · (string #lt;venue#gt;:#lt;venue id#gt;[:#lt;outcome index#gt;])"
+        string venue "not null"
+        string event_id "not null"
+        string question "not null"
+        string outcome "not null"
+        string rules_text "not null"
+        string rules_fingerprint "not null · (hex SHA-256 of rules_text + terms)"
+        market-Terms terms "not null · (subject, predicate, threshold value and comparator, window start and end, source, statistic, edge rules)"
+        string topic "not null"
+        time-Time opens_at "not null"
+        time-Time closes_at "not null"
+        time-Time resolves_at "nullable"
+        int64 volume_24h "not null · (contracts)"
+        bool tradable "not null"
+        string untradable_reason "nullable"
+        market-FeeTerms fee "not null · (rate in parts per million, curve exponents, rounding unit in micro-dollars, per-order or per-fill rounding)"
+        int64 min_qty "not null"
+        string book_ref "not null"
+        time-Time received_at "not null"
+    }
+    books {
+        market-Key market_key PK, FK "not null · ref markets.key"
+        market-Level[] bids "not null · (price Amount, quantity int64), best first"
+        market-Level[] asks "not null · best first"
+        time-Time as_of "not null"
+        bool crossed "not null"
+    }
+    pairs {
+        string pair_id PK "not null · (hex SHA-256 of the two keys in sorted order, first 16 chars)"
+        market-Key a_key FK "not null · ref markets.key · uq_pairs_one_to_one: each market key appears in at most one equivalent pair"
+        market-Key b_key FK "not null · ref markets.key · uq_pairs_one_to_one: each market key appears in at most one equivalent pair"
+        string verdict "not null"
+        string decided_by "not null"
+        string differing_part "nullable"
+        string[] evidence "not null"
+        string[] caveats "not null"
+        int64 score "not null · (similarity in parts per thousand)"
+        string fingerprint_a "not null"
+        string fingerprint_b "not null"
+        string rules_version "not null"
+        time-Time matched_at "not null"
+    }
+    venue_health {
+        string venue PK "not null"
+        string state "not null"
+        time-Time last_good_at "nullable"
+        string last_error "nullable"
+        time-Time wait_until "nullable"
+    }
+    refresh_reports {
+        string venue PK "not null"
+        int64 listed "not null"
+        int64 considered "not null"
+        int64 inactive "not null"
+        int64 too_short "not null"
+        int64 unreadable "not null"
+        int64 undecided_pairs "not null"
+        time-Duration duration "not null"
+        time-Time finished_at "not null"
+    }
+    %% decisions — Primary key: none (append-only log; position in the file orders it)
+    decisions {
+        string decision_id "not null · (hex SHA-256 of the canonical order + quotes + policy + snapshot time, first 16 chars)"
+        time-Time logged_at "not null"
+        string request_id "not null"
+        route-Order order "not null · (pair id, side yes or no, quantity, optional limit Amount, customer region)"
+        time-Time snapshot_as_of "not null"
+        string outcome "not null"
+        string venue "nullable"
+        int64 filled_qty "not null"
+        int64 unfilled_qty "not null"
+        market-Amount avg_price "nullable"
+        market-Amount fees "not null"
+        market-Amount all_in "not null"
+        string deciding_rule "nullable"
+        market-Amount saving "nullable"
+        route-VenueResult[] venues "not null · (venue, eligible, reason, filled, all-in)"
+        string[] evidence "not null"
+        string[] caveats "not null"
+        string problem_type "nullable"
+    }
+    eligibility {
+        string venue PK "not null"
+        string[] regions "not null"
+        string source "not null"
+        string checked_on "not null · (date)"
+    }
+    verdicts {
+        string pair_id PK "not null"
+        string fingerprint_a PK "not null"
+        string fingerprint_b PK "not null"
+        string verdict "not null"
+        string differing_part "nullable"
+        string reason "not null"
+        string model "not null"
+        string prompt_version "not null"
+        time-Time decided_at "not null"
+    }
+    overrides {
+        string pair_id PK "not null"
+        string fingerprint_a PK "not null"
+        string fingerprint_b PK "not null"
+        string verdict "not null"
+        string note "nullable"
+        time-Time decided_at "not null"
+    }
+    samples {
+        string sample_id PK "not null · (#lt;date#gt;-#lt;seed#gt;)"
+        uint64 seed "not null"
+        string rules_version "not null"
+        time-Time drawn_at "not null"
+        string[] precision_pairs "not null · (pair ids)"
+        string[] recall_pool "not null · (pair ids)"
+        measure-Card[] cards "not null · (both questions and rules texts only)"
+    }
+    labels {
+        string sample_id PK, FK "not null · ref samples.sample_id"
+        string pair_id PK "not null"
+        string rater PK "not null"
+        string label "not null"
+        time-Time labelled_at "not null"
+        string rules_version "not null"
+    }
+```
+<!-- /diagram -->
 
 ### Tables
 
@@ -349,6 +492,156 @@ by a unit test that tries to build an invalid record.
 ## 2. Backend components
 
 <!-- diagram: be-class -->
+```mermaid
+%% diagram: be-class
+%% source: docs/architecture/lld.md#2-backend-components @ d7cc8b2
+%% drawn: 2026-10-11T22:13:44Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 2
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams be-class`.
+classDiagram
+    class BE1["BE-1 market.Types"]
+    BE1 : <<package internal/market>>
+    BE1 : +ParseAmount(s string) (Amount, error)
+    BE1 : +NewMarket(f MarketFields) (Market, error)
+    BE1 : +NewBook(key Key, bids, asks []Level, asOf time.Time) (Book, error)
+    BE1 : +(f FeeTerms) TakerFee(qty int64, price Amount) Amount
+    BE1 : +(b Book) AsksFor(side Side) []Level
+    note for BE1 "depends on: standard library only"
+
+    class BE2["BE-2 venue.Venue"]
+    BE2 : <<port (interface) · package internal/venue>>
+    BE2 : +Name() string
+    BE2 : +Catalog(ctx context.Context) ([]market.Market, CatalogStats, error)
+    BE2 : +Books(ctx context.Context, keys []market.Key) (map[market.Key]market.Book, error)
+
+    class BE3["BE-3 kalshi.Adapter"]
+    BE3 : <<package internal/venues/kalshi>>
+    BE3 : +New(c *fetch.Client, base string, now func() time.Time) *Adapter
+    BE3 : +(a *Adapter) Name() string
+    %% ⚠ missing: signatures of BE-3 Catalog and Books (the row names them without a signature, Returns "as BE-2") — docs/architecture/lld.md#2-backend-components does not state it
+
+    class BE4["BE-4 polymarket.Adapter"]
+    BE4 : <<package internal/venues/polymarket>>
+    BE4 : +New(c *fetch.Client, catalogBase, bookBase string, now func() time.Time) *Adapter
+    BE4 : +(a *Adapter) Name() string
+    %% ⚠ missing: signatures of BE-4 Catalog and Books (the row names them without a signature, Returns "as BE-2") — docs/architecture/lld.md#2-backend-components does not state it
+
+    class BE5["BE-5 fetch.Client"]
+    BE5 : <<package internal/fetch>>
+    BE5 : +New(t http.RoundTripper, perHost rate, timeout time.Duration, retries int, now func() time.Time) *Client
+    BE5 : +(c *Client) GetJSON(ctx context.Context, url string, out any) error
+    BE5 : +(c *Client) PostJSON(ctx context.Context, url string, body, out any) error
+    BE5 : +NewRecorder(dir string, mode RecordMode, next http.RoundTripper) http.RoundTripper
+    note for BE5 "depends on: net/http#59; SEAM-2 transport#59; SEAM-1 clock"
+
+    class BE6["BE-6 ingest.Refresher and ingest.Store"]
+    BE6 : <<package internal/ingest>>
+    BE6 : +NewStore() *Store
+    BE6 : +(s *Store) Current() (*Snapshot, bool)
+    BE6 : +NewRefresher(venues []venue.Venue, m *match.Matcher, ref refdata.Set, s *Store, cfg Cadence, now func() time.Time) *Refresher
+    BE6 : +(r *Refresher) Run(ctx context.Context) error
+    BE6 : +(r *Refresher) RefreshOnce(ctx context.Context) (*Snapshot, error)
+    note for BE6 "depends on: SEAM-1 clock"
+
+    class BE7["BE-7 match.Matcher"]
+    BE7 : <<package internal/match>>
+    BE7 : +New(rulesVersion string) *Matcher
+    BE7 : +(m *Matcher) Match(a, b []market.Market, ref refdata.Set) PairSet
+    BE7 : +Compare(x, y market.Market) Verdict
+    BE7 : +(p PairSet) Routable(id string, cur map[market.Key]string) (Pair, error)
+
+    class BE8["BE-8 route.Router"]
+    BE8 : <<package internal/route>>
+    BE8 : +Route(o Order, quotes []Quote, p Policy, asOf time.Time) Decision
+    BE8 : +(o Order) Validate() error
+
+    class BE9["BE-9 decisionlog.Log"]
+    BE9 : <<package internal/decisionlog>>
+    BE9 : +Open(path string) (*Log, error)
+    BE9 : +(l *Log) Append(d route.Decision) error
+    BE9 : +(l *Log) Page(cursor string, limit int) ([]route.Decision, string, error)
+    note for BE9 "depends on: os (SEAM-3 file)"
+
+    class BE10["BE-10 refdata.Loader"]
+    BE10 : <<package internal/refdata>>
+    BE10 : +Load(dir string, venues []string) (Set, error)
+    BE10 : +(s Set) Eligible(venue, region string) (bool, string)
+    note for BE10 "depends on: os"
+
+    class BE11["BE-11 web.Server"]
+    BE11 : <<package internal/web>>
+    BE11 : +New(s *ingest.Store, l *decisionlog.Log, ref refdata.Set, lim *RateLimiter, version string) *Server
+    BE11 : +(s *Server) Handler() http.Handler
+    BE11 : +(s *Server) Index(w http.ResponseWriter, r *http.Request)
+    BE11 : +(s *Server) Pairs(w http.ResponseWriter, r *http.Request)
+    BE11 : +(s *Server) Route(w http.ResponseWriter, r *http.Request)
+    BE11 : +(s *Server) Decisions(w http.ResponseWriter, r *http.Request)
+    BE11 : +(s *Server) Health(w http.ResponseWriter, r *http.Request)
+    BE11 : +(s *Server) Version(w http.ResponseWriter, r *http.Request)
+    note for BE11 "depends on: html/template, a per-IP limiter"
+
+    class BE12["BE-12 cmd.Main"]
+    BE12 : <<package cmd/equinox>>
+    BE12 : +main()
+
+    class BE13["BE-13 measure.Measurer"]
+    BE13 : <<package internal/measure>>
+    BE13 : +Draw(ps match.PairSet, snap *ingest.Snapshot, seed uint64, n int, rulesVersion string) Sample
+    BE13 : +Cards(s Sample, snap *ingest.Snapshot) []Card
+    BE13 : +ImportLabels(s Sample, r io.Reader) ([]Label, error)
+    BE13 : +Score(s Sample, labels []Label, currentRules string) (Report, error)
+    note for BE13 "depends on: math/rand/v2 (SEAM-4)"
+
+    class BE14["BE-14 adjudicate.Exchange"]
+    BE14 : <<package internal/adjudicate>>
+    BE14 : +Export(ps match.PairSet, snap *ingest.Snapshot, promptVersion string) []measure.Card
+    BE14 : +Import(r io.Reader, ps match.PairSet) ([]refdata.Verdict, error)
+
+    BE2 <|.. BE3
+    BE2 <|.. BE4
+    BE2 ..> BE1 : depends on
+    BE3 ..> BE5 : depends on
+    BE3 ..> BE1 : depends on
+    BE4 ..> BE5 : depends on
+    BE4 ..> BE1 : depends on
+    BE6 ..> BE2 : depends on
+    BE6 ..> BE7 : depends on
+    BE6 ..> BE10 : depends on
+    BE7 ..> BE1 : depends on
+    BE7 ..> BE10 : depends on
+    BE8 ..> BE1 : depends on
+    BE9 ..> BE8 : depends on
+    BE10 ..> BE1 : depends on
+    BE11 ..> BE6 : depends on
+    BE11 ..> BE7 : depends on
+    BE11 ..> BE8 : depends on
+    BE11 ..> BE9 : depends on
+    BE11 ..> BE10 : depends on
+    BE12 ..> BE1 : depends on
+    BE12 ..> BE2 : depends on
+    BE12 ..> BE3 : depends on
+    BE12 ..> BE4 : depends on
+    BE12 ..> BE5 : depends on
+    BE12 ..> BE6 : depends on
+    BE12 ..> BE7 : depends on
+    BE12 ..> BE8 : depends on
+    BE12 ..> BE9 : depends on
+    BE12 ..> BE10 : depends on
+    BE12 ..> BE11 : depends on
+    BE12 ..> BE13 : depends on
+    BE12 ..> BE14 : depends on
+    BE13 ..> BE1 : depends on
+    BE13 ..> BE6 : depends on
+    BE13 ..> BE7 : depends on
+    BE14 ..> BE1 : depends on
+    BE14 ..> BE6 : depends on
+    BE14 ..> BE7 : depends on
+    BE14 ..> BE10 : depends on
+    BE14 ..> BE13 : depends on
+```
+<!-- /diagram -->
 
 **Layering:** `cmd/equinox` (BE-12) wires everything; `web` (BE-11) translates HTTP; `ingest` (BE-6) owns snapshots;
 `match` (BE-7) and `route` (BE-8) are pure functions over `market` (BE-1) types; venue adapters (BE-3, BE-4) are the
@@ -549,6 +842,27 @@ only code that knows a venue; `fetch` (BE-5) is the only HTTP client. `route` im
 plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 because no `docs/design/` exists.
 
 <!-- diagram: fe-components -->
+```mermaid
+%% diagram: fe-components
+%% source: docs/architecture/lld.md#3-frontend-components @ d7cc8b2
+%% drawn: 2026-10-11T22:13:44Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams fe-components`.
+flowchart TD
+    FE1["FE-1 PageShell<br/>owns: none (stateless)<br/>reads: ST-1"]
+    FE3["FE-3 HealthPanel<br/>owns: none (stateless)<br/>reads: ST-1"]
+    FE2["FE-2 PairsTable<br/>owns: none (stateless#59; renders ST-1, which BE-6 Store owns and the server passes in)<br/>reads: ST-1"]
+    FE4["FE-4 OrderForm<br/>owns: none (stateless#59; the form fields are plain HTML)<br/>reads: ST-1"]
+    FE5["FE-5 DecisionView<br/>owns: none (stateless)"]
+    FE1 -->|"venue health rows, refresh report rows, decision-log status"| FE3
+    FE1 -->|"equivalent pairs (top 50 by score), near misses (top 20)"| FE2
+    FE1 -->|"pair options, last submitted values"| FE4
+    FE1 -->|"the decision or the refusal problem"| FE5
+    FE4 -.->|"form post to EP-3"| FE1
+```
+<!-- /diagram -->
 
 ### Component tree
 
@@ -632,6 +946,54 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 ### SEQ-1 Refresh, match and publish a snapshot · `sequence-refresh-and-match` · covers US-1, FR-001..FR-007, FR-024, FR-040, AE-001..AE-005
 
 <!-- diagram: sequence-refresh-and-match -->
+```mermaid
+%% diagram: sequence-refresh-and-match
+%% source: docs/architecture/lld.md#seq-1-refresh-match-and-publish-a-snapshot-sequence-refresh-and-match-covers-us-1-fr-001fr-007-fr-024-fr-040-ae-001ae-005 @ d7cc8b2
+%% drawn: 2026-10-11T22:13:43Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 3
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams sequence-refresh-and-match`.
+sequenceDiagram
+    autonumber
+    participant BE6 as BE-6 ingest (Refresher and Store)
+    participant BE3 as BE-3 kalshi.Adapter
+    participant BE4 as BE-4 polymarket.Adapter
+    participant BE5 as BE-5 fetch.Client
+    participant N1 as US-regulated venue
+    participant N2 as Offshore venue
+    participant BE7 as BE-7 Matcher
+    participant BE10 as BE-10 refdata Set
+    BE6->>BE3: Catalog(ctx) (L-2), in parallel with step 3
+    %% ⚠ missing: messages for the US-regulated venue's failure branch, stated only as "replaces steps 2, 5 and 7 the same way" — docs/architecture/lld.md#seq-1-refresh-match-and-publish-a-snapshot-sequence-refresh-and-match-covers-us-1-fr-001fr-007-fr-024-fr-040-ae-001ae-005 does not state it
+    Note over BE3: ⚠ missing: messages for the US-regulated venue's failure (replaces steps 2, 5 and 7 the same way)
+    %% ⚠ missing: messages for the US-regulated venue's refusal branch, stated only as "the same for the US-regulated venue in steps 2, 5 and 7" — docs/architecture/lld.md#seq-1-refresh-match-and-publish-a-snapshot-sequence-refresh-and-match-covers-us-1-fr-001fr-007-fr-024-fr-040-ae-001ae-005 does not state it
+    Note over BE3: ⚠ missing: messages for the US-regulated venue's refusal (the same for steps 2, 5 and 7)
+    BE3->>BE5: page requests for open markets, paced to at most 2 per second
+    BE6->>BE4: Catalog(ctx) (L-3)
+    %% ⚠ missing: one contiguous, non-overlapping alt range per venue (the offshore alts replace steps 4, 6 and 8 and the US-regulated ones replace steps 2, 5 and 7, so the ranges interleave; this block spans steps 4-8 and its else branches therefore omit steps 5 and 7) — docs/architecture/lld.md#seq-1-refresh-match-and-publish-a-snapshot-sequence-refresh-and-match-covers-us-1-fr-001fr-007-fr-024-fr-040-ae-001ae-005 does not state it
+    alt main path (steps 4, 6 and 8)
+        BE4->>BE5: page requests in 24-hour-volume order, stopping at the first market with zero volume
+        BE5->>N1: HTTPS GET per page (L-2)
+        BE5->>N2: HTTPS GET per page (L-3)
+        BE3-->>BE6: active markets plus counts (unreadable, inactive and too-short records skipped and counted)
+        BE4-->>BE6: active markets plus counts
+    else the offshore venue fails or returns unreadable data after its retries
+        BE5->>BE4: transport error or ErrMalformed after BE-5's own retries (up to 3 attempts)
+        BE4-->>BE6: the error
+        BE6->>BE6: keeps that venue's markets and books from the previous snapshot, sets its health unhealthy with the error (FR-021, SM-2), then publishes as in step 13
+    else the offshore venue refuses requests (rate limit or blocked)
+        BE5->>BE4: ErrRefused{Wait} (the stated wait, or 5 minutes for a block)
+        BE4-->>BE6: the refusal
+        BE6->>BE6: sets that venue backing_off until the wait passes and sends it no requests meanwhile (FR-025), then publishes as in step 13
+    end
+    BE6->>BE7: Match(a, b, ref) → candidate search, Compare per candidate, one-to-one assignment
+    BE7->>BE10: reads human overrides, then AI verdicts, whose fingerprints match (SM-1)
+    BE6->>BE3: Books(keys of equivalent pairs)#59; a 30-second book timer repeats this step
+    BE6->>BE4: Books(keys of equivalent pairs)#59; the same timer repeats this step
+    BE6->>BE6: publish the new immutable snapshot with venue_health and refresh_reports (one pointer swap)
+```
+<!-- /diagram -->
 
 - **Trigger:** the refresher's catalog timer fires (every 15 min) or the service starts
 - **Participants:** BE-6 ingest (Refresher and Store), BE-3 kalshi.Adapter, BE-4 polymarket.Adapter, BE-5 fetch.Client, US-regulated venue, Offshore venue, BE-7 Matcher, BE-10 refdata Set
@@ -669,6 +1031,53 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 ### SEQ-2 Route a hypothetical order · `sequence-route-order` · covers US-2, US-5, US-7, FR-008..FR-019, FR-022, FR-023, FR-027, FR-035..FR-037, AE-006..AE-014, AE-017..AE-019, AE-022, AE-029..AE-031, AE-036
 
 <!-- diagram: sequence-route-order -->
+```mermaid
+%% diagram: sequence-route-order
+%% source: docs/architecture/lld.md#seq-2-route-a-hypothetical-order-sequence-route-order-covers-us-2-us-5-us-7-fr-008fr-019-fr-022-fr-023-fr-027-fr-035fr-037-ae-006ae-014-ae-017ae-019-ae-022-ae-029ae-031-ae-036 @ 5f07d6d
+%% drawn: 2026-10-11T21:39:45Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams sequence-route-order`.
+sequenceDiagram
+    autonumber
+    actor Reviewer
+    participant FE4 as FE-4 OrderForm
+    participant BE11 as BE-11 web.Server
+    participant BE6 as BE-6 Store
+    participant BE7 as BE-7 PairSet
+    participant BE10 as BE-10 refdata Set
+    participant BE8 as BE-8 Router
+    participant BE9 as BE-9 Log
+    participant FE5 as FE-5 DecisionView
+    Reviewer->>FE4: enters pair, side, quantity, optional limit, customer region#59; submits
+    FE4->>BE11: POST /route (EP-3)
+    Note over BE11: checks the per-IP limit, then Order.Validate() (FR-016, FR-037)
+    alt main path (steps 4-10)
+        BE11->>BE6: Store.Current() — no venue is contacted from here on (INV-1)
+        BE11->>BE7: PairSet.Routable(pair_id, current fingerprints) (FR-015, FR-027)
+        alt main path (steps 6-10)
+            BE11->>BE10: Eligible(venue, region) for both venues#59; builds venue-neutral quotes (asks for the side, fee terms, min size, health, book age, tradability, eligibility)
+            BE11->>BE8: Route(order, quotes, policy, snapshot.as_of) → decision (pure)
+            BE11->>BE9: Append(decision) — synced before replying (INV-6)
+            alt main path (steps 9-10)
+                BE11->>FE5: 200 decision (HTML) or 200 JSON
+                FE5->>Reviewer: shows the chosen venue, fill, fees, all-in, the deciding rule and saving, each other venue's reason, the pair's evidence and caveats
+            else the decision log cannot be written
+                BE9-->>BE11: append error
+                BE11->>FE5: 503 /problems/decision-log-unavailable#59; no decision is shown as made
+            end
+        else the pair is unknown, not routable, or its rules changed
+            BE7-->>BE11: ErrUnknownPair, ErrNotRoutable or ErrRulesChanged
+            BE11->>BE9: Append(refused decision) with the problem type
+            BE11->>FE5: 404 /problems/unknown-pair, or 409 /problems/pair-not-routable / /problems/rules-changed
+            FE5->>Reviewer: shows the refusal reason (e.g. #quot;pair is not routable: statistic differs#quot;)
+        end
+    else the order is malformed
+        BE11-->>FE4: 422 /problems/validation with each field named#59; nothing is logged (FR-016)
+    end
+```
+<!-- /diagram -->
 
 - **Trigger:** a reviewer submits the order form, or a client posts JSON to EP-3
 - **Participants:** Reviewer (actor), FE-4 OrderForm, BE-11 web.Server, BE-6 Store, BE-7 PairSet, BE-10 refdata Set, BE-8 Router, BE-9 Log, FE-5 DecisionView
@@ -707,6 +1116,42 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 ### SEQ-3 Decide while a venue is down · `sequence-venue-down` · covers US-3, FR-020..FR-023, FR-025, FR-026, AE-015..AE-021
 
 <!-- diagram: sequence-venue-down -->
+```mermaid
+%% diagram: sequence-venue-down
+%% source: docs/architecture/lld.md#seq-3-decide-while-a-venue-is-down-sequence-venue-down-covers-us-3-fr-020fr-023-fr-025-fr-026-ae-015ae-021 @ d7cc8b2
+%% drawn: 2026-10-11T22:13:42Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams sequence-venue-down`.
+sequenceDiagram
+    autonumber
+    participant BE6 as BE-6 ingest (Refresher and Store)
+    participant BE5 as BE-5 fetch.Client
+    participant N1 as Offshore venue
+    actor P1 as Labs engineer
+    participant BE11 as BE-11 web.Server
+    participant BE8 as BE-8 Router
+    participant BE9 as BE-9 Log
+    BE6->>BE5: book refresh request for the offshore venue's matched markets
+    loop BE-5 retries up to 3 times
+        BE5->>N1: request#59; each attempt times out at 30 s
+    end
+    BE5-->>BE6: timeout error
+    BE6->>BE6: keeps the offshore venue's last good books, sets its health unhealthy with #quot;timed out#quot; (FR-021) and publishes the snapshot
+    P1->>BE11: POST /route (EP-3)
+    BE11->>BE6: Store.Current()#59; the quotes show the offshore book is 95 s old, above the 90 s freshness limit
+    alt main path (steps 7-9)
+        BE11->>BE8: Route(...) → the offshore venue is left out with #quot;data 95 s old#quot; (FR-022)#59; the US-regulated venue fills
+        BE11->>BE9: Append(decision)
+        BE11-->>P1: 200 decision naming both venues' reasons
+    else every venue is stale or unhealthy
+        BE11->>BE8: Route(...) → outcome not_filled, each venue with its reason (FR-017)
+        BE11->>BE9: Append(decision)
+        BE11-->>P1: 200 decision #quot;not filled#quot; with the reasons
+    end
+```
+<!-- /diagram -->
 
 - **Trigger:** the offshore venue times out on every request during a refresh, then an order arrives
 - **Participants:** BE-6 ingest (Refresher and Store), BE-5 fetch.Client, Offshore venue, Labs engineer (actor), BE-11 web.Server, BE-8 Router, BE-9 Log
@@ -734,6 +1179,44 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 ### SEQ-4 Measure matching precision · `sequence-measure-precision` · covers US-4, FR-028..FR-034, AE-023..AE-028, SC-001..SC-003
 
 <!-- diagram: sequence-measure-precision -->
+```mermaid
+%% diagram: sequence-measure-precision
+%% source: docs/architecture/lld.md#seq-4-measure-matching-precision-sequence-measure-precision-covers-us-4-fr-028fr-034-ae-023ae-028-sc-001sc-003 @ d7cc8b2
+%% drawn: 2026-10-11T22:13:43Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams sequence-measure-precision`.
+sequenceDiagram
+    autonumber
+    actor P1 as Labs lead
+    participant BE12 as BE-12 cmd.Main
+    participant BE6 as BE-6 Refresher
+    participant BE13 as BE-13 Measurer
+    participant X1 as AI rater (external)
+    actor P2 as Human rater
+    participant CN4 as CN-4 reviewed files
+    P1->>BE12: sample -seed 20261011
+    BE12->>BE6: RefreshOnce(ctx) → snapshot
+    BE12->>BE13: Draw(pairs, snapshot, seed, 100, rulesVersion) → sample with a recall pool#59; written to refdata/samples/
+    BE12->>BE13: Cards(sample) → blind cards (no verdict, no score) for the AI rater and the human rater (INV-8)
+    X1->>BE12: an AI labels file for every card, carried by the agent harness to the Labs lead's command line (L-8)
+    P2->>BE12: a human labels file for 30 of the same cards, saved on the Labs lead's machine (L-10)
+    P1->>BE12: import-labels#59; BE-13 ImportLabels validates each line (FR-033)
+    alt main path (steps 8-9)
+        P1->>BE12: score#59; BE-13 Score(...) → precision with counts and 95% interval, recall, kappa (FR-030, FR-031)
+        alt main path (step 9)
+            BE12-->>P1: the report#59; a merge request carries the sample and labels into CN-4 (L-9)
+        else precision is below 0.90
+            BE13-->>BE12: the report with the statement that routing needs a human-reviewed pair list (FR-034)
+            BE12-->>P1: that report#59; the merge request still carries the sample and labels into CN-4 (L-9)
+        end
+    else the rules version changed since the sample was drawn
+        BE13-->>BE12: error #quot;labels drawn under rules v#lt;x#gt;, current is v#lt;y#gt;#quot; (INV-9)
+        BE12-->>P1: exit 1#59; a new sample must be drawn and labelled
+    end
+```
+<!-- /diagram -->
 
 - **Trigger:** a Labs lead runs `equinox sample -seed 20261011`
 - **Participants:** Labs lead (actor), BE-12 cmd.Main, BE-6 Refresher, BE-13 Measurer, AI rater (external), Human rater (actor), CN-4 reviewed files
@@ -765,6 +1248,36 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 ### SEQ-5 Adjudicate undecided pairs offline · `sequence-adjudicate-offline` · covers US-6, FR-038..FR-041, AE-032..AE-035
 
 <!-- diagram: sequence-adjudicate-offline -->
+```mermaid
+%% diagram: sequence-adjudicate-offline
+%% source: docs/architecture/lld.md#seq-5-adjudicate-undecided-pairs-offline-sequence-adjudicate-offline-covers-us-6-fr-038fr-041-ae-032ae-035 @ 5f07d6d
+%% drawn: 2026-10-11T21:39:41Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams sequence-adjudicate-offline`.
+sequenceDiagram
+    autonumber
+    actor P1 as Labs engineer
+    participant BE12 as BE-12 cmd.Main
+    participant BE14 as BE-14 Exchange
+    participant X1 as AI adjudicator (external)
+    participant CN4 as CN-4 reviewed files
+    participant BE10 as BE-10 Loader
+    participant BE7 as BE-7 Matcher
+    P1->>BE12: export-adjudication -prompt v1
+    BE12->>BE14: Export(pairs, snapshot, #quot;v1#quot;) → cards with both rules texts and fingerprints
+    P1->>X1: (agent harness, L-8) cards in#59; verdict file out (verdict, differing part, reason, model, prompt version)
+    P1->>BE12: import-verdicts#59; BE-14 Import(...) validates every line and every fingerprint
+    alt main path (steps 5-6)
+        BE12->>CN4: writes refdata/verdicts.jsonl#59; a person reviews it in a merge request, adding any overrides (FR-041)
+        Note over CN4: After merge and deploy: BE-10 Load reads verdicts and overrides#59; BE-7 applies them at the next match (SM-1)
+    else the verdict file has a bad line or a stale fingerprint
+        BE14-->>BE12: error naming the line#59; nothing is imported
+        BE12-->>P1: exit 1#59; the pairs stay undecided and not routable (FR-040)
+    end
+```
+<!-- /diagram -->
 
 - **Trigger:** a Labs engineer runs `equinox export-adjudication` after a refresh reports undecided pairs
 - **Participants:** Labs engineer (actor), BE-12 cmd.Main, BE-14 Exchange, AI adjudicator (external), CN-4 reviewed files, BE-10 Loader, BE-7 Matcher
@@ -790,6 +1303,29 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 ### SM-1 Pair verdict lifecycle · `pairs.verdict` · `state-pair`
 
 <!-- diagram: state-pair -->
+```mermaid
+%% diagram: state-pair
+%% source: docs/architecture/lld.md#sm-1-pair-verdict-lifecycle-pairsverdict-state-pair @ d7cc8b2
+%% drawn: 2026-10-11T22:13:41Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 1
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams state-pair`.
+stateDiagram-v2
+    [*] --> undecided
+    undecided --> equivalent : rules compare (BE-7.Compare in SEQ-1) [every part agrees]
+    undecided --> related : rules compare [a known part differs]
+    undecided --> equivalent : AI verdict #quot;equivalent#quot; applied (BE-7 with BE-10 Set) [the verdict's fingerprints match]
+    undecided --> related : AI verdict #quot;related#quot; applied [the verdict's fingerprints match]
+    equivalent --> equivalent : human override #quot;equivalent#quot; (a person confirms the pair) [fingerprints match]
+    equivalent --> related : human override #quot;not equivalent#quot; [fingerprints match]
+    related --> equivalent : human override #quot;equivalent#quot; [fingerprints match]
+    related --> related : human override #quot;not equivalent#quot; (a person confirms the pair) [fingerprints match]
+    equivalent --> stale : rules text changes (BE-11 check in SEQ-2, or the next refresh) [fingerprint differs]
+    stale --> undecided : next refresh re-matches
+    %% ⚠ missing: terminal state (the section says Terminal is none by design, so no end arrow is drawn) — docs/architecture/lld.md#sm-1-pair-verdict-lifecycle-pairsverdict-state-pair does not state it
+```
+<!-- /diagram -->
 
 - **Initial:** `undecided` · **Terminal:** none by design (draw no end state): every refresh rebuilds every pair, so no state is final · **Stored in:** CHECK `ck_pairs_verdict`
 - **Enforced in:** BE-7, the only writer of `pairs`; a snapshot is immutable once published, so no two writers race
@@ -817,6 +1353,26 @@ plain HTML form post to EP-3 (NG-3, FR-042). Designed from FR-042 and AE-036 bec
 ### SM-2 Venue health · `venue_health.state` · `state-venue-health`
 
 <!-- diagram: state-venue-health -->
+```mermaid
+%% diagram: state-venue-health
+%% source: docs/architecture/lld.md#sm-2-venue-health-venue_healthstate-state-venue-health @ d7cc8b2
+%% drawn: 2026-10-11T22:13:45Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams state-venue-health`.
+stateDiagram-v2
+    [*] --> warming
+    warming --> healthy : refresh succeeds (SEQ-1)
+    warming --> unhealthy : refresh fails after retries
+    warming --> backing_off : venue refuses (ErrRefused)
+    healthy --> unhealthy : refresh fails after retries
+    healthy --> backing_off : venue refuses (ErrRefused)
+    unhealthy --> backing_off : venue refuses (ErrRefused)
+    unhealthy --> healthy : refresh succeeds
+    backing_off --> unhealthy : timer reaches wait_until
+```
+<!-- /diagram -->
 
 - **Initial:** `warming` · **Terminal:** none by design (draw no end state): health is recomputed every refresh for as long as the service runs · **Stored in:** CHECK `ck_venue_health_state`
 - **Enforced in:** BE-6, the only writer; each refresh computes the next row from the previous one
