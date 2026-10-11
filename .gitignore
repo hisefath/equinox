@@ -1,9 +1,12 @@
-DECISION_JOURNAL.md
+# v1 one-shot build (kept in main's history); these local leftovers never get committed on this branch
+/DECISION_JOURNAL.md
 /bin/
 /data/
-/research/raw/
-*.out
-coverage.html
+/research/
 .DS_Store
 core
 core.*
+# software-factory-kit (scripts/init-repo.sh): agent event logs may contain file contents; raw demo footage
+.handoff/runs/*/events.jsonl
+.handoff/runs/*/stderr.log
+docs/demo/raw/
