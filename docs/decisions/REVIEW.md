@@ -32,7 +32,7 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 - ●●○ D16 — AI via exported files and a harness over an API key; manual rounds.
 - ●○○ D21 — Local first over an early deploy; no live URL yet.
 
-### Process (8)
+### Process (9)
 
 - ●●○ D1 — Restart via the kit on a branch over keeping v1; costs a rebuild.
 - ●●○ D3 — Cite v1 as evidence over reusing its code; costs re-checking facts.
@@ -41,6 +41,7 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 - ●●○ D12 — PRD approved with both open items as recommended; terms of use unread.
 - ●●○ D18 — HLD approved after a trust-zone fix; open questions measured in M4.
 - ●●○ D22 — Batched gates over per-step gates to meet the deadline.
+- ●●○ D23 — LLD approved after a diagram-driven revision; build starts.
 - ●○○ D5 — Docs-only checks until design over Go checks now; checks prove little early.
 
 ## How the workflow improved
@@ -53,6 +54,7 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D23 · Process · ●●○ — LLD approved after a diagram-driven revision; build starts.
 - D22 · Process · ●●○ — Batched gates over per-step gates to meet the deadline.
 - D21 · Infrastructure · ●○○ — Local first over an early deploy; no live URL yet.
 - D20 · Data · ●●○ — Rare-word candidates and part checks over text similarity; more undecided pairs.

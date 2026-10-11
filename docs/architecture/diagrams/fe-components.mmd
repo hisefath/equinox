@@ -1,0 +1,18 @@
+%% diagram: fe-components
+%% source: docs/architecture/lld.md#3-frontend-components @ d7cc8b2
+%% drawn: 2026-10-11T22:13:44Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams fe-components`.
+flowchart TD
+    FE1["FE-1 PageShell<br/>owns: none (stateless)<br/>reads: ST-1"]
+    FE3["FE-3 HealthPanel<br/>owns: none (stateless)<br/>reads: ST-1"]
+    FE2["FE-2 PairsTable<br/>owns: none (stateless#59; renders ST-1, which BE-6 Store owns and the server passes in)<br/>reads: ST-1"]
+    FE4["FE-4 OrderForm<br/>owns: none (stateless#59; the form fields are plain HTML)<br/>reads: ST-1"]
+    FE5["FE-5 DecisionView<br/>owns: none (stateless)"]
+    FE1 -->|"venue health rows, refresh report rows, decision-log status"| FE3
+    FE1 -->|"equivalent pairs (top 50 by score), near misses (top 20)"| FE2
+    FE1 -->|"pair options, last submitted values"| FE4
+    FE1 -->|"the decision or the refusal problem"| FE5
+    FE4 -.->|"form post to EP-3"| FE1
