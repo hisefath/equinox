@@ -1,0 +1,45 @@
+%% diagram: sequence-refresh-and-match
+%% source: docs/architecture/lld.md#seq-1-refresh-match-and-publish-a-snapshot-sequence-refresh-and-match-covers-us-1-fr-001fr-007-fr-024-fr-040-ae-001ae-005 @ d7cc8b2
+%% drawn: 2026-10-11T22:13:43Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 3
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams sequence-refresh-and-match`.
+sequenceDiagram
+    autonumber
+    participant BE6 as BE-6 ingest (Refresher and Store)
+    participant BE3 as BE-3 kalshi.Adapter
+    participant BE4 as BE-4 polymarket.Adapter
+    participant BE5 as BE-5 fetch.Client
+    participant N1 as US-regulated venue
+    participant N2 as Offshore venue
+    participant BE7 as BE-7 Matcher
+    participant BE10 as BE-10 refdata Set
+    BE6->>BE3: Catalog(ctx) (L-2), in parallel with step 3
+    %% ⚠ missing: messages for the US-regulated venue's failure branch, stated only as "replaces steps 2, 5 and 7 the same way" — docs/architecture/lld.md#seq-1-refresh-match-and-publish-a-snapshot-sequence-refresh-and-match-covers-us-1-fr-001fr-007-fr-024-fr-040-ae-001ae-005 does not state it
+    Note over BE3: ⚠ missing: messages for the US-regulated venue's failure (replaces steps 2, 5 and 7 the same way)
+    %% ⚠ missing: messages for the US-regulated venue's refusal branch, stated only as "the same for the US-regulated venue in steps 2, 5 and 7" — docs/architecture/lld.md#seq-1-refresh-match-and-publish-a-snapshot-sequence-refresh-and-match-covers-us-1-fr-001fr-007-fr-024-fr-040-ae-001ae-005 does not state it
+    Note over BE3: ⚠ missing: messages for the US-regulated venue's refusal (the same for steps 2, 5 and 7)
+    BE3->>BE5: page requests for open markets, paced to at most 2 per second
+    BE6->>BE4: Catalog(ctx) (L-3)
+    %% ⚠ missing: one contiguous, non-overlapping alt range per venue (the offshore alts replace steps 4, 6 and 8 and the US-regulated ones replace steps 2, 5 and 7, so the ranges interleave; this block spans steps 4-8 and its else branches therefore omit steps 5 and 7) — docs/architecture/lld.md#seq-1-refresh-match-and-publish-a-snapshot-sequence-refresh-and-match-covers-us-1-fr-001fr-007-fr-024-fr-040-ae-001ae-005 does not state it
+    alt main path (steps 4, 6 and 8)
+        BE4->>BE5: page requests in 24-hour-volume order, stopping at the first market with zero volume
+        BE5->>N1: HTTPS GET per page (L-2)
+        BE5->>N2: HTTPS GET per page (L-3)
+        BE3-->>BE6: active markets plus counts (unreadable, inactive and too-short records skipped and counted)
+        BE4-->>BE6: active markets plus counts
+    else the offshore venue fails or returns unreadable data after its retries
+        BE5->>BE4: transport error or ErrMalformed after BE-5's own retries (up to 3 attempts)
+        BE4-->>BE6: the error
+        BE6->>BE6: keeps that venue's markets and books from the previous snapshot, sets its health unhealthy with the error (FR-021, SM-2), then publishes as in step 13
+    else the offshore venue refuses requests (rate limit or blocked)
+        BE5->>BE4: ErrRefused{Wait} (the stated wait, or 5 minutes for a block)
+        BE4-->>BE6: the refusal
+        BE6->>BE6: sets that venue backing_off until the wait passes and sends it no requests meanwhile (FR-025), then publishes as in step 13
+    end
+    BE6->>BE7: Match(a, b, ref) → candidate search, Compare per candidate, one-to-one assignment
+    BE7->>BE10: reads human overrides, then AI verdicts, whose fingerprints match (SM-1)
+    BE6->>BE3: Books(keys of equivalent pairs)#59; a 30-second book timer repeats this step
+    BE6->>BE4: Books(keys of equivalent pairs)#59; the same timer repeats this step
+    BE6->>BE6: publish the new immutable snapshot with venue_health and refresh_reports (one pointer swap)
