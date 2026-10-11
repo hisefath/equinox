@@ -1,0 +1,33 @@
+%% diagram: sequence-venue-down
+%% source: docs/architecture/lld.md#seq-3-decide-while-a-venue-is-down-sequence-venue-down-covers-us-3-fr-020fr-023-fr-025-fr-026-ae-015ae-021 @ d7cc8b2
+%% drawn: 2026-10-11T22:13:42Z by draw-diagrams (claude, claude-opus-5-5)
+%% render: unverified
+%% render-check: mmdc not on PATH
+%% missing: 0
+%% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams sequence-venue-down`.
+sequenceDiagram
+    autonumber
+    participant BE6 as BE-6 ingest (Refresher and Store)
+    participant BE5 as BE-5 fetch.Client
+    participant N1 as Offshore venue
+    actor P1 as Labs engineer
+    participant BE11 as BE-11 web.Server
+    participant BE8 as BE-8 Router
+    participant BE9 as BE-9 Log
+    BE6->>BE5: book refresh request for the offshore venue's matched markets
+    loop BE-5 retries up to 3 times
+        BE5->>N1: request#59; each attempt times out at 30 s
+    end
+    BE5-->>BE6: timeout error
+    BE6->>BE6: keeps the offshore venue's last good books, sets its health unhealthy with #quot;timed out#quot; (FR-021) and publishes the snapshot
+    P1->>BE11: POST /route (EP-3)
+    BE11->>BE6: Store.Current()#59; the quotes show the offshore book is 95 s old, above the 90 s freshness limit
+    alt main path (steps 7-9)
+        BE11->>BE8: Route(...) → the offshore venue is left out with #quot;data 95 s old#quot; (FR-022)#59; the US-regulated venue fills
+        BE11->>BE9: Append(decision)
+        BE11-->>P1: 200 decision naming both venues' reasons
+    else every venue is stale or unhealthy
+        BE11->>BE8: Route(...) → outcome not_filled, each venue with its reason (FR-017)
+        BE11->>BE9: Append(decision)
+        BE11-->>P1: 200 decision #quot;not filled#quot; with the reasons
+    end
