@@ -13,11 +13,12 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 
 - ●●○ D2 — Feasibility verdict leads over an AI showcase; no AI features for show.
 
-### Process (4)
+### Process (5)
 
 - ●●○ D1 — Restart via the kit on a branch over keeping v1; costs a rebuild.
 - ●●○ D3 — Cite v1 as evidence over reusing its code; costs re-checking facts.
 - ●●○ D4 — Finish v2 today over submitting v1; main keeps v1 until green.
+- ●●○ D6 — Full track over Standard; about a dozen gates in one day.
 - ●○○ D5 — Docs-only checks until design over Go checks now; checks prove little early.
 
 ## How the workflow improved
@@ -30,6 +31,7 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D6 · Process · ●●○ — Full track over Standard; about a dozen gates in one day.
 - D5 · Process · ●○○ — Docs-only checks until design over Go checks now; checks prove little early.
 - D4 · Process · ●●○ — Finish v2 today over submitting v1; main keeps v1 until green.
 - D3 · Process · ●●○ — Cite v1 as evidence over reusing its code; costs re-checking facts.
