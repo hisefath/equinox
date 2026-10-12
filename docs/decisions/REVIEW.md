@@ -9,13 +9,14 @@ Weight: ●●● critical (hard to undo, or touches money, personal data or sig
 
 ## By topic
 
-### Product (5)
+### Product (6)
 
 - ●●● D7 — Same payout in every outcome over same-event matching; fewer routable pairs.
 - ●●○ D2 — Feasibility verdict leads over an AI showcase; no AI features for show.
 - ●●○ D8 — Kalshi plus polymarket.com with eligibility data; maintain a dated list.
 - ●●○ D9 — Blind sampled precision with recall and kappa guards; costs 30 human labels.
 - ●●○ D10 — Offline AI adjudication over runtime AI or none; adds a review step.
+- ●●○ D26 — Opt-in higher-payout goal over same-bet-only routing; adds a riskier path.
 
 ### Data (5)
 
@@ -56,6 +57,7 @@ Decisions that adopted a software-factory-kit change (H) and the finding (F) beh
 
 ### 2026-10-11
 
+- D26 · Product · ●●○ — Opt-in higher-payout goal over same-bet-only routing; adds a riskier path.
 - D25 · Infrastructure · ●○○ — Recorded full read by default over live calls; costs 34 MB.
 - D24 · Process · ●●○ — Three-model blind quorum over a human rater; one-vendor blind spot remains.
 - D23 · Process · ●●○ — LLD approved after a diagram-driven revision; build starts.

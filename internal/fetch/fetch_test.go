@@ -159,6 +159,17 @@ func TestRecorderRecordsThenReplays(t *testing.T) {
 	if err := play.PostJSON(context.Background(), "https://x.test/b", "two", &out); err == nil {
 		t.Fatal("a different body must miss the recording")
 	}
+	// Fill replays what exists without a live call and records only what is missing (D26).
+	fill := New(NewRecorder(dir, Fill, live), 0, time.Second, 0, nil)
+	if err := fill.PostJSON(context.Background(), "https://x.test/b", "one", &out); err != nil || out.Echo != "one" || n.Load() != 1 {
+		t.Fatalf("fill replay: %v %+v live calls %d", err, out, n.Load())
+	}
+	if err := fill.PostJSON(context.Background(), "https://x.test/b", "two", &out); err != nil || out.Echo != "two" || n.Load() != 2 {
+		t.Fatalf("fill miss: %v %+v live calls %d", err, out, n.Load())
+	}
+	if err := play.PostJSON(context.Background(), "https://x.test/b", "two", &out); err != nil || out.Echo != "two" {
+		t.Fatalf("filled recording should replay: %v", err)
+	}
 	r, _ := http.NewRequest("POST", "https://x.test/b", strings.NewReader(`"one"`))
 	resp, err := NewRecorder(dir, Replay, nil).RoundTrip(r)
 	if err != nil || resp.Header.Get("Set-Cookie") != "" || resp.Header.Get("Content-Type") != "application/json" {

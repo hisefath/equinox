@@ -250,6 +250,26 @@ func (r *Refresher) fetchBooks(ctx context.Context, next, prev *Snapshot) {
 			}
 		}
 	}
+	r.fetchBookSet(ctx, next, prev, want)
+	// Higher-payout pairs get books in a second call, so the equivalent pairs' requests stay exactly as before (D26).
+	extra, seen := map[string][]market.Key{}, map[market.Key]bool{}
+	for _, ks := range want {
+		for _, k := range ks {
+			seen[k] = true
+		}
+	}
+	for _, pv := range next.PayoutPairs() {
+		for _, k := range []market.Key{pv.AKey, pv.BKey} {
+			if m, ok := next.Markets[k]; ok && !seen[k] {
+				seen[k] = true
+				extra[m.Venue] = append(extra[m.Venue], k)
+			}
+		}
+	}
+	r.fetchBookSet(ctx, next, prev, extra)
+}
+
+func (r *Refresher) fetchBookSet(ctx context.Context, next, prev *Snapshot, want map[string][]market.Key) {
 	for _, v := range r.venues {
 		name := v.Name()
 		keys := want[name]
@@ -314,4 +334,32 @@ func truncate(s string, n int) string {
 		return s[:n]
 	}
 	return s
+}
+
+// PayoutLimit caps how many higher-payout pairs get order books and appear on the page (D26).
+const PayoutLimit = 40
+
+// PayoutPairs lists related pairs that differ only in a same-direction threshold, best score first (D26).
+func (s *Snapshot) PayoutPairs() []PayoutView {
+	var out []PayoutView
+	for _, p := range s.Pairs.Pairs {
+		a, okA := s.Markets[p.AKey]
+		b, okB := s.Markets[p.BKey]
+		if !okA || !okB {
+			continue
+		}
+		if pp, ok := match.Payout(p, a, b); ok {
+			out = append(out, PayoutView{Pair: p, PayoutPair: pp})
+			if len(out) == PayoutLimit {
+				break
+			}
+		}
+	}
+	return out
+}
+
+// PayoutView is one higher-payout pair with what each side needs to pay.
+type PayoutView struct {
+	match.Pair
+	match.PayoutPair
 }

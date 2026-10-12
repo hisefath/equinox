@@ -264,3 +264,29 @@ func TestRouteNamesNoVenue(t *testing.T) {
 		}
 	}
 }
+
+// D26: under the higher-payout goal, most paid back per dollar wins even when another venue fills more; the
+// default goal is unchanged and keeps its decision id.
+func TestHigherPayoutGoal(t *testing.T) {
+	cheap, dear := quote("ashby", "0.45", 60), quote("birch", "0.70", 100)
+	o := order(100)
+	best := Route(o, []Quote{cheap, dear}, policy, now)
+	if best.Venue != "birch" || best.DecidingRule != RuleMostFilled || best.Payout != nil {
+		t.Fatalf("best price: %s %s %v", best.Venue, best.DecidingRule, best.Payout)
+	}
+	o.Goal = GoalHigherPayout
+	d := Route(o, []Quote{dear, cheap}, policy, now)
+	if d.Venue != "ashby" || d.DecidingRule != RuleHighestPayout || d.Payout == nil || *d.Payout != 60*market.Dollar {
+		t.Fatalf("higher payout: %s %s %v", d.Venue, d.DecidingRule, d.Payout)
+	}
+	if r := result(t, d, "birch"); r.Reason != "lower payout per dollar" {
+		t.Fatalf("loser reason %q", r.Reason)
+	}
+	if d.DecisionID == best.DecisionID {
+		t.Fatal("the goal must be part of the decision id")
+	}
+	o.Goal = "max_risk"
+	if err := o.Validate(); err == nil {
+		t.Fatal("unknown goal accepted")
+	}
+}

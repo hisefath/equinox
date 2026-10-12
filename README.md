@@ -83,6 +83,11 @@ venues (Kalshi, Polymarket) ──► adapters ──► one venue-neutral marke
   Money is integer micro-dollars; fees are per-market data. The decision names the rule that decided it (most
   filled, lowest all-in cost after fees, tie-break) and why every other venue lost or was left out.
 - **Customer eligibility is data:** a US customer's order never goes to polymarket.com (D8).
+- **Two routing goals (D26).** *Best price* (the default) buys the same bet wherever it costs least after fees; for
+  the same bet, the cheaper venue is also the bigger reward. *Higher payout* ranks venues by how much they pay back per
+  dollar spent, and may also route a related pair that differs only in its threshold (for example a Rotten Tomatoes
+  score "above 85" against "at least 50"). Those are two different bets: the riskier one wins in fewer situations, and
+  every such decision says so. Try it: `./bin/equinox route -pair 783e362dda2ec6fe -qty 100 -goal higher_payout`.
 - **Failure is visible:** a venue that is down keeps its last good data, is marked unhealthy, and ages out of
   decisions after 90 seconds.
 
@@ -137,7 +142,7 @@ Every diagram is a picture in the repo (click to open full size); the short tour
 | Test results | `docs/TEST_RESULTS.md` |
 | AI usage log / disclosure | `docs/AI_USAGE.md` |
 | Deployment guide | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md): local, Docker, Railway, live data, checks, rollback |
-| Demo video | linked from `docs/demo/` |
+| Demo video | submitted with the project (not stored in the repo) |
 
 ## Limits
 

@@ -53,7 +53,7 @@ Run "equinox <command> -h" for a command's flags.
 
 type common struct {
 	replay, record, refdir, datadir string
-	live                            bool
+	live, fill                      bool
 	kalshiPages, polyPages          int
 }
 
@@ -61,6 +61,7 @@ func (c *common) register(fs *flag.FlagSet) {
 	fs.StringVar(&c.replay, "replay", "testdata/live-20261011", "answer venue requests from recorded real responses in DIR")
 	fs.BoolVar(&c.live, "live", false, "call the venues' public APIs live")
 	fs.StringVar(&c.record, "record", "", "call the venues live and record every response into DIR")
+	fs.BoolVar(&c.fill, "fill", false, "with -replay: fetch only requests missing from the recording, live, and add them to it")
 	fs.StringVar(&c.refdir, "refdata", "refdata", "reviewed reference data directory")
 	fs.StringVar(&c.datadir, "data", "data", "directory for the decision log")
 	fs.IntVar(&c.kalshiPages, "kalshi-pages", 0, "page cap for the US-regulated venue (0 = all)")
@@ -78,11 +79,13 @@ func (c *common) venues() []venue.Venue {
 		switch {
 		case c.record != "":
 			t = fetch.NewRecorder(filepath.Join(c.record, name), fetch.Record, t)
+		case c.fill:
+			t = fetch.NewRecorder(filepath.Join(c.replay, name), fetch.Fill, t)
 		case !c.live:
 			t = fetch.NewRecorder(filepath.Join(c.replay, name), fetch.Replay, nil)
 		}
 		rate := 2.0 // NFR-003: at most 2 requests per second per venue
-		if !c.live && c.record == "" {
+		if !c.live && c.record == "" && !c.fill {
 			rate = 10_000 // replay never leaves the machine, so no pacing
 		}
 		return fetch.New(t, rate, 30*time.Second, 3, now)
@@ -151,10 +154,11 @@ func main() {
 		qty := fs.Int64("qty", 100, "contracts")
 		limit := fs.String("limit", "", "optional price limit, 0-1")
 		region := fs.String("region", "non-US", "customer region: US or non-US")
+		goal := fs.String("goal", "best_price", "best_price (same bet only) or higher_payout (may pick a riskier related bet, D26)")
 		fs.Parse(args)
 		ref, r, store := c.setup()
 		mustRefresh(ctx, r)
-		routeOnce(&c, ref, store, *pair, *side, *qty, *limit, *region)
+		routeOnce(&c, ref, store, *pair, *side, *qty, *limit, *region, *goal)
 	case "decisions":
 		n := fs.Int("n", 10, "how many")
 		fs.Parse(args)
@@ -260,10 +264,10 @@ func mustRefresh(ctx context.Context, r *ingest.Refresher) *ingest.Snapshot {
 	return snap
 }
 
-func routeOnce(c *common, ref refdata.Set, store *ingest.Store, pairID, side string, qty int64, limit, region string) {
+func routeOnce(c *common, ref refdata.Set, store *ingest.Store, pairID, side string, qty int64, limit, region, goal string) {
 	l := openLog(c)
 	s := web.New(store, l, ref, web.NewRateLimiter(1000, time.Minute, time.Now), version())
-	body := map[string]any{"pair_id": pairID, "side": side, "quantity": qty, "customer_region": region}
+	body := map[string]any{"pair_id": pairID, "side": side, "quantity": qty, "customer_region": region, "goal": goal}
 	if limit != "" {
 		body["limit"] = limit
 	}
@@ -316,6 +320,16 @@ func printSnapshot(s *ingest.Snapshot, top int) {
 			break
 		}
 		fmt.Printf("near miss: %s ⇄ %s — %s\n", s.Markets[n.Pair.AKey].Question, s.Markets[n.Pair.BKey].Question, n.Reason)
+	}
+	pps := s.PayoutPairs()
+	fmt.Printf("\nhigher-payout pairs (different bets, routable only with -goal higher_payout): %d\n", len(pps))
+	for i, pv := range pps {
+		if i == 40 {
+			break
+		}
+		_, hasA := s.Books[pv.AKey]
+		_, hasB := s.Books[pv.BKey]
+		fmt.Printf("%s %4d  %s (%s) ⇄ %s (%s)  books: %v/%v\n", pv.PairID, pv.Score, s.Markets[pv.AKey].Question, pv.A, s.Markets[pv.BKey].Question, pv.B, hasA, hasB)
 	}
 }
 

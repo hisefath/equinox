@@ -101,6 +101,14 @@ How live calls are made:
   `curl`. On Railway, set that variable and change the service's start command to
   `sh -c 'exec ./equinox serve -live -addr :$PORT'`.
 
+To add requests that are missing from a recording without touching what is already there (for example order books
+for markets added later), replay with `-fill`: recorded requests are replayed, and only missing ones are fetched live
+and saved. This is how the higher-payout pairs' order books were added to `testdata/live-20261011` (D26).
+
+```bash
+./bin/equinox refresh -fill
+```
+
 To make a fresh recording and use it:
 
 ```bash
@@ -149,6 +157,8 @@ from it. Confirm with `/version`.
 | `EQUINOX_NATIVE_HTTP=1` | environment | unset (use `curl`) | use Go's HTTP client for live calls; required in containers |
 | `-addr` | `serve` flag | `:8080` | listen address |
 | `-replay` / `-live` / `-record` | any command | `-replay testdata/live-20261011` | venue data source (section 5) |
+| `-fill` | any command, with `-replay` | off | fetch only requests missing from the recording, live, and add them |
+| `-goal` | `route` | `best_price` | `best_price` or `higher_payout` (D26) |
 | `-data` | any command | `data` | decision log directory |
 | `-refdata` | any command | `refdata` | reviewed reference data |
 | `-kalshi-pages`, `-poly-pages` | any command | 0 (all) | cap pages read, for quick live tests |
