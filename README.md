@@ -84,6 +84,30 @@ venues (Kalshi, Polymarket) ──► adapters ──► one venue-neutral marke
 - **Failure is visible:** a venue that is down keeps its last good data, is marked unhealthy, and ages out of
   decisions after 90 seconds.
 
+### In pictures
+
+Every diagram is a picture in the repo (click to open full size); the short tour is [`ARCHITECTURE.md`](ARCHITECTURE.md).
+
+[![Containers and connections](docs/architecture/diagrams/png/hld-container.png)](docs/architecture/diagrams/png/hld-container.png)
+
+[![Route an order](docs/architecture/diagrams/png/sequence-route-order.png)](docs/architecture/diagrams/png/sequence-route-order.png)
+
+| Diagram | What it shows |
+|---|---|
+| [System context](docs/architecture/diagrams/png/hld-context.png) | who and what Equinox talks to |
+| [Containers](docs/architecture/diagrams/png/hld-container.png) | what runs where, and every connection |
+| [Deployment](docs/architecture/diagrams/png/deployment.png) | local, CI and Railway |
+| [Refresh and match](docs/architecture/diagrams/png/sequence-refresh-and-match.png) | how pairs are found and checked |
+| [Route an order](docs/architecture/diagrams/png/sequence-route-order.png) | how one order is decided and logged |
+| [Venue down](docs/architecture/diagrams/png/sequence-venue-down.png) | graceful failure |
+| [Measure precision](docs/architecture/diagrams/png/sequence-measure-precision.png) | how matching quality is measured |
+| [Adjudicate offline](docs/architecture/diagrams/png/sequence-adjudicate-offline.png) | where AI reviews pairs, outside routing |
+| [Pair verdict states](docs/architecture/diagrams/png/state-pair.png) | how a pair becomes equivalent, related or stale |
+| [Venue health states](docs/architecture/diagrams/png/state-venue-health.png) | healthy, unhealthy, backing off |
+| [Data model](docs/architecture/diagrams/png/erd.png) | every record and how they link |
+| [Backend components](docs/architecture/diagrams/png/be-class.png) | Go packages and their dependencies |
+| [Page components](docs/architecture/diagrams/png/fe-components.png) | the web page's parts |
+
 ## Documentation
 
 | What | Where |
@@ -92,7 +116,8 @@ venues (Kalshi, Polymarket) ──► adapters ──► one venue-neutral marke
 | Brief | [`specs/M1-cross-venue-equivalence-routing/brief.md`](specs/M1-cross-venue-equivalence-routing/brief.md) |
 | Research (8 questions, cited) | [`docs/research/`](docs/research/) |
 | Product requirements | [`docs/product/prd.md`](docs/product/prd.md) |
-| Architecture overview (HLD) | [`docs/architecture/hld.md`](docs/architecture/hld.md) |
+| Architecture overview, in pictures | [`ARCHITECTURE.md`](ARCHITECTURE.md) |
+| High-level design (HLD) | [`docs/architecture/hld.md`](docs/architecture/hld.md) |
 | Equivalence and routing logic (LLD) | [`docs/architecture/lld.md`](docs/architecture/lld.md) — §1, §5 (SEQ-1, SEQ-2), §6, decisions D19-D20 |
 | Decisions (every gate, with the options that lost) | [`docs/decisions/DECISION_JOURNAL.md`](docs/decisions/DECISION_JOURNAL.md), [`REVIEW.md`](docs/decisions/REVIEW.md) |
 | AI usage log | [`docs/AI_USAGE.md`](docs/AI_USAGE.md) |
@@ -104,7 +129,7 @@ venues (Kalshi, Polymarket) ──► adapters ──► one venue-neutral marke
 |---|---|
 | Source code | `cmd/`, `internal/` (Go standard library only) |
 | Setup instructions | this README, "Run it locally" |
-| Technical documentation, architecture overview | `docs/architecture/hld.md`, `docs/architecture/lld.md` |
+| Technical documentation, architecture overview | `ARCHITECTURE.md` (short, with diagrams), `docs/architecture/hld.md`, `docs/architecture/lld.md` |
 | Equivalence and routing logic, written | `docs/product/prd.md` (definition), `docs/architecture/lld.md` (method) |
 | Test results | `docs/TEST_RESULTS.md` |
 | AI usage log / disclosure | `docs/AI_USAGE.md` |

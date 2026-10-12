@@ -129,6 +129,10 @@ flowchart LR
 ```
 <!-- /diagram -->
 
+[![System context: who and what Equinox talks to](diagrams/png/hld-context.png)](diagrams/png/hld-context.png)
+
+*Picture of the diagram above (`hld-context.mmd`); click to open it full size.*
+
 | Element | Kind | Interaction with our system | Data exchanged | Owner | Basis |
 |---|---|---|---|---|---|
 | Equinox | our system | — | — | us | FR-001 to FR-043 |
@@ -194,6 +198,10 @@ flowchart LR
     style N3 stroke-dasharray: 5 5
 ```
 <!-- /diagram -->
+
+[![Containers and connections, with trust zones](diagrams/png/hld-container.png)](diagrams/png/hld-container.png)
+
+*Picture of the diagram above (`hld-container.mmd`); click to open it full size.*
 
 | Id | Container | Technology | Responsibility | Data owned | Scaling unit | Basis |
 |---|---|---|---|---|---|---|
@@ -457,6 +465,10 @@ flowchart TB
     SEC_production[/"secrets from: none"/] -.->|"secrets from"| ENV_production
 ```
 <!-- /diagram -->
+
+[![Deployment: local, CI and Railway](diagrams/png/deployment.png)](diagrams/png/deployment.png)
+
+*Picture of the diagram above (`deployment.mmd`); click to open it full size.*
 
 | Environment | Runs on | Containers | Deployed by | Secrets from | Data | Basis |
 |---|---|---|---|---|---|---|

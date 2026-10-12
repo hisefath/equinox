@@ -7,7 +7,7 @@
 %% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams be-class`.
 classDiagram
     class BE1["BE-1 market.Types"]
-    BE1 : <<package internal/market>>
+    BE1 : «package internal/market»
     BE1 : +ParseAmount(s string) (Amount, error)
     BE1 : +NewMarket(f MarketFields) (Market, error)
     BE1 : +NewBook(key Key, bids, asks []Level, asOf time.Time) (Book, error)
@@ -16,25 +16,25 @@ classDiagram
     note for BE1 "depends on: standard library only"
 
     class BE2["BE-2 venue.Venue"]
-    BE2 : <<port (interface) · package internal/venue>>
+    BE2 : «port (interface) · package internal/venue»
     BE2 : +Name() string
     BE2 : +Catalog(ctx context.Context) ([]market.Market, CatalogStats, error)
     BE2 : +Books(ctx context.Context, keys []market.Key) (map[market.Key]market.Book, error)
 
     class BE3["BE-3 kalshi.Adapter"]
-    BE3 : <<package internal/venues/kalshi>>
+    BE3 : «package internal/venues/kalshi»
     BE3 : +New(c *fetch.Client, base string, now func() time.Time) *Adapter
     BE3 : +(a *Adapter) Name() string
     %% ⚠ missing: signatures of BE-3 Catalog and Books (the row names them without a signature, Returns "as BE-2") — docs/architecture/lld.md#2-backend-components does not state it
 
     class BE4["BE-4 polymarket.Adapter"]
-    BE4 : <<package internal/venues/polymarket>>
+    BE4 : «package internal/venues/polymarket»
     BE4 : +New(c *fetch.Client, catalogBase, bookBase string, now func() time.Time) *Adapter
     BE4 : +(a *Adapter) Name() string
     %% ⚠ missing: signatures of BE-4 Catalog and Books (the row names them without a signature, Returns "as BE-2") — docs/architecture/lld.md#2-backend-components does not state it
 
     class BE5["BE-5 fetch.Client"]
-    BE5 : <<package internal/fetch>>
+    BE5 : «package internal/fetch»
     BE5 : +New(t http.RoundTripper, perHost rate, timeout time.Duration, retries int, now func() time.Time) *Client
     BE5 : +(c *Client) GetJSON(ctx context.Context, url string, out any) error
     BE5 : +(c *Client) PostJSON(ctx context.Context, url string, body, out any) error
@@ -42,7 +42,7 @@ classDiagram
     note for BE5 "depends on: net/http#59; SEAM-2 transport#59; SEAM-1 clock"
 
     class BE6["BE-6 ingest.Refresher and ingest.Store"]
-    BE6 : <<package internal/ingest>>
+    BE6 : «package internal/ingest»
     BE6 : +NewStore() *Store
     BE6 : +(s *Store) Current() (*Snapshot, bool)
     BE6 : +NewRefresher(venues []venue.Venue, m *match.Matcher, ref refdata.Set, s *Store, cfg Cadence, now func() time.Time) *Refresher
@@ -51,32 +51,32 @@ classDiagram
     note for BE6 "depends on: SEAM-1 clock"
 
     class BE7["BE-7 match.Matcher"]
-    BE7 : <<package internal/match>>
+    BE7 : «package internal/match»
     BE7 : +New(rulesVersion string) *Matcher
     BE7 : +(m *Matcher) Match(a, b []market.Market, ref refdata.Set) PairSet
     BE7 : +Compare(x, y market.Market) Verdict
     BE7 : +(p PairSet) Routable(id string, cur map[market.Key]string) (Pair, error)
 
     class BE8["BE-8 route.Router"]
-    BE8 : <<package internal/route>>
+    BE8 : «package internal/route»
     BE8 : +Route(o Order, quotes []Quote, p Policy, asOf time.Time) Decision
     BE8 : +(o Order) Validate() error
 
     class BE9["BE-9 decisionlog.Log"]
-    BE9 : <<package internal/decisionlog>>
+    BE9 : «package internal/decisionlog»
     BE9 : +Open(path string) (*Log, error)
     BE9 : +(l *Log) Append(d route.Decision) error
     BE9 : +(l *Log) Page(cursor string, limit int) ([]route.Decision, string, error)
     note for BE9 "depends on: os (SEAM-3 file)"
 
     class BE10["BE-10 refdata.Loader"]
-    BE10 : <<package internal/refdata>>
+    BE10 : «package internal/refdata»
     BE10 : +Load(dir string, venues []string) (Set, error)
     BE10 : +(s Set) Eligible(venue, region string) (bool, string)
     note for BE10 "depends on: os"
 
     class BE11["BE-11 web.Server"]
-    BE11 : <<package internal/web>>
+    BE11 : «package internal/web»
     BE11 : +New(s *ingest.Store, l *decisionlog.Log, ref refdata.Set, lim *RateLimiter, version string) *Server
     BE11 : +(s *Server) Handler() http.Handler
     BE11 : +(s *Server) Index(w http.ResponseWriter, r *http.Request)
@@ -88,11 +88,11 @@ classDiagram
     note for BE11 "depends on: html/template, a per-IP limiter"
 
     class BE12["BE-12 cmd.Main"]
-    BE12 : <<package cmd/equinox>>
+    BE12 : «package cmd/equinox»
     BE12 : +main()
 
     class BE13["BE-13 measure.Measurer"]
-    BE13 : <<package internal/measure>>
+    BE13 : «package internal/measure»
     BE13 : +Draw(ps match.PairSet, snap *ingest.Snapshot, seed uint64, n int, rulesVersion string) Sample
     BE13 : +Cards(s Sample, snap *ingest.Snapshot) []Card
     BE13 : +ImportLabels(s Sample, r io.Reader) ([]Label, error)
@@ -100,7 +100,7 @@ classDiagram
     note for BE13 "depends on: math/rand/v2 (SEAM-4)"
 
     class BE14["BE-14 adjudicate.Exchange"]
-    BE14 : <<package internal/adjudicate>>
+    BE14 : «package internal/adjudicate»
     BE14 : +Export(ps match.PairSet, snap *ingest.Snapshot, promptVersion string) []measure.Card
     BE14 : +Import(r io.Reader, ps match.PairSet) ([]refdata.Verdict, error)
 

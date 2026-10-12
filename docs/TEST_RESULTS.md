@@ -40,6 +40,8 @@ the offline AI adjudication (57 sent, 12 equivalent, 45 related; reviewed into `
 | US | Kalshi | $21.35 | only eligible venue (the offshore venue is not offered to US customers) |
 | non-US | Polymarket | $11.32274 | lowest all-in cost after fees; saves $10.03 over Kalshi |
 
+[![Venue down](architecture/diagrams/png/sequence-venue-down.png)](architecture/diagrams/png/sequence-venue-down.png)
+
 **Graceful failure:** replaying with one venue's responses removed prints that venue as `unhealthy` with its last
 error, keeps the other venue healthy, and finds 0 pairs instead of crashing (demo step 7).
 
@@ -57,6 +59,12 @@ never the verdict, score or evidence; INV-8). Gate: precision ≥ 0.90 (aspirati
 
 Labels: `refdata/labels/20261011-20261011.jsonl` (rater 1); `test-results/labels-rater-{fable,opus,sonnet}.jsonl` (quorum raters, each with a one-line reason per pair); `test-results/labels-quorum.jsonl` (votes and majority).
 Reproduce: `./bin/equinox score -sample refdata/samples/20261011-20261011.json`.
+
+How the measurement runs, and how a pair's verdict can change:
+
+[![Measure precision](architecture/diagrams/png/sequence-measure-precision.png)](architecture/diagrams/png/sequence-measure-precision.png)
+
+[![Pair verdict states](architecture/diagrams/png/state-pair.png)](architecture/diagrams/png/state-pair.png)
 
 ### What these numbers do not show
 
