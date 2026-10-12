@@ -130,6 +130,18 @@ func (s *Server) Index(w http.ResponseWriter, r *http.Request) {
 	data := map[string]any{"Version": s.version, "Snap": snap, "Warming": !ok, "Selected": r.URL.Query().Get("pair")}
 	if ok {
 		data["Pairs"] = s.pairViews(snap, match.Equivalent, 50)
+		var payout []map[string]any
+		for _, pv := range snap.PayoutPairs() {
+			ma, mb := snap.Markets[pv.AKey], snap.Markets[pv.BKey]
+			payout = append(payout, map[string]any{"PairID": pv.PairID, "Question": strings.TrimSuffix(ma.Question, "?"),
+				"A": venueName(ma.Venue) + " pays if " + pv.A, "B": venueName(mb.Venue) + " pays if " + pv.B})
+		}
+		data["Payout"] = payout
+		for _, pv := range payout {
+			if pv["PairID"] == data["Selected"] {
+				data["SelectedPayout"] = true
+			}
+		}
 		var near []map[string]any
 		for i, n := range snap.Pairs.NearMisses {
 			if i == 20 {
@@ -241,6 +253,7 @@ type routeRequest struct {
 	Quantity       int64   `json:"quantity"`
 	Limit          *string `json:"limit"`
 	CustomerRegion string  `json:"customer_region"`
+	Goal           string  `json:"goal"`
 }
 
 // Route serves EP-3: validate, read the snapshot (no venue calls), decide, log, answer (SEQ-2).
@@ -256,6 +269,7 @@ func (s *Server) Route(w http.ResponseWriter, r *http.Request) {
 	if strings.HasPrefix(r.Header.Get("Content-Type"), "application/x-www-form-urlencoded") {
 		r.ParseForm()
 		req.PairID, req.Side, req.CustomerRegion = r.PostForm.Get("pair_id"), r.PostForm.Get("side"), r.PostForm.Get("customer_region")
+		req.Goal = r.PostForm.Get("goal")
 		if q, err := strconv.ParseInt(r.PostForm.Get("quantity"), 10, 64); err == nil {
 			req.Quantity = q
 		}
@@ -265,7 +279,10 @@ func (s *Server) Route(w http.ResponseWriter, r *http.Request) {
 	} else if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, 1<<16)).Decode(&req); err != nil {
 		fieldErrs = append(fieldErrs, route.FieldError{Pointer: "#", Detail: "body must be JSON with pair_id, side, quantity, customer_region"})
 	}
-	order := route.Order{PairID: req.PairID, Side: market.Side(req.Side), Quantity: req.Quantity, CustomerRegion: req.CustomerRegion}
+	order := route.Order{PairID: req.PairID, Side: market.Side(req.Side), Quantity: req.Quantity, CustomerRegion: req.CustomerRegion, Goal: req.Goal}
+	if order.Goal == route.GoalBestPrice {
+		order.Goal = "" // the default: keeps decision ids of goal-less orders
+	}
 	if req.Limit != nil {
 		lim, err := market.ParseAmount(*req.Limit)
 		if err != nil || lim <= 0 || lim > market.Dollar {
@@ -292,6 +309,24 @@ func (s *Server) Route(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	pair, err := snap.Pairs.Routable(order.PairID, snap.Fingerprints())
+	var payoutCaveats []string
+	if errors.Is(err, match.ErrNotRoutable) && order.Goal == route.GoalHigherPayout {
+		// D26: a pair that differs only in a same-direction threshold may be routed as two different bets.
+		if pp, ok := match.Payout(pair, snap.Markets[pair.AKey], snap.Markets[pair.BKey]); ok {
+			fp := snap.Fingerprints()
+			if fp[pair.AKey] != pair.FingerprintA || fp[pair.BKey] != pair.FingerprintB {
+				err = match.ErrRulesChanged
+			} else {
+				err = nil
+				ma, mb := snap.Markets[pair.AKey], snap.Markets[pair.BKey]
+				hard := snap.Markets[pp.Harder]
+				payoutCaveats = []string{
+					"different bets: " + venueName(ma.Venue) + " pays if " + pp.A + "; " + venueName(mb.Venue) + " pays if " + pp.B,
+					venueName(hard.Venue) + " pays in fewer situations: more risk for a higher payout",
+				}
+			}
+		}
+	}
 	if err != nil {
 		var p Problem
 		switch {
@@ -302,6 +337,9 @@ func (s *Server) Route(w http.ResponseWriter, r *http.Request) {
 		default:
 			p = problem("/problems/pair-not-routable", 409, err.Error())
 			p.Verdict, p.DifferingPart = pair.Verdict, pair.DifferingPart
+			if _, ok := match.Payout(pair, snap.Markets[pair.AKey], snap.Markets[pair.BKey]); ok && order.Goal == "" {
+				p.Detail += "; these are different bets, so they can only be routed with the higher_payout goal"
+			}
 		}
 		p.PairID = order.PairID
 		refused := route.Decision{RequestID: rid, Order: order, SnapshotAsOf: snap.AsOf, Outcome: route.Refused,
@@ -318,7 +356,7 @@ func (s *Server) Route(w http.ResponseWriter, r *http.Request) {
 	quotes := []route.Quote{s.quote(snap, pair.AKey, order.CustomerRegion), s.quote(snap, pair.BKey, order.CustomerRegion)}
 	d := route.Route(order, quotes, s.policy, snap.AsOf)
 	d.RequestID, d.LoggedAt = rid, time.Now().UTC()
-	d.Evidence, d.Caveats = nonNil(pair.Evidence), nonNil(pair.Caveats)
+	d.Evidence, d.Caveats = nonNil(pair.Evidence), append(payoutCaveats, nonNil(pair.Caveats)...)
 	if err := s.log.Append(d); err != nil { // INV-6: no answer without a log line
 		s.fail(w, r, problem("/problems/decision-log-unavailable", 503, "the decision log could not be written"))
 		return
@@ -326,7 +364,7 @@ func (s *Server) Route(w http.ResponseWriter, r *http.Request) {
 	if wantsHTML(r) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		pageTmpl.ExecuteTemplate(w, "decision", map[string]any{"D": d, "Version": s.version,
-			"A": question(snap, pair.AKey), "B": question(snap, pair.BKey)})
+			"A": question(snap, pair.AKey), "B": question(snap, pair.BKey), "Chosen": question(snap, d.MarketKey)})
 		return
 	}
 	writeJSON(w, 200, d)
@@ -449,13 +487,8 @@ func (l *RateLimiter) Allow(client string) (int, bool) {
 	return 0, true
 }
 
-var pageTmpl = template.Must(template.New("page").Funcs(template.FuncMap{"num": func(n any) string {
-	d := fmt.Sprint(n)
-	for i := len(d) - 3; i > 0 && d[i-1] != '-'; i -= 3 {
-		d = d[:i] + "," + d[i:]
-	}
-	return d
-}, "venue": func(v string) string {
+// venueName is a venue's display name; the page only, never routing (INV-7).
+func venueName(v string) string {
 	switch v {
 	case "kalshi":
 		return "Kalshi"
@@ -463,10 +496,35 @@ var pageTmpl = template.Must(template.New("page").Funcs(template.FuncMap{"num": 
 		return "Polymarket"
 	}
 	return v
+}
+
+var pageTmpl = template.Must(template.New("page").Funcs(template.FuncMap{"num": func(n any) string {
+	d := fmt.Sprint(n)
+	for i := len(d) - 3; i > 0 && d[i-1] != '-'; i -= 3 {
+		d = d[:i] + "," + d[i:]
+	}
+	return d
+}, "venue": venueName, "per": func(filled int64, cost any) string {
+	var c market.Amount
+	switch v := cost.(type) {
+	case market.Amount:
+		c = v
+	case *market.Amount:
+		if v != nil {
+			c = *v
+		}
+	}
+	if c <= 0 {
+		return "—"
+	}
+	return fmt.Sprintf("%.2f×", float64(filled)*float64(market.Dollar)/float64(c))
+}, "pays": func(filled int64) string {
+	return "$" + (market.Amount(filled) * market.Dollar).String()
 }, "rule": func(r string) string {
 	return map[string]string{route.RuleOnlyEligible: "it is the only venue this customer may use",
 		route.RuleMostFilled: "it fills the most contracts", route.RuleLowestAllIn: "lowest total cost after fees",
-		route.RuleTieBreak: "both cost the same; a fixed order breaks the tie"}[r]
+		route.RuleTieBreak:      "both cost the same; a fixed order breaks the tie",
+		route.RuleHighestPayout: "it pays back the most per dollar spent"}[r]
 }, "money": func(a any) string {
 	switch v := a.(type) {
 	case market.Amount:
@@ -561,12 +619,15 @@ footer{border-top:1px solid var(--line);color:var(--faint);font-size:14px;paddin
 <div class="mk"><span class="tag p">Polymarket</span><span>{{.BQuestion}}</span></div>
 <p class="why"><b>Agrees on:</b> {{range $i, $e := .Evidence}}{{if $i}} · {{end}}{{$e}}{{end}}{{if .Caveats}}<br><b>Worth checking:</b> {{range $i, $c := .Caveats}}{{if $i}} · {{end}}{{$c}}{{end}}{{end}}</p>
 <div class="cardfoot"><code>{{.PairID}}</code><a class="pill {{if eq .PairID $.Selected}}neon{{else}}ghost{{end}} small" href="/?pair={{.PairID}}#ticket">{{if eq .PairID $.Selected}}Selected ✓{{else}}Route this pair →{{end}}</a></div></div>{{end}}
+{{if .Payout}}<details id="payout"><summary>Show related bets you can route for a higher payout ({{len .Payout}}). They are different bets: one side wins in fewer situations, so it costs less and pays more per dollar.</summary>
+{{range .Payout}}<div class="rej"><div class="mk"><span>{{.Question}}</span></div><div class="why">{{.A}} · {{.B}}</div><a class="pill ghost small" href="/?pair={{.PairID}}#ticket">Route for higher payout →</a></div>{{end}}</details>{{end}}
 <details id="rejected"><summary>Show the closest rejected look-alikes (top {{len .Near}} of {{num .NearCount}}). They look the same but could pay differently, so they are never routed.</summary>
 {{range .Near}}<div class="rej"><div class="mk"><span class="tag k">Kalshi</span><span>{{.A}}</span></div><div class="mk"><span class="tag p">Polymarket</span><span>{{.B}}</span></div><span class="tag bad">{{.Reason}}</span></div>{{end}}</details>
 </main>
 <aside class="ticket" id="ticket"><div class="sh"><span class="num">2</span><h2 style="font-size:22px">Place a test order</h2></div>
 <form method="post" action="/route">
-<div class="field"><label for="pair">Market</label><select id="pair" name="pair_id">{{range .Pairs}}<option value="{{.PairID}}"{{if eq .PairID $.Selected}} selected{{end}}>{{.BQuestion}}</option>{{end}}</select><small>Tip: press "Route this pair" on any card to fill this in.</small></div>
+<div class="field"><label for="pair">Market</label><select id="pair" name="pair_id" onchange="var g=this.selectedOptions[0].parentNode.dataset.goal;document.getElementById(g==='higher_payout'?'g-pay':'g-price').checked=true"><optgroup label="Same bet on both venues" data-goal="best_price">{{range .Pairs}}<option value="{{.PairID}}"{{if eq .PairID $.Selected}} selected{{end}}>{{.BQuestion}}</option>{{end}}</optgroup>{{if .Payout}}<optgroup label="Different bets: higher payout only" data-goal="higher_payout">{{range .Payout}}<option value="{{.PairID}}"{{if eq .PairID $.Selected}} selected{{end}}>{{.Question}}: {{.A}} / {{.B}}</option>{{end}}</optgroup>{{end}}</select><small>Tip: press "Route this pair" on any card to fill this in.</small></div>
+<div class="field"><label>Goal</label><div class="seg"><input type="radio" name="goal" id="g-price" value="best_price"{{if not .SelectedPayout}} checked{{end}}><label for="g-price">Best price</label><input type="radio" name="goal" id="g-pay" value="higher_payout"{{if .SelectedPayout}} checked{{end}}><label for="g-pay">Higher payout</label></div><small>Best price buys the same bet where it costs least. Higher payout can also pick a related bet that pays more per dollar but wins in fewer situations.</small></div>
 <div class="field"><label>Side</label><div class="seg"><input type="radio" name="side" id="s-yes" value="yes" checked><label for="s-yes">Buy YES</label><input type="radio" name="side" id="s-no" value="no"><label for="s-no">Buy NO</label></div></div>
 <div class="field"><label for="qty">Contracts</label><input id="qty" name="quantity" type="number" min="1" value="500"><small>Each contract pays $1 if your side wins.</small></div>
 <div class="field"><label for="cust">Customer lives</label><select id="cust" name="customer_region"><option value="non-US">Outside the US</option><option value="US">In the US</option></select><small>US customers can only use Kalshi.</small></div>
@@ -578,16 +639,16 @@ footer{border-top:1px solid var(--line);color:var(--faint);font-size:14px;paddin
 {{define "decision"}}{{template "head" .}}<div class="wrap" style="padding-top:48px;padding-bottom:64px;max-width:920px">
 <div class="sh"><span class="num">3</span><span style="color:var(--muted)">Where the order goes, and why</span></div>
 {{with .Problem}}<p class="answer down">Not routed: {{.Title}}</p><p class="sub" style="margin-top:12px">{{.Detail}}</p>{{range .Errors}}<p class="sub">{{.Pointer}}: {{.Detail}}</p>{{end}}{{end}}
-{{with .D}}<p class="sub" style="margin:14px 0 0">{{$.B}}</p>
+{{with .D}}{{if eq .Order.Goal "higher_payout"}}{{if ge (len .Caveats) 2}}{{if eq (printf "%.14s" (index .Caveats 0)) "different bets"}}<p class="card" style="margin:16px 0 0;border-color:#6a5a10;color:var(--warn)"><b>Two different bets.</b> {{slice (index .Caveats 0) 16}}. {{index .Caveats 1}}.</p>{{end}}{{end}}{{end}}<p class="sub" style="margin:14px 0 0">{{if and (eq .Order.Goal "higher_payout") $.Chosen}}{{$.Chosen}}{{else}}{{$.B}}{{end}}</p>
 {{if .Venue}}<p class="answer">Send it to <span class="up">{{venue .Venue}}</span></p>
 <div class="big">{{money .AllIn}}</div>
 <p style="font-size:19px;margin:0">for {{.FilledQty}} {{.Order.Side}} contracts at {{money .AvgPrice}} each, plus {{money .Fees}} in fees{{if .UnfilledQty}} · <span class="down">{{.UnfilledQty}} could not be filled</span>{{end}}.</p>
-<p style="font-size:18px;color:var(--muted)">Why: <b style="color:var(--text)">{{rule .DecidingRule}}</b>{{if .Saving}}{{if ne (money .Saving) "$0"}} · <span class="up">saves {{money .Saving}}</span> against the other venue{{end}}{{end}}.</p>{{else}}<p class="answer down">Not routed: {{.Outcome}}</p>{{end}}
+<p style="font-size:18px;color:var(--muted)">Why: <b style="color:var(--text)">{{rule .DecidingRule}}</b>{{if .Saving}}{{if ne (money .Saving) "$0"}} · <span class="up">saves {{money .Saving}}</span> against the other venue{{end}}{{end}}.</p>{{if .Payout}}<p style="font-size:18px">Pays <b class="up">{{money .Payout}}</b> if it wins · {{per .FilledQty .AllIn}} what it costs.</p>{{end}}{{else}}<p class="answer down">Not routed: {{.Outcome}}</p>{{end}}
 <div class="venues">{{range .Venues}}<div class="venue{{if eq .Venue $.D.Venue}} win{{end}}"><h3>{{venue .Venue}} {{if eq .Venue $.D.Venue}}<span class="badge">Chosen</span>{{else if not .Eligible}}<span class="badge no">Not allowed</span>{{else}}<span class="badge lose">Not chosen</span>{{end}}</h3>
-<div class="cost">{{money .AllIn}}</div><dl><dt>Filled</dt><dd>{{.Filled}} contracts</dd><dt>Reason</dt><dd>{{.Reason}}</dd><dt>Market</dt><dd><code>{{.MarketKey}}</code></dd></dl></div>{{end}}</div>
-<div class="card"><p style="margin:0 0 6px;font-weight:600">Why these two markets are the same bet</p><div class="chips">{{range .Evidence}}<span class="chip">{{.}}</span>{{end}}{{range .Caveats}}<span class="chip warn">{{.}}</span>{{end}}</div>
+<div class="cost">{{money .AllIn}}</div><dl><dt>Filled</dt><dd>{{.Filled}} contracts</dd>{{if eq $.D.Order.Goal "higher_payout"}}<dt>Pays if it wins</dt><dd>{{pays .Filled}} ({{per .Filled .AllIn}} the cost)</dd>{{end}}<dt>Reason</dt><dd>{{.Reason}}</dd><dt>Market</dt><dd><code>{{.MarketKey}}</code></dd></dl></div>{{end}}</div>
+<div class="card"><p style="margin:0 0 6px;font-weight:600">{{if eq .Order.Goal "higher_payout"}}How these two bets compare{{else}}Why these two markets are the same bet{{end}}</p><div class="chips">{{range .Evidence}}<span class="chip">{{.}}</span>{{end}}{{range .Caveats}}<span class="chip warn">{{.}}</span>{{end}}</div>
 <p class="note">Kalshi: {{$.A}}<br>Polymarket: {{$.B}}<br>Decision <code>{{.DecisionID}}</code> is saved in the <a href="/decisions">decision log</a>.</p></div>
-<div class="actions"><form method="post" action="/route"><input type="hidden" name="pair_id" value="{{.Order.PairID}}"><input type="hidden" name="side" value="{{.Order.Side}}"><input type="hidden" name="quantity" value="{{.Order.Quantity}}"><input type="hidden" name="customer_region" value="{{if eq .Order.CustomerRegion "US"}}non-US{{else}}US{{end}}"><button class="pill neon">Try it for a customer {{if eq .Order.CustomerRegion "US"}}outside the US{{else}}in the US{{end}} →</button></form>
+<div class="actions"><form method="post" action="/route"><input type="hidden" name="pair_id" value="{{.Order.PairID}}"><input type="hidden" name="side" value="{{.Order.Side}}"><input type="hidden" name="quantity" value="{{.Order.Quantity}}"><input type="hidden" name="customer_region" value="{{if eq .Order.CustomerRegion "US"}}non-US{{else}}US{{end}}"><input type="hidden" name="goal" value="{{.Order.Goal}}"><button class="pill neon">Try it for a customer {{if eq .Order.CustomerRegion "US"}}outside the US{{else}}in the US{{end}} →</button></form>
 <a class="pill ghost" href="/?pair={{.Order.PairID}}#ticket">Change the order</a><a class="pill ghost" href="/#pairs">Pick another pair</a></div>{{end}}
 {{if .Problem}}<div class="actions"><a class="pill ghost" href="/#ticket">Back to the order</a></div>{{end}}
 </div>{{template "foot" .}}{{end}}`))

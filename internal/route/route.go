@@ -8,6 +8,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"math/big"
 	"slices"
 	"strings"
 	"time"
@@ -28,10 +29,17 @@ const (
 
 // Deciding rules (ck_decisions_rule, FR-010).
 const (
-	RuleMostFilled   = "most_filled"
-	RuleLowestAllIn  = "lowest_all_in"
-	RuleTieBreak     = "tie_break"
-	RuleOnlyEligible = "only_eligible"
+	RuleMostFilled    = "most_filled"
+	RuleLowestAllIn   = "lowest_all_in"
+	RuleTieBreak      = "tie_break"
+	RuleOnlyEligible  = "only_eligible"
+	RuleHighestPayout = "highest_payout" // D26: only under GoalHigherPayout
+)
+
+// Goals (D26). The empty goal is GoalBestPrice, so orders without a goal keep their decision ids.
+const (
+	GoalBestPrice    = "best_price"
+	GoalHigherPayout = "higher_payout"
 )
 
 // Order is one hypothetical buy on a pair (lld.md decisions.order).
@@ -41,6 +49,7 @@ type Order struct {
 	Quantity       int64          `json:"quantity"`
 	Limit          *market.Amount `json:"limit,omitempty"`
 	CustomerRegion string         `json:"customer_region"`
+	Goal           string         `json:"goal,omitempty"` // "" (best price) or GoalHigherPayout
 }
 
 // FieldError names one invalid order field as a JSON Pointer (lld.md §8 validation).
@@ -71,6 +80,9 @@ func (o Order) Validate() error {
 	}
 	if o.Limit != nil && (*o.Limit < 0 || *o.Limit > market.Dollar) {
 		errs = append(errs, FieldError{"#/limit", "limit must be between 0 and 1"})
+	}
+	if o.Goal != "" && o.Goal != GoalBestPrice && o.Goal != GoalHigherPayout {
+		errs = append(errs, FieldError{"#/goal", "goal must be best_price or higher_payout"})
 	}
 	switch o.CustomerRegion {
 	case "US", "non-US":
@@ -133,6 +145,7 @@ type Decision struct {
 	AllIn        market.Amount  `json:"all_in"`
 	DecidingRule string         `json:"deciding_rule,omitempty"`
 	Saving       *market.Amount `json:"saving,omitempty"`
+	Payout       *market.Amount `json:"payout,omitempty"` // under GoalHigherPayout: what the filled contracts pay if they win
 	Venues       []VenueResult  `json:"venues"`
 	Evidence     []string       `json:"evidence"`
 	Caveats      []string       `json:"caveats"`
@@ -174,7 +187,12 @@ func Route(o Order, quotes []Quote, p Policy, asOf time.Time) Decision {
 		}
 	}
 	// Most filled, then lowest all-in, then the fixed order (venue id, market key) the quotes are already in.
+	// Under GoalHigherPayout: most paid back per dollar spent (filled / all-in), then the fixed order (D26).
+	payout := o.Goal == GoalHigherPayout
 	slices.SortStableFunc(cands, func(a, b *fill) int {
+		if payout {
+			return perDollar(b, a)
+		}
 		return cmp.Or(cmp.Compare(b.filled, a.filled), cmp.Compare(a.allIn, b.allIn))
 	})
 
@@ -188,9 +206,17 @@ func Route(o Order, quotes []Quote, p Policy, asOf time.Time) Decision {
 		d.FilledQty, d.UnfilledQty = win.filled, o.Quantity-win.filled
 		avg := win.notional / market.Amount(win.filled)
 		d.AvgPrice, d.Fees, d.AllIn = &avg, win.fees, win.allIn
+		if payout {
+			p := market.Amount(win.filled) * market.Dollar
+			d.Payout = &p
+		}
 		switch {
 		case len(cands) == 1:
 			d.DecidingRule = RuleOnlyEligible
+		case payout && perDollar(win, cands[1]) != 0:
+			d.DecidingRule = RuleHighestPayout
+		case payout:
+			d.DecidingRule = RuleTieBreak
 		case cands[1].filled != win.filled:
 			d.DecidingRule = RuleMostFilled
 		case cands[1].allIn != win.allIn:
@@ -204,7 +230,8 @@ func Route(o Order, quotes []Quote, p Policy, asOf time.Time) Decision {
 		}
 	}
 	winReason := map[string]string{RuleOnlyEligible: "only eligible venue", RuleMostFilled: "most contracts filled",
-		RuleLowestAllIn: "lowest all-in cost", RuleTieBreak: "tie on all-in cost, broken by fixed order"}[d.DecidingRule]
+		RuleLowestAllIn: "lowest all-in cost", RuleTieBreak: "tie on all-in cost, broken by fixed order",
+		RuleHighestPayout: "highest payout per dollar"}[d.DecidingRule]
 
 	for i := range fills {
 		f := &fills[i]
@@ -215,6 +242,10 @@ func Route(o Order, quotes []Quote, p Policy, asOf time.Time) Decision {
 			switch {
 			case f == win:
 				r.Reason = winReason
+			case payout && perDollar(f, win) < 0:
+				r.Reason = "lower payout per dollar"
+			case payout:
+				r.Reason = "tie on payout per dollar, broken by fixed order"
 			case f.filled < win.filled:
 				r.Reason = "fewer contracts filled"
 			case f.allIn > win.allIn:
@@ -282,4 +313,12 @@ func decisionID(o Order, sorted []Quote, p Policy, asOf time.Time) string {
 	}{o, sorted, p, asOf})
 	h := sha256.Sum256(b)
 	return hex.EncodeToString(h[:])[:16]
+}
+
+// perDollar compares how much a and b pay back per dollar spent (filled contracts / all-in cost): 1 if a pays more,
+// -1 if less, 0 if equal. Cross-multiplied in big integers, so there is no rounding (D26).
+func perDollar(a, b *fill) int {
+	x := new(big.Int).Mul(big.NewInt(a.filled), big.NewInt(int64(b.allIn)))
+	y := new(big.Int).Mul(big.NewInt(b.filled), big.NewInt(int64(a.allIn)))
+	return x.Cmp(y)
 }

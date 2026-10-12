@@ -45,6 +45,17 @@ the offline AI adjudication (57 sent, 12 equivalent, 45 related; reviewed into `
 **Graceful failure:** replaying with one venue's responses removed prints that venue as `unhealthy` with its last
 error, keeps the other venue healthy, and finds 0 pairs instead of crashing (`./bin/equinox refresh -replay <dir with only kalshi/>`).
 
+**Higher-payout goal (D26)** (pair `783e362dda2ec6fe`, *The Hunger Games: Sunrise on the Reaping* Rotten Tomatoes
+score, buy YES, 100 contracts, non-US customer):
+
+| Goal | Result |
+|---|---|
+| best price (default) | refused: "threshold differs; these are different bets, so they can only be routed with the higher_payout goal" |
+| higher payout | Kalshi "above 85": $21.12 all-in, pays $100 if it wins (4.73× the cost); Polymarket "at least 50": $98.99911, pays $100 (1.01×). Decision opens with "Two different bets" and names which side wins in fewer situations |
+
+The related markets' order books were fetched live on 2026-10-12 and added to the 2026-10-11 recording with `-fill`;
+the equivalent pairs and all numbers above are unchanged.
+
 ## 3. Matching quality
 
 Method (D9): a seeded random sample (seed 20261011) of the system's equivalent pairs measures **precision**; a seeded

@@ -23,6 +23,7 @@ type RecordMode int
 const (
 	Replay RecordMode = iota // answer from dir; a missing recording is an error, nothing leaves the machine
 	Record                   // pass to next, save the response to dir, return it
+	Fill                     // replay when a recording exists; otherwise pass to next and save it (adds to a recording)
 )
 
 // recording is one saved exchange; files are gzip JSON named by Key (D17).
@@ -65,6 +66,11 @@ func (r *recorder) RoundTrip(req *http.Request) (*http.Response, error) {
 		req.Body = io.NopCloser(bytes.NewReader(b))
 	}
 	path := filepath.Join(r.dir, Key(req.Method, req.URL.String(), body)+".json.gz")
+	if r.mode == Fill {
+		if rec, err := load(path); err == nil {
+			return rec.response(req), nil
+		}
+	}
 	if r.mode == Replay {
 		rec, err := load(path)
 		if err != nil {
