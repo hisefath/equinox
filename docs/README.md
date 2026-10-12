@@ -54,7 +54,6 @@ page, agents will not find it. `garden-docs` keeps this file in sync; it lists p
 | Dispatch records | `.handoff/runs/<id>/{brief.md,cmd.txt,result.md}` (`events.jsonl` gitignored) | `scripts/delegate.sh`, the worker | automated |
 | Pasted research digests | `.handoff/inbox/` | the human | candidate sources only |
 | Durable learnings | `docs/learnings/<slug>.md` | `route-failure` | G-L5 |
-| Demo script, posts, recording | `docs/demo/SCRIPT.md`, `docs/demo/POSTS.md`, `docs/demo/SMOKE.md`, `docs/demo/RECORDING.md`, `docs/demo/out/` (`docs/demo/raw/` gitignored) | `write-demo-script`, `record-demo` | G-demo |
 | Superseded material | `docs/archive/` | `garden-docs` | rides the MR |
 
 ## Rules

@@ -137,7 +137,7 @@ Every diagram is a picture in the repo (click to open full size); the short tour
 | Test results | `docs/TEST_RESULTS.md` |
 | AI usage log / disclosure | `docs/AI_USAGE.md` |
 | Deployment guide | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md): local, Docker, Railway, live data, checks, rollback |
-| Demo video | linked from `docs/demo/` |
+| Demo video | submitted with the project (not stored in the repo) |
 
 ## Limits
 

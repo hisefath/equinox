@@ -43,7 +43,7 @@ the offline AI adjudication (57 sent, 12 equivalent, 45 related; reviewed into `
 [![Venue down](architecture/diagrams/png/sequence-venue-down.png)](architecture/diagrams/png/sequence-venue-down.png)
 
 **Graceful failure:** replaying with one venue's responses removed prints that venue as `unhealthy` with its last
-error, keeps the other venue healthy, and finds 0 pairs instead of crashing (demo step 7).
+error, keeps the other venue healthy, and finds 0 pairs instead of crashing (`./bin/equinox refresh -replay <dir with only kalshi/>`).
 
 ## 3. Matching quality
 
