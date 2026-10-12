@@ -482,7 +482,7 @@ var pageTmpl = template.Must(template.New("page").Funcs(template.FuncMap{"num": 
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000;--panel:#14110b;--panel2:#1c1913;--line:#33302a;--text:#fff;--muted:#cdc9c1;--faint:#9d998f;--neon:#ccff00;--ink:#110e08;--down:#ff6b4f;--warn:#f0dc78}
+:root{--bg:#000;--panel:#141414;--panel2:#1c1c1c;--line:#2e2e2e;--text:#fff;--muted:#cfcfcf;--faint:#9e9e9e;--neon:#ccff00;--ink:#110e08;--down:#ff6b4f;--warn:#f0dc78}
 *{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:var(--text)}code{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--faint)}
 .wrap{max-width:1180px;margin:0 auto;padding-left:20px;padding-right:20px}
@@ -493,7 +493,7 @@ nav .wrap{display:flex;align-items:center;gap:20px;height:64px}
 nav .links{display:flex;gap:22px;margin-left:auto;font-size:15px}nav .links a{text-decoration:none;color:var(--muted)}nav .links a:hover{color:var(--text)}
 .pill{display:inline-block;white-space:nowrap;border:0;border-radius:36px;padding:12px 22px;font:600 16px Inter,sans-serif;cursor:pointer;text-decoration:none}
 .pill.neon{background:var(--neon);color:var(--ink)}.pill.neon:hover{filter:brightness(.92)}
-.pill.ghost{background:transparent;color:var(--text);border:1px solid #6b675f}.pill.ghost:hover{border-color:var(--text)}
+.pill.ghost{background:transparent;color:var(--text);border:1px solid #6b6b6b}.pill.ghost:hover{border-color:var(--text)}
 .pill.small{padding:8px 16px;font-size:15px}
 .banner{background:var(--neon);color:var(--ink);text-align:center;font-size:14px;font-weight:500;padding:8px 16px}
 .serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.01em}
@@ -501,7 +501,7 @@ nav .links{display:flex;gap:22px;margin-left:auto;font-size:15px}nav .links a{te
 .hero p.lead{color:var(--muted);max-width:640px;margin:0 auto;font-size:19px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0 24px;text-align:left}
 .step{display:block;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;text-decoration:none}
-.step:hover{border-color:#6b675f}.step .num{color:var(--ink);font-size:14px}.step b{display:block;font-size:18px;margin:6px 0 4px}.step span{color:var(--muted);font-size:15px}
+.step:hover{border-color:#6b6b6b}.step .num{color:var(--ink);font-size:14px}.step b{display:block;font-size:18px;margin:6px 0 4px}.step span{color:var(--muted);font-size:15px}
 .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--neon);color:var(--ink);font-weight:700;font-size:14px}
 .stats{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;color:var(--muted);font-size:15px;margin-bottom:56px}.stats b{color:var(--text)}
 .grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:start;padding-bottom:64px}
@@ -519,10 +519,10 @@ details{margin-top:28px}summary{cursor:pointer;color:var(--muted);font-size:16px
 .ticket{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
 .field{padding:14px 0;border-bottom:1px solid var(--line)}.field label{display:block;font-weight:600;font-size:15px;margin-bottom:6px}
 .field small{display:block;color:var(--faint);font-size:13px;margin-top:6px}
-.ticket select,.ticket input{width:100%;background:#000;color:var(--text);border:1px solid #4a463f;border-radius:10px;padding:11px 12px;font:16px Inter,sans-serif}
+.ticket select,.ticket input{width:100%;background:#000;color:var(--text);border:1px solid #4a4a4a;border-radius:10px;padding:11px 12px;font:16px Inter,sans-serif}
 .ticket select:focus,.ticket input:focus{outline:2px solid var(--neon);outline-offset:1px}
 .ticket .pill{width:100%;margin-top:20px;padding:15px;font-size:17px}
-.seg{display:flex;background:#000;border:1px solid #4a463f;border-radius:36px;padding:4px}.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg{display:flex;background:#000;border:1px solid #4a4a4a;border-radius:36px;padding:4px}.seg input{position:absolute;opacity:0;pointer-events:none}
 .seg label{flex:1;text-align:center;margin:0;padding:9px;border-radius:36px;cursor:pointer;color:var(--muted);font-weight:600}
 .seg input:checked+label{background:var(--neon);color:var(--ink)}.seg input:focus-visible+label{outline:2px solid #fff}
 .health{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;font-size:14px;color:var(--muted)}
