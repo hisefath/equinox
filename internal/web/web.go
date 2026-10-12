@@ -127,7 +127,7 @@ func (s *Server) Index(w http.ResponseWriter, r *http.Request) {
 	if !ok {
 		w.WriteHeader(http.StatusServiceUnavailable)
 	}
-	data := map[string]any{"Version": s.version, "Snap": snap, "Warming": !ok}
+	data := map[string]any{"Version": s.version, "Snap": snap, "Warming": !ok, "Selected": r.URL.Query().Get("pair")}
 	if ok {
 		data["Pairs"] = s.pairViews(snap, match.Equivalent, 50)
 		var near []map[string]any
@@ -463,6 +463,10 @@ var pageTmpl = template.Must(template.New("page").Funcs(template.FuncMap{"num": 
 		return "Polymarket"
 	}
 	return v
+}, "rule": func(r string) string {
+	return map[string]string{route.RuleOnlyEligible: "it is the only venue this customer may use",
+		route.RuleMostFilled: "it fills the most contracts", route.RuleLowestAllIn: "lowest total cost after fees",
+		route.RuleTieBreak: "both cost the same; a fixed order breaks the tie"}[r]
 }, "money": func(a any) string {
 	switch v := a.(type) {
 	case market.Amount:
@@ -476,89 +480,114 @@ var pageTmpl = template.Must(template.New("page").Funcs(template.FuncMap{"num": 
 	return fmt.Sprint(a)
 }}).Parse(`{{define "head"}}<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Equinox</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000;--panel:#110e08;--line:#2a2722;--text:#fff;--muted:#9b978f;--neon:#ccff00;--ink:#110e08;--up:#ccff00;--down:#ff5a3c}
-*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--text)}code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-nav{position:sticky;top:0;z-index:5;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+:root{--bg:#000;--panel:#14110b;--panel2:#1c1913;--line:#33302a;--text:#fff;--muted:#cdc9c1;--faint:#9d998f;--neon:#ccff00;--ink:#110e08;--down:#ff6b4f;--warn:#f0dc78}
+*{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--text)}code{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--faint)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:20px;padding-right:20px}
+nav{position:sticky;top:0;z-index:5;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;gap:20px;height:64px}
-.brand{font:500 20px Inter,sans-serif;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:8px}
+.brand{font:600 20px Inter,sans-serif;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:8px}
 .brand i{width:18px;height:18px;border-radius:50%;background:conic-gradient(var(--neon) 0 50%,#fff 0)}
-nav .links{display:flex;gap:18px;margin-left:auto;font-size:14px}nav .links a{text-decoration:none;color:var(--muted)}nav .links a:hover{color:var(--text)}
-.pill{display:inline-block;white-space:nowrap;border:0;border-radius:36px;padding:10px 20px;font:500 14px Inter,sans-serif;cursor:pointer;text-decoration:none}
-.pill.neon{background:var(--neon);color:var(--ink)}.pill.neon:hover{filter:brightness(.92)}.pill.ghost{background:transparent;color:var(--text);border:1px solid var(--text)}
-.banner{background:var(--neon);color:var(--ink);text-align:center;font-size:13px;padding:8px 16px}
-h1,h2,.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.01em}
-.hero{text-align:center;padding-top:72px;padding-bottom:40px}.hero h1{font-size:clamp(48px,9vw,104px);line-height:1;margin:0 0 20px}
-.hero p{color:var(--muted);max-width:620px;margin:0 auto 28px;font-size:17px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0 0 48px}
-.stat{background:var(--bg);padding:20px}.stat b{display:block;font:400 40px "Instrument Serif",serif}.stat span{color:var(--muted);font-size:13px}
-.grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:40px;align-items:start;padding-bottom:64px}
-h2{font-size:36px;margin:0 0 6px}.sub{color:var(--muted);font-size:14px;margin:0 0 20px}
-.row{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
-.row .q{flex:1;min-width:0}.row .q div{margin-bottom:6px}
-.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:6px;padding:2px 7px;margin-right:6px;vertical-align:1px}
-.tag.k{background:#1d2a00;color:var(--neon)}.tag.p{background:#1f1f1f;color:#fff}.tag.bad{background:#2b0f0a;color:var(--down)}
-.chips{margin-top:8px}.chip{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:36px;padding:2px 10px;margin:0 6px 6px 0}
-.chip.warn{border-color:#5a4a00;color:#e8d36a}
-.ticket{position:sticky;top:88px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
-.ticket h3{font:500 18px Inter,sans-serif;margin:0 0 18px}
-.ticket label{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
-.ticket select,.ticket input{background:#000;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:14px Inter,sans-serif;max-width:190px;width:100%}
-.ticket input{text-align:right}.ticket .pill{width:100%;margin-top:20px;padding:14px}
-.seg{display:flex;background:#000;border-radius:36px;padding:4px;margin-bottom:8px}.seg input{display:none}
-.seg label{flex:1;justify-content:center;border:0;padding:8px;border-radius:36px;cursor:pointer;color:var(--muted)}
-.seg input:checked+label{background:var(--neon);color:var(--ink);font-weight:600}
-.health{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--muted)}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--up)}.dot.off{background:var(--down)}
-.note{color:var(--muted);font-size:12px;margin-top:14px}
-footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;padding:28px 0 48px}footer a{color:var(--muted);margin-right:16px}
-.big{font:400 clamp(56px,10vw,96px)/1 "Instrument Serif",serif;margin:8px 0}.up{color:var(--up)}.down{color:var(--down)}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:24px}
-table{width:100%;border-collapse:collapse;font-size:14px}th{text-align:left;color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.04em;padding:10px 8px;border-bottom:1px solid var(--line)}
-td{padding:14px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-@media(max-width:860px){.grid{grid-template-columns:1fr}.ticket{position:static}.stats{grid-template-columns:repeat(2,1fr)}nav .links a.hide{display:none}}
+nav .links{display:flex;gap:22px;margin-left:auto;font-size:15px}nav .links a{text-decoration:none;color:var(--muted)}nav .links a:hover{color:var(--text)}
+.pill{display:inline-block;white-space:nowrap;border:0;border-radius:36px;padding:12px 22px;font:600 16px Inter,sans-serif;cursor:pointer;text-decoration:none}
+.pill.neon{background:var(--neon);color:var(--ink)}.pill.neon:hover{filter:brightness(.92)}
+.pill.ghost{background:transparent;color:var(--text);border:1px solid #6b675f}.pill.ghost:hover{border-color:var(--text)}
+.pill.small{padding:8px 16px;font-size:15px}
+.banner{background:var(--neon);color:var(--ink);text-align:center;font-size:14px;font-weight:500;padding:8px 16px}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.01em}
+.hero{text-align:center;padding-top:64px;padding-bottom:40px}.hero h1{font:400 clamp(52px,9vw,96px)/1 "Instrument Serif",Georgia,serif;margin:0 0 20px}
+.hero p.lead{color:var(--muted);max-width:640px;margin:0 auto;font-size:19px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0 24px;text-align:left}
+.step{display:block;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;text-decoration:none}
+.step:hover{border-color:#6b675f}.step .num{color:var(--ink);font-size:14px}.step b{display:block;font-size:18px;margin:6px 0 4px}.step span{color:var(--muted);font-size:15px}
+.num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--neon);color:var(--ink);font-weight:700;font-size:14px}
+.stats{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;color:var(--muted);font-size:15px;margin-bottom:56px}.stats b{color:var(--text)}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:start;padding-bottom:64px}
+.sh{display:flex;align-items:center;gap:12px;margin:0 0 6px}.sh h2{font:700 28px/1.2 Inter,sans-serif;letter-spacing:-.02em;margin:0}
+.sub{color:var(--muted);font-size:16px;margin:0 0 20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:14px}
+.card.sel{border-color:var(--neon);box-shadow:0 0 0 1px var(--neon) inset}
+.mk{display:flex;gap:10px;align-items:baseline;margin-bottom:8px;font-size:17px;font-weight:500}
+.tag{flex:none;display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:6px;padding:2px 8px;min-width:88px;text-align:center}
+.tag.k{background:#243300;color:var(--neon)}.tag.p{background:#2a2a2a;color:#fff}.tag.bad{background:#3a140c;color:var(--down);min-width:0}
+.why{color:var(--faint);font-size:14px;margin:10px 0 0}.why b{color:var(--muted);font-weight:600}
+.cardfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px}
+details{margin-top:28px}summary{cursor:pointer;color:var(--muted);font-size:16px;padding:12px 0}summary:hover{color:var(--text)}
+.rej{padding:14px 0;border-bottom:1px solid var(--line)}.rej .mk{font-size:16px;font-weight:400}
+.ticket{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+.field{padding:14px 0;border-bottom:1px solid var(--line)}.field label{display:block;font-weight:600;font-size:15px;margin-bottom:6px}
+.field small{display:block;color:var(--faint);font-size:13px;margin-top:6px}
+.ticket select,.ticket input{width:100%;background:#000;color:var(--text);border:1px solid #4a463f;border-radius:10px;padding:11px 12px;font:16px Inter,sans-serif}
+.ticket select:focus,.ticket input:focus{outline:2px solid var(--neon);outline-offset:1px}
+.ticket .pill{width:100%;margin-top:20px;padding:15px;font-size:17px}
+.seg{display:flex;background:#000;border:1px solid #4a463f;border-radius:36px;padding:4px}.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{flex:1;text-align:center;margin:0;padding:9px;border-radius:36px;cursor:pointer;color:var(--muted);font-weight:600}
+.seg input:checked+label{background:var(--neon);color:var(--ink)}.seg input:focus-visible+label{outline:2px solid #fff}
+.health{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;font-size:14px;color:var(--muted)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--neon)}.dot.off{background:var(--down)}
+.note{color:var(--faint);font-size:14px;margin-top:12px}
+footer{border-top:1px solid var(--line);color:var(--faint);font-size:14px;padding:28px 0 48px}footer a{color:var(--muted);margin-right:18px}
+.big{font:400 clamp(56px,10vw,92px)/1 "Instrument Serif",Georgia,serif;margin:6px 0 10px}.up{color:var(--neon)}.down{color:var(--down)}
+.answer{font:700 clamp(30px,5vw,44px)/1.15 Inter,sans-serif;letter-spacing:-.02em;margin:10px 0 0}
+.venues{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.venue{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 22px}.venue.win{border-color:var(--neon);box-shadow:0 0 0 1px var(--neon) inset}
+.venue h3{margin:0 0 2px;font-size:19px;display:flex;justify-content:space-between;align-items:center}.venue .cost{font:400 40px/1.1 "Instrument Serif",serif;margin:8px 0}
+.venue dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:10px 0 0;font-size:15px}.venue dt{color:var(--faint)}.venue dd{margin:0}
+.badge{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:6px;padding:3px 8px;background:var(--neon);color:var(--ink)}
+.badge.no{background:#3a140c;color:var(--down)}.badge.lose{background:#2a2a2a;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.actions form{margin:0}
+.chips{margin-top:6px}.chip{display:inline-block;font-size:14px;color:var(--muted);border:1px solid var(--line);border-radius:36px;padding:3px 12px;margin:0 6px 8px 0}.chip.warn{border-color:#6a5a10;color:var(--warn)}
+@media(min-width:901px) and (min-height:880px){.ticket{position:sticky;top:84px}}@media(max-width:900px){.grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.venues{grid-template-columns:1fr}nav .links a.hide{display:none}}
 </style></head><body>
 <div class="banner">Simulation only: no real orders are placed. Prices come from the venues' public data.</div>
-<nav><div class="wrap"><a class="brand" href="/"><i></i>Equinox</a><div class="links"><a class="hide" href="/#pairs">Pairs</a><a class="hide" href="/#rejected">Rejected</a><a href="/decisions">Decisions</a><a class="hide" href="/health">Health</a></div><a class="pill neon" href="/#ticket">Route an order</a></div></nav>{{end}}
+<nav><div class="wrap"><a class="brand" href="/"><i></i>Equinox</a><div class="links"><a class="hide" href="/#pairs">Pairs</a><a href="/decisions">Decision log</a><a class="hide" href="/health">Health</a></div><a class="pill neon small" href="/#ticket">Route an order</a></div></nav>{{end}}
 {{define "foot"}}<footer><div class="wrap"><a href="/health">Health</a><a href="/decisions">Decision log</a><a href="/pairs">Pairs API</a><a href="/version">Version {{.Version}}</a><p>Equinox is a feasibility prototype: it matches equivalent prediction markets across Kalshi and Polymarket and simulates where an order should go, explaining every decision.</p></div></footer></body></html>{{end}}
 {{define "index"}}{{template "head" .}}
-{{if .Warming}}<section class="hero wrap"><h1>Warming up</h1><p>Still collecting market data. Refresh in a minute.</p></section>{{else}}
+{{if .Warming}}<section class="hero wrap"><h1>Warming up</h1><p class="lead">Still collecting market data. Refresh in a minute.</p></section>{{else}}
 <section class="hero wrap"><h1>Same bet.<br>Best venue.</h1>
-<p>Equinox finds prediction markets on Kalshi and Polymarket that pay out in exactly the same situations, then routes a hypothetical order to the cheapest venue you're allowed to use, and shows its reasoning.</p>
-<a class="pill neon" href="#ticket">Route an order</a></section>
-<div class="wrap"><div class="stats">
-{{range $name, $r := .Snap.Reports}}<div class="stat"><b>{{num $r.Considered}}</b><span>active markets on {{venue $name}} ({{num $r.Listed}} listed)</span></div>{{end}}
-<div class="stat"><b class="up">{{len .Pairs}}</b><span>equivalent pairs, routable</span></div>
-<div class="stat"><b class="down">{{num .NearCount}}</b><span>look-alikes rejected, never routed</span></div></div>
-<div class="grid"><main>
-<section id="pairs"><h2>Equivalent pairs</h2><p class="sub">Every settlement part agrees: same outcome, threshold, statistic and edge rules. Only payout timing may differ.</p>
-{{range .Pairs}}<div class="row"><div class="q"><div><span class="tag k">Kalshi</span>{{.AQuestion}}</div><div><span class="tag p">Poly</span>{{.BQuestion}}</div>
-<div class="chips">{{range .Evidence}}<span class="chip">{{.}}</span>{{end}}{{range .Caveats}}<span class="chip warn">{{.}}</span>{{end}}</div></div><code>{{.PairID}}</code></div>{{end}}</section>
-<section id="rejected" style="margin-top:56px"><h2>Closest rejected look-alikes</h2><p class="sub">They look like the same bet but could pay differently, so they are never routed. Top {{len .Near}} of {{num .NearCount}}.</p>
-{{range .Near}}<div class="row"><div class="q"><div><span class="tag k">Kalshi</span>{{.A}}</div><div><span class="tag p">Poly</span>{{.B}}</div></div><span class="tag bad">{{.Reason}}</span></div>{{end}}</section>
+<p class="lead">Equinox finds markets on Kalshi and Polymarket that pay out in exactly the same situations, then sends a hypothetical order to the cheapest venue the customer is allowed to use, and explains why.</p>
+<div class="steps">
+<a class="step" href="#pairs"><span class="num">1</span><b>Pick a matched pair</b><span>{{len .Pairs}} pairs pay the same on both venues, with the evidence shown.</span></a>
+<a class="step" href="#ticket"><span class="num">2</span><b>Place a test order</b><span>Choose YES or NO, how many contracts, and where the customer lives.</span></a>
+<div class="step"><span class="num">3</span><b>See where it goes and why</b><span>Cost on each venue after fees, which one wins, and the rule that decided it.</span></div></div>
+<p class="stats">{{range $name, $r := .Snap.Reports}}<span><b>{{num $r.Considered}}</b> active markets on {{venue $name}}</span>{{end}}<span><b class="up">{{len .Pairs}}</b> equivalent pairs</span><span><b>{{num .NearCount}}</b> look-alikes rejected</span></p></section>
+<div class="wrap"><div class="grid"><main id="pairs">
+<div class="sh"><span class="num">1</span><h2>Pick a matched pair</h2></div>
+<p class="sub">Each pair agrees on every part that decides the payout: the outcome, threshold, statistic and edge rules. Only the payout date may differ.</p>
+{{range .Pairs}}<div class="card{{if eq .PairID $.Selected}} sel{{end}}" id="p-{{.PairID}}">
+<div class="mk"><span class="tag k">Kalshi</span><span>{{.AQuestion}}</span></div>
+<div class="mk"><span class="tag p">Polymarket</span><span>{{.BQuestion}}</span></div>
+<p class="why"><b>Agrees on:</b> {{range $i, $e := .Evidence}}{{if $i}} · {{end}}{{$e}}{{end}}{{if .Caveats}}<br><b>Worth checking:</b> {{range $i, $c := .Caveats}}{{if $i}} · {{end}}{{$c}}{{end}}{{end}}</p>
+<div class="cardfoot"><code>{{.PairID}}</code><a class="pill {{if eq .PairID $.Selected}}neon{{else}}ghost{{end}} small" href="/?pair={{.PairID}}#ticket">{{if eq .PairID $.Selected}}Selected ✓{{else}}Route this pair →{{end}}</a></div></div>{{end}}
+<details id="rejected"><summary>Show the closest rejected look-alikes (top {{len .Near}} of {{num .NearCount}}). They look the same but could pay differently, so they are never routed.</summary>
+{{range .Near}}<div class="rej"><div class="mk"><span class="tag k">Kalshi</span><span>{{.A}}</span></div><div class="mk"><span class="tag p">Polymarket</span><span>{{.B}}</span></div><span class="tag bad">{{.Reason}}</span></div>{{end}}</details>
 </main>
-<aside class="ticket" id="ticket"><h3>Route a hypothetical order</h3>
+<aside class="ticket" id="ticket"><div class="sh"><span class="num">2</span><h2 style="font-size:22px">Place a test order</h2></div>
 <form method="post" action="/route">
-<div class="seg"><input type="radio" name="side" id="s-yes" value="yes" checked><label for="s-yes">Buy YES</label><input type="radio" name="side" id="s-no" value="no"><label for="s-no">Buy NO</label></div>
-<label>Market<select name="pair_id">{{range .Pairs}}<option value="{{.PairID}}">{{.BQuestion}}</option>{{end}}</select></label>
-<label>Contracts<input name="quantity" type="number" min="1" value="500"></label>
-<label>Limit price<input name="limit" placeholder="optional, 0–1" inputmode="decimal"></label>
-<label>Customer<select name="customer_region"><option value="non-US">Outside the US</option><option value="US">In the US</option></select></label>
-<button class="pill neon">Route order</button></form>
+<div class="field"><label for="pair">Market</label><select id="pair" name="pair_id">{{range .Pairs}}<option value="{{.PairID}}"{{if eq .PairID $.Selected}} selected{{end}}>{{.BQuestion}}</option>{{end}}</select><small>Tip: press "Route this pair" on any card to fill this in.</small></div>
+<div class="field"><label>Side</label><div class="seg"><input type="radio" name="side" id="s-yes" value="yes" checked><label for="s-yes">Buy YES</label><input type="radio" name="side" id="s-no" value="no"><label for="s-no">Buy NO</label></div></div>
+<div class="field"><label for="qty">Contracts</label><input id="qty" name="quantity" type="number" min="1" value="500"><small>Each contract pays $1 if your side wins.</small></div>
+<div class="field"><label for="cust">Customer lives</label><select id="cust" name="customer_region"><option value="non-US">Outside the US</option><option value="US">In the US</option></select><small>US customers can only use Kalshi.</small></div>
+<div class="field" style="border:0"><label for="lim">Max price per contract <span style="color:var(--faint);font-weight:400">(optional)</span></label><input id="lim" name="limit" placeholder="e.g. 0.05" inputmode="decimal"></div>
+<button class="pill neon">Route order →</button></form>
 <div class="health">{{range $name, $h := .Snap.Health}}<span><span class="dot{{if ne $h.State "healthy"}} off{{end}}"></span>{{venue $name}} {{$h.State}}</span>{{end}}</div>
-<p class="note">Snapshot {{.Snap.AsOf.Format "Jan 2, 15:04:05 UTC"}}. US customers are never routed to Polymarket.</p></aside>
+<p class="note">Prices as of {{.Snap.AsOf.Format "Jan 2, 15:04 UTC"}}. Routing never calls a venue: it reads this snapshot only.</p></aside>
 </div></div>{{end}}{{template "foot" .}}{{end}}
-{{define "decision"}}{{template "head" .}}<div class="wrap" style="padding:56px 20px 64px;max-width:900px">
-{{with .Problem}}<p class="sub">Order not routed</p><div class="big down">{{.Title}}</div><p>{{.Detail}}</p>{{range .Errors}}<p class="sub">{{.Pointer}}: {{.Detail}}</p>{{end}}{{end}}
-{{with .D}}<p class="sub">Decision <code>{{.DecisionID}}</code> · {{.Outcome}}</p>
-<p>{{$.B}}</p>
-{{if .Venue}}<div class="big">{{money .AllIn}}</div>
-<p style="font-size:18px">Buy <b>{{.FilledQty}}</b> {{.Order.Side}} on <b>{{venue .Venue}}</b> at avg {{money .AvgPrice}} + {{money .Fees}} fees{{if .UnfilledQty}} · <span class="down">{{.UnfilledQty}} unfilled</span>{{end}}</p>
-<p>{{if .Saving}}<span class="up">▲ {{money .Saving}} saved</span> vs the next-best venue · {{end}}rule: <b>{{.DecidingRule}}</b></p>{{end}}
-<div class="card" style="margin-top:32px"><table><tr><th>Venue</th><th>Eligible</th><th>Filled</th><th>All-in</th><th>Why</th></tr>{{range .Venues}}<tr><td><b>{{venue .Venue}}</b><br><code>{{.MarketKey}}</code></td><td>{{if .Eligible}}<span class="up">yes</span>{{else}}<span class="down">no</span>{{end}}</td><td>{{.Filled}}</td><td>{{money .AllIn}}</td><td>{{.Reason}}</td></tr>{{end}}</table></div>
-<div class="card"><p class="sub" style="margin:0 0 8px">Why these are the same bet</p><div class="chips">{{range .Evidence}}<span class="chip">{{.}}</span>{{end}}{{range .Caveats}}<span class="chip warn">{{.}}</span>{{end}}</div>
-<p class="note">Kalshi: {{$.A}}<br>Polymarket: {{$.B}}</p></div>{{end}}
-<a class="pill ghost" href="/#ticket">Route another order</a></div>{{template "foot" .}}{{end}}`))
+{{define "decision"}}{{template "head" .}}<div class="wrap" style="padding-top:48px;padding-bottom:64px;max-width:920px">
+<div class="sh"><span class="num">3</span><span style="color:var(--muted)">Where the order goes, and why</span></div>
+{{with .Problem}}<p class="answer down">Not routed: {{.Title}}</p><p class="sub" style="margin-top:12px">{{.Detail}}</p>{{range .Errors}}<p class="sub">{{.Pointer}}: {{.Detail}}</p>{{end}}{{end}}
+{{with .D}}<p class="sub" style="margin:14px 0 0">{{$.B}}</p>
+{{if .Venue}}<p class="answer">Send it to <span class="up">{{venue .Venue}}</span></p>
+<div class="big">{{money .AllIn}}</div>
+<p style="font-size:19px;margin:0">for {{.FilledQty}} {{.Order.Side}} contracts at {{money .AvgPrice}} each, plus {{money .Fees}} in fees{{if .UnfilledQty}} · <span class="down">{{.UnfilledQty}} could not be filled</span>{{end}}.</p>
+<p style="font-size:18px;color:var(--muted)">Why: <b style="color:var(--text)">{{rule .DecidingRule}}</b>{{if .Saving}}{{if ne (money .Saving) "$0"}} · <span class="up">saves {{money .Saving}}</span> against the other venue{{end}}{{end}}.</p>{{else}}<p class="answer down">Not routed: {{.Outcome}}</p>{{end}}
+<div class="venues">{{range .Venues}}<div class="venue{{if eq .Venue $.D.Venue}} win{{end}}"><h3>{{venue .Venue}} {{if eq .Venue $.D.Venue}}<span class="badge">Chosen</span>{{else if not .Eligible}}<span class="badge no">Not allowed</span>{{else}}<span class="badge lose">Not chosen</span>{{end}}</h3>
+<div class="cost">{{money .AllIn}}</div><dl><dt>Filled</dt><dd>{{.Filled}} contracts</dd><dt>Reason</dt><dd>{{.Reason}}</dd><dt>Market</dt><dd><code>{{.MarketKey}}</code></dd></dl></div>{{end}}</div>
+<div class="card"><p style="margin:0 0 6px;font-weight:600">Why these two markets are the same bet</p><div class="chips">{{range .Evidence}}<span class="chip">{{.}}</span>{{end}}{{range .Caveats}}<span class="chip warn">{{.}}</span>{{end}}</div>
+<p class="note">Kalshi: {{$.A}}<br>Polymarket: {{$.B}}<br>Decision <code>{{.DecisionID}}</code> is saved in the <a href="/decisions">decision log</a>.</p></div>
+<div class="actions"><form method="post" action="/route"><input type="hidden" name="pair_id" value="{{.Order.PairID}}"><input type="hidden" name="side" value="{{.Order.Side}}"><input type="hidden" name="quantity" value="{{.Order.Quantity}}"><input type="hidden" name="customer_region" value="{{if eq .Order.CustomerRegion "US"}}non-US{{else}}US{{end}}"><button class="pill neon">Try it for a customer {{if eq .Order.CustomerRegion "US"}}outside the US{{else}}in the US{{end}} →</button></form>
+<a class="pill ghost" href="/?pair={{.Order.PairID}}#ticket">Change the order</a><a class="pill ghost" href="/#pairs">Pick another pair</a></div>{{end}}
+{{if .Problem}}<div class="actions"><a class="pill ghost" href="/#ticket">Back to the order</a></div>{{end}}
+</div>{{template "foot" .}}{{end}}`))
