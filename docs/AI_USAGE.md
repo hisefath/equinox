@@ -14,6 +14,20 @@ where AI sits (and does not sit) inside the running system.
 | AI in matching | **Offline only, and optional:** pairs the deterministic rules cannot settle can be exported, adjudicated by an AI agent outside the product, reviewed by a person in a merge request, and only then read by the router (D10, D16) |
 | AI in measurement | An AI rater labels a blind sample (it never sees the system's verdict or score); a blind quorum of three models (Fable, Opus, Sonnet; majority of 3) labelled 30 of the same pairs and agreement is reported as Cohen's kappa. The plan (D9) was for the developer to be that second rater; under the deadline the developer chose the model quorum instead, disclosed in `docs/TEST_RESULTS.md` |
 
+### Where AI sits, in pictures
+
+AI reviews undecided pairs offline, and its verdicts only reach the router after a person merges them:
+
+[![Adjudicate offline](architecture/diagrams/png/sequence-adjudicate-offline.png)](architecture/diagrams/png/sequence-adjudicate-offline.png)
+
+AI and human raters label blind cards to measure matching quality:
+
+[![Measure precision](architecture/diagrams/png/sequence-measure-precision.png)](architecture/diagrams/png/sequence-measure-precision.png)
+
+The router itself never calls a model (the "Route" step reads only the snapshot):
+
+[![Route an order](architecture/diagrams/png/sequence-route-order.png)](architecture/diagrams/png/sequence-route-order.png)
+
 ## Why v2 exists
 
 v1 (in `main`'s history at `9c3bf48`) was built in one unattended AI session from a single prompt. It worked, but the

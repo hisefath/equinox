@@ -235,6 +235,10 @@ erDiagram
 ```
 <!-- /diagram -->
 
+[![Data model (entity-relationship)](diagrams/png/erd.png)](diagrams/png/erd.png)
+
+*Picture of the diagram above (`erd.mmd`); click to open it full size.*
+
 ### Tables
 
 #### `markets` — one binary proposition on one venue (a multi-outcome listing becomes one row per outcome, D19) · owner BE-6 · new
@@ -502,7 +506,7 @@ by a unit test that tries to build an invalid record.
 %% Generated from the source section. Do not edit by hand: fix the section, then re-run `draw-diagrams be-class`.
 classDiagram
     class BE1["BE-1 market.Types"]
-    BE1 : <<package internal/market>>
+    BE1 : «package internal/market»
     BE1 : +ParseAmount(s string) (Amount, error)
     BE1 : +NewMarket(f MarketFields) (Market, error)
     BE1 : +NewBook(key Key, bids, asks []Level, asOf time.Time) (Book, error)
@@ -511,25 +515,25 @@ classDiagram
     note for BE1 "depends on: standard library only"
 
     class BE2["BE-2 venue.Venue"]
-    BE2 : <<port (interface) · package internal/venue>>
+    BE2 : «port (interface) · package internal/venue»
     BE2 : +Name() string
     BE2 : +Catalog(ctx context.Context) ([]market.Market, CatalogStats, error)
     BE2 : +Books(ctx context.Context, keys []market.Key) (map[market.Key]market.Book, error)
 
     class BE3["BE-3 kalshi.Adapter"]
-    BE3 : <<package internal/venues/kalshi>>
+    BE3 : «package internal/venues/kalshi»
     BE3 : +New(c *fetch.Client, base string, now func() time.Time) *Adapter
     BE3 : +(a *Adapter) Name() string
     %% ⚠ missing: signatures of BE-3 Catalog and Books (the row names them without a signature, Returns "as BE-2") — docs/architecture/lld.md#2-backend-components does not state it
 
     class BE4["BE-4 polymarket.Adapter"]
-    BE4 : <<package internal/venues/polymarket>>
+    BE4 : «package internal/venues/polymarket»
     BE4 : +New(c *fetch.Client, catalogBase, bookBase string, now func() time.Time) *Adapter
     BE4 : +(a *Adapter) Name() string
     %% ⚠ missing: signatures of BE-4 Catalog and Books (the row names them without a signature, Returns "as BE-2") — docs/architecture/lld.md#2-backend-components does not state it
 
     class BE5["BE-5 fetch.Client"]
-    BE5 : <<package internal/fetch>>
+    BE5 : «package internal/fetch»
     BE5 : +New(t http.RoundTripper, perHost rate, timeout time.Duration, retries int, now func() time.Time) *Client
     BE5 : +(c *Client) GetJSON(ctx context.Context, url string, out any) error
     BE5 : +(c *Client) PostJSON(ctx context.Context, url string, body, out any) error
@@ -537,7 +541,7 @@ classDiagram
     note for BE5 "depends on: net/http#59; SEAM-2 transport#59; SEAM-1 clock"
 
     class BE6["BE-6 ingest.Refresher and ingest.Store"]
-    BE6 : <<package internal/ingest>>
+    BE6 : «package internal/ingest»
     BE6 : +NewStore() *Store
     BE6 : +(s *Store) Current() (*Snapshot, bool)
     BE6 : +NewRefresher(venues []venue.Venue, m *match.Matcher, ref refdata.Set, s *Store, cfg Cadence, now func() time.Time) *Refresher
@@ -546,32 +550,32 @@ classDiagram
     note for BE6 "depends on: SEAM-1 clock"
 
     class BE7["BE-7 match.Matcher"]
-    BE7 : <<package internal/match>>
+    BE7 : «package internal/match»
     BE7 : +New(rulesVersion string) *Matcher
     BE7 : +(m *Matcher) Match(a, b []market.Market, ref refdata.Set) PairSet
     BE7 : +Compare(x, y market.Market) Verdict
     BE7 : +(p PairSet) Routable(id string, cur map[market.Key]string) (Pair, error)
 
     class BE8["BE-8 route.Router"]
-    BE8 : <<package internal/route>>
+    BE8 : «package internal/route»
     BE8 : +Route(o Order, quotes []Quote, p Policy, asOf time.Time) Decision
     BE8 : +(o Order) Validate() error
 
     class BE9["BE-9 decisionlog.Log"]
-    BE9 : <<package internal/decisionlog>>
+    BE9 : «package internal/decisionlog»
     BE9 : +Open(path string) (*Log, error)
     BE9 : +(l *Log) Append(d route.Decision) error
     BE9 : +(l *Log) Page(cursor string, limit int) ([]route.Decision, string, error)
     note for BE9 "depends on: os (SEAM-3 file)"
 
     class BE10["BE-10 refdata.Loader"]
-    BE10 : <<package internal/refdata>>
+    BE10 : «package internal/refdata»
     BE10 : +Load(dir string, venues []string) (Set, error)
     BE10 : +(s Set) Eligible(venue, region string) (bool, string)
     note for BE10 "depends on: os"
 
     class BE11["BE-11 web.Server"]
-    BE11 : <<package internal/web>>
+    BE11 : «package internal/web»
     BE11 : +New(s *ingest.Store, l *decisionlog.Log, ref refdata.Set, lim *RateLimiter, version string) *Server
     BE11 : +(s *Server) Handler() http.Handler
     BE11 : +(s *Server) Index(w http.ResponseWriter, r *http.Request)
@@ -583,11 +587,11 @@ classDiagram
     note for BE11 "depends on: html/template, a per-IP limiter"
 
     class BE12["BE-12 cmd.Main"]
-    BE12 : <<package cmd/equinox>>
+    BE12 : «package cmd/equinox»
     BE12 : +main()
 
     class BE13["BE-13 measure.Measurer"]
-    BE13 : <<package internal/measure>>
+    BE13 : «package internal/measure»
     BE13 : +Draw(ps match.PairSet, snap *ingest.Snapshot, seed uint64, n int, rulesVersion string) Sample
     BE13 : +Cards(s Sample, snap *ingest.Snapshot) []Card
     BE13 : +ImportLabels(s Sample, r io.Reader) ([]Label, error)
@@ -595,7 +599,7 @@ classDiagram
     note for BE13 "depends on: math/rand/v2 (SEAM-4)"
 
     class BE14["BE-14 adjudicate.Exchange"]
-    BE14 : <<package internal/adjudicate>>
+    BE14 : «package internal/adjudicate»
     BE14 : +Export(ps match.PairSet, snap *ingest.Snapshot, promptVersion string) []measure.Card
     BE14 : +Import(r io.Reader, ps match.PairSet) ([]refdata.Verdict, error)
 
@@ -642,6 +646,10 @@ classDiagram
     BE14 ..> BE13 : depends on
 ```
 <!-- /diagram -->
+
+[![Backend components and dependencies](diagrams/png/be-class.png)](diagrams/png/be-class.png)
+
+*Picture of the diagram above (`be-class.mmd`); click to open it full size.*
 
 **Layering:** `cmd/equinox` (BE-12) wires everything; `web` (BE-11) translates HTTP; `ingest` (BE-6) owns snapshots;
 `match` (BE-7) and `route` (BE-8) are pure functions over `market` (BE-1) types; venue adapters (BE-3, BE-4) are the
@@ -864,6 +872,10 @@ flowchart TD
 ```
 <!-- /diagram -->
 
+[![Page components](diagrams/png/fe-components.png)](diagrams/png/fe-components.png)
+
+*Picture of the diagram above (`fe-components.mmd`); click to open it full size.*
+
 ### Component tree
 
 - FE-1 PageShell (index)
@@ -995,6 +1007,10 @@ sequenceDiagram
 ```
 <!-- /diagram -->
 
+[![Sequence: refresh, match and publish a snapshot](diagrams/png/sequence-refresh-and-match.png)](diagrams/png/sequence-refresh-and-match.png)
+
+*Picture of the diagram above (`sequence-refresh-and-match.mmd`); click to open it full size.*
+
 - **Trigger:** the refresher's catalog timer fires (every 15 min) or the service starts
 - **Participants:** BE-6 ingest (Refresher and Store), BE-3 kalshi.Adapter, BE-4 polymarket.Adapter, BE-5 fetch.Client, US-regulated venue, Offshore venue, BE-7 Matcher, BE-10 refdata Set
 - **Preconditions:** BE-10 loaded the reviewed files at start
@@ -1079,6 +1095,10 @@ sequenceDiagram
 ```
 <!-- /diagram -->
 
+[![Sequence: route a hypothetical order](diagrams/png/sequence-route-order.png)](diagrams/png/sequence-route-order.png)
+
+*Picture of the diagram above (`sequence-route-order.mmd`); click to open it full size.*
+
 - **Trigger:** a reviewer submits the order form, or a client posts JSON to EP-3
 - **Participants:** Reviewer (actor), FE-4 OrderForm, BE-11 web.Server, BE-6 Store, BE-7 PairSet, BE-10 refdata Set, BE-8 Router, BE-9 Log, FE-5 DecisionView
 - **Preconditions:** a snapshot exists
@@ -1153,6 +1173,10 @@ sequenceDiagram
 ```
 <!-- /diagram -->
 
+[![Sequence: decide while a venue is down](diagrams/png/sequence-venue-down.png)](diagrams/png/sequence-venue-down.png)
+
+*Picture of the diagram above (`sequence-venue-down.mmd`); click to open it full size.*
+
 - **Trigger:** the offshore venue times out on every request during a refresh, then an order arrives
 - **Participants:** BE-6 ingest (Refresher and Store), BE-5 fetch.Client, Offshore venue, Labs engineer (actor), BE-11 web.Server, BE-8 Router, BE-9 Log
 - **Preconditions:** an earlier refresh succeeded for both venues
@@ -1218,6 +1242,10 @@ sequenceDiagram
 ```
 <!-- /diagram -->
 
+[![Sequence: measure matching precision](diagrams/png/sequence-measure-precision.png)](diagrams/png/sequence-measure-precision.png)
+
+*Picture of the diagram above (`sequence-measure-precision.mmd`); click to open it full size.*
+
 - **Trigger:** a Labs lead runs `equinox sample -seed 20261011`
 - **Participants:** Labs lead (actor), BE-12 cmd.Main, BE-6 Refresher, BE-13 Measurer, AI rater (external), Human rater (actor), CN-4 reviewed files
 - **Preconditions:** live or recorded venue data is reachable; the matching rules version is fixed
@@ -1279,6 +1307,10 @@ sequenceDiagram
 ```
 <!-- /diagram -->
 
+[![Sequence: adjudicate undecided pairs offline](diagrams/png/sequence-adjudicate-offline.png)](diagrams/png/sequence-adjudicate-offline.png)
+
+*Picture of the diagram above (`sequence-adjudicate-offline.mmd`); click to open it full size.*
+
 - **Trigger:** a Labs engineer runs `equinox export-adjudication` after a refresh reports undecided pairs
 - **Participants:** Labs engineer (actor), BE-12 cmd.Main, BE-14 Exchange, AI adjudicator (external), CN-4 reviewed files, BE-10 Loader, BE-7 Matcher
 - **Preconditions:** the refresh report shows undecided pairs (FR-040)
@@ -1327,6 +1359,10 @@ stateDiagram-v2
 ```
 <!-- /diagram -->
 
+[![State machine: pair verdict](diagrams/png/state-pair.png)](diagrams/png/state-pair.png)
+
+*Picture of the diagram above (`state-pair.mmd`); click to open it full size.*
+
 - **Initial:** `undecided` · **Terminal:** none by design (draw no end state): every refresh rebuilds every pair, so no state is final · **Stored in:** CHECK `ck_pairs_verdict`
 - **Enforced in:** BE-7, the only writer of `pairs`; a snapshot is immutable once published, so no two writers race
 
@@ -1373,6 +1409,10 @@ stateDiagram-v2
     backing_off --> unhealthy : timer reaches wait_until
 ```
 <!-- /diagram -->
+
+[![State machine: venue health](diagrams/png/state-venue-health.png)](diagrams/png/state-venue-health.png)
+
+*Picture of the diagram above (`state-venue-health.mmd`); click to open it full size.*
 
 - **Initial:** `warming` · **Terminal:** none by design (draw no end state): health is recomputed every refresh for as long as the service runs · **Stored in:** CHECK `ck_venue_health_state`
 - **Enforced in:** BE-6, the only writer; each refresh computes the next row from the previous one
