@@ -48,6 +48,8 @@ curl -s -X POST localhost:8080/route -H 'Content-Type: application/json' \
 
 ## Demo deploy (Railway)
 
+Full steps (Docker, Railway, live data, how to check a deploy and roll back): [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+
 Live: **https://equinox-production-92b0.up.railway.app** — a hosted demo for clicking around. The live app makes **no venue calls**: it replays the recorded
 2026-10-11 responses in `testdata/live-20261011` (plain gzipped JSON files) exactly like the local default, so its
 numbers match this README and `docs/TEST_RESULTS.md`. The decision log lives in the container and resets on redeploy.
@@ -122,6 +124,7 @@ Every diagram is a picture in the repo (click to open full size); the short tour
 | Decisions (every gate, with the options that lost) | [`docs/decisions/DECISION_JOURNAL.md`](docs/decisions/DECISION_JOURNAL.md), [`REVIEW.md`](docs/decisions/REVIEW.md) |
 | AI usage log | [`docs/AI_USAGE.md`](docs/AI_USAGE.md) |
 | Test results | [`docs/TEST_RESULTS.md`](docs/TEST_RESULTS.md) |
+| Deployment guide | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) |
 
 ## Deliverables
 
@@ -133,7 +136,7 @@ Every diagram is a picture in the repo (click to open full size); the short tour
 | Equivalence and routing logic, written | `docs/product/prd.md` (definition), `docs/architecture/lld.md` (method) |
 | Test results | `docs/TEST_RESULTS.md` |
 | AI usage log / disclosure | `docs/AI_USAGE.md` |
-| Deployment guide | this README: "Run it locally" and "Demo deploy (Railway)" |
+| Deployment guide | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md): local, Docker, Railway, live data, checks, rollback |
 | Demo video | linked from `docs/demo/` |
 
 ## Limits

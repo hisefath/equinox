@@ -27,6 +27,7 @@ page, agents will not find it. `garden-docs` keeps this file in sync; it lists p
 | API contract | `docs/architecture/contracts/openapi.yaml` | `design-lld` | G3 |
 | Brownfield change plan | `specs/M<N>-<slug>/change-plan.md` | `design-lld` | G3 |
 | Diagrams (Mermaid source of truth) | `docs/architecture/diagrams/<type>.mmd`, embedded under `<!-- diagram: <type> -->` by `scripts/embed-diagrams.sh` | `draw-diagrams` | inside G2 / G3 |
+| Deployment guide (local, Docker, Railway, checks, rollback) | `docs/DEPLOYMENT.md` | supervisor | rides the MR |
 | Diagram pictures (PNG, rendered from the `.mmd` files) | `docs/architecture/diagrams/png/<type>.png`, shown under each embedded diagram and in `ARCHITECTURE.md` | supervisor (headless Chrome + Mermaid 11.4.1) | rides the MR |
 | Root architecture summary (when graded) | `ARCHITECTURE.md` | `garden-docs` | rides the MR |
 
